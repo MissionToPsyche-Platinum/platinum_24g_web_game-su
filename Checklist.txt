@@ -1,6 +1,7 @@
 Abby
 - Downloaded Unity
 - Created Hello World project
+- Watched Unity tutorial
 
 Remy
 - Downloaded Unity
