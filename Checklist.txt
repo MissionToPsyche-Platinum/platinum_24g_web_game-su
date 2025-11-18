@@ -4,3 +4,4 @@ Abby
 
 Remy
 - Downloaded Unity
+- Watched Unity tutorial
