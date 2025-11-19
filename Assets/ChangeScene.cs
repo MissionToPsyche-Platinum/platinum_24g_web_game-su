@@ -7,4 +7,9 @@ public class ChangeScene : MonoBehaviour
     {
         SceneManager.LoadScene("Credits");
     }
+
+    public void goToStartScene()
+    {
+        SceneManager.LoadScene("StartMenu");
+    }
 }
