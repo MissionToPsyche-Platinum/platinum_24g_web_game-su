@@ -1,0 +1,13 @@
+Muhammad:
+Mini-Game Concept; Power Cell Calibration
+When the player’s character enters the ship’s engine room and
+approaches the glowing control panel, a mini-game is triggered
+to “calibrate the power cells.” The player sees a series of
+energy bars fluctuating at different levels. Their task is
+to click (or tap) each bar when it aligns with a highlighted 
+target zone in the center of each bar. Each successful calibration
+lights up part of the ship’s power system, 
+while mistimed clicks reset that specific bar.
+Once all bars are aligned, the ship’s lights flicker 
+on and the mini-game ends, rewarding the player with
+ a “Psyche Fact Card” and also restoring the ships power.
