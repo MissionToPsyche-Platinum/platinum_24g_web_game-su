@@ -12,4 +12,9 @@ public class ChangeScene : MonoBehaviour
     {
         SceneManager.LoadScene("StartMenu");
     }
+
+    public void goToOptionScene()
+    {
+        SceneManager.LoadScene("Options");
+    }
 }
