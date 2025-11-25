@@ -17,4 +17,9 @@ public class ChangeScene : MonoBehaviour
     {
         SceneManager.LoadScene("Options");
     }
+
+    public void goToMainGameScene()
+    {
+        SceneManager.LoadScene("MainGame");
+    }
 }
