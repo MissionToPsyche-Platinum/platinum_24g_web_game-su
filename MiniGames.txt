@@ -32,3 +32,17 @@ engine-boost animation and awarding mission progress along with a Psyche-related
 fact card.
 
 Mission/Time Critical:
+
+Shamitha:
+Minigame Concept: Sample Clean-up Sweep
+Room Type: Research/Data Lab
+When the player enters the Research Lab, they notice a warning on the screen saying
+that the sample area has small bits of debris floating around. Interacting with the
+warning sign starts the mini-game. Inside the mini-game, different objects begin gently
+falling or drifting downward. The safe sample pieces are marked clearly, while the
+contaminants have small hazard icons. The player moves a small collection pad left
+and right to catch only the safe pieces and avoid the contaminants. Each correct catch
+fills up the “clean-up meter,” while catching a contaminant lowers it and triggers a 
+warning sound. When the clean-up meter reaches 100%, the lab systems return to
+normal, the warning clears, and the samples are ready to study. The player receives a 
+Psyche Fact Card as a reward.
