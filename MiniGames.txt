@@ -1,5 +1,7 @@
+Room Specific:
 Muhammad:
-Mini-Game Concept; Power Cell Calibration
+Minigame Concept; Power Cell Calibration
+Room Type: Engine Room
 When the player’s character enters the ship’s engine room and
 approaches the glowing control panel, a mini-game is triggered
 to “calibrate the power cells.” The player sees a series of
@@ -11,3 +13,22 @@ while mistimed clicks reset that specific bar.
 Once all bars are aligned, the ship’s lights flicker 
 on and the mini-game ends, rewarding the player with
  a “Psyche Fact Card” and also restoring the ships power.
+
+Remy:
+Minigame Concept: Trajectory Correction Burn
+Room Type: Control Room
+This minigame takes place in the ship’s Control Room, where players handle 
+critical mid-course adjustments as the spacecraft travels toward Psyche. 
+When the player interacts with the task console, the screen displays a 
+simplified navigation interface featuring a target trajectory line and a 
+set of hands-on controls such as sliders, rotating knobs, or draggable 
+directional arrows. Using mouse input, the player adjusts these 
+controls to match the ship’s heading and thrust level with the highlighted 
+target path. As they interact, the display updates in real time—trajectory 
+arcs shift, angle indicators change, and feedback meters show how close the 
+player is to achieving alignment. Once all values fall within the correct 
+range, the game automatically initiates the correction burn, showing a brief 
+engine-boost animation and awarding mission progress along with a Psyche-related 
+fact card.
+
+Mission/Time Critical:
