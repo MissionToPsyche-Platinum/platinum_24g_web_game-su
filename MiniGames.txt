@@ -31,6 +31,19 @@ range, the game automatically initiates the correction burn, showing a brief
 engine-boost animation and awarding mission progress along with a Psyche-related 
 fact card.
 
+Abby:
+Minigame Concept: Cargo Clean-Up
+Room Type: Cargo Room
+This minigame takes place in the ship's cargo room, where the player will rearrange 
+the cargo room after either the ship hits a small amount of space debris or after 
+correcting the ship's trajectory. The turbulence experienced by the ship creates 
+a mess in the cargo room that the player will have to clean up by moving the cargo 
+back into their respective spots. Boxes that are not in the correct spot will have
+a marker such as a red exclamation point or X symbol. Boxes that are correct will have 
+a green checkmark. Players will move boxes by walking into them in a sokoban style game. 
+Once all boxes are in their correct spots, the player character will have a "happy" 
+animation before a Psyche Fact Card is given to the user as a reward.
+
 Mission/Time Critical:
 
 Shamitha:
