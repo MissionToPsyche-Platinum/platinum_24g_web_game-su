@@ -959,7 +959,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Developed by: \nMuhammad Kinteh\nAbby Doinog\nRemy Frederick\nShamitha
-    Pichika\r\n"
+    Pichika\r\n\nSome elements in this game are fictional and do not represent real
+    NASA Psyche spacecrafts, missions, or extraterrestrial life."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
