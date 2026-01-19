@@ -18,8 +18,8 @@ public class ChangeScene : MonoBehaviour
         SceneManager.LoadScene("Options");
     }
 
-    public void goToMainGameScene()
+    public void goToMainHallScene()
     {
-        SceneManager.LoadScene("MainGame");
+        SceneManager.LoadScene("MainHall");
     }
 }
