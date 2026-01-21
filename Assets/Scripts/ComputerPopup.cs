@@ -4,13 +4,121 @@ using UnityEngine.UI;
 public class ComputerPopup : MonoBehaviour
 {
     private const string PopupName = "ComputerPopup";
+    private const string HintName = "ComputerInteractHint";
 
     private GameObject popupPanel;
+    private GameObject hintLabel;
+    private bool canInteract;
+    private PlayerMovement2D playerMovement;
+    private Rigidbody2D playerRigidbody;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (IsPopupOpen())
+            {
+                HidePopup();
+                return;
+            }
+
+            if (canInteract)
+            {
+                ShowPopup();
+            }
+        }
+    }
 
     private void OnMouseDown()
     {
+        ShowPopup();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.GetComponent<PlayerMovement2D>() == null)
+        {
+            return;
+        }
+
+        canInteract = true;
+        playerMovement = other.GetComponent<PlayerMovement2D>();
+        playerRigidbody = other.GetComponent<Rigidbody2D>();
+        if (hintLabel == null)
+        {
+            Canvas canvas = FindFirstObjectByType<Canvas>();
+            if (canvas != null)
+            {
+                EnsureHint(canvas);
+            }
+        }
+        ToggleHint(true);
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.GetComponent<PlayerMovement2D>() == null)
+        {
+            return;
+        }
+
+        canInteract = false;
+        if (IsPopupOpen())
+        {
+            HidePopup();
+        }
+        ToggleHint(false);
+    }
+
+    private void ShowPopup()
+    {
         EnsurePopup();
+        if (popupPanel == null)
+        {
+            return;
+        }
+
         popupPanel.SetActive(true);
+        ToggleHint(false);
+        if (playerMovement != null)
+        {
+            playerMovement.enabled = false;
+        }
+        if (playerRigidbody != null)
+        {
+            playerRigidbody.linearVelocity = Vector2.zero;
+        }
+    }
+
+    private void HidePopup()
+    {
+        if (popupPanel != null)
+        {
+            popupPanel.SetActive(false);
+        }
+
+        if (canInteract)
+        {
+            ToggleHint(true);
+        }
+
+        if (playerMovement != null)
+        {
+            playerMovement.enabled = true;
+        }
+    }
+
+    private void ToggleHint(bool isVisible)
+    {
+        if (hintLabel != null)
+        {
+            hintLabel.SetActive(isVisible);
+        }
+    }
+
+    private bool IsPopupOpen()
+    {
+        return popupPanel != null && popupPanel.activeSelf;
     }
 
     private void EnsurePopup()
@@ -20,12 +128,14 @@ public class ComputerPopup : MonoBehaviour
             return;
         }
 
-        Canvas canvas = FindObjectOfType<Canvas>();
+        Canvas canvas = FindFirstObjectByType<Canvas>();
         if (canvas == null)
         {
             Debug.LogWarning("ComputerPopup: No Canvas found in scene.");
             return;
         }
+
+        EnsureHint(canvas);
 
         popupPanel = new GameObject(PopupName, typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
         popupPanel.transform.SetParent(canvas.transform, false);
@@ -67,8 +177,37 @@ public class ComputerPopup : MonoBehaviour
         label.alignment = TextAnchor.MiddleCenter;
         label.color = Color.white;
         label.fontSize = 24;
-        label.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+        label.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
 
         popupPanel.SetActive(false);
+    }
+
+    private void EnsureHint(Canvas canvas)
+    {
+        if (hintLabel != null)
+        {
+            return;
+        }
+
+        hintLabel = new GameObject(HintName, typeof(RectTransform), typeof(CanvasRenderer), typeof(Text));
+        hintLabel.transform.SetParent(canvas.transform, false);
+        hintLabel.transform.SetAsLastSibling();
+
+        RectTransform hintTransform = hintLabel.GetComponent<RectTransform>();
+        hintTransform.anchorMin = new Vector2(0.5f, 0.5f);
+        hintTransform.anchorMax = new Vector2(0.5f, 0.5f);
+        hintTransform.pivot = new Vector2(0.5f, 0.5f);
+        hintTransform.sizeDelta = new Vector2(300f, 40f);
+        hintTransform.anchoredPosition = new Vector2(0f, -140f);
+
+        Text hintText = hintLabel.GetComponent<Text>();
+        hintText.text = "Press R to interact";
+        hintText.alignment = TextAnchor.MiddleCenter;
+        hintText.color = Color.white;
+        hintText.fontSize = 18;
+        hintText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        hintText.raycastTarget = false;
+
+        hintLabel.SetActive(false);
     }
 }
