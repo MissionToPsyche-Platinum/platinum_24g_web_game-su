@@ -44,6 +44,7 @@ public class ComputerPopup : MonoBehaviour
         canInteract = true;
         playerMovement = other.GetComponent<PlayerMovement2D>();
         playerRigidbody = other.GetComponent<Rigidbody2D>();
+
         if (hintLabel == null)
         {
             Canvas canvas = FindFirstObjectByType<Canvas>();
@@ -52,6 +53,7 @@ public class ComputerPopup : MonoBehaviour
                 EnsureHint(canvas);
             }
         }
+
         ToggleHint(true);
     }
 
@@ -63,10 +65,12 @@ public class ComputerPopup : MonoBehaviour
         }
 
         canInteract = false;
+
         if (IsPopupOpen())
         {
             HidePopup();
         }
+
         ToggleHint(false);
     }
 
@@ -80,10 +84,12 @@ public class ComputerPopup : MonoBehaviour
 
         popupPanel.SetActive(true);
         ToggleHint(false);
+
         if (playerMovement != null)
         {
             playerMovement.enabled = false;
         }
+
         if (playerRigidbody != null)
         {
             playerRigidbody.linearVelocity = Vector2.zero;
@@ -150,7 +156,45 @@ public class ComputerPopup : MonoBehaviour
         Image panelImage = popupPanel.GetComponent<Image>();
         panelImage.color = new Color(0.1f, 0.12f, 0.16f, 0.95f);
 
-        GameObject buttonObject = new GameObject("PsycheTriviaButton", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(Button));
+    
+        GameObject factButtonObject = new GameObject("FactCardsButton",
+            typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(Button));
+        factButtonObject.transform.SetParent(popupPanel.transform, false);
+
+        RectTransform factButtonTransform = factButtonObject.GetComponent<RectTransform>();
+        factButtonTransform.anchorMin = new Vector2(0.5f, 0.5f);
+        factButtonTransform.anchorMax = new Vector2(0.5f, 0.5f);
+        factButtonTransform.pivot = new Vector2(0.5f, 0.5f);
+        factButtonTransform.sizeDelta = new Vector2(220f, 60f);
+        factButtonTransform.anchoredPosition = new Vector2(0f, 45f);
+
+        Image factButtonImage = factButtonObject.GetComponent<Image>();
+        factButtonImage.color = new Color(0.2f, 0.55f, 0.75f, 1f);
+
+        GameObject factLabelObject = new GameObject("Label", typeof(RectTransform), typeof(CanvasRenderer), typeof(Text));
+        factLabelObject.transform.SetParent(factButtonObject.transform, false);
+
+        RectTransform factLabelTransform = factLabelObject.GetComponent<RectTransform>();
+        factLabelTransform.anchorMin = new Vector2(0f, 0f);
+        factLabelTransform.anchorMax = new Vector2(1f, 1f);
+        factLabelTransform.offsetMin = Vector2.zero;
+        factLabelTransform.offsetMax = Vector2.zero;
+
+        Text factLabel = factLabelObject.GetComponent<Text>();
+        factLabel.text = "Fact Cards";
+        factLabel.alignment = TextAnchor.MiddleCenter;
+        factLabel.color = Color.white;
+        factLabel.fontSize = 24;
+        factLabel.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+
+        factButtonObject.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            Debug.Log("Fact Cards clicked!");
+        });
+
+
+        GameObject buttonObject = new GameObject("PsycheTriviaButton",
+            typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(Button));
         buttonObject.transform.SetParent(popupPanel.transform, false);
 
         RectTransform buttonTransform = buttonObject.GetComponent<RectTransform>();
@@ -158,7 +202,7 @@ public class ComputerPopup : MonoBehaviour
         buttonTransform.anchorMax = new Vector2(0.5f, 0.5f);
         buttonTransform.pivot = new Vector2(0.5f, 0.5f);
         buttonTransform.sizeDelta = new Vector2(220f, 60f);
-        buttonTransform.anchoredPosition = Vector2.zero;
+        buttonTransform.anchoredPosition = new Vector2(0f, -25f);
 
         Image buttonImage = buttonObject.GetComponent<Image>();
         buttonImage.color = new Color(0.2f, 0.55f, 0.75f, 1f);
@@ -178,6 +222,11 @@ public class ComputerPopup : MonoBehaviour
         label.color = Color.white;
         label.fontSize = 24;
         label.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+
+        buttonObject.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            Debug.Log("Psyche Trivia clicked!");
+        });
 
         popupPanel.SetActive(false);
     }
