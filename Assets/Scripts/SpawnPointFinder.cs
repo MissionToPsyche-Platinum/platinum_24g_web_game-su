@@ -25,5 +25,12 @@ public class SpawnPointFinder : MonoBehaviour
             player.SetPositionAndRotation(spawnPoint.transform.position, player.transform.rotation);
             Physics.SyncTransforms();
         }
+
+        if(scene.name == "MainHall")
+        {
+            spawnPoint = GameObject.Find("SpawnFromCargo");
+            player.SetPositionAndRotation(spawnPoint.transform.position, player.transform.rotation);
+            Physics.SyncTransforms();
+        }
     }
 }
