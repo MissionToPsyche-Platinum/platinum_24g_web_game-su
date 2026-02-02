@@ -5,9 +5,11 @@ public class SpawnPointFinder : MonoBehaviour
 {
     [SerializeField] private Transform player;
     private GameObject spawnPoint;
+    private string currScene;
 
     private void OnEnable()
     {
+        currScene = "MainHall";
         SceneManager.sceneLoaded += SceneLoaded;
     }
 
@@ -19,7 +21,8 @@ public class SpawnPointFinder : MonoBehaviour
 
     private void SceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if(scene.name == "CargoRoom")
+        
+        if(scene.name == "CargoRoom"|| scene.name == "PowerRoom")
         {
             spawnPoint = GameObject.Find("Spawnpoint");
             player.SetPositionAndRotation(spawnPoint.transform.position, player.transform.rotation);
@@ -28,9 +31,19 @@ public class SpawnPointFinder : MonoBehaviour
 
         if(scene.name == "MainHall")
         {
-            spawnPoint = GameObject.Find("SpawnFromCargo");
-            player.SetPositionAndRotation(spawnPoint.transform.position, player.transform.rotation);
-            Physics.SyncTransforms();
+            if(currScene == "CargoRoom")
+            {
+                spawnPoint = GameObject.Find("SpawnFromCargo");
+                player.SetPositionAndRotation(spawnPoint.transform.position, player.transform.rotation);
+                Physics.SyncTransforms();
+            }
+            if(currScene == "PowerRoom")
+            {
+                spawnPoint = GameObject.Find("SpawnFromPower");
+                player.SetPositionAndRotation(spawnPoint.transform.position, player.transform.rotation);
+                Physics.SyncTransforms();   
+            }
         }
+        currScene = scene.name;
     }
 }
