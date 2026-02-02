@@ -14,7 +14,7 @@ public class ComputerPopup : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (IsPopupOpen())
             {
@@ -25,6 +25,14 @@ public class ComputerPopup : MonoBehaviour
             if (canInteract)
             {
                 ShowPopup();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (IsPopupOpen())
+            {
+                HidePopup();
             }
         }
     }
@@ -250,7 +258,7 @@ public class ComputerPopup : MonoBehaviour
         hintTransform.anchoredPosition = new Vector2(0f, -140f);
 
         Text hintText = hintLabel.GetComponent<Text>();
-        hintText.text = "Press R to interact";
+        hintText.text = "Press E to interact";
         hintText.alignment = TextAnchor.MiddleCenter;
         hintText.color = Color.white;
         hintText.fontSize = 18;

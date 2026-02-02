@@ -28,6 +28,14 @@ public class BoxTrigger : MonoBehaviour
                 ShowPopup();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (IsPopupOpen())
+            {
+                HidePopup();
+            }
+        }
     }
 
     private void OnMouseDown()
