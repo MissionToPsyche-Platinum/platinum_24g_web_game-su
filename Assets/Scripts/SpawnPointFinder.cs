@@ -22,7 +22,7 @@ public class SpawnPointFinder : MonoBehaviour
     private void SceneLoaded(Scene scene, LoadSceneMode mode)
     {
         
-        if(scene.name == "CargoRoom"|| scene.name == "PowerRoom" || scene.name == "ControlRoom" || scene.name == "LabRoom")
+        if(scene.name == "CargoRoom"|| scene.name == "PowerRoom" || scene.name == "ControlRoom" || scene.name == "LabRoom" || scene.name == "CargoMinigame")
       
         {
             spawnPoint = GameObject.Find("Spawnpoint");
@@ -55,6 +55,12 @@ public class SpawnPointFinder : MonoBehaviour
                 spawnPoint = GameObject.Find("SpawnFromLab");
                 player.SetPositionAndRotation(spawnPoint.transform.position, player.transform.rotation);
                 Physics.SyncTransforms();   
+            }
+            if (currScene == "CargoMinigame")
+            {
+                spawnPoint = GameObject.Find("Spawnpoint");
+                player.SetPositionAndRotation(spawnPoint.transform.position, player.transform.rotation);
+                Physics.SyncTransforms();
             }
         }
         currScene = scene.name;
