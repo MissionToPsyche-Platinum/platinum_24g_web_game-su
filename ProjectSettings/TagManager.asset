@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Interactable
   - MoveableBox
+  - CargoroomTarget
   layers:
   - Default
   - TransparentFX

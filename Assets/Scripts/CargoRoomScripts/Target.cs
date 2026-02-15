@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class TargetChanger : MonoBehaviour
+public class Target : MonoBehaviour
 {
     private Animator animator;
-    private bool occupied;
+    public bool occupied;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
