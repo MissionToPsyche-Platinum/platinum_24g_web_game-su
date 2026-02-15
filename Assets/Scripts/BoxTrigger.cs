@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BoxTrigger : MonoBehaviour
@@ -9,6 +10,7 @@ public class BoxTrigger : MonoBehaviour
 
     private GameObject popupPanel;
     private GameObject hintLabel;
+    private GameObject startGameButton;
     private bool canInteract;
     private PlayerMovement2D playerMovement;
     private Rigidbody2D playerRigidbody;
@@ -166,7 +168,7 @@ public class BoxTrigger : MonoBehaviour
         panelImage.color = new Color(0.1f, 0.12f, 0.16f, 0.95f);
 
 
-        GameObject startGameButton = new GameObject("StartGameButton",
+        startGameButton = new GameObject("StartGameButton",
             typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(Button));
         startGameButton.transform.SetParent(popupPanel.transform, false);
 
@@ -198,9 +200,8 @@ public class BoxTrigger : MonoBehaviour
 
         startGameButton.GetComponent<Button>().onClick.AddListener(() =>
         {
-            Debug.Log("Start minigame clicked!");
+            SceneManager.LoadScene("CargoMinigame");
         });
-
 
         popupPanel.SetActive(false);
     }
