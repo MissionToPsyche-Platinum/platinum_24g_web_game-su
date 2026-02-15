@@ -57,4 +57,5 @@ public class PlayerMovement2D : MonoBehaviour
     {
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
     }
+
 }
