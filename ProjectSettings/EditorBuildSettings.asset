@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CargoMinigame.unity
     guid: 9051671be65bf744f8da16f36caf0795
+  - enabled: 1
+    path: Assets/Scenes/LabMinigame.unity
+    guid: cd54c8ea2f80342a88e1b1ae0002fffa
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
