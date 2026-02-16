@@ -2,18 +2,14 @@ using UnityEngine;
 
 public class MinigameUnstick : MonoBehaviour
 {
-    private void Start()
+    private void Awake()
     {
         Time.timeScale = 1f;
 
-        var move = FindFirstObjectByType<PlayerMovement2D>();
-        if (move != null) move.enabled = true;
-
-        var rb = move != null ? move.GetComponent<Rigidbody2D>() : null;
-        if (rb != null)
+        BroomPickup broom = FindFirstObjectByType<BroomPickup>();
+        if (broom != null)
         {
-            rb.simulated = true;
-            rb.constraints = RigidbodyConstraints2D.FreezeRotation; // no FreezePosition
+            broom.ResetBroom();
         }
     }
 }

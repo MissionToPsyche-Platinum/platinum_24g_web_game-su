@@ -128,24 +128,36 @@ private void ShowPopup()
     welcomePopup.SetActive(true);
     ToggleHint(false);
 
-    if (playerMovement != null) playerMovement.enabled = false;
-    if (playerRigidbody != null) playerRigidbody.linearVelocity = Vector2.zero;
+   
+    if (playerRigidbody != null)
+    {
+        playerRigidbody.linearVelocity = Vector2.zero;
+        playerRigidbody.angularVelocity = 0f;
+        playerRigidbody.Sleep(); 
+    }
+
+    
+    if (playerMovement != null)
+        playerMovement.enabled = false;
 }
 
 
 
 
-    private void HidePopup()
-    {
-        if (welcomePopup != null)
-            welcomePopup.SetActive(false);
 
-        if (canInteract)
-            ToggleHint(true);
+private void HidePopup()
+{
+    if (welcomePopup != null)
+        welcomePopup.SetActive(false);
 
-        if (playerMovement != null)
-            playerMovement.enabled = true;
-    }
+    ToggleHint(false);
+
+    if (playerMovement != null)
+        playerMovement.enabled = true;
+
+    if (playerRigidbody != null)
+        playerRigidbody.linearVelocity = Vector2.zero;
+}
 
     private bool IsPopupOpen()
     {
