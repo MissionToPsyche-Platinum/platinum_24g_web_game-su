@@ -1,8 +1,15 @@
-The Psyche mission is to study an asteroid, also called Psyche, which contains metal in its core.
-Most asteroids are made of rock and ice, but Psyche is unique due to its metal-rich core. This is NASA’s first mission to study an asteroid like this.
-The Psyche spacecraft was launched on October 13, 2023 from the Kennedy Space Center and is expected to reach the Psyche asteroid in July 2029.
-The asteroid Psyche is located between Mars and Jupiter, about three times farther away from the Sun than Earth.
-The asteroid Psyche was named after the Greek goddess of the soul, Psyche, who was born mortal and married to Cupid.
-When the spacecraft arrives, it will orbit the asteroid for about two years, collecting data such as images and surface maps and sending them back to NASA.
-Psyche is sometimes referred to as “16 Psyche” because it was the 16th asteroid to be discovered.
-There is much less surface gravity on Psyche than on Earth, even less than on the Moon, so lifting a car would feel more like lifting a large dog.
+The asteroid Psyche is one of the largest objects in the main asteroid belt, measuring about 226 kilometers (140 miles) across at its widest point.
+Unlike most asteroids made mostly of rock and ice, Psyche contains a large amount of metal, including iron and nickel.
+Scientists believe Psyche may be the exposed metal core of an early planet that never fully formed.
+Studying Psyche could give scientists a rare look at what planetary cores are like beneath the surfaces of rocky planets such as Earth.
+The Psyche mission is the first NASA mission dedicated to studying a metal-rich asteroid.
+The Psyche spacecraft launched on October 13, 2023 from Kennedy Space Center in Florida.
+The spacecraft is expected to arrive at the asteroid Psyche in 2029 after traveling billions of kilometers through space.
+Psyche is located in the asteroid belt between Mars and Jupiter, about three times farther from the Sun than Earth.
+The Psyche spacecraft uses solar-electric propulsion, which is powered by sunlight and is more efficient than traditional rocket engines for long-distance travel.
+When the spacecraft reaches Psyche, it will orbit the asteroid for about two years to collect scientific data.
+The mission carries instruments that will study Psyche’s composition, magnetic field, and surface features.
+Scientists will measure Psyche’s gravity and density to better understand what it is made of inside.
+Psyche is also known as “16 Psyche” because it was the 16th asteroid ever discovered.
+Because Psyche may be a planetary core, studying it could help scientists understand how planets formed early in the solar system.
+Much about Psyche remains a mystery, and one of the mission’s main goals is to answer questions scientists have never been able to study up close before.
