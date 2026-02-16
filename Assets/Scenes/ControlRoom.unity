@@ -6745,6 +6745,7 @@ GameObject:
   - component: {fileID: 2028972063}
   - component: {fileID: 2028972062}
   - component: {fileID: 2028972068}
+  - component: {fileID: 2028972067}
   m_Layer: 0
   m_Name: Desk
   m_TagString: Untagged
@@ -7254,6 +7255,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &2028972067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028972060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1830e4eae144b459c9d2c341e5b041c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ControlsTrigger
 --- !u!61 &2028972068
 BoxCollider2D:
   m_ObjectHideFlags: 0
