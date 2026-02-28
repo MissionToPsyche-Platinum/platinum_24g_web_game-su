@@ -207,7 +207,7 @@ public class ControlsTrigger : MonoBehaviour
 
         startGameButton.GetComponent<Button>().onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("ControlsMinigame");
+            SceneManager.LoadScene("ControlRoomMinigame", LoadSceneMode.Single);
         });
 
         popupPanel.SetActive(false);
