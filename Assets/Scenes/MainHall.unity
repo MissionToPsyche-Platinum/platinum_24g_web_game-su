@@ -1942,6 +1942,7 @@ GameObject:
   - component: {fileID: 268386400}
   - component: {fileID: 268386401}
   - component: {fileID: 268386402}
+  - component: {fileID: 268386403}
   m_Layer: 0
   m_Name: __DontDestroy
   m_TagString: Untagged
@@ -1991,6 +1992,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd61977124d8834f84fcc9c82e0bbc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DDOL
+--- !u!114 &268386403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268386398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0fc881e2084b03418bdcfce7fed4766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &342362792
 GameObject:
   m_ObjectHideFlags: 0
