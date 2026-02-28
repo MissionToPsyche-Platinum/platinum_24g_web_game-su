@@ -4960,8 +4960,9 @@ GameObject:
   - component: {fileID: 1154443701}
   - component: {fileID: 1154443700}
   - component: {fileID: 1154443699}
+  - component: {fileID: 1154443702}
   m_Layer: 5
-  m_Name: Canvas_ProgressBar
+  m_Name: ScoreBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5050,6 +5051,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1154443702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154443697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d5fb6364b7654a4587d2a1f916255ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  progressSlider: {fileID: 481286203}
 --- !u!1 &1493802440
 GameObject:
   m_ObjectHideFlags: 0
