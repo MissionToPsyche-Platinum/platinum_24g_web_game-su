@@ -22,7 +22,7 @@ public class Target : MonoBehaviour
     {
         if (collision.CompareTag("MoveableBox"))
         {
-            Debug.Log("Box entered");
+            //Debug.Log("Box entered");
             animator.SetBool("ContainsBox", true);
             occupied = true;
         }
@@ -32,7 +32,7 @@ public class Target : MonoBehaviour
     {
         if (collision.CompareTag("MoveableBox"))
         {
-            Debug.Log("Box exited");
+            //Debug.Log("Box exited");
 
             animator.SetBool("ContainsBox", false);
             occupied = false;

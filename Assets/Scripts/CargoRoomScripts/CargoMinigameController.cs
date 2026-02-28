@@ -12,15 +12,13 @@ public class CargoMinigameController : MonoBehaviour
     private GameObject player;
     private new RectTransform transform;
     public TextMeshProUGUI scoreText;
-    private int score;
+    private bool finished;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         targets = GameObject.FindGameObjectsWithTag("CargoroomTarget");
         player = GameObject.FindGameObjectWithTag("Player");
-
-        score = 0;
 
         transform = GameObject.Find("CompletedPanel").GetComponent<RectTransform>();
         transform.anchoredPosition = new Vector2(1000f, 1000f);
@@ -32,16 +30,18 @@ public class CargoMinigameController : MonoBehaviour
     {
         gameComplete = targets.All(target => target.GetComponent<Target>().occupied);
 
-        if (gameComplete)
+        if (gameComplete && !finished)
         {
-            Invoke("EndMinigame", 1.0f);
+            finished = true;
+            Invoke(nameof(EndMinigame), 1.0f);
         }
-        
 
     }
 
     private void EndMinigame()
     {
+        
+        Global.MinigameWin();
         updateScoreText();
         transform.anchoredPosition = new Vector2(0f, 0f);
         player.GetComponent<PlayerMovement2D>().enabled = false;
@@ -51,6 +51,6 @@ public class CargoMinigameController : MonoBehaviour
 
     private void updateScoreText()
     {
-        scoreText.text = $"Total score: {Global.totalScore + Global.minigameAddScore}";
+        scoreText.text = $"Total score: {Global.totalScore}";
     }
 }

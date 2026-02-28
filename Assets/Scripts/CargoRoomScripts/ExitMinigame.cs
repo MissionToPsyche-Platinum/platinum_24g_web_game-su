@@ -11,7 +11,7 @@ public class ExitMinigame : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log("Button clicked");
+        
         SceneManager.LoadScene("CargoRoom");
     }
 }
