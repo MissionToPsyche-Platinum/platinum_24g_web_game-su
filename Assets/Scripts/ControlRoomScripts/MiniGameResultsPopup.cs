@@ -115,7 +115,7 @@ public class MiniGameResultsPopup : MonoBehaviour
         returnButton = buttonObj.GetComponent<Button>();
         returnButton.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("ControlRoom");
+            SceneManager.LoadScene("ControlRoom", LoadSceneMode.Single);
         });
     }
 

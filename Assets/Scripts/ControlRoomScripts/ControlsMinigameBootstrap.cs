@@ -92,13 +92,8 @@ public class ControlsMinigameBootstrap : MonoBehaviour
 
     private Canvas EnsureCanvas()
     {
-        Canvas existing = FindFirstObjectByType<Canvas>();
-        if (existing != null)
-        {
-            return existing;
-        }
-
         GameObject canvasObj = new GameObject("ControlsMinigameCanvas", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
+        canvasObj.transform.SetParent(transform, false);
         Canvas canvas = canvasObj.GetComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
 

@@ -35,6 +35,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LabMinigame.unity
     guid: cd54c8ea2f80342a88e1b1ae0002fffa
+  - enabled: 1
+    path: Assets/Scenes/ControlRoomMinigame.unity
+    guid: f0e62af10c1504026893cb5daa6c2e76
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

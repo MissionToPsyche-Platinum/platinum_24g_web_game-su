@@ -63,6 +63,12 @@ public class SpawnPointFinder : MonoBehaviour
                 Physics.SyncTransforms();
             }
         }
+        else if (currScene == "ControlRoomMinigame")
+        {
+            spawnPoint = GameObject.Find("PostMiniSpawnpoint");
+            player.SetPositionAndRotation(spawnPoint.transform.position, player.transform.rotation);
+            Physics.SyncTransforms();
+        }
         currScene = scene.name;
     }
 }
