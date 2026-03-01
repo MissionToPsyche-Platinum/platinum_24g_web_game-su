@@ -4,11 +4,14 @@ using UnityEngine;
 public class CargoBox : MonoBehaviour
 {
     private Rigidbody2D rb;
+    public GameObject warning;
+    public GameObject correction;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        correction.SetActive(false);
     }
 
     // Update is called once per frame
@@ -34,6 +37,12 @@ public class CargoBox : MonoBehaviour
             rb.linearVelocity = pushDir;
 
         }
+    }
+
+    public void SwitchSprite(bool finished)
+    {
+        correction.SetActive(finished);
+        warning.SetActive(!finished);
     }
 
 }

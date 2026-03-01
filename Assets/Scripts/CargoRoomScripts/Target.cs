@@ -4,6 +4,8 @@ public class Target : MonoBehaviour
 {
     private Animator animator;
     public bool occupied;
+    private CargoBox box;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,6 +24,11 @@ public class Target : MonoBehaviour
     {
         if (collision.CompareTag("MoveableBox"))
         {
+            if (collision.gameObject.TryGetComponent(out CargoBox box))
+            {
+                box.SwitchSprite(true);
+            }
+               
             //Debug.Log("Box entered");
             animator.SetBool("ContainsBox", true);
             occupied = true;
@@ -32,6 +39,10 @@ public class Target : MonoBehaviour
     {
         if (collision.CompareTag("MoveableBox"))
         {
+            if (collision.gameObject.TryGetComponent(out CargoBox box))
+            {
+                box.SwitchSprite(true);
+            }
             //Debug.Log("Box exited");
 
             animator.SetBool("ContainsBox", false);
