@@ -129,33 +129,36 @@ private void OnTriggerExit2D(Collider2D other)
 }
 
     private void PickUpBroom()
+{
+    pickedUp = true;
+    isHoldingBroom = true;
+
+    if (broomCleanerHitbox != null)
+        broomCleanerHitbox.enabled = true;
+
+    if (hintText != null)
+        hintText.SetActive(false);
+
+    if (broomHoldPoint == null)
     {
-        pickedUp = true;
-        isHoldingBroom = true;
-
-        
-
-        if (hintText != null) hintText.SetActive(false);
-
-        if (broomHoldPoint == null)
-        {
-            TryFindPlayerAndHoldPoint();
-        }
-
-        if (broomHoldPoint != null)
-        {
-            transform.SetParent(broomHoldPoint);
-            transform.localPosition = Vector3.zero;
-            transform.localRotation = Quaternion.identity;
-        }
-        else
-        {
-            Debug.LogError("BroomPickup: Could not find Player or BroomHoldPoint. Is Player tagged 'Player'?");
-            pickedUp = false;
-            return;
-        }
-
-        Collider2D col = GetComponent<Collider2D>();
-        if (col != null) col.enabled = false;
+        TryFindPlayerAndHoldPoint();
     }
+
+    if (broomHoldPoint != null)
+    {
+        transform.SetParent(broomHoldPoint);
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
+    }
+    else
+    {
+        Debug.LogError("BroomPickup: Could not find Player or BroomHoldPoint. Is Player tagged 'Player'?");
+        pickedUp = false;
+        return;
+    }
+
+    Collider2D col = GetComponent<Collider2D>();
+    if (col != null)
+        col.enabled = false;
+}
 }
