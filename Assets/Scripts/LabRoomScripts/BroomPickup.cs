@@ -32,6 +32,9 @@ public void ResetBroom()
     pickedUp = false;
     playerInRange = false;
 
+    if (broomCleanerHitbox != null)
+    broomCleanerHitbox.enabled = false;
+
     
     transform.SetParent(null);
 
