@@ -197,7 +197,10 @@ public class GeneratorTrigger : MonoBehaviour
         factLabel.color = Color.white;
         factLabel.fontSize = 24;
         factLabel.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-
+        startGameButton.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            SceneManager.LoadScene("PowerMinigame");
+        });
         popupPanel.SetActive(false);
     }
 
