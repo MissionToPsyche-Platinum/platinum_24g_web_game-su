@@ -6,8 +6,8 @@ public class SpillPopupController : MonoBehaviour
     [SerializeField] private GameObject spillPopup;
     [SerializeField] private string minigameSceneName = "LabMinigame";
 
-    private bool popupOpen;
-    private float openTime;
+    private bool popupOpen = false;
+    private bool readyToClick = false;
 
     public void ShowPopup()
     {
@@ -15,7 +15,11 @@ public class SpillPopupController : MonoBehaviour
             spillPopup.SetActive(true);
 
         popupOpen = true;
-        openTime = Time.time;
+
+        
+        readyToClick = false;
+        CancelInvoke(nameof(EnableClick));
+        Invoke(nameof(EnableClick), 0.2f);
     }
 
     public void HidePopup()
@@ -24,44 +28,59 @@ public class SpillPopupController : MonoBehaviour
             spillPopup.SetActive(false);
 
         popupOpen = false;
+        readyToClick = false;
+        CancelInvoke(nameof(EnableClick));
     }
+
+    private void EnableClick()
+    {
+        readyToClick = true;
+    }
+
+    private float nextPingTime = 0f;
 
     private void Update()
     {
+            if (Time.time >= nextPingTime)
+    {
+        Debug.Log("SpillPopupController Update() running on: " + gameObject.name);
+        nextPingTime = Time.time + 1f;
+    }
+
+    if (!popupOpen) return;
+    if (!readyToClick) return;
+
+    if (Input.GetMouseButtonDown(0))
+    {
+        Debug.Log("Mouse DOWN detected");
+        StartMinigame();
+    }
         if (!popupOpen) return;
+        if (!readyToClick) return;
 
-        // prevents instantly clicking through as soon as popup appears
-        if (Time.time - openTime < 0.2f) return;
-
+        
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log("Spill popup clicked → loading " + minigameSceneName);
             StartMinigame();
         }
     }
 
     public void StartMinigame()
     {
-        // Make sure gameplay isn't paused
         Time.timeScale = 1f;
-
-        // IMPORTANT: in case your trigger script disabled movement
         EnablePlayerMovement();
-
-        // Optional: hide popup so it doesn't flash if something persists
         HidePopup();
-
         SceneManager.LoadScene(minigameSceneName);
     }
 
     private void EnablePlayerMovement()
     {
-        // Find the movement script even if the Player object has child colliders, etc.
         PlayerMovement2D playerMovement = FindFirstObjectByType<PlayerMovement2D>();
         if (playerMovement != null)
         {
             playerMovement.enabled = true;
 
-            // Also stop leftover velocity so the player doesn't drift
             Rigidbody2D rb = playerMovement.GetComponent<Rigidbody2D>();
             if (rb != null)
             {

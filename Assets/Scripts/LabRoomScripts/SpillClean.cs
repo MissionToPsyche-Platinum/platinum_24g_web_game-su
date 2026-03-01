@@ -33,4 +33,9 @@ public class SpillClean : MonoBehaviour
             Debug.Log("Broom not active yet");
         }
     }
+
+        private void OnTriggerStay2D(Collider2D other)
+    {
+        OnTriggerEnter2D(other);
+    }
 }
