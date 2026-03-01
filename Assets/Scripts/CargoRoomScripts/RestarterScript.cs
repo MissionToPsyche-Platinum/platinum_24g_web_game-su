@@ -4,42 +4,50 @@ using UnityEngine.UI;
 
 public class RestarterScript : MonoBehaviour
 {
+    private const string HintName = "BoxInteractHint";
+
+    public GameObject helpPanel;
+    private GameObject player;
+
     private GameObject hintLabel;
-    private const string HintName = "RestarterInteractHint";
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
+        helpPanel.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && hintLabel != null)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("reached");
-            SceneManager.LoadScene("CargoMinigame");
+            helpPanel.SetActive(true);
+            player.GetComponent<PlayerMovement2D>().enabled = false;
+            player.GetComponent<Animator>().SetBool("IsMoving", false);
+            ToggleHint(false);
         }
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (hintLabel == null)
-            {
-                Canvas canvas = FindFirstObjectByType<Canvas>();
-                if (canvas != null)
-                {
-                    EnsureHint(canvas);
-                }
-            }
+            helpPanel.SetActive(false);
+            player.GetComponent<PlayerMovement2D>().enabled = true;
 
             ToggleHint(true);
-            
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (hintLabel == null)
+        {
+            Canvas canvas = FindFirstObjectByType<Canvas>();
+            if (canvas != null)
+            {
+                EnsureHint(canvas);
+            }
+        }
+
+        ToggleHint(true);
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -74,7 +82,7 @@ public class RestarterScript : MonoBehaviour
         hintTransform.anchoredPosition = new Vector2(0f, -140f);
 
         Text hintText = hintLabel.GetComponent<Text>();
-        hintText.text = "Press R to restart";
+        hintText.text = "Press E to interact";
         hintText.alignment = TextAnchor.MiddleCenter;
         hintText.color = Color.white;
         hintText.fontSize = 18;
@@ -82,5 +90,10 @@ public class RestarterScript : MonoBehaviour
         hintText.raycastTarget = false;
 
         hintLabel.SetActive(false);
+    }
+
+    public void RestartMinigame()
+    {
+        SceneManager.LoadScene("CargoMinigame");
     }
 }
