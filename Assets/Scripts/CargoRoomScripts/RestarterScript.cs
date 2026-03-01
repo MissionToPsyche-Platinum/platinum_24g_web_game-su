@@ -94,6 +94,7 @@ public class RestarterScript : MonoBehaviour
 
     public void RestartMinigame()
     {
+        player.GetComponent<PlayerMovement2D>().enabled = true;
         SceneManager.LoadScene("CargoMinigame");
     }
 }
