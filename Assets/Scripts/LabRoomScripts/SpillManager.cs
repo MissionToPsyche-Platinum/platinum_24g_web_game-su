@@ -1,14 +1,20 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class SpillManager : MonoBehaviour
 {
     public static SpillManager Instance;
 
-    public GameObject gameOverPanel;
+    [Header("UI")]
+    public GameObject gameOverPanel; //completedPanel
+    public TMP_Text scoreText;          
+
+    [Header("Scenes")]
     public string labRoomSceneName = "LabRoom";
 
     private int spillsRemaining;
+    private bool awarded = false;
 
     private void Awake()
     {
@@ -24,25 +30,38 @@ public class SpillManager : MonoBehaviour
         ).Length;
 
         if (gameOverPanel != null)
-        {
             gameOverPanel.SetActive(false);
     }
-    }
-
 
     public void OnSpillCleaned()
     {
-        spillsRemaining -= 1;
+        spillsRemaining--;
 
-        if (spillsRemaining <= 0)
+        if (spillsRemaining <= 0 && !awarded)
         {
-            gameOverPanel.SetActive(true);
+            awarded = true;
+
+
+            Global.MinigameWin();
+
+            if (scoreText != null)
+                scoreText.text = "Total score: " + Global.totalScore;
+
+            if (gameOverPanel != null)
+                gameOverPanel.SetActive(true);
         }
     }
 
-
     public void ReturnToLabRoom()
     {
-        SceneManager.LoadScene(labRoomSceneName);
+    //if the broom object is still in the scene attached to player, delete it
+    BroomPickup broomPickup = FindAnyObjectByType<BroomPickup>();
+    if (broomPickup != null)
+    {
+        broomPickup.ResetBroom(); 
+        Destroy(broomPickup.gameObject); 
+    }
+
+    SceneManager.LoadScene(labRoomSceneName);
     }
 }
