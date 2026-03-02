@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
+//This is the central script for the fact system
+//loads all the facts at the start of the game and
+//stores them into a list and keeps track of what
+//facts the player has already collected
 public class FactSystem : MonoBehaviour
 {
     
@@ -10,15 +13,14 @@ public class FactSystem : MonoBehaviour
     [Header("Assign PsycheFactBank.txt here (one fact per line)")]
     [SerializeField] private TextAsset factsFile;
 
-    
     private readonly List<string> allFacts = new List<string>();
-
     
     private readonly HashSet<int> collectedFactIds = new HashSet<int>();
 
     public int TotalFacts => allFacts.Count;
     public int CollectedCount => collectedFactIds.Count;
 
+    //loads facts from the txt file
     private void Awake()
     {
         
@@ -34,7 +36,7 @@ public class FactSystem : MonoBehaviour
         LoadFacts();
     }
 
-    
+    //reads txt file
     private void LoadFacts()
     {
         allFacts.Clear();
@@ -61,6 +63,7 @@ public class FactSystem : MonoBehaviour
     }
 
     
+    //returns the fact text for a given id and prevents invalid ids
     public string GetFactText(int id)
     {
         if (id < 0 || id >= allFacts.Count)
@@ -69,7 +72,7 @@ public class FactSystem : MonoBehaviour
         return allFacts[id];
     }
 
-    
+    //assigns fact id to each card
     public bool AddFact(int id)
     {
         
@@ -80,13 +83,13 @@ public class FactSystem : MonoBehaviour
         return collectedFactIds.Add(id);
     }
 
-    
+    //checks if the player has already unlocked a fact
     public bool HasFact(int id)
     {
         return collectedFactIds.Contains(id);
     }
 
-   
+   //returns awarded fact id
 public int AwardFactForMinigameWin()
     {
         
@@ -102,7 +105,7 @@ public int AwardFactForMinigameWin()
         return id;
     }
 
-    
+    //selects random fact that hasn't already been collected
     public int GiveRandomNewFact()
     {
         if (allFacts.Count == 0)
@@ -116,7 +119,7 @@ public int AwardFactForMinigameWin()
         for (int tries = 0; tries < 200; tries++)
         {
             int candidate = UnityEngine.Random.Range(0, allFacts.Count);
-
+            //assigns brand new fact 
             if (!collectedFactIds.Contains(candidate))
             {
                 collectedFactIds.Add(candidate);
@@ -133,7 +136,7 @@ public int AwardFactForMinigameWin()
 
         return -1;
     }
-
+    //returns all collected fact ids
     public List<int> GetCollectedIdsSorted()
     {
         List<int> ids = new List<int>(collectedFactIds);

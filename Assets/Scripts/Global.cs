@@ -32,6 +32,7 @@ public class Global : MonoBehaviour
     }
 
 
+    //awards psyche fact from fact bank
     private static void AwardFact()
     {
         lastAwardedFactText = "";

@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+//shows completion panel of the facts
 public class RevealFactCard : MonoBehaviour
 {
     [Header("Assign in Inspector")]
