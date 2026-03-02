@@ -8,22 +8,45 @@ public class Global : MonoBehaviour
     public static int maxScore = 100;
     public static bool hasWon = false;
 
+    public static string lastAwardedFactText = "";
+
     public static void ResetGameState()
     {
         totalScore = 0;
         hasWon = false;
+        lastAwardedFactText = "";
     }
 
     public static void MinigameWin()
     {
         totalScore += minigameAddScore;
+        AwardFact();
         CheckWin();
     }
 
     public static void MinigameScore(int score)
     {
         totalScore += score;
+        AwardFact();
         CheckWin();
+    }
+
+
+    private static void AwardFact()
+    {
+        lastAwardedFactText = "";
+
+        if (FactSystem.Instance == null)
+        {
+            Debug.LogWarning("Global: FactSystem not found.");
+            return;
+        }
+
+        int newFactId = FactSystem.Instance.AwardFactForMinigameWin();
+
+        if (newFactId != -1)
+            lastAwardedFactText = FactSystem.Instance.GetFactText(newFactId);
+    
     }
 
     public static void CheckWin()
