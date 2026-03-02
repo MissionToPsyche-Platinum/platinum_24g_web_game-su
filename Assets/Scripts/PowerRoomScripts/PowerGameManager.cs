@@ -3,13 +3,16 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.Analytics;
 
+
 public class PowerGameManager : MonoBehaviour
 {
     // Drag your 4 Cell objects here in the Inspector
     public PowerCell[] allCells; 
     private int currentCellIndex = 0; 
     public GameObject gameOverPanel; //completedPanel
-    public TMP_Text scoreText;    
+    public TMP_Text scoreText;  
+
+    public TMP_Text factText;  
     bool done;      
     void Start()
     {
@@ -44,8 +47,12 @@ public class PowerGameManager : MonoBehaviour
             done = true;
             Debug.Log("MINIGAME COMPLETE!");
             Global.MinigameWin();
-             if (scoreText != null)
+
+            if (scoreText != null)
                 scoreText.text = "Total score: " + Global.totalScore;
+
+            if (factText != null)
+                factText.text = "FACT UNLOCKED:\n\n" + Global.lastAwardedFactText;
 
             if (gameOverPanel != null)
                 gameOverPanel.SetActive(true);

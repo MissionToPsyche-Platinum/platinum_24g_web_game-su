@@ -90,7 +90,7 @@ public class FactSystem : MonoBehaviour
 public int AwardFactForMinigameWin()
     {
         
-        Debug.Log("FactSystem: AwardFactForMinigameWin() CALLED. Stack:\n" + System.Environment.StackTrace);
+        //Debug.Log("FactSystem: AwardFactForMinigameWin() CALLED. Stack:\n" + System.Environment.StackTrace);
 
         int id = GiveRandomNewFact();
 
