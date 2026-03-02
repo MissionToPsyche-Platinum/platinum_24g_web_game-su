@@ -6,6 +6,8 @@ public class ComputerPopup : MonoBehaviour
     private const string PopupName = "ComputerPopup";
     private const string HintName = "ComputerInteractHint";
 
+    [SerializeField] private FactCardsPopupUI factCardsPopupUI;
+
     private GameObject popupPanel;
     private GameObject hintLabel;
     private bool canInteract;
@@ -82,27 +84,21 @@ public class ComputerPopup : MonoBehaviour
         ToggleHint(false);
     }
 
-    private void ShowPopup()
-    {
-        EnsurePopup();
-        if (popupPanel == null)
-        {
-            return;
-        }
+private void ShowPopup()
+{
+    EnsurePopup();
 
-        popupPanel.SetActive(true);
-        ToggleHint(false);
+    if (factCardsPopupUI == null)
+        factCardsPopupUI = FindFirstObjectByType<FactCardsPopupUI>();
 
-        if (playerMovement != null)
-        {
-            playerMovement.enabled = false;
-        }
+    if (popupPanel == null) return;
 
-        if (playerRigidbody != null)
-        {
-            playerRigidbody.linearVelocity = Vector2.zero;
-        }
-    }
+    popupPanel.SetActive(true);
+    ToggleHint(false);
+
+    if (playerMovement != null) playerMovement.enabled = false;
+    if (playerRigidbody != null) playerRigidbody.linearVelocity = Vector2.zero;
+}
 
     private void HidePopup()
     {
@@ -196,9 +192,12 @@ public class ComputerPopup : MonoBehaviour
         factLabel.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
 
         factButtonObject.GetComponent<Button>().onClick.AddListener(() =>
-        {
-            Debug.Log("Fact Cards clicked!");
-        });
+    {
+        Debug.Log("Fact Cards clicked!");
+        popupPanel.SetActive(false); 
+        if (factCardsPopupUI != null) factCardsPopupUI.Open();
+        else Debug.LogWarning("FactCardsPopupUI not found in scene!");
+    });
 
 
         GameObject buttonObject = new GameObject("PsycheTriviaButton",
