@@ -14,13 +14,22 @@ public class CargoMinigameController : MonoBehaviour
     public TextMeshProUGUI scoreText;
     private bool finished;
 
+    //helps make sure the correct panel is found
+    [SerializeField] private RectTransform completedPanelTransform;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         targets = GameObject.FindGameObjectsWithTag("CargoroomTarget");
         player = GameObject.FindGameObjectWithTag("Player");
-
-        transform = GameObject.Find("CompletedPanel").GetComponent<RectTransform>();
+        //transform = GameObject.Find("CompletedPanel").GetComponent<RectTransform>();
+        //rewrote this for safer panel access and added a null guard:
+        transform = completedPanelTransform;
+        if (transform == null)
+        {   
+        Debug.LogError("CargoMinigameController: completedPanelTransform is NOT assigned in Inspector.");
+        return;
+        }
         transform.anchoredPosition = new Vector2(1000f, 1000f);
         gameComplete = false;
     }
@@ -43,7 +52,17 @@ public class CargoMinigameController : MonoBehaviour
         
         Global.MinigameWin();
         updateScoreText();
+        //ensures the panel is active before showing it
+        transform.gameObject.SetActive(true);
         transform.anchoredPosition = new Vector2(0f, 0f);
+
+        //reveal the fact card
+        RevealFactCard reveal = FindFirstObjectByType<RevealFactCard>();
+        if (reveal != null) 
+            reveal.ShowLastAwardedFact();
+        else 
+            Debug.LogWarning("CargoMinigameController: RevealFactCard not found.");
+
         player.GetComponent<PlayerMovement2D>().enabled = false;
         player.GetComponent<Animator>().SetBool("IsMoving", false);
 
