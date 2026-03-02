@@ -133,6 +133,7 @@ public class WinSceneController : MonoBehaviour
 
     private void ReturnToStartMenu()
     {
+        Global.ResetGameState();
         SceneManager.LoadScene("StartMenu");
     }
 }

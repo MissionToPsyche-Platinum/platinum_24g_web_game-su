@@ -10,6 +10,7 @@ public class ChangeScene : MonoBehaviour
 
     public void goToStartScene()
     {
+        Global.ResetGameState();
         SceneManager.LoadScene("StartMenu");
     }
 
