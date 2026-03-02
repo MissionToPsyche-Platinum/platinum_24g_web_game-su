@@ -7,23 +7,34 @@ public class SpillManager : MonoBehaviour
     public static SpillManager Instance;
 
     [Header("UI")]
-    public GameObject gameOverPanel; //completedPanel
-    public TMP_Text scoreText;          
+    [SerializeField] private GameObject gameOverPanel;  
+    [SerializeField] private TMP_Text scoreText;         
+
+    [Header("Fact UI (optional)")]
+    [SerializeField] private RevealFactCard revealFactCard; 
 
     [Header("Scenes")]
-    public string labRoomSceneName = "LabRoom";
+    [SerializeField] private string labRoomSceneName = "LabRoom";
 
     private int spillsRemaining;
-    private bool awarded = false;
+    private bool awarded;
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
     }
 
     private void Start()
     {
+       
+        awarded = false;
+
         spillsRemaining = FindObjectsByType<SpillClean>(
             FindObjectsInactive.Include,
             FindObjectsSortMode.None
@@ -35,33 +46,41 @@ public class SpillManager : MonoBehaviour
 
     public void OnSpillCleaned()
     {
+        if (awarded) return; 
+
         spillsRemaining--;
 
-        if (spillsRemaining <= 0 && !awarded)
+        if (spillsRemaining <= 0)
         {
             awarded = true;
 
-
+            
             Global.MinigameWin();
 
+            
             if (scoreText != null)
                 scoreText.text = "Total score: " + Global.totalScore;
 
+            
             if (gameOverPanel != null)
                 gameOverPanel.SetActive(true);
+
+            
+            if (revealFactCard != null)
+                revealFactCard.ShowLastAwardedFact();
         }
     }
 
     public void ReturnToLabRoom()
     {
-    //if the broom object is still in the scene attached to player, delete it
-    BroomPickup broomPickup = FindAnyObjectByType<BroomPickup>();
-    if (broomPickup != null)
-    {
-        broomPickup.ResetBroom(); 
-        Destroy(broomPickup.gameObject); 
-    }
+        //clean up broom if it exists
+        BroomPickup broomPickup = FindAnyObjectByType<BroomPickup>();
+        if (broomPickup != null)
+        {
+            broomPickup.ResetBroom();
+            Destroy(broomPickup.gameObject);
+        }
 
-    SceneManager.LoadScene(labRoomSceneName);
+        SceneManager.LoadScene(labRoomSceneName);
     }
 }
