@@ -341,7 +341,8 @@ public class ControlsMinigameController : MonoBehaviour
         if (factCardPopup != null)
         {
             factCardPopup.ShowResults(result.distance, result.score, result.stars);
-    }
+        }
+        Global.MinigameScore(result.score);
     }
 
     private int ComputeStars(int score)
