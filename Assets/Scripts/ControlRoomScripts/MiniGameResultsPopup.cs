@@ -31,7 +31,7 @@ public class MiniGameResultsPopup : MonoBehaviour
         LoadFacts();
     }
 
-    public void ShowFactWithScore(int score)
+    public void ShowResults(int distance, int score, int stars)
     {
         EnsurePopup();
         string fact = "(No facts available)";
@@ -42,7 +42,8 @@ public class MiniGameResultsPopup : MonoBehaviour
 
         if (scoreText != null)
         {
-            scoreText.text = $"Score: {score}";
+            int miles = Mathf.Max(0, distance) * 10;
+            scoreText.text = $"Miles: {miles} | Score: {score} | {GetStarString(stars)}";
         }
 
         if (bodyText != null)
@@ -156,4 +157,16 @@ public class MiniGameResultsPopup : MonoBehaviour
 
         return uiText;
     }
+
+    private string GetStarString(int stars)
+    {
+        return stars switch
+        {
+            3 => "★★★",
+            2 => "★★☆",
+            1 => "★☆☆",
+            _ => "☆☆☆"
+        };
+    }
+
 }

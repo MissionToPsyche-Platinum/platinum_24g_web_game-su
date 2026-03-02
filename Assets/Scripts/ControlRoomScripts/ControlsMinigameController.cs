@@ -4,6 +4,13 @@ using UnityEngine.UI;
 
 public class ControlsMinigameController : MonoBehaviour
 {
+    private struct ScoreResult
+    {
+        public int distance;
+        public int score;
+        public int stars;
+    }
+
     private enum GameState
     {
         Aligning,
@@ -306,10 +313,10 @@ public class ControlsMinigameController : MonoBehaviour
             statusText.text = "Correction burn in progress...";
         }
 
-        int score = ComputeScore();
+        ScoreResult result = ComputeScore();
         if (shipView != null)
         {
-            shipView.PlayTakeoff(score);
+            shipView.PlayTakeoff(result.distance);
         }
 
         if (burnOverlay != null)
@@ -333,15 +340,46 @@ public class ControlsMinigameController : MonoBehaviour
 
         if (factCardPopup != null)
         {
-            factCardPopup.ShowFactWithScore(score);
-        }
+            factCardPopup.ShowResults(result.distance, result.score, result.stars);
+    }
     }
 
-    private int ComputeScore()
+    private int ComputeStars(int score)
+    {
+        if (score >= 80)
+        {
+            return 3;
+        }
+
+        if (score >= 50)
+        {
+            return 2;
+        }
+
+        if (score >= 20)
+        {
+            return 1;
+        }
+
+        return 0;
+    }
+
+    private int ComputeScoreFromStars(int stars)
+    {
+        return stars switch
+        {
+            3 => 30,
+            2 => 20,
+            1 => 10,
+            _ => 5
+        };
+    }
+
+    private ScoreResult ComputeScore()
     {
         if (targetGenerator == null)
         {
-            return 0;
+            return new ScoreResult { distance = 0, score = 0, stars = 0 };
         }
 
         float headingError = Mathf.Abs(currentHeading - targetGenerator.TargetHeading);
@@ -353,8 +391,11 @@ public class ControlsMinigameController : MonoBehaviour
         float burnNorm = Mathf.Clamp01(burnError / Mathf.Max(burnScoreRange, 0.01f));
 
         float weighted = Mathf.Clamp01(headingWeight * headingNorm + thrustWeight * thrustNorm + burnWeight * burnNorm);
-        float score = 100f * (1f - weighted);
-        return Mathf.Clamp(Mathf.RoundToInt(score), 0, 100);
+        float scoreFloat = 100f * (1f - weighted);
+        int distance = Mathf.Clamp(Mathf.RoundToInt(scoreFloat), 0, 100);
+        int stars = ComputeStars(distance);
+        int score = ComputeScoreFromStars(stars);
+        return new ScoreResult { distance = distance, score = score, stars = stars };
     }
 
     private void UpdateModeText()
