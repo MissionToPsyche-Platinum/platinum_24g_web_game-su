@@ -3,7 +3,13 @@ using UnityEngine;
 public class BroomPickup : MonoBehaviour
 {
     [Header("Assign in Inspector")]
-    [SerializeField] private GameObject hintText; 
+    [SerializeField] private GameObject hintText;               
+    [SerializeField] private GameObject interactSignal;         
+    [SerializeField] private GameObject broomFoundPopup;        
+
+    [Header("Hint Placement (Above Object)")]
+    [SerializeField] private Vector3 hintWorldOffset = new Vector3(0f, 0.75f, 0f);
+    [SerializeField] private Vector2 hintSize = new Vector2(300f, 40f);
 
     [Header("Auto-find settings")]
     [SerializeField] private string playerTag = "Player";
@@ -13,58 +19,75 @@ public class BroomPickup : MonoBehaviour
     [Header("Controls")]
     [SerializeField] private KeyCode pickupKey = KeyCode.E;
 
+    [Header("Broom Cleaning")]
     [SerializeField] private Collider2D broomCleanerHitbox;
 
-
-    
+    [Header("Popup Behavior")]
+    [SerializeField] private bool freezePlayerWhilePopupOpen = false; 
 
     private bool pickedUp = false;
     private bool playerInRange = false;
+
+    
+    private bool broomPopupOpen = false;
 
     public bool isHoldingBroom;
 
     private Transform playerTransform;
     private Transform broomHoldPoint;
 
-public void ResetBroom()
-{
-    isHoldingBroom = false;
-    pickedUp = false;
-    playerInRange = false;
-
-    if (broomCleanerHitbox != null)
-    broomCleanerHitbox.enabled = false;
-
     
-    transform.SetParent(null);
+    private PlayerMovement2D playerMovement;
+    private Rigidbody2D playerRb;
 
-    
-    Collider2D col = GetComponent<Collider2D>();
-    if (col != null) col.enabled = true;
-
-    
-    if (hintText != null) hintText.SetActive(false);
-}
-
+    private RectTransform hintRect;
 
     private void Start()
     {
-    
-        TryFindHintText();
-        if (hintText != null) hintText.SetActive(false);
-        if (isHoldingBroom) return;
-        if (broomCleanerHitbox != null) broomCleanerHitbox.enabled = false;
-
+        Debug.Log("BroomPickup START on: " + gameObject.name);
 
         TryFindPlayerAndHoldPoint();
-    }
 
+        
+        if (playerTransform != null)
+        {
+            playerMovement = playerTransform.GetComponent<PlayerMovement2D>();
+            playerRb = playerTransform.GetComponent<Rigidbody2D>();
+        }
+
+        
+        if (hintText != null)
+            hintRect = hintText.GetComponent<RectTransform>();
+
+        
+        if (hintText != null) hintText.SetActive(false);
+
+        
+        if (interactSignal != null) interactSignal.SetActive(true);
+
+        
+        if (broomFoundPopup != null) broomFoundPopup.SetActive(false);
+
+        
+        if (broomCleanerHitbox != null) broomCleanerHitbox.enabled = false;
+    }
 
     private void Update()
     {
-        if (pickedUp) return;
+        
+        if (broomPopupOpen && Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseBroomFoundPopup();
+            return;
+        }
 
         
+        if (!pickedUp && playerInRange)
+            PositionHintAboveBroom();
+
+        
+        if (pickedUp) return;
+
         if (playerTransform == null || broomHoldPoint == null)
             TryFindPlayerAndHoldPoint();
 
@@ -72,15 +95,16 @@ public void ResetBroom()
             PickUpBroom();
     }
 
-    private void TryFindHintText()
+    private void PositionHintAboveBroom()
     {
-        if (hintText != null) return;
+        if (hintRect == null) return;
+        if (Camera.main == null) return;
 
-        GameObject found = GameObject.Find("BroomHintText");
-        if (found != null)
-        {
-            hintText = found;
-        }
+        Vector3 worldPos = transform.position + hintWorldOffset;
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
+
+        hintRect.position = screenPos;
+        hintRect.sizeDelta = hintSize;
     }
 
     private void TryFindPlayerAndHoldPoint()
@@ -91,6 +115,10 @@ public void ResetBroom()
         playerTransform = playerObj.transform;
 
         
+        if (playerMovement == null) playerMovement = playerObj.GetComponent<PlayerMovement2D>();
+        if (playerRb == null) playerRb = playerObj.GetComponent<Rigidbody2D>();
+
+        
         Transform existing = playerTransform.Find(holdPointName);
         if (existing != null)
         {
@@ -98,7 +126,7 @@ public void ResetBroom()
             return;
         }
 
- 
+        
         GameObject hp = new GameObject(holdPointName);
         hp.transform.SetParent(playerTransform);
         hp.transform.localPosition = holdPointLocalPos;
@@ -106,62 +134,137 @@ public void ResetBroom()
         broomHoldPoint = hp.transform;
     }
 
-private void OnTriggerEnter2D(Collider2D other)
-{
-    Debug.Log("ENTER TRIGGER: " + gameObject.name + " hit by " + other.name);
-
-    if (pickedUp || isHoldingBroom) return;
-
-    if (other.CompareTag(playerTag))
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("BroomPickup TRIGGER ENTER by: " + other.name);
+        Debug.Log("Entered broom range: showing hint");
+        if (pickedUp || isHoldingBroom) return;
+
+     if (other.CompareTag(playerTag))
+    {
+        Debug.Log("ENTER at frame " + Time.frameCount);
         playerInRange = true;
         if (hintText != null) hintText.SetActive(true);
-        Debug.Log("Broom trigger enter: " + other.name);
     }
-}
+    }
 
-private void OnTriggerExit2D(Collider2D other)
-{
-    if (pickedUp || isHoldingBroom) return;
-
-    if (other.CompareTag(playerTag))
+    private void OnTriggerExit2D(Collider2D other)
     {
+        if (pickedUp || isHoldingBroom) return;
+
+if (other.CompareTag(playerTag))
+    {
+        Debug.Log("EXIT at frame " + Time.frameCount);
         playerInRange = false;
         if (hintText != null) hintText.SetActive(false);
     }
-}
-
-    private void PickUpBroom()
-{
-    pickedUp = true;
-    isHoldingBroom = true;
-
-    if (broomCleanerHitbox != null)
-        broomCleanerHitbox.enabled = true;
-
-    if (hintText != null)
-        hintText.SetActive(false);
-
-    if (broomHoldPoint == null)
-    {
-        TryFindPlayerAndHoldPoint();
     }
 
-    if (broomHoldPoint != null)
+    private void PickUpBroom()
     {
+        pickedUp = true;
+        isHoldingBroom = true;
+        playerInRange = false;
+
+        if (broomCleanerHitbox != null)
+            broomCleanerHitbox.enabled = true;
+
+        if (hintText != null)
+            hintText.SetActive(false);
+
+        
+        if (interactSignal != null)
+            interactSignal.SetActive(false);
+
+        if (broomHoldPoint == null)
+            TryFindPlayerAndHoldPoint();
+
+        if (broomHoldPoint == null)
+        {
+            Debug.LogError("BroomPickup: Could not find Player or BroomHoldPoint. Is Player tagged 'Player'?");
+            pickedUp = false;
+            isHoldingBroom = false;
+            return;
+        }
+
+        //attach broom to player hold point
         transform.SetParent(broomHoldPoint);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
-    }
-    else
-    {
-        Debug.LogError("BroomPickup: Could not find Player or BroomHoldPoint. Is Player tagged 'Player'?");
-        pickedUp = false;
-        return;
+
+        //stop picking it up again
+        Collider2D col = GetComponent<Collider2D>();
+        if (col != null)
+            col.enabled = false;
+
+        //show the "found broom" popup
+        OpenBroomFoundPopup();
     }
 
-    Collider2D col = GetComponent<Collider2D>();
-    if (col != null)
-        col.enabled = false;
-}
+    private void OpenBroomFoundPopup()
+    {
+        Debug.Log("OPEN POPUP called. popup ref is null? " + (broomFoundPopup == null));
+        if (broomFoundPopup == null) return;
+
+        broomFoundPopup.SetActive(true);
+        broomPopupOpen = true;
+
+        if (freezePlayerWhilePopupOpen)
+        {
+            if (playerRb != null)
+            {
+                playerRb.linearVelocity = Vector2.zero;
+                playerRb.angularVelocity = 0f;
+            }
+            if (playerMovement != null)
+                playerMovement.enabled = false;
+        }
+    }
+
+    private void CloseBroomFoundPopup()
+    {
+        if (broomFoundPopup != null)
+            broomFoundPopup.SetActive(false);
+
+        broomPopupOpen = false;
+
+        
+        if (freezePlayerWhilePopupOpen)
+        {
+            if (playerMovement != null)
+                playerMovement.enabled = true;
+        }
+    }
+
+    
+    public void ClosePopupButton()
+    {
+        CloseBroomFoundPopup();
+    }
+
+    
+    public void ResetBroom()
+    {
+        isHoldingBroom = false;
+        pickedUp = false;
+        playerInRange = false;
+        broomPopupOpen = false;
+
+        if (broomCleanerHitbox != null)
+            broomCleanerHitbox.enabled = false;
+
+        transform.SetParent(null);
+
+        Collider2D col = GetComponent<Collider2D>();
+        if (col != null) col.enabled = true;
+
+        if (hintText != null) hintText.SetActive(false);
+
+        
+        if (interactSignal != null) interactSignal.SetActive(true);
+
+        if (broomFoundPopup != null) broomFoundPopup.SetActive(false);
+    }
+
+    
 }
