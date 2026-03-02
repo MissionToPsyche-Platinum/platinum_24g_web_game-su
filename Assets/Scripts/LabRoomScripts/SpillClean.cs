@@ -2,40 +2,31 @@ using UnityEngine;
 
 public class SpillClean : MonoBehaviour
 {
+    private bool cleaned = false; 
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("SPILL HIT by: " + other.name);
+        if (cleaned) return;
 
-        //only allow the broom hitbox to clean
-        if (other.CompareTag("Broom") == false)
-        {
-            Debug.Log("Not broom tag");
+        
+        if (!other.CompareTag("Broom"))
             return;
-        }
 
-
+        
         BroomPickup broomPickup = other.GetComponentInParent<BroomPickup>();
         if (broomPickup == null)
-        {
-            Debug.Log("No BroomPickup found on parent");
             return;
-        }
 
-        Debug.Log("BroomPickup found. isHoldingBroom = " + broomPickup.isHoldingBroom);
+        
+        if (!broomPickup.isHoldingBroom)
+            return;
 
-        if (broomPickup.isHoldingBroom == true)
-        {
-            Debug.Log("Cleaning spill!");
-            Destroy(gameObject);
-        }
-        else
-        {
-            Debug.Log("Broom not active yet");
-        }
-    }
+        cleaned = true;
 
-        private void OnTriggerStay2D(Collider2D other)
-    {
-        OnTriggerEnter2D(other);
+        
+        if (SpillManager.Instance != null)
+            SpillManager.Instance.OnSpillCleaned();
+
+        Destroy(gameObject);
     }
 }
