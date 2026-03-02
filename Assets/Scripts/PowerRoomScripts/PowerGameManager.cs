@@ -1,13 +1,25 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.Analytics;
 
 public class PowerGameManager : MonoBehaviour
 {
     // Drag your 4 Cell objects here in the Inspector
     public PowerCell[] allCells; 
     private int currentCellIndex = 0; 
-
+    public GameObject gameOverPanel; //completedPanel
+    public TMP_Text scoreText;    
+    bool done;      
+    void Start()
+    {
+        done = false;
+        if (gameOverPanel != null)
+            gameOverPanel.SetActive(false);
+    }
     void Update()
     {
+        if (done) return;
         // Check for Spacebar press
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -29,7 +41,14 @@ public class PowerGameManager : MonoBehaviour
         // If all 4 are done, the game is won!
         if (currentCellIndex >= allCells.Length)
         {
+            done = true;
             Debug.Log("MINIGAME COMPLETE!");
+            Global.MinigameWin();
+             if (scoreText != null)
+                scoreText.text = "Total score: " + Global.totalScore;
+
+            if (gameOverPanel != null)
+                gameOverPanel.SetActive(true);
         }
     }
 }
