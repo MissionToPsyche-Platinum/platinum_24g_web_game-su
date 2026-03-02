@@ -2,22 +2,28 @@ using UnityEngine;
 using TMPro;
 using System.Text;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
 public class FactCardsPopupUI : MonoBehaviour
 {
     [Header("Assign in Inspector")]
-    [SerializeField] private GameObject popupPanel;  // FactCardsPopupPanel
-    [SerializeField] private TMP_Text bodyText;      // FactCardsBodyText
+    [SerializeField] private GameObject popupPanel;  
+    [SerializeField] private TMP_Text bodyText;      
 
     [Header("Close Keys")]
     [SerializeField] private KeyCode closeKey1 = KeyCode.Escape;
     [SerializeField] private KeyCode closeKey2 = KeyCode.E;
 
+    [Header("Movement Safeguards")]
+    [SerializeField] private bool freezePlayerWhileOpen = true;
+    [SerializeField] private PlayerMovement2D playerMovement;   
+    [SerializeField] private Rigidbody2D playerRigidbody;       
+
     private bool isOpen = false;
 
     private void Awake()
     {
-        //start closed
+        // start closed
         if (popupPanel != null)
             popupPanel.SetActive(false);
 
@@ -32,30 +38,69 @@ public class FactCardsPopupUI : MonoBehaviour
             Close();
     }
 
-    public void Open()
-{
-    
-
-    if (popupPanel == null)
+   
+    private void OnDisable()
     {
-        Debug.LogWarning("popupPanel is NULL (assign it on UIManager)");
-        return;
+        if (isOpen)
+            RestorePlayerMovement();
     }
 
-    popupPanel.SetActive(true);
+    public void Open()
+    {
+        if (popupPanel == null)
+        {
+            Debug.LogWarning("popupPanel is NULL (assign it on UIManager)");
+            return;
+        }
 
+        popupPanel.SetActive(true);
+        popupPanel.transform.SetAsLastSibling();
+        isOpen = true;
 
-    popupPanel.transform.SetAsLastSibling();
-    isOpen = true;
+        if (freezePlayerWhileOpen)
+            FreezePlayerMovement();
 
-    Refresh();
-}
+        Refresh();
+    }
+
     public void Close()
     {
         if (popupPanel != null)
             popupPanel.SetActive(false);
 
         isOpen = false;
+
+        if (freezePlayerWhileOpen)
+            RestorePlayerMovement();
+
+        
+        if (EventSystem.current != null)
+            EventSystem.current.SetSelectedGameObject(null);
+    }
+
+    private void FreezePlayerMovement()
+    {
+        
+        if (playerMovement == null)
+            playerMovement = FindFirstObjectByType<PlayerMovement2D>();
+
+        if (playerMovement != null && playerRigidbody == null)
+            playerRigidbody = playerMovement.GetComponent<Rigidbody2D>();
+
+        if (playerMovement != null)
+            playerMovement.enabled = false;
+
+        if (playerRigidbody != null)
+            playerRigidbody.linearVelocity = Vector2.zero;
+    }
+
+    private void RestorePlayerMovement()
+    {
+        if (playerMovement == null)
+            playerMovement = FindFirstObjectByType<PlayerMovement2D>();
+
+        if (playerMovement != null)
+            playerMovement.enabled = true;
     }
 
     private void Refresh()

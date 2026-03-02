@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class RevealFactCard : MonoBehaviour
 {
@@ -25,20 +26,26 @@ public class RevealFactCard : MonoBehaviour
         if (completedPanel != null)
             completedPanel.SetActive(true);
 
-        if (factBodyText == null)
-            return;
-
-        if (string.IsNullOrEmpty(Global.lastAwardedFactText))
-            factBodyText.text = "All facts collected!";
-        else
-            factBodyText.text = Global.lastAwardedFactText;
+        if (factBodyText != null)
+        {
+            if (string.IsNullOrEmpty(Global.lastAwardedFactText))
+                factBodyText.text = "All facts collected!";
+            else
+                factBodyText.text = "FACT UNLOCKED:\n\n" + Global.lastAwardedFactText;
+        }
     }
 
-    public void Hide()
-    {
-        if (completedPanel != null)
-            completedPanel.SetActive(false);
+public void Hide()
+{
+    if (completedPanel != null)
+        completedPanel.SetActive(false);
 
-        shown = false;
-    }
+    var move = FindFirstObjectByType<PlayerMovement2D>();
+    if (move != null) move.enabled = true;
+
+    if (EventSystem.current != null)
+        EventSystem.current.SetSelectedGameObject(null);
+
+    shown = false;
+}
 }
