@@ -18,6 +18,7 @@ public class PlayerMovement2D : MonoBehaviour
 
     void Update()
     {
+        
         Vector2 raw = new Vector2(
 
         Input.GetAxisRaw("Horizontal"),
