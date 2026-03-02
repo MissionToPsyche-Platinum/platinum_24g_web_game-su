@@ -10,4 +10,9 @@ public class Global : MonoBehaviour
     {
         totalScore += minigameAddScore;
     }
+
+    public static void MinigameScore(int score)
+    {
+        totalScore += score;
+    }
 }
