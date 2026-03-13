@@ -42,8 +42,8 @@ public class MiniGameResultsPopup : MonoBehaviour
 
         if (scoreText != null)
         {
-            int miles = Mathf.Max(0, distance) * 10;
-            scoreText.text = $"Miles: {miles} | Score: {score} | {GetStarString(stars)}";
+            int courseAccuracy = Mathf.Clamp(distance, 0, 100);
+            scoreText.text = $"Course Accuracy: {courseAccuracy}% | Score: {score} | {GetStarString(stars)}";
         }
 
         if (bodyText != null)

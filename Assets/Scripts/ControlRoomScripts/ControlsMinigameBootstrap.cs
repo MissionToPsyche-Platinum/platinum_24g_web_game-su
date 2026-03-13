@@ -6,12 +6,15 @@ public class ControlsMinigameBootstrap : MonoBehaviour
 {
     [Header("Data")]
     [SerializeField] private TextAsset factBank;
+    [SerializeField] private Sprite shuttleSprite;
+
+    [Header("Ship Art")]
+    [SerializeField] private Vector2 shuttleSize = new Vector2(180f, 220f);
+    [SerializeField] private Color shuttleTint = Color.white;
 
     [Header("Colors")]
     [SerializeField] private Color panelColor = new Color(0.1f, 0.12f, 0.16f, 0.95f);
     [SerializeField] private Color accentColor = new Color(0.2f, 0.55f, 0.75f, 1f);
-    [SerializeField] private Color lineTargetColor = new Color(0.2f, 0.8f, 1f, 1f);
-    [SerializeField] private Color lineCurrentColor = new Color(1f, 0.85f, 0.2f, 1f);
 
     private void Awake()
     {
@@ -29,17 +32,17 @@ public class ControlsMinigameBootstrap : MonoBehaviour
         RectTransform leftPanel = CreatePanel(root, "LeftPanel", new Vector2(-220f, 0f), new Vector2(680f, 620f));
         RectTransform rightPanel = CreatePanel(root, "RightPanel", new Vector2(420f, 0f), new Vector2(420f, 620f));
 
-        CreateText(canvas.transform, "TitleText", new Vector2(0f, 320f), new Vector2(900f, 48f), 28, defaultFont, "CONTROL ROOM NAVIGATION");
-        Text statusText = CreateText(canvas.transform, "StatusText", new Vector2(0f, -300f), new Vector2(900f, 40f), 20, defaultFont, "Complete heading, thrust, and burn.");
+        CreateText(canvas.transform, "TitleText", new Vector2(0f, 320f), new Vector2(900f, 48f), 28, defaultFont, "MID-COURSE CORRECTION");
+        Text statusText = CreateText(canvas.transform, "StatusText", new Vector2(0f, -300f), new Vector2(900f, 40f), 20, defaultFont, "Match heading, thrust, and correction window.");
         Text modeText = CreateText(canvas.transform, "ModeText", new Vector2(0f, -265f), new Vector2(900f, 32f), 18, defaultFont, "Heading: Press Space to lock angle");
 
         RectTransform headingPanel = CreatePanel(leftPanel, "HeadingPanel", new Vector2(0f, 190f), new Vector2(640f, 180f));
         RectTransform thrustPanel = CreatePanel(leftPanel, "ThrustPanel", new Vector2(0f, 0f), new Vector2(640f, 180f));
         RectTransform burnPanel = CreatePanel(leftPanel, "BurnPanel", new Vector2(0f, -190f), new Vector2(640f, 180f));
 
-        Text headingTitle = CreateText(headingPanel, "HeadingTitle", new Vector2(-240f, 60f), new Vector2(200f, 26f), 18, defaultFont, "HEADING");
+        CreateText(headingPanel, "HeadingTitle", new Vector2(-240f, 60f), new Vector2(200f, 26f), 18, defaultFont, "HEADING");
         CreateText(thrustPanel, "ThrustTitle", new Vector2(-240f, 60f), new Vector2(200f, 26f), 18, defaultFont, "THRUST");
-        CreateText(burnPanel, "BurnTitle", new Vector2(-240f, 60f), new Vector2(200f, 26f), 18, defaultFont, "BURN");
+        CreateText(burnPanel, "BurnTitle", new Vector2(-240f, 60f), new Vector2(240f, 26f), 18, defaultFont, "CORRECTION WINDOW");
 
         RectTransform headingLine = CreateLine(headingPanel, "HeadingLine", new Color(1f, 0.84f, 0.2f, 1f));
         headingLine.sizeDelta = new Vector2(220f, 6f);
@@ -50,10 +53,12 @@ public class ControlsMinigameBootstrap : MonoBehaviour
         RectTransform thrustNeedle = CreateNeedle(thrustPanel, "ThrustNeedle", new Vector2(0f, 0f), new Vector2(6f, 40f));
         Image thrustTargetTick = CreateTargetTick(thrustPanel, "ThrustTargetTick", new Vector2(0f, 0f), new Vector2(6f, 50f));
 
-        Text burnTargetText = CreateText(burnPanel, "BurnTargetText", new Vector2(0f, 40f), new Vector2(300f, 26f), 16, defaultFont, "Target: 0.00s");
-        Text burnCurrentText = CreateText(burnPanel, "BurnCurrentText", new Vector2(0f, 10f), new Vector2(300f, 26f), 16, defaultFont, "Time: 0.00s");
+        Text burnTargetText = CreateText(burnPanel, "BurnTargetText", new Vector2(0f, 40f), new Vector2(300f, 26f), 16, defaultFont, "Window Target: 0.00s");
+        Text burnCurrentText = CreateText(burnPanel, "BurnCurrentText", new Vector2(0f, 10f), new Vector2(300f, 26f), 16, defaultFont, "Window Set: 0.00s");
         Image burnFill = CreateFillBar(burnPanel, "BurnFill", new Vector2(0f, -30f), new Vector2(360f, 16f), new Color(0.2f, 0.75f, 0.9f, 1f));
 
+        RectTransform targetTrajectoryLine = CreateTrajectoryLine(rightPanel, "TargetTrajectoryLine");
+        RectTransform dottedTrajectoryRoot = CreateTrajectoryDotsRoot(rightPanel, "FinalTrajectoryDotsRoot");
         RectTransform shipRoot = CreateShipView(rightPanel, "ShipRoot");
         Image shipGlow = CreateGlow(rightPanel, "ShipGlow", shipRoot);
 
@@ -75,8 +80,7 @@ public class ControlsMinigameBootstrap : MonoBehaviour
         headingVisual.Bind(headingLine, null, targetBand);
         thrustVisual.Bind(thrustBar, thrustNeedle, thrustTargetTick, 0f, 100f);
         burnVisual.Bind(burnTargetText, burnCurrentText, burnFill, 0f, 6f);
-        shipView.Bind(shipRoot, shipGlow);
-        shipView.SetMaxRiseToWorldY(headingTitle.rectTransform.position.y);
+        shipView.Bind(shipRoot, shipGlow, targetTrajectoryLine, dottedTrajectoryRoot);
 
         controller.Bind(
             targetGenerator,
@@ -253,11 +257,56 @@ public class ControlsMinigameBootstrap : MonoBehaviour
         rect.anchorMin = new Vector2(0.5f, 0.2f);
         rect.anchorMax = new Vector2(0.5f, 0.2f);
         rect.pivot = new Vector2(0.5f, 0.5f);
-        rect.sizeDelta = new Vector2(140f, 200f);
+        rect.sizeDelta = shuttleSize;
         rect.anchoredPosition = new Vector2(0f, -40f);
 
         Image image = obj.GetComponent<Image>();
-        image.color = new Color(0.85f, 0.9f, 0.95f, 1f);
+        if (shuttleSprite != null)
+        {
+            image.sprite = shuttleSprite;
+            image.type = Image.Type.Simple;
+            image.preserveAspect = true;
+            image.color = shuttleTint;
+        }
+        else
+        {
+            image.color = new Color(0.85f, 0.9f, 0.95f, 1f);
+        }
+
+        return rect;
+    }
+
+    private RectTransform CreateTrajectoryLine(RectTransform parent, string name)
+    {
+        GameObject obj = new GameObject(name, typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+        obj.transform.SetParent(parent, false);
+
+        RectTransform rect = obj.GetComponent<RectTransform>();
+        rect.anchorMin = new Vector2(0.5f, 0.2f);
+        rect.anchorMax = new Vector2(0.5f, 0.2f);
+        rect.pivot = new Vector2(0f, 0.5f);
+        rect.sizeDelta = new Vector2(240f, 6f);
+        rect.anchoredPosition = new Vector2(0f, -40f);
+        rect.localEulerAngles = new Vector3(0f, 0f, 67f);
+
+        Image image = obj.GetComponent<Image>();
+        image.color = new Color(0.25f, 0.9f, 1f, 0.85f);
+
+        return rect;
+    }
+
+    private RectTransform CreateTrajectoryDotsRoot(RectTransform parent, string name)
+    {
+        GameObject obj = new GameObject(name, typeof(RectTransform));
+        obj.transform.SetParent(parent, false);
+
+        RectTransform rect = obj.GetComponent<RectTransform>();
+        rect.anchorMin = new Vector2(0.5f, 0.2f);
+        rect.anchorMax = new Vector2(0.5f, 0.2f);
+        rect.pivot = new Vector2(0.5f, 0.5f);
+        rect.sizeDelta = parent.rect.size;
+        rect.anchoredPosition = Vector2.zero;
+
         return rect;
     }
 
@@ -317,7 +366,7 @@ public class ControlsMinigameBootstrap : MonoBehaviour
         Image image = obj.GetComponent<Image>();
         image.color = new Color(1f, 0.6f, 0.1f, 0.2f);
 
-        CreateText(obj.transform, "BurnText", Vector2.zero, new Vector2(400f, 80f), 36, font, "ENGINE BURN");
+        CreateText(obj.transform, "BurnText", Vector2.zero, new Vector2(480f, 80f), 36, font, "COURSE CORRECTION");
         obj.SetActive(false);
         return obj;
     }

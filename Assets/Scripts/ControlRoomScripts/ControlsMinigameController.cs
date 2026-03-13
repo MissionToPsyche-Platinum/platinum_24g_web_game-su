@@ -142,7 +142,7 @@ public class ControlsMinigameController : MonoBehaviour
 
         if (statusText != null)
         {
-            statusText.text = "Align heading and thrust to target path.";
+            statusText.text = "Align heading and thrust to planned trajectory.";
         }
 
         if (targetGenerator != null)
@@ -310,13 +310,13 @@ public class ControlsMinigameController : MonoBehaviour
 
         if (statusText != null)
         {
-            statusText.text = "Correction burn in progress...";
+            statusText.text = "Course correction in progress...";
         }
 
         ScoreResult result = ComputeScore();
         if (shipView != null)
         {
-            shipView.PlayTakeoff(result.distance);
+            shipView.PlayCourseCorrection(result.distance);
         }
 
         if (burnOverlay != null)
@@ -335,7 +335,7 @@ public class ControlsMinigameController : MonoBehaviour
 
         if (statusText != null)
         {
-            statusText.text = "Burn complete.";
+            statusText.text = "Course correction complete.";
         }
 
         if (factCardPopup != null)
@@ -410,7 +410,7 @@ public class ControlsMinigameController : MonoBehaviour
         {
             ControlMode.Heading => "Heading: Press Space to lock angle",
             ControlMode.Thrust => "Thrust: Press Space to lock power",
-            ControlMode.BurnDuration => "Burn: Hold Space to time duration",
+            ControlMode.BurnDuration => "Correction Window: Hold Space to set duration",
             _ => "Heading: Press Space to lock angle"
         };
 

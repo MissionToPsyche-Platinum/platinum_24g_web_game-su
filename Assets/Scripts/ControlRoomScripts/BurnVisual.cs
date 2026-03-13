@@ -24,7 +24,7 @@ public class BurnVisual : MonoBehaviour
     {
         if (targetText != null)
         {
-            targetText.text = $"Target: {seconds:0.00}s";
+            targetText.text = $"Window Target: {seconds:0.00}s";
         }
     }
 
@@ -32,7 +32,7 @@ public class BurnVisual : MonoBehaviour
     {
         if (currentText != null)
         {
-            currentText.text = $"Time: {seconds:0.00}s";
+            currentText.text = $"Window Set: {seconds:0.00}s";
         }
 
         if (fill != null)
