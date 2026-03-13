@@ -29,7 +29,6 @@ public class ShipView : MonoBehaviour
     private Vector2 startPos;
     private float startRotationZ;
     private bool playing;
-    private int missDirection = 1;
     private float targetAngleFromVertical;
 
     private void Awake()
@@ -70,8 +69,8 @@ public class ShipView : MonoBehaviour
         }
 
         float accuracy01 = Mathf.InverseLerp(minScore, 100f, Mathf.Clamp(score, minScore, 100f));
-        float missAngle = Mathf.Lerp(maxMissAngle, 0f, accuracy01) * missDirection;
-        missDirection *= -1;
+        float missMagnitude = Mathf.Lerp(maxMissAngle, 0f, accuracy01);
+        float missAngle = Random.value < 0.5f ? -missMagnitude : missMagnitude;
 
         float finalAngleFromVertical = targetAngleFromVertical + missAngle;
         Vector2 finalPoint = startPos + DirectionFromVertical(finalAngleFromVertical) * travelDistancePixels;
