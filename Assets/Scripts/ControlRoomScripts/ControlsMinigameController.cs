@@ -14,7 +14,7 @@ public class ControlsMinigameController : MonoBehaviour
     private enum GameState
     {
         Aligning,
-        Burn,
+        CourseCorrection,
         Completed
     }
 
@@ -22,41 +22,39 @@ public class ControlsMinigameController : MonoBehaviour
     {
         Heading,
         Thrust,
-        BurnDuration
+        CorrectionWindow
     }
 
     [Header("Target")]
     [SerializeField] private ControlsTargetGenerator targetGenerator;
     [SerializeField] private HeadingVisual headingVisual;
     [SerializeField] private ThrustVisual thrustVisual;
-    [SerializeField] private BurnVisual burnVisual;
+    [SerializeField] private CorrectionWindowVisual correctionWindowVisual;
 
     [Header("UI")]
     [SerializeField] private Text statusText;
     [SerializeField] private Text modeText;
-    [SerializeField] private GameObject burnOverlay;
     [SerializeField] private MiniGameResultsPopup factCardPopup;
     [SerializeField] private ShipView shipView;
 
-    [Header("Burn")]
-    [SerializeField] private float burnDurationSeconds = 1.5f;
+    [Header("Course Correction")]
+    [SerializeField] private float courseCorrectionDelaySeconds = 1.5f;
 
     [Header("Ranges")]
     [SerializeField] private float headingMin = -70f;
     [SerializeField] private float headingMax = 70;
     [SerializeField] private float thrustMin = 0f;
     [SerializeField] private float thrustMax = 100f;
-    [SerializeField] private float burnMin = 1f;
-    [SerializeField] private float burnMax = 4f;
+    [SerializeField] private float correctionWindowMin = 1f;
+    [SerializeField] private float correctionWindowMax = 4f;
 
     private GameState state = GameState.Aligning;
-    private float timeInsideTolerance;
     private ControlMode mode = ControlMode.Heading;
 
     private float headingAngle;
     private float thrustValue;
-    private float burnTimer;
-    private bool burnTiming;
+    private float correctionWindowTimer;
+    private bool correctionWindowTiming;
     private float headingPauseUntil;
     private float thrustPauseUntil;
     private bool waitingForRelease;
@@ -69,35 +67,33 @@ public class ControlsMinigameController : MonoBehaviour
     [Header("Scoring Weights")]
     [SerializeField] private float headingWeight = 0.35f;
     [SerializeField] private float thrustWeight = 0.35f;
-    [SerializeField] private float burnWeight = 0.3f;
+    [SerializeField] private float correctionWindowWeight = 0.3f;
 
     [Header("Scoring Ranges")]
     [SerializeField] private float headingScoreRange = 30f;
     [SerializeField] private float thrustScoreRange = 40f;
-    [SerializeField] private float burnScoreRange = 1.5f;
+    [SerializeField] private float correctionWindowScoreRange = 1.5f;
 
     private float currentHeading;
     private float currentThrust;
-    private float currentBurnDuration;
+    private float currentCorrectionWindow;
 
     public void Bind(
         ControlsTargetGenerator targetGeneratorRef,
         HeadingVisual headingVisualRef,
         ThrustVisual thrustVisualRef,
-        BurnVisual burnVisualRef,
+        CorrectionWindowVisual correctionWindowVisualRef,
         Text statusTextRef,
         Text modeTextRef,
-        GameObject burnOverlayRef,
         MiniGameResultsPopup factCardPopupRef,
         ShipView shipViewRef)
     {
         targetGenerator = targetGeneratorRef;
         headingVisual = headingVisualRef;
         thrustVisual = thrustVisualRef;
-        burnVisual = burnVisualRef;
+        correctionWindowVisual = correctionWindowVisualRef;
         statusText = statusTextRef;
         modeText = modeTextRef;
-        burnOverlay = burnOverlayRef;
         factCardPopup = factCardPopupRef;
         shipView = shipViewRef;
     }
@@ -119,9 +115,9 @@ public class ControlsMinigameController : MonoBehaviour
             thrustVisual = FindFirstObjectByType<ThrustVisual>();
         }
 
-        if (burnVisual == null)
+        if (correctionWindowVisual == null)
         {
-            burnVisual = FindFirstObjectByType<BurnVisual>();
+            correctionWindowVisual = FindFirstObjectByType<CorrectionWindowVisual>();
         }
 
         if (factCardPopup == null)
@@ -131,14 +127,9 @@ public class ControlsMinigameController : MonoBehaviour
 
         currentHeading = Mathf.Lerp(headingMin, headingMax, 0.5f);
         currentThrust = Mathf.Lerp(thrustMin, thrustMax, 0.5f);
-        currentBurnDuration = Mathf.Lerp(burnMin, burnMax, 0.5f);
+        currentCorrectionWindow = Mathf.Lerp(correctionWindowMin, correctionWindowMax, 0.5f);
         headingAngle = currentHeading;
         thrustValue = currentThrust;
-
-        if (burnOverlay != null)
-        {
-            burnOverlay.SetActive(false);
-        }
 
         if (statusText != null)
         {
@@ -155,9 +146,9 @@ public class ControlsMinigameController : MonoBehaviour
             {
                 thrustVisual.SetTarget(targetGenerator.TargetThrust);
             }
-            if (burnVisual != null)
+            if (correctionWindowVisual != null)
             {
-                burnVisual.SetTarget(targetGenerator.TargetBurnDuration);
+                correctionWindowVisual.SetTarget(targetGenerator.TargetCorrectionWindow);
             }
         }
 
@@ -184,12 +175,12 @@ public class ControlsMinigameController : MonoBehaviour
             thrustVisual.SetCurrent(thrustValue);
         }
 
-        if (burnVisual != null)
+        if (correctionWindowVisual != null)
         {
-            burnVisual.SetCurrent(burnTimer);
+            correctionWindowVisual.SetCurrent(correctionWindowTimer);
         }
 
-        if (state == GameState.Burn)
+        if (state == GameState.CourseCorrection)
         {
             return;
         }
@@ -209,7 +200,7 @@ public class ControlsMinigameController : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.B))
         {
-            mode = ControlMode.BurnDuration;
+            mode = ControlMode.CorrectionWindow;
             UpdateModeText();
         }
     }
@@ -269,12 +260,12 @@ public class ControlsMinigameController : MonoBehaviour
                 {
                     thrustPauseUntil = Time.time + missPauseSeconds;
                     currentThrust = thrustValue;
-                    mode = ControlMode.BurnDuration;
+                    mode = ControlMode.CorrectionWindow;
                     UpdateModeText();
                     waitingForRelease = true;
                 }
                 break;
-            case ControlMode.BurnDuration:
+            case ControlMode.CorrectionWindow:
                 if (waitingForRelease)
                 {
                     if (Input.GetKeyUp(KeyCode.Space))
@@ -285,18 +276,18 @@ public class ControlsMinigameController : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    burnTiming = true;
-                    burnTimer = 0f;
+                    correctionWindowTiming = true;
+                    correctionWindowTimer = 0f;
                 }
 
-                if (burnTiming)
+                if (correctionWindowTiming)
                 {
-                    burnTimer += Time.deltaTime;
+                    correctionWindowTimer += Time.deltaTime;
                     if (Input.GetKeyUp(KeyCode.Space))
                     {
-                        burnTiming = false;
-                        currentBurnDuration = burnTimer;
-                        StartCoroutine(BurnSequence());
+                        correctionWindowTiming = false;
+                        currentCorrectionWindow = correctionWindowTimer;
+                        StartCoroutine(CourseCorrectionSequence());
                         waitingForRelease = true;
                     }
                 }
@@ -304,9 +295,9 @@ public class ControlsMinigameController : MonoBehaviour
         }
     }
 
-    private IEnumerator BurnSequence()
+    private IEnumerator CourseCorrectionSequence()
     {
-        state = GameState.Burn;
+        state = GameState.CourseCorrection;
 
         if (statusText != null)
         {
@@ -319,17 +310,7 @@ public class ControlsMinigameController : MonoBehaviour
             shipView.PlayCourseCorrection(result.distance);
         }
 
-        if (burnOverlay != null)
-        {
-            burnOverlay.SetActive(true);
-        }
-
-        yield return new WaitForSeconds(burnDurationSeconds);
-
-        if (burnOverlay != null)
-        {
-            burnOverlay.SetActive(false);
-        }
+        yield return new WaitForSeconds(courseCorrectionDelaySeconds);
 
         state = GameState.Completed;
 
@@ -385,13 +366,13 @@ public class ControlsMinigameController : MonoBehaviour
 
         float headingError = Mathf.Abs(currentHeading - targetGenerator.TargetHeading);
         float thrustError = Mathf.Abs(currentThrust - targetGenerator.TargetThrust);
-        float burnError = Mathf.Abs(currentBurnDuration - targetGenerator.TargetBurnDuration);
+        float correctionWindowError = Mathf.Abs(currentCorrectionWindow - targetGenerator.TargetCorrectionWindow);
 
         float headingNorm = Mathf.Clamp01(headingError / Mathf.Max(headingScoreRange, 0.01f));
         float thrustNorm = Mathf.Clamp01(thrustError / Mathf.Max(thrustScoreRange, 0.01f));
-        float burnNorm = Mathf.Clamp01(burnError / Mathf.Max(burnScoreRange, 0.01f));
+        float correctionWindowNorm = Mathf.Clamp01(correctionWindowError / Mathf.Max(correctionWindowScoreRange, 0.01f));
 
-        float weighted = Mathf.Clamp01(headingWeight * headingNorm + thrustWeight * thrustNorm + burnWeight * burnNorm);
+        float weighted = Mathf.Clamp01(headingWeight * headingNorm + thrustWeight * thrustNorm + correctionWindowWeight * correctionWindowNorm);
         float scoreFloat = 100f * (1f - weighted);
         int distance = Mathf.Clamp(Mathf.RoundToInt(scoreFloat), 0, 100);
         int stars = ComputeStars(distance);
@@ -410,15 +391,10 @@ public class ControlsMinigameController : MonoBehaviour
         {
             ControlMode.Heading => "Heading: Press Space to lock angle",
             ControlMode.Thrust => "Thrust: Press Space to lock power",
-            ControlMode.BurnDuration => "Correction Window: Hold Space to set duration",
+            ControlMode.CorrectionWindow => "Correction Window: Hold Space to set duration",
             _ => "Heading: Press Space to lock angle"
         };
 
         modeText.text = label;
-
-        if (statusText != null)
-        {
-            statusText.text = label;
-        }
     }
 }

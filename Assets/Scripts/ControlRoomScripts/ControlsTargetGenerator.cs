@@ -7,12 +7,12 @@ public class ControlsTargetGenerator : MonoBehaviour
     [SerializeField] private float maxHeadingDegrees = 30f;
     [SerializeField] private float minThrust = 20f;
     [SerializeField] private float maxThrust = 80f;
-    [SerializeField] private float minBurnDuration = 1f;
-    [SerializeField] private float maxBurnDuration = 5f;
+    [SerializeField] private float minCorrectionWindow = 1f;
+    [SerializeField] private float maxCorrectionWindow = 5f;
 
     public float TargetHeading { get; private set; }
     public float TargetThrust { get; private set; }
-    public float TargetBurnDuration { get; private set; }
+    public float TargetCorrectionWindow { get; private set; }
 
     private void Awake()
     {
@@ -23,6 +23,6 @@ public class ControlsTargetGenerator : MonoBehaviour
     {
         TargetHeading = Random.Range(minHeadingDegrees, maxHeadingDegrees);
         TargetThrust = Random.Range(minThrust, maxThrust);
-        TargetBurnDuration = Random.Range(minBurnDuration, maxBurnDuration);
+        TargetCorrectionWindow = Random.Range(minCorrectionWindow, maxCorrectionWindow);
     }
 }

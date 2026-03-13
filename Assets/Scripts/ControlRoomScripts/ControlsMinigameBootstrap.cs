@@ -14,7 +14,6 @@ public class ControlsMinigameBootstrap : MonoBehaviour
 
     [Header("Colors")]
     [SerializeField] private Color panelColor = new Color(0.1f, 0.12f, 0.16f, 0.95f);
-    [SerializeField] private Color accentColor = new Color(0.2f, 0.55f, 0.75f, 1f);
 
     private void Awake()
     {
@@ -33,16 +32,26 @@ public class ControlsMinigameBootstrap : MonoBehaviour
         RectTransform rightPanel = CreatePanel(root, "RightPanel", new Vector2(420f, 0f), new Vector2(420f, 620f));
 
         CreateText(canvas.transform, "TitleText", new Vector2(0f, 320f), new Vector2(900f, 48f), 28, defaultFont, "MID-COURSE CORRECTION");
+        Text instructionText = CreateText(
+            canvas.transform,
+            "InstructionText",
+            new Vector2(0f, 286f),
+            new Vector2(980f, 32f),
+            16,
+            defaultFont,
+            "Goal: You have veered slightly off course! Follow instructions to adjust the ship back to the target trajectory.");
+        instructionText.color = new Color(0.82f, 0.88f, 0.95f, 1f);
+        CreateTrajectoryLegend(canvas.transform, defaultFont);
         Text statusText = CreateText(canvas.transform, "StatusText", new Vector2(0f, -300f), new Vector2(900f, 40f), 20, defaultFont, "Match heading, thrust, and correction window.");
         Text modeText = CreateText(canvas.transform, "ModeText", new Vector2(0f, -265f), new Vector2(900f, 32f), 18, defaultFont, "Heading: Press Space to lock angle");
 
         RectTransform headingPanel = CreatePanel(leftPanel, "HeadingPanel", new Vector2(0f, 190f), new Vector2(640f, 180f));
         RectTransform thrustPanel = CreatePanel(leftPanel, "ThrustPanel", new Vector2(0f, 0f), new Vector2(640f, 180f));
-        RectTransform burnPanel = CreatePanel(leftPanel, "BurnPanel", new Vector2(0f, -190f), new Vector2(640f, 180f));
+        RectTransform correctionWindowPanel = CreatePanel(leftPanel, "CorrectionWindowPanel", new Vector2(0f, -190f), new Vector2(640f, 180f));
 
         CreateText(headingPanel, "HeadingTitle", new Vector2(-240f, 60f), new Vector2(200f, 26f), 18, defaultFont, "HEADING");
         CreateText(thrustPanel, "ThrustTitle", new Vector2(-240f, 60f), new Vector2(200f, 26f), 18, defaultFont, "THRUST");
-        CreateText(burnPanel, "BurnTitle", new Vector2(-240f, 60f), new Vector2(240f, 26f), 18, defaultFont, "CORRECTION WINDOW");
+        CreateText(correctionWindowPanel, "CorrectionWindowTitle", new Vector2(-240f, 60f), new Vector2(240f, 26f), 18, defaultFont, "CORRECTION WINDOW");
 
         RectTransform headingLine = CreateLine(headingPanel, "HeadingLine", new Color(1f, 0.84f, 0.2f, 1f));
         headingLine.sizeDelta = new Vector2(220f, 6f);
@@ -53,23 +62,20 @@ public class ControlsMinigameBootstrap : MonoBehaviour
         RectTransform thrustNeedle = CreateNeedle(thrustPanel, "ThrustNeedle", new Vector2(0f, 0f), new Vector2(6f, 40f));
         Image thrustTargetTick = CreateTargetTick(thrustPanel, "ThrustTargetTick", new Vector2(0f, 0f), new Vector2(6f, 50f));
 
-        Text burnTargetText = CreateText(burnPanel, "BurnTargetText", new Vector2(0f, 40f), new Vector2(300f, 26f), 16, defaultFont, "Window Target: 0.00s");
-        Text burnCurrentText = CreateText(burnPanel, "BurnCurrentText", new Vector2(0f, 10f), new Vector2(300f, 26f), 16, defaultFont, "Window Set: 0.00s");
-        Image burnFill = CreateFillBar(burnPanel, "BurnFill", new Vector2(0f, -30f), new Vector2(360f, 16f), new Color(0.2f, 0.75f, 0.9f, 1f));
+        Text correctionWindowTargetText = CreateText(correctionWindowPanel, "CorrectionWindowTargetText", new Vector2(0f, 40f), new Vector2(300f, 26f), 16, defaultFont, "Window Target: 0.00s");
+        Text correctionWindowCurrentText = CreateText(correctionWindowPanel, "CorrectionWindowCurrentText", new Vector2(0f, 10f), new Vector2(300f, 26f), 16, defaultFont, "Window Set: 0.00s");
+        Image correctionWindowFill = CreateFillBar(correctionWindowPanel, "CorrectionWindowFill", new Vector2(0f, -30f), new Vector2(360f, 16f), new Color(0.2f, 0.75f, 0.9f, 1f));
 
-        RectTransform targetTrajectoryLine = CreateTrajectoryLine(rightPanel, "TargetTrajectoryLine");
-        RectTransform dottedTrajectoryRoot = CreateTrajectoryDotsRoot(rightPanel, "FinalTrajectoryDotsRoot");
+        RectTransform targetTrajectoryDotsRoot = CreateTrajectoryDotsRoot(rightPanel, "TargetTrajectoryDotsRoot", new Vector2(0f, -40f));
+        RectTransform dottedTrajectoryRoot = CreateTrajectoryDotsRoot(rightPanel, "FinalTrajectoryDotsRoot", new Vector2(0f, -40f));
         RectTransform shipRoot = CreateShipView(rightPanel, "ShipRoot");
-        Image shipGlow = CreateGlow(rightPanel, "ShipGlow", shipRoot);
-
-        GameObject burnOverlay = CreateBurnOverlay(canvas.transform, defaultFont);
 
         ControlsTargetGenerator targetGenerator = GetOrAddComponent<ControlsTargetGenerator>();
         ControlsMinigameController controller = GetOrAddComponent<ControlsMinigameController>();
         MiniGameResultsPopup factCardPopup = GetOrAddComponent<MiniGameResultsPopup>();
         HeadingVisual headingVisual = GetOrAddComponent<HeadingVisual>();
         ThrustVisual thrustVisual = GetOrAddComponent<ThrustVisual>();
-        BurnVisual burnVisual = GetOrAddComponent<BurnVisual>();
+        CorrectionWindowVisual correctionWindowVisual = GetOrAddComponent<CorrectionWindowVisual>();
         ShipView shipView = GetOrAddComponent<ShipView>();
 
         if (factBank != null)
@@ -79,17 +85,16 @@ public class ControlsMinigameBootstrap : MonoBehaviour
 
         headingVisual.Bind(headingLine, null, targetBand);
         thrustVisual.Bind(thrustBar, thrustNeedle, thrustTargetTick, 0f, 100f);
-        burnVisual.Bind(burnTargetText, burnCurrentText, burnFill, 0f, 6f);
-        shipView.Bind(shipRoot, shipGlow, targetTrajectoryLine, dottedTrajectoryRoot);
+        correctionWindowVisual.Bind(correctionWindowTargetText, correctionWindowCurrentText, correctionWindowFill, 0f, 6f);
+        shipView.Bind(shipRoot, targetTrajectoryDotsRoot, dottedTrajectoryRoot);
 
         controller.Bind(
             targetGenerator,
             headingVisual,
             thrustVisual,
-            burnVisual,
+            correctionWindowVisual,
             statusText,
             modeText,
-            burnOverlay,
             factCardPopup,
             shipView);
     }
@@ -276,26 +281,7 @@ public class ControlsMinigameBootstrap : MonoBehaviour
         return rect;
     }
 
-    private RectTransform CreateTrajectoryLine(RectTransform parent, string name)
-    {
-        GameObject obj = new GameObject(name, typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
-        obj.transform.SetParent(parent, false);
-
-        RectTransform rect = obj.GetComponent<RectTransform>();
-        rect.anchorMin = new Vector2(0.5f, 0.2f);
-        rect.anchorMax = new Vector2(0.5f, 0.2f);
-        rect.pivot = new Vector2(0f, 0.5f);
-        rect.sizeDelta = new Vector2(240f, 6f);
-        rect.anchoredPosition = new Vector2(0f, -40f);
-        rect.localEulerAngles = new Vector3(0f, 0f, 67f);
-
-        Image image = obj.GetComponent<Image>();
-        image.color = new Color(0.25f, 0.9f, 1f, 0.85f);
-
-        return rect;
-    }
-
-    private RectTransform CreateTrajectoryDotsRoot(RectTransform parent, string name)
+    private RectTransform CreateTrajectoryDotsRoot(RectTransform parent, string name, Vector2 anchoredPosition)
     {
         GameObject obj = new GameObject(name, typeof(RectTransform));
         obj.transform.SetParent(parent, false);
@@ -305,30 +291,9 @@ public class ControlsMinigameBootstrap : MonoBehaviour
         rect.anchorMax = new Vector2(0.5f, 0.2f);
         rect.pivot = new Vector2(0.5f, 0.5f);
         rect.sizeDelta = parent.rect.size;
-        rect.anchoredPosition = Vector2.zero;
+        rect.anchoredPosition = anchoredPosition;
 
         return rect;
-    }
-
-    private Image CreateGlow(RectTransform parent, string name, RectTransform shipRoot)
-    {
-        GameObject obj = new GameObject(name, typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
-        obj.transform.SetParent(parent, false);
-        RectTransform rect = obj.GetComponent<RectTransform>();
-        rect.anchorMin = new Vector2(0.5f, 0.2f);
-        rect.anchorMax = new Vector2(0.5f, 0.2f);
-        rect.pivot = new Vector2(0.5f, 0.5f);
-        rect.sizeDelta = new Vector2(120f, 120f);
-        rect.anchoredPosition = new Vector2(0f, -160f);
-
-        if (shipRoot != null)
-        {
-            rect.anchoredPosition = shipRoot.anchoredPosition + new Vector2(0f, -120f);
-        }
-
-        Image image = obj.GetComponent<Image>();
-        image.color = new Color(1f, 0.6f, 0.2f, 0f);
-        return image;
     }
 
     private Text CreateText(Transform parent, string name, Vector2 anchoredPos, Vector2 size, int fontSize, Font font, string text)
@@ -352,24 +317,38 @@ public class ControlsMinigameBootstrap : MonoBehaviour
         return uiText;
     }
 
-
-    private GameObject CreateBurnOverlay(Transform parent, Font font)
+    private void CreateTrajectoryLegend(Transform parent, Font font)
     {
-        GameObject obj = new GameObject("BurnOverlay", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+        RectTransform legendRoot = CreatePanel(parent, "TrajectoryLegend", new Vector2(500f, 250f), new Vector2(250f, 52f));
+
+        Image targetSwatch = CreateSwatch(legendRoot, "TargetSwatch", new Vector2(-82f, 0f), new Color(0.25f, 0.9f, 1f, 0.95f));
+        targetSwatch.rectTransform.sizeDelta = new Vector2(14f, 14f);
+        Text targetLabel = CreateText(legendRoot, "TargetLegendLabel", new Vector2(-8f, 0f), new Vector2(120f, 24f), 14, font, "Target");
+        targetLabel.alignment = TextAnchor.MiddleLeft;
+
+        Image finalSwatch = CreateSwatch(legendRoot, "FinalSwatch", new Vector2(42f, 0f), new Color(1f, 0.85f, 0.2f, 0.95f));
+        finalSwatch.rectTransform.sizeDelta = new Vector2(14f, 14f);
+        Text finalLabel = CreateText(legendRoot, "FinalLegendLabel", new Vector2(108f, 0f), new Vector2(110f, 24f), 14, font, "Final");
+        finalLabel.alignment = TextAnchor.MiddleLeft;
+    }
+
+    private Image CreateSwatch(Transform parent, string name, Vector2 anchoredPos, Color color)
+    {
+        GameObject obj = new GameObject(name, typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
         obj.transform.SetParent(parent, false);
+
         RectTransform rect = obj.GetComponent<RectTransform>();
-        rect.anchorMin = new Vector2(0f, 0f);
-        rect.anchorMax = new Vector2(1f, 1f);
-        rect.offsetMin = Vector2.zero;
-        rect.offsetMax = Vector2.zero;
+        rect.anchorMin = new Vector2(0.5f, 0.5f);
+        rect.anchorMax = new Vector2(0.5f, 0.5f);
+        rect.pivot = new Vector2(0.5f, 0.5f);
+        rect.sizeDelta = new Vector2(12f, 12f);
+        rect.anchoredPosition = anchoredPos;
 
         Image image = obj.GetComponent<Image>();
-        image.color = new Color(1f, 0.6f, 0.1f, 0.2f);
-
-        CreateText(obj.transform, "BurnText", Vector2.zero, new Vector2(480f, 80f), 36, font, "COURSE CORRECTION");
-        obj.SetActive(false);
-        return obj;
+        image.color = color;
+        return image;
     }
+
 
     private T GetOrAddComponent<T>() where T : Component
     {

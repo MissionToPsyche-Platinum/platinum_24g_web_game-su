@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BurnVisual : MonoBehaviour
+public class CorrectionWindowVisual : MonoBehaviour
 {
     [SerializeField] private Text targetText;
     [SerializeField] private Text currentText;

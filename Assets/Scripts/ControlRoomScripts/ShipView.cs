@@ -5,8 +5,7 @@ using UnityEngine.UI;
 public class ShipView : MonoBehaviour
 {
     [SerializeField] private RectTransform shipRoot;
-    [SerializeField] private Image glow;
-    [SerializeField] private RectTransform targetTrajectoryLine;
+    [SerializeField] private RectTransform targetTrajectoryDotsRoot;
     [SerializeField] private RectTransform dottedTrajectoryRoot;
 
     [Header("Trajectory")]
@@ -14,7 +13,9 @@ public class ShipView : MonoBehaviour
     [SerializeField] private float targetAngleMinFromVertical = -30f;
     [SerializeField] private float targetAngleMaxFromVertical = 30f;
     [SerializeField] private float maxMissAngle = 22f;
-    [SerializeField] private float targetLineThickness = 6f;
+    [SerializeField] private float targetDotSpacing = 16f;
+    [SerializeField] private float targetDotSize = 6f;
+    [SerializeField] private Color targetDotColor = new Color(0.25f, 0.9f, 1f, 0.85f);
     [SerializeField] private float dotSpacing = 16f;
     [SerializeField] private float dotSize = 6f;
     [SerializeField] private Color dotColor = new Color(1f, 0.85f, 0.2f, 0.9f);
@@ -22,7 +23,6 @@ public class ShipView : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private float rotateDuration = 0.25f;
     [SerializeField] private float travelDuration = 1.2f;
-    [SerializeField] private float glowPeak = 0.8f;
     [SerializeField] private float holdAtEndSeconds = 0.2f;
     [SerializeField] private float minScore = 0f;
 
@@ -40,22 +40,15 @@ public class ShipView : MonoBehaviour
             startRotationZ = shipRoot.localEulerAngles.z;
         }
 
-        if (glow != null)
-        {
-            Color c = glow.color;
-            glow.color = new Color(c.r, c.g, c.b, 0f);
-        }
-
         GenerateTargetAngle();
         RefreshTargetLine();
-        ClearDottedTrajectory();
+        ClearDots(dottedTrajectoryRoot);
     }
 
-    public void Bind(RectTransform shipRootRef, Image glowRef, RectTransform targetTrajectoryLineRef, RectTransform dottedTrajectoryRootRef)
+    public void Bind(RectTransform shipRootRef, RectTransform targetTrajectoryDotsRootRef, RectTransform dottedTrajectoryRootRef)
     {
         shipRoot = shipRootRef;
-        glow = glowRef;
-        targetTrajectoryLine = targetTrajectoryLineRef;
+        targetTrajectoryDotsRoot = targetTrajectoryDotsRootRef;
         dottedTrajectoryRoot = dottedTrajectoryRootRef;
 
         if (shipRoot != null)
@@ -66,7 +59,7 @@ public class ShipView : MonoBehaviour
 
         GenerateTargetAngle();
         RefreshTargetLine();
-        ClearDottedTrajectory();
+        ClearDots(dottedTrajectoryRoot);
     }
 
     public void PlayCourseCorrection(int score)
@@ -84,7 +77,7 @@ public class ShipView : MonoBehaviour
         Vector2 finalPoint = startPos + DirectionFromVertical(finalAngleFromVertical) * travelDistancePixels;
 
         RefreshTargetLine();
-        BuildDottedTrajectory(startPos, finalPoint);
+        BuildDottedPath(dottedTrajectoryRoot, startPos, finalPoint, dotSpacing, dotSize, dotColor, "TrajectoryDot");
         StartCoroutine(PlayCourseCorrectionRoutine(finalPoint));
     }
 
@@ -102,7 +95,6 @@ public class ShipView : MonoBehaviour
             float eased = Mathf.SmoothStep(0f, 1f, t);
             float z = Mathf.LerpAngle(startRotationZ, targetRotationZ, eased);
             shipRoot.localEulerAngles = new Vector3(0f, 0f, z);
-            ApplyGlow(Mathf.Lerp(0.15f, 0.5f, eased));
             elapsed += Time.deltaTime;
             yield return null;
         }
@@ -114,14 +106,12 @@ public class ShipView : MonoBehaviour
             float t = Mathf.Clamp01(elapsed / Mathf.Max(travelDuration, 0.01f));
             float eased = 1f - Mathf.Pow(1f - t, 3f);
             shipRoot.anchoredPosition = Vector2.Lerp(startPos, finalPoint, eased);
-            ApplyGlow(Mathf.Lerp(0.35f, glowPeak, eased));
             elapsed += Time.deltaTime;
             yield return null;
         }
 
         shipRoot.anchoredPosition = finalPoint;
         yield return new WaitForSeconds(holdAtEndSeconds);
-        ApplyGlow(0f);
         playing = false;
     }
 
@@ -132,57 +122,56 @@ public class ShipView : MonoBehaviour
 
     private void RefreshTargetLine()
     {
-        if (targetTrajectoryLine == null)
+        if (targetTrajectoryDotsRoot == null)
         {
             return;
         }
 
-        targetTrajectoryLine.anchoredPosition = startPos;
-        targetTrajectoryLine.localEulerAngles = new Vector3(0f, 0f, 90f - targetAngleFromVertical);
-        targetTrajectoryLine.sizeDelta = new Vector2(travelDistancePixels, targetLineThickness);
+        Vector2 targetEnd = startPos + DirectionFromVertical(targetAngleFromVertical) * travelDistancePixels;
+        BuildDottedPath(targetTrajectoryDotsRoot, startPos, targetEnd, targetDotSpacing, targetDotSize, targetDotColor, "TargetDot");
     }
 
-    private void BuildDottedTrajectory(Vector2 from, Vector2 to)
+    private void BuildDottedPath(RectTransform root, Vector2 from, Vector2 to, float spacing, float size, Color color, string dotName)
     {
-        if (dottedTrajectoryRoot == null)
+        if (root == null)
         {
             return;
         }
 
-        ClearDottedTrajectory();
+        ClearDots(root);
 
         float distance = Vector2.Distance(from, to);
-        int dotCount = Mathf.Clamp(Mathf.CeilToInt(distance / Mathf.Max(dotSpacing, 1f)), 6, 36);
+        int dotCount = Mathf.Clamp(Mathf.CeilToInt(distance / Mathf.Max(spacing, 1f)), 6, 36);
         for (int i = 0; i <= dotCount; i++)
         {
             float t = dotCount > 0 ? (float)i / dotCount : 0f;
             Vector2 pos = Vector2.Lerp(from, to, t);
 
-            GameObject dotObj = new GameObject("TrajectoryDot", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
-            dotObj.transform.SetParent(dottedTrajectoryRoot, false);
+            GameObject dotObj = new GameObject(dotName, typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+            dotObj.transform.SetParent(root, false);
 
             RectTransform rect = dotObj.GetComponent<RectTransform>();
             rect.anchorMin = new Vector2(0.5f, 0.5f);
             rect.anchorMax = new Vector2(0.5f, 0.5f);
             rect.pivot = new Vector2(0.5f, 0.5f);
-            rect.sizeDelta = new Vector2(dotSize, dotSize);
+            rect.sizeDelta = new Vector2(size, size);
             rect.anchoredPosition = pos;
 
             Image dot = dotObj.GetComponent<Image>();
-            dot.color = dotColor;
+            dot.color = color;
         }
     }
 
-    private void ClearDottedTrajectory()
+    private void ClearDots(RectTransform root)
     {
-        if (dottedTrajectoryRoot == null)
+        if (root == null)
         {
             return;
         }
 
-        for (int i = dottedTrajectoryRoot.childCount - 1; i >= 0; i--)
+        for (int i = root.childCount - 1; i >= 0; i--)
         {
-            Destroy(dottedTrajectoryRoot.GetChild(i).gameObject);
+            Destroy(root.GetChild(i).gameObject);
         }
     }
 
@@ -202,14 +191,4 @@ public class ShipView : MonoBehaviour
         return Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
     }
 
-    private void ApplyGlow(float alpha)
-    {
-        if (glow == null)
-        {
-            return;
-        }
-
-        Color c = glow.color;
-        glow.color = new Color(c.r, c.g, c.b, Mathf.Clamp01(alpha));
-    }
 }
