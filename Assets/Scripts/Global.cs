@@ -35,22 +35,21 @@ public class Global : MonoBehaviour
     //problem is that the last room is being dequeued and script thinks round is over before minigame is complete
     private static void RoundHandler()
     {
-        if(minigameRoundOrder.Count > 0) //still in round
+        if(currentRoomCompleted) //first check if the current minigame is completed
         {
-            // is current room completed yet?
-            //if yes update to new room
-            if (currentRoomCompleted)
+            
+            if (minigameRoundOrder.Count > 0)
             {
                 currentRoom = minigameRoundOrder.Dequeue();
                 currentRoomCompleted = false;
             }
-        }
-        else //round is over
-        {
-            round++;
-            Debug.Log($"Current round: {round}");
+            else 
+            {
+                round++;
+                Debug.Log($"Current round: {round}");
 
-            RoundStart();
+                RoundStart();
+            }
         }
     }
 
