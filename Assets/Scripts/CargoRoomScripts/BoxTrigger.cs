@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +9,8 @@ public class BoxTrigger : MonoBehaviour
 {
     private const string PopupName = "BoxPopUp";
     private const string HintName = "BoxInteractHint";
+
+    private List<string> MinigameSceneNames = new() { "CargoMinigame1", "CargoMinigame2"};
 
     private GameObject popupPanel;
     private GameObject hintLabel;
@@ -200,7 +204,15 @@ public class BoxTrigger : MonoBehaviour
 
         startGameButton.GetComponent<Button>().onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("CargoMinigame1");
+            if (Global.round <= MinigameSceneNames.Count)
+            {
+                SceneManager.LoadScene(MinigameSceneNames[Global.round - 1]);
+            }
+            else
+            {
+                int choice = Random.Range(0, MinigameSceneNames.Count);
+                SceneManager.LoadScene(MinigameSceneNames[choice]);
+            }
         });
 
         popupPanel.SetActive(false);
