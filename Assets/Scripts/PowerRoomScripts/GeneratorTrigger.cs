@@ -47,7 +47,7 @@ public class GeneratorTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<PlayerMovement2D>() == null)
+        if (other.GetComponent<PlayerMovement2D>() == null || Global.currentRoom != "PowerRoom")
         {
             return;
         }

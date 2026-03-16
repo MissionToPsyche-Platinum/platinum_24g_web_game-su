@@ -47,6 +47,7 @@ public class PowerGameManager : MonoBehaviour
             done = true;
             Debug.Log("MINIGAME COMPLETE!");
             Global.MinigameWin();
+            Global.currentRoomCompleted = true;
 
             if (scoreText != null)
                 scoreText.text = "Total score: " + Global.totalScore;

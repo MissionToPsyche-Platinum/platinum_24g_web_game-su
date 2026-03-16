@@ -13,7 +13,7 @@ public class RoomContextPopup : MonoBehaviour
     private void Update()
     {
         // If the player is in the zone and the popup is visible...
-        if (isPlayerInZone && myPopupUI.activeSelf)
+        if (isPlayerInZone && myPopupUI.activeSelf && Global.currentRoom == "PowerRoom")
         {
             // ...check if they press the 'E' key
             if (Input.GetKeyDown(KeyCode.E))
@@ -25,7 +25,7 @@ public class RoomContextPopup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && Global.currentRoom == "PowerRoom")
         {
             isPlayerInZone = true;
             myPopupUI.SetActive(true);

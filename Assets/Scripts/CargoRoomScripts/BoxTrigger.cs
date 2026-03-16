@@ -47,7 +47,7 @@ public class BoxTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<PlayerMovement2D>() == null)
+        if (other.GetComponent<PlayerMovement2D>() == null || Global.currentRoom != "CargoRoom")
         {
             return;
         }
@@ -70,7 +70,7 @@ public class BoxTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.GetComponent<PlayerMovement2D>() == null)
+        if (other.GetComponent<PlayerMovement2D>() == null || Global.currentRoom != "CargoRoom")
         {
             return;
         }
@@ -88,7 +88,7 @@ public class BoxTrigger : MonoBehaviour
     private void ShowPopup()
     {
         EnsurePopup();
-        if (popupPanel == null)
+        if (popupPanel == null || Global.currentRoom != "CargoRoom")
         {
             return;
         }
@@ -140,7 +140,7 @@ public class BoxTrigger : MonoBehaviour
 
     private void EnsurePopup()
     {
-        if (popupPanel != null)
+        if (popupPanel != null || Global.currentRoom != "CargoRoom")
         {
             return;
         }

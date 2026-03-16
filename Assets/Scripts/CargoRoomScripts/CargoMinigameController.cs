@@ -52,6 +52,8 @@ public class CargoMinigameController : MonoBehaviour
         
         Global.MinigameWin();
         updateScoreText();
+        Global.currentRoomCompleted = true;
+
         //ensures the panel is active before showing it
         transform.gameObject.SetActive(true);
         transform.anchoredPosition = new Vector2(0f, 0f);

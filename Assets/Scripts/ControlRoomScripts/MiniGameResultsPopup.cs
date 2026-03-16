@@ -19,6 +19,7 @@ public class MiniGameResultsPopup : MonoBehaviour
 
     private void Awake()
     {
+        Global.currentRoomCompleted = true;
         LoadFacts();
 
         EnsurePopup();

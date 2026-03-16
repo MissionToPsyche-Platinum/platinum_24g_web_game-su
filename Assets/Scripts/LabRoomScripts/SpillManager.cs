@@ -56,6 +56,7 @@ public class SpillManager : MonoBehaviour
 
             
             Global.MinigameWin();
+            Global.currentRoomCompleted = true;
 
             
             if (scoreText != null)

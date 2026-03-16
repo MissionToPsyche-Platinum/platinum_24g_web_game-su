@@ -78,6 +78,10 @@ public class LabBoxTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if(Global.currentRoom != "LabRoom")
+        {
+            return;
+        }
         PlayerMovement2D pm = other.GetComponent<PlayerMovement2D>();
         if (pm == null) return;
 
@@ -96,6 +100,10 @@ public class LabBoxTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        if (Global.currentRoom != "LabRoom")
+        {
+            return;
+        }
         if (other.GetComponent<PlayerMovement2D>() == null) return;
 
         canInteract = false;
@@ -110,6 +118,10 @@ public class LabBoxTrigger : MonoBehaviour
 
 private void ShowPopup()
 {
+    if(Global.currentRoom != "LabRoom")
+    {
+        return;
+    }
     EnsurePopupRefs();
 
     if (welcomePopup == null)
@@ -198,6 +210,10 @@ private void HidePopup()
 
     private void ToggleHint(bool isVisible)
     {
+        if (Global.currentRoom != "LabRoom")
+        {
+            return;
+        }
         if (hintLabel != null)
             hintLabel.SetActive(isVisible);
     }
