@@ -27,8 +27,12 @@ public class Global : MonoBehaviour
     void Update()
     {
         RoundHandler();
+        foreach(string item in minigameRoundOrder)
+        {
+            Debug.Log(item); 
+        }
     }
-
+    //problem is that the last room is being dequeued and script thinks round is over before minigame is complete
     private static void RoundHandler()
     {
         if(minigameRoundOrder.Count > 0) //still in round
@@ -45,6 +49,7 @@ public class Global : MonoBehaviour
         {
             round++;
             Debug.Log($"Current round: {round}");
+
             RoundStart();
         }
     }
@@ -53,10 +58,6 @@ public class Global : MonoBehaviour
     {
         CreateRoomOrder();
         currentRoom = minigameRoundOrder.Dequeue();
-        foreach(string item in minigameRoundOrder)
-        {
-            Debug.Log(item);
-        }
     }
 
     private static void CreateRoomOrder()
@@ -66,6 +67,7 @@ public class Global : MonoBehaviour
         foreach(string item in rooms.OrderBy(x => Guid.NewGuid()))
         {
             minigameRoundOrder.Enqueue(item);
+            //Debug.Log(item);
         }
     }
 

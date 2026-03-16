@@ -200,7 +200,7 @@ public class BoxTrigger : MonoBehaviour
 
         startGameButton.GetComponent<Button>().onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("CargoMinigame2");
+            SceneManager.LoadScene("CargoMinigame1");
         });
 
         popupPanel.SetActive(false);

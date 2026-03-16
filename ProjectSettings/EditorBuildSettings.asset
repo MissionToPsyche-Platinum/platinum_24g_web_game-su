@@ -30,7 +30,7 @@ EditorBuildSettings:
     path: Assets/Scenes/ControlRoom.unity
     guid: 784b7c4457754fcb93d6d82f8bb001ce
   - enabled: 1
-    path: Assets/Scenes/CargoRoom/CargoMinigame.unity
+    path: Assets/Scenes/CargoRoom/CargoMinigame1.unity
     guid: 9051671be65bf744f8da16f36caf0795
   - enabled: 1
     path: Assets/Scenes/LabMinigame.unity
