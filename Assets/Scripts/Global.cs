@@ -12,7 +12,7 @@ public class Global : MonoBehaviour
     public static int maxScore = 100;
     public static bool hasWon = false;
 
-    public static int round = 3;
+    public static int round = 1;
     public static string currentRoom = "";
     public static bool currentRoomCompleted = false;
     public static Queue<string> minigameRoundOrder = new Queue<string>();
