@@ -12,6 +12,9 @@ public class Global : MonoBehaviour
     public static int maxScore = 100;
     public static bool hasWon = false;
 
+    public static int REPAIR_COLLISION_MINIGAME_THRESHOLD = 30;
+    public static bool repair_collision_minigame_played = false;
+
     public static int round = 1;
     public static string currentRoom = "";
     public static bool currentRoomCompleted = false;
@@ -27,14 +30,23 @@ public class Global : MonoBehaviour
     void Update()
     {
         RoundHandler();
-        foreach(string item in minigameRoundOrder)
-        {
-            Debug.Log(item); 
-        }
     }
-    //problem is that the last room is being dequeued and script thinks round is over before minigame is complete
+    
     private static void RoundHandler()
     {
+        if(!repair_collision_minigame_played && totalScore >= REPAIR_COLLISION_MINIGAME_THRESHOLD)
+        {
+            GameObject repairCollisionMinigame = GameObject.FindWithTag("RepairCollisionMinigame");
+            if(repairCollisionMinigame != null)
+            {
+                foreach(Transform child in repairCollisionMinigame.transform)
+                {
+                    child.gameObject.SetActive(true);
+                }
+            }
+        }
+
+
         if(currentRoomCompleted) //first check if the current minigame is completed
         {
             
@@ -123,5 +135,10 @@ public class Global : MonoBehaviour
             totalScore = 0;
             SceneManager.LoadScene("WinScene");
         }
+    }
+
+    public static void Add10ToScore()
+    {
+        totalScore += 10;
     }
 }
