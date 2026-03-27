@@ -5,15 +5,13 @@ public class ProgressBarUpdater : MonoBehaviour
 {
 
     public Slider progressSlider;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    private float progress;
+
 
     // Update is called once per frame
     void Update()
     {
-        progressSlider.value = (float) Global.totalScore / Global.maxScore;
+        progress = (float)Global.totalScore / Global.maxScore;
+        progressSlider.value = progress >= 0 ? progress : 0;
     }
 }

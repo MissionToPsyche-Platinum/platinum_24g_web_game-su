@@ -14,13 +14,14 @@ public class RepairCollisionController : MonoBehaviour
 
     private void Start()
     {
+        Global.StopTimer();
         player = GameObject.FindGameObjectWithTag("Player");
         player.SetActive(false);
 
         transform = completedPanelTransform;
         if (transform == null)
         {
-            Debug.LogError("CargoMinigameController: completedPanelTransform is NOT assigned in Inspector.");
+            Debug.LogError("RepairCollisionController: completedPanelTransform is NOT assigned in Inspector.");
             return;
         }
         transform.anchoredPosition = new Vector2(1000f, 1000f);
@@ -32,7 +33,6 @@ public class RepairCollisionController : MonoBehaviour
         if (crack != null)
         {
             getCount = crack.transform.childCount;
-            Debug.Log(getCount);
 
             if (getCount > 550)
             {
@@ -49,7 +49,7 @@ public class RepairCollisionController : MonoBehaviour
         transform.gameObject.SetActive(true);
         transform.anchoredPosition = new Vector2(0f, 0f);
 
-        Global.repair_collision_minigame_played = true;
+        Global.repairCollisionMinigamePlayed = true;
 
     }
 

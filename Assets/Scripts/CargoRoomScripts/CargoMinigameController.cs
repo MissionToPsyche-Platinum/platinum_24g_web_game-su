@@ -26,8 +26,8 @@ public class CargoMinigameController : MonoBehaviour
         transform = completedPanelTransform;
         if (transform == null)
         {   
-        Debug.LogError("CargoMinigameController: completedPanelTransform is NOT assigned in Inspector.");
-        return;
+            Debug.LogError("CargoMinigameController: completedPanelTransform is NOT assigned in Inspector.");
+            return;
         }
         transform.anchoredPosition = new Vector2(1000f, 1000f);
         gameComplete = false;
