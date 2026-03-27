@@ -519,7 +519,7 @@ TextureImporter:
   spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
-  alphaUsage: 1
+  alphaUsage: 0
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
@@ -2193,7 +2193,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset_sf_74
+      name: CrackedWall
       rect:
         serializedVersion: 2
         x: 1472
@@ -3726,6 +3726,7 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
+      CrackedWall: -1912516409493408668
       tileset_sf_0: 4851324103519244574
       tileset_sf_1: 4775148793791770303
       tileset_sf_10: 7251520487942212233
@@ -3841,7 +3842,6 @@ TextureImporter:
       tileset_sf_71: 2881210875297526188
       tileset_sf_72: 8884571206748248318
       tileset_sf_73: -9000325695809607103
-      tileset_sf_74: -1912516409493408668
       tileset_sf_75: -3001112704265470596
       tileset_sf_76: -4603627594434628550
       tileset_sf_77: -7030310940009624684
