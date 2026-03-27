@@ -1,20 +1,29 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WeldHandler : MonoBehaviour
 {
     public GameObject maskPrefab;
     private bool isPressed = false;
+    private bool isColliding = false;
+    private Vector3 previousMousePosition;
+    private Vector3 currentMousePosition;
 
     private void Update()
     {
-        var mousePos = Input.mousePosition;
-        mousePos.z = 5;
-        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        previousMousePosition = currentMousePosition;
+        currentMousePosition = Input.mousePosition;
+        currentMousePosition.z = 5;
+        currentMousePosition = Camera.main.ScreenToWorldPoint(currentMousePosition);
 
-        if (isPressed)
+        if (isPressed && isColliding)
         {
-            GameObject maskSprite = Instantiate(maskPrefab,mousePos,Quaternion.identity);
-            maskSprite.transform.parent = gameObject.transform;
+            if (previousMousePosition != currentMousePosition)
+            {
+                GameObject maskSprite = Instantiate(maskPrefab, currentMousePosition, Quaternion.identity);
+                maskSprite.transform.parent = gameObject.transform;
+            }
+
             if (Input.GetMouseButtonUp(0))
             {
                 isPressed = false;
@@ -26,12 +35,27 @@ public class WeldHandler : MonoBehaviour
             {
                 isPressed = true;
             }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                isPressed = false;
+            }
         }
-        
+
     }
 
-    private void Reveal()
+    private void OnMouseEnter()
+    {
+        isColliding = true;
+    }
+    private void OnMouseExit()
+    {
+        isColliding = false;
+    }
+
+
+    public void Reveal()
     {
         Destroy(this.gameObject);
     }
+
 }

@@ -140,5 +140,6 @@ public class Global : MonoBehaviour
     public static void Add10ToScore()
     {
         totalScore += 10;
+        CheckWin();
     }
 }

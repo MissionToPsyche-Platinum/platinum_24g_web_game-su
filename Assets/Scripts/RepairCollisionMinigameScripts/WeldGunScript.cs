@@ -4,12 +4,6 @@ public class WeldGunScript : MonoBehaviour
 {
     public GameObject weldSpark;
 
-    // This makes the standard OS cursor invisible when the game starts
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {

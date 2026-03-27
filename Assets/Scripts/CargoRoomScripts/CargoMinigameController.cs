@@ -22,8 +22,7 @@ public class CargoMinigameController : MonoBehaviour
     {
         targets = GameObject.FindGameObjectsWithTag("CargoroomTarget");
         player = GameObject.FindGameObjectWithTag("Player");
-        //transform = GameObject.Find("CompletedPanel").GetComponent<RectTransform>();
-        //rewrote this for safer panel access and added a null guard:
+
         transform = completedPanelTransform;
         if (transform == null)
         {   

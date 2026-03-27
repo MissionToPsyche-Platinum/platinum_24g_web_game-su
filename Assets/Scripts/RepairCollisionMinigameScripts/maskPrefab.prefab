@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4849344102698879067}
   m_Layer: 0
   m_Name: maskPrefab
-  m_TagString: Untagged
+  m_TagString: WeldMark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

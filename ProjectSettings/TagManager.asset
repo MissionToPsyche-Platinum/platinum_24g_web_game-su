@@ -9,6 +9,7 @@ TagManager:
   - CargoroomTarget
   - Broom
   - RepairCollisionMinigame
+  - WeldMask
   layers:
   - Default
   - TransparentFX
