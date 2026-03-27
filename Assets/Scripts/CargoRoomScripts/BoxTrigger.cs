@@ -10,9 +10,7 @@ public class BoxTrigger : MonoBehaviour
     private const string PopupName = "BoxPopUp";
     private const string HintName = "BoxInteractHint";
 
-    private List<string> MinigameSceneNames = new() { "CargoMinigame1", "CargoMinigame2"};
-
-    private GameObject popupPanel;
+    public GameObject popupPanel;
     private GameObject hintLabel;
     private GameObject startGameButton;
     private bool canInteract;
@@ -91,7 +89,6 @@ public class BoxTrigger : MonoBehaviour
 
     private void ShowPopup()
     {
-        EnsurePopup();
         if (popupPanel == null || Global.currentRoom != "CargoRoom")
         {
             return;
@@ -142,9 +139,10 @@ public class BoxTrigger : MonoBehaviour
         return popupPanel != null && popupPanel.activeSelf;
     }
 
+    /*
     private void EnsurePopup()
     {
-        if (popupPanel != null || Global.currentRoom != "CargoRoom")
+        if (popupPanel != null)
         {
             return;
         }
@@ -217,6 +215,7 @@ public class BoxTrigger : MonoBehaviour
 
         popupPanel.SetActive(false);
     }
+    */
 
     private void EnsureHint(Canvas canvas)
     {

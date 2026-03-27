@@ -22,6 +22,7 @@ public class CargoMinigameController : MonoBehaviour
     {
         targets = GameObject.FindGameObjectsWithTag("CargoroomTarget");
         player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<PlayerMovement2D>().enabled = true;
 
         transform = completedPanelTransform;
         if (transform == null)

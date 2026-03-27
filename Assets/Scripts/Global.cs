@@ -197,6 +197,11 @@ public class Global : MonoBehaviour
         CheckWin();
     }
 
+    public static void NextMinigame()
+    {
+        currentRoomCompleted = true;
+    }
+
     private void Timer()
     {   
         if(timerText == null)
