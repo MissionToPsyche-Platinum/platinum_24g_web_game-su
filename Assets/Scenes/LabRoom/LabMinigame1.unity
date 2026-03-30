@@ -9207,7 +9207,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.03836608, y: -0.013608962}
+  m_Offset: {x: -0.02344191, y: -0.0136089325}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -9217,7 +9217,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.30954367, y: 0.19303763}
+  m_Size: {x: 0.4587834, y: 0.3323282}
   m_EdgeRadius: 0
 --- !u!114 &1172216388
 MonoBehaviour:
@@ -11972,7 +11972,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillPopupController
   spillPopup: {fileID: 1705100972}
-  minigameSceneName: LabMinigame
+  minigameSceneNames:
+  - LabMinigame1
+  - LabMinigame2
 --- !u!114 &1705100975
 MonoBehaviour:
   m_ObjectHideFlags: 0
