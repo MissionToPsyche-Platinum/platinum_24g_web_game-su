@@ -4,9 +4,9 @@ using UnityEngine.UI;
 
 public class RestarterScript : MonoBehaviour
 {
-    private const string HintName = "BoxInteractHint";
 
     public GameObject helpPanel;
+    public GameObject hint;
     private GameObject player;
 
     private GameObject hintLabel;
@@ -38,13 +38,10 @@ public class RestarterScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (hintLabel == null)
+        if (hint == null)
         {
-            Canvas canvas = FindFirstObjectByType<Canvas>();
-            if (canvas != null)
-            {
-                EnsureHint(canvas);
-            }
+            Debug.LogError("RestarterScript: hint is NOT assigned in Inspector.");
+            return; ;
         }
 
         ToggleHint(true);
@@ -57,39 +54,10 @@ public class RestarterScript : MonoBehaviour
 
     private void ToggleHint(bool isVisible)
     {
-        if (hintLabel != null)
+        if (hint != null)
         {
-            hintLabel.SetActive(isVisible);
+            hint.SetActive(isVisible);
         }
-    }
-
-    private void EnsureHint(Canvas canvas)
-    {
-        if (hintLabel != null)
-        {
-            return;
-        }
-
-        hintLabel = new GameObject(HintName, typeof(RectTransform), typeof(CanvasRenderer), typeof(Text));
-        hintLabel.transform.SetParent(canvas.transform, false);
-        hintLabel.transform.SetAsLastSibling();
-
-        RectTransform hintTransform = hintLabel.GetComponent<RectTransform>();
-        hintTransform.anchorMin = new Vector2(0.5f, 0.5f);
-        hintTransform.anchorMax = new Vector2(0.5f, 0.5f);
-        hintTransform.pivot = new Vector2(0.5f, 0.5f);
-        hintTransform.sizeDelta = new Vector2(300f, 40f);
-        hintTransform.anchoredPosition = new Vector2(0f, -140f);
-
-        Text hintText = hintLabel.GetComponent<Text>();
-        hintText.text = "Press E to interact";
-        hintText.alignment = TextAnchor.MiddleCenter;
-        hintText.color = Color.white;
-        hintText.fontSize = 18;
-        hintText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-        hintText.raycastTarget = false;
-
-        hintLabel.SetActive(false);
     }
 
     public void RestartMinigame()
