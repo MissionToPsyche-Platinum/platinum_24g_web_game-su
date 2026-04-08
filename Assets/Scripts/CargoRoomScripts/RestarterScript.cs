@@ -9,8 +9,6 @@ public class RestarterScript : MonoBehaviour
     public GameObject hint;
     private GameObject player;
 
-    private GameObject hintLabel;
-
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
