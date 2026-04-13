@@ -9,6 +9,8 @@ public class RestarterScript : MonoBehaviour
     public GameObject hint;
     private GameObject player;
 
+    [SerializeField] private AudioClip blipSoundClip;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -19,6 +21,10 @@ public class RestarterScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            if (SoundFXManager.instance != null)
+            {
+                SoundFXManager.instance.PlaySoundFXClip(blipSoundClip, transform, 1f);
+            }
             helpPanel.SetActive(true);
             player.GetComponent<PlayerMovement2D>().enabled = false;
             player.GetComponent<Animator>().SetBool("IsMoving", false);
@@ -27,6 +33,10 @@ public class RestarterScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (SoundFXManager.instance != null)
+            {
+                SoundFXManager.instance.PlaySoundFXClip(blipSoundClip, transform, 1f);
+            }
             helpPanel.SetActive(false);
             player.GetComponent<PlayerMovement2D>().enabled = true;
 

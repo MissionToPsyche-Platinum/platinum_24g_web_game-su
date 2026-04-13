@@ -1176,7 +1176,6 @@ GameObject:
   - component: {fileID: 366579941}
   - component: {fileID: 366579940}
   - component: {fileID: 366579939}
-  - component: {fileID: 366579938}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1184,20 +1183,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &366579938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 366579937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92f02d1aa241fba4aaec284b4b12d37d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RestarterScript
-  helpPanel: {fileID: 1181549581}
-  hint: {fileID: 0}
 --- !u!114 &366579939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1380,7 +1365,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 366579938}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: RestarterScript, Assembly-CSharp
         m_MethodName: RestartMinigame
         m_Mode: 1
@@ -4662,6 +4647,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TargetChanger
   occupied: 0
+  occupiedSoundClip: {fileID: 8300000, guid: 029c22788afbd4e419cad25cc6c72de0, type: 3}
+  unoccupiedSoundClip: {fileID: 8300000, guid: 932df7358c39817448a6547b936b09e2, type: 3}
 --- !u!58 &1078718328
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6733,6 +6720,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   warning: {fileID: 15638952}
   correction: {fileID: 1270873583}
+  pushSoundClips:
+  - {fileID: 8300000, guid: f9bc1e42ae71d704cbd5341cfc40e9c0, type: 3}
+  - {fileID: 8300000, guid: aa35e43f61e84cd489851bef541e9db9, type: 3}
+  - {fileID: 8300000, guid: 1a4c2ee70e253e94ea67bcab7feab620, type: 3}
 --- !u!50 &1256698860
 Rigidbody2D:
   serializedVersion: 5
@@ -7614,6 +7605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   helpPanel: {fileID: 1181549581}
   hint: {fileID: 1081962219}
+  blipSoundClip: {fileID: 8300000, guid: cbf2cf396b03d904bb3a25ced35ae4e7, type: 3}
 --- !u!61 &1727966780
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8066,6 +8058,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TargetChanger
   occupied: 0
+  occupiedSoundClip: {fileID: 8300000, guid: 029c22788afbd4e419cad25cc6c72de0, type: 3}
+  unoccupiedSoundClip: {fileID: 8300000, guid: 932df7358c39817448a6547b936b09e2, type: 3}
 --- !u!58 &1975544984
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8682,6 +8676,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   warning: {fileID: 155526587}
   correction: {fileID: 1034024805}
+  pushSoundClips:
+  - {fileID: 8300000, guid: f9bc1e42ae71d704cbd5341cfc40e9c0, type: 3}
+  - {fileID: 8300000, guid: aa35e43f61e84cd489851bef541e9db9, type: 3}
+  - {fileID: 8300000, guid: 1a4c2ee70e253e94ea67bcab7feab620, type: 3}
 --- !u!50 &2094216926
 Rigidbody2D:
   serializedVersion: 5

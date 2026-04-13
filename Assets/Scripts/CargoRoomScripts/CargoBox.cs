@@ -6,8 +6,9 @@ public class CargoBox : MonoBehaviour
     private Rigidbody2D rb;
     public GameObject warning;
     public GameObject correction;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
+    [SerializeField] private AudioClip[] pushSoundClips;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -19,8 +20,10 @@ public class CargoBox : MonoBehaviour
     {
         if(rb.linearVelocity.y != 0 || rb.linearVelocity.x != 0)
         {
+            
             Vector2 movementVelocity = rb.linearVelocity *= -0.99f;
             rb.linearVelocity = Vector2.Max(movementVelocity, Vector2.zero);
+            //SoundFXManager.instance.PlayRandomSoundFXClip(pushSoundClips, transform, 1f);
         }
     }
 
@@ -29,13 +32,9 @@ public class CargoBox : MonoBehaviour
 
         if (hit.transform.CompareTag("Player"))
         {
-            //Rigidbody box = hit.collider.attachedRigidbody;
-
-            //if (box != null) return;
             Vector2 pushDir = new Vector2(hit.moveDirection.x, hit.moveDirection.y);
 
             rb.linearVelocity = pushDir;
-
         }
     }
 
