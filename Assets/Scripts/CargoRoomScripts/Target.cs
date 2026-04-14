@@ -6,6 +6,8 @@ public class Target : MonoBehaviour
     public bool occupied;
     private CargoBox box;
 
+    [SerializeField] private AudioClip occupiedSoundClip;
+    [SerializeField] private AudioClip unoccupiedSoundClip;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,11 +16,6 @@ public class Target : MonoBehaviour
         occupied = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -32,6 +29,11 @@ public class Target : MonoBehaviour
             //Debug.Log("Box entered");
             animator.SetBool("ContainsBox", true);
             occupied = true;
+            if (SoundFXManager.instance != null)
+            {
+                SoundFXManager.instance.PlaySoundFXClip(occupiedSoundClip, transform, 1f);
+            }
+
         }
     }
 
@@ -41,12 +43,17 @@ public class Target : MonoBehaviour
         {
             if (collision.gameObject.TryGetComponent(out CargoBox box))
             {
-                box.SwitchSprite(true);
+                box.SwitchSprite(false);
             }
             //Debug.Log("Box exited");
 
             animator.SetBool("ContainsBox", false);
             occupied = false;
+            if (SoundFXManager.instance != null && gameObject.scene.isLoaded)
+            {
+                SoundFXManager.instance.PlaySoundFXClip(unoccupiedSoundClip, transform, 1f);
+            }
+
         }
     }
 }

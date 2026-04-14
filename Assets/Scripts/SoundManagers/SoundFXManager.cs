@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using UnityEngine;
 
 public class SoundFXManager : MonoBehaviour
@@ -8,17 +9,22 @@ public class SoundFXManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
+        }
+        else if (instance != this && instance != null)
+        {
+            Destroy(gameObject);
         }
     }
 
     public void PlaySoundFXClip(AudioClip audioClip, Transform spawnTransform, float volume)
     {
+
         //spawn in gameObject
         AudioSource audioSource = Instantiate(soundFXObject, spawnTransform.position, Quaternion.identity);
-        
+
         //assign audioClip
         audioSource.clip = audioClip;
 
@@ -31,8 +37,33 @@ public class SoundFXManager : MonoBehaviour
         //get length of sound FX clip
         float clipLength = audioSource.clip.length;
 
-        //destory clip after done playing
-        Destroy(audioSource.gameObject);
+        //destroy clip after done playing
+        Destroy(audioSource.gameObject, clipLength);
+    }
+
+    public void PlayRandomSoundFXClip(AudioClip[] audioClip, Transform spawnTransform, float volume)
+    {
+
+        //assign random index
+        int rand = Random.Range(0, audioClip.Length);
+
+        //spawn in gameObject
+        AudioSource audioSource = Instantiate(soundFXObject, spawnTransform.position, Quaternion.identity);
+
+        //assign audioClip
+        audioSource.clip = audioClip[rand];
+
+        //assign volume
+        audioSource.volume = volume;
+
+        //play sound
+        audioSource.Play();
+
+        //get length of sound FX clip
+        float clipLength = audioSource.clip.length;
+
+        //destroy clip after done playing
+        Destroy(audioSource.gameObject, clipLength);
 
     }
 }

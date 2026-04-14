@@ -11,6 +11,8 @@ TagManager:
   - RepairCollisionMinigame
   - WeldMask
   - Timer
+  - Undefined
+  - Audio
   layers:
   - Default
   - TransparentFX
