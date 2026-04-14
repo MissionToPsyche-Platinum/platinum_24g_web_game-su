@@ -9,15 +9,14 @@ public class SoundFXManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
-        else
+        else if (instance != this && instance != null)
         {
             Destroy(gameObject);
         }
-
     }
 
     public void PlaySoundFXClip(AudioClip audioClip, Transform spawnTransform, float volume)
@@ -25,7 +24,7 @@ public class SoundFXManager : MonoBehaviour
 
         //spawn in gameObject
         AudioSource audioSource = Instantiate(soundFXObject, spawnTransform.position, Quaternion.identity);
-        
+
         //assign audioClip
         audioSource.clip = audioClip;
 
@@ -38,14 +37,8 @@ public class SoundFXManager : MonoBehaviour
         //get length of sound FX clip
         float clipLength = audioSource.clip.length;
 
-        //destory clip after done playing
+        //destroy clip after done playing
         Destroy(audioSource.gameObject, clipLength);
-
-        Invoke("Test",1f);
-    }
-    private void Test()
-    {
-        Debug.Log("test");
     }
 
     public void PlayRandomSoundFXClip(AudioClip[] audioClip, Transform spawnTransform, float volume)
@@ -69,7 +62,7 @@ public class SoundFXManager : MonoBehaviour
         //get length of sound FX clip
         float clipLength = audioSource.clip.length;
 
-        //destory clip after done playing
+        //destroy clip after done playing
         Destroy(audioSource.gameObject, clipLength);
 
     }
