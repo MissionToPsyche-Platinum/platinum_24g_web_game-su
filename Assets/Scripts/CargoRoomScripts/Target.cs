@@ -49,7 +49,7 @@ public class Target : MonoBehaviour
 
             animator.SetBool("ContainsBox", false);
             occupied = false;
-            if (SoundFXManager.instance != null)
+            if (SoundFXManager.instance != null && gameObject.scene.isLoaded)
             {
                 SoundFXManager.instance.PlaySoundFXClip(unoccupiedSoundClip, transform, 1f);
             }
