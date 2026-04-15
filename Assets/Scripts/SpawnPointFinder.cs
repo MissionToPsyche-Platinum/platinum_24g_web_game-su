@@ -93,7 +93,7 @@ public class SpawnPointFinder : MonoBehaviour
                 }
             }
         }
-        else if (currScene == "ControlRoomMinigame")
+        else if (currScene.StartsWith("ControlRoomMinigame"))
         {
             spawnPoint = GameObject.Find("PostMiniSpawnpoint");
             if (spawnPoint != null)

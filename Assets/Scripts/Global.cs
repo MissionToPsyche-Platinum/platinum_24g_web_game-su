@@ -152,6 +152,13 @@ public class Global : MonoBehaviour
         AwardFact();
         CheckWin();
     }
+
+    public static void MinigameScoreNoFact(int score)
+    {
+        totalScore += score;
+        lastAwardedFactText = "";
+        CheckWin();
+    }
     public static void SubtractScore(int score)
     {
         totalScore -= score;

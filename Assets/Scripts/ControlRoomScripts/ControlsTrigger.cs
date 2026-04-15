@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,9 @@ public class ControlsTrigger : MonoBehaviour
     [SerializeField] private Vector2 startButtonAnchoredPosition = new Vector2(0f, 0f);
     [SerializeField] private Vector2 popupAnchoredPosition = new Vector2(400f, 0f);
     [SerializeField] private Vector2 hintSize = new Vector2(300f, 40f);
+
+    [Header("Minigame Scenes (Round 1 -> index 0, Round 2 -> index 1)")]
+    [SerializeField] private List<string> minigameSceneNames = new() { "ControlRoomMinigame1", "ControlRoomMinigame2" };
 
     private GameObject popupPanel;
     private GameObject hintLabel;
@@ -207,10 +211,44 @@ public class ControlsTrigger : MonoBehaviour
 
         startGameButton.GetComponent<Button>().onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("ControlRoomMinigame", LoadSceneMode.Single);
+            StartMinigame();
         });
 
         popupPanel.SetActive(false);
+    }
+
+    private void StartMinigame()
+    {
+        if (minigameSceneNames == null || minigameSceneNames.Count == 0)
+        {
+            Debug.LogError("ControlsTrigger: No control minigame scenes assigned.");
+            return;
+        }
+
+        List<string> loadableScenes = new();
+        foreach (string sceneName in minigameSceneNames)
+        {
+            if (!string.IsNullOrWhiteSpace(sceneName) && Application.CanStreamedLevelBeLoaded(sceneName))
+            {
+                loadableScenes.Add(sceneName);
+            }
+        }
+
+        if (loadableScenes.Count == 0)
+        {
+            Debug.LogError("ControlsTrigger: None of the configured control minigame scenes are in Build Settings.");
+            return;
+        }
+
+        if (Global.round <= loadableScenes.Count)
+        {
+            SceneManager.LoadScene(loadableScenes[Global.round - 1], LoadSceneMode.Single);
+        }
+        else
+        {
+            int choice = Random.Range(0, loadableScenes.Count);
+            SceneManager.LoadScene(loadableScenes[choice], LoadSceneMode.Single);
+        }
     }
 
     private void EnsureHint(Canvas canvas)

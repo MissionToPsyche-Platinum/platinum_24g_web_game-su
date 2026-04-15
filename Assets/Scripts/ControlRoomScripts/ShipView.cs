@@ -30,6 +30,7 @@ public class ShipView : MonoBehaviour
     private float startRotationZ;
     private bool playing;
     private float targetAngleFromVertical;
+    private Vector2 stabilityJitter;
 
     private void Awake()
     {
@@ -80,9 +81,34 @@ public class ShipView : MonoBehaviour
         StartCoroutine(PlayCourseCorrectionRoutine(finalPoint));
     }
 
+    public void SetInstability(float intensity01)
+    {
+        if (shipRoot == null)
+        {
+            return;
+        }
+
+        if (playing)
+        {
+            return;
+        }
+
+        float clamped = Mathf.Clamp01(intensity01);
+        Vector2 nextJitter = Random.insideUnitCircle * (6f * clamped);
+        stabilityJitter = Vector2.Lerp(stabilityJitter, nextJitter, 0.35f);
+        shipRoot.anchoredPosition = startPos + stabilityJitter;
+
+        if (!playing)
+        {
+            float jitterRotation = Mathf.Lerp(0f, 4f, clamped) * Mathf.Sin(Time.time * 18f);
+            shipRoot.localEulerAngles = new Vector3(0f, 0f, startRotationZ + jitterRotation);
+        }
+    }
+
     private IEnumerator PlayCourseCorrectionRoutine(Vector2 finalPoint)
     {
         playing = true;
+        stabilityJitter = Vector2.zero;
         shipRoot.anchoredPosition = startPos;
         shipRoot.localEulerAngles = new Vector3(0f, 0f, startRotationZ);
 
