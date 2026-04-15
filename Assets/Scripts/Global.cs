@@ -24,6 +24,7 @@ public class Global : MonoBehaviour
     public static bool repairCollisionMinigamePlayed = false;
     public RectTransform repairMinigamePanel;
     private static bool showRepairPopup = true;
+    private bool repairPopupButtonBound = false;
 
     public static int round = 1;
     public static string currentRoom = "";
@@ -76,20 +77,23 @@ public class Global : MonoBehaviour
             if(repairMinigamePanel != null && showRepairPopup)
             {
                 repairMinigamePanel.gameObject.SetActive(true);
-                repairMinigamePanel.anchoredPosition = new Vector2(0f, 0f);
+                repairMinigamePanel.anchoredPosition = Vector2.zero;
+                SetPlayerMovementLocked(true);
 
                 Transform returnButton = repairMinigamePanel.Find("ReturnButton");
-                if (returnButton != null)
+                if (returnButton != null && !repairPopupButtonBound)
                 {
                     Button button = returnButton.GetComponent<Button>();
 
                     if (button != null)
                     {
+                        repairPopupButtonBound = true;
                         button.onClick.AddListener(() =>
                         {
                             timerStarted = true;
                             showRepairPopup = false;
                             repairMinigamePanel.gameObject.SetActive(false);
+                            SetPlayerMovementLocked(false);
                         });
                     }
                     else
@@ -112,6 +116,32 @@ public class Global : MonoBehaviour
                     child.gameObject.SetActive(true);
                 }
             }
+        }
+        else if (!showRepairPopup)
+        {
+            SetPlayerMovementLocked(false);
+        }
+    }
+
+    private void SetPlayerMovementLocked(bool locked)
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null)
+        {
+            return;
+        }
+
+        PlayerMovement2D movement = player.GetComponent<PlayerMovement2D>();
+        Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+
+        if (movement != null)
+        {
+            movement.enabled = !locked;
+        }
+
+        if (locked && rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
         }
     }
 
