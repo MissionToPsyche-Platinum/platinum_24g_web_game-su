@@ -9,7 +9,7 @@ public class ShipView : MonoBehaviour
     [SerializeField] private RectTransform dottedTrajectoryRoot;
 
     [Header("Trajectory")]
-    [SerializeField] private float travelDistancePixels = 380f;
+    [SerializeField] private float travelDistancePixels = 410f;
     [SerializeField] private float targetAngleMinFromVertical = -30f;
     [SerializeField] private float targetAngleMaxFromVertical = 30f;
     [SerializeField] private float maxMissAngle = 22f;
@@ -77,7 +77,9 @@ public class ShipView : MonoBehaviour
         Vector2 finalPoint = startPos + DirectionFromVertical(finalAngleFromVertical) * travelDistancePixels;
 
         RefreshTargetLine();
-        BuildDottedPath(dottedTrajectoryRoot, startPos, finalPoint, dotSpacing, dotSize, dotColor, "TrajectoryDot");
+        Vector2 localStart = GetLocalPathPoint(dottedTrajectoryRoot, startPos);
+        Vector2 localFinalPoint = GetLocalPathPoint(dottedTrajectoryRoot, finalPoint);
+        BuildDottedPath(dottedTrajectoryRoot, localStart, localFinalPoint, dotSpacing, dotSize, dotColor, "TrajectoryDot");
         StartCoroutine(PlayCourseCorrectionRoutine(finalPoint));
     }
 
@@ -152,8 +154,9 @@ public class ShipView : MonoBehaviour
             return;
         }
 
-        Vector2 targetEnd = startPos + DirectionFromVertical(targetAngleFromVertical) * travelDistancePixels;
-        BuildDottedPath(targetTrajectoryDotsRoot, startPos, targetEnd, targetDotSpacing, targetDotSize, targetDotColor, "TargetDot");
+        Vector2 localStart = GetLocalPathPoint(targetTrajectoryDotsRoot, startPos);
+        Vector2 localTargetEnd = localStart + DirectionFromVertical(targetAngleFromVertical) * travelDistancePixels;
+        BuildDottedPath(targetTrajectoryDotsRoot, localStart, localTargetEnd, targetDotSpacing, targetDotSize, targetDotColor, "TargetDot");
     }
 
     private void BuildDottedPath(RectTransform root, Vector2 from, Vector2 to, float spacing, float size, Color color, string dotName)
@@ -214,6 +217,11 @@ public class ShipView : MonoBehaviour
         }
 
         return Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+    }
+
+    private static Vector2 GetLocalPathPoint(RectTransform root, Vector2 pointInParentSpace)
+    {
+        return root != null ? pointInParentSpace - root.anchoredPosition : pointInParentSpace;
     }
 
 }

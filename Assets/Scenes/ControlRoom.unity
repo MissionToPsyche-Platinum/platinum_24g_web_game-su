@@ -7359,9 +7359,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1830e4eae144b459c9d2c341e5b041c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ControlsTrigger
-  hintAnchoredPosition: {x: -120, y: 0}
+  hintAnchoredPosition: {x: 0, y: 0}
   startButtonAnchoredPosition: {x: 0, y: 0}
-  popupAnchoredPosition: {x: -120, y: 0}
+  popupAnchoredPosition: {x: 0, y: 0}
   hintSize: {x: 300, y: 40}
 --- !u!61 &2028972068
 BoxCollider2D:

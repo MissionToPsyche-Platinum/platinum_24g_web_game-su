@@ -108,6 +108,7 @@ public class ControlsMinigameController : MonoBehaviour
     private float cumulativeStabilityNormalized;
     private float lowestStabilityNormalized = 1f;
     private float stabilityFillMaxHeight;
+    private bool stabilityEnabled;
 
     public void Bind(
         ControlsTargetGenerator targetGeneratorRef,
@@ -120,7 +121,8 @@ public class ControlsMinigameController : MonoBehaviour
         Image stabilityFillRef,
         Image stabilityPanelRef,
         MiniGameResultsPopup factCardPopupRef,
-        ShipView shipViewRef)
+        ShipView shipViewRef,
+        bool stabilityEnabledRef)
     {
         targetGenerator = targetGeneratorRef;
         headingVisual = headingVisualRef;
@@ -133,6 +135,7 @@ public class ControlsMinigameController : MonoBehaviour
         stabilityPanel = stabilityPanelRef;
         factCardPopup = factCardPopupRef;
         shipView = shipViewRef;
+        stabilityEnabled = stabilityEnabledRef;
     }
 
     private void Start()
@@ -170,7 +173,7 @@ public class ControlsMinigameController : MonoBehaviour
         thrustValue = currentThrust;
         headingPhase = 0.5f;
         thrustPhase = 0.5f;
-        if (stabilityFill != null)
+        if (stabilityEnabled && stabilityFill != null)
         {
             stabilityFillMaxHeight = stabilityFill.rectTransform.sizeDelta.y;
         }
@@ -202,7 +205,10 @@ public class ControlsMinigameController : MonoBehaviour
             return;
         }
 
-        UpdateStability();
+        if (stabilityEnabled)
+        {
+            UpdateStability();
+        }
         HandleModeSwitch();
         HandleInput();
 
@@ -221,7 +227,10 @@ public class ControlsMinigameController : MonoBehaviour
             correctionWindowVisual.SetCurrent(correctionWindowTimer);
         }
 
-        UpdateStabilityVisuals();
+        if (stabilityEnabled)
+        {
+            UpdateStabilityVisuals();
+        }
 
         if (state == GameState.CourseCorrection)
         {
@@ -250,7 +259,10 @@ public class ControlsMinigameController : MonoBehaviour
 
     private void HandleInput()
     {
-        HandleStabilityInput();
+        if (stabilityEnabled)
+        {
+            HandleStabilityInput();
+        }
 
         switch (mode)
         {
@@ -375,6 +387,11 @@ public class ControlsMinigameController : MonoBehaviour
 
     private void UpdateStabilityVisuals()
     {
+        if (!stabilityEnabled)
+        {
+            return;
+        }
+
         float stabilityNormalized = GetStabilityNormalized();
         Color uiColor = GetStabilityColor();
 
@@ -414,11 +431,21 @@ public class ControlsMinigameController : MonoBehaviour
 
     private float GetCurrentHeadingSpeed()
     {
+        if (!stabilityEnabled)
+        {
+            return headingSpeed;
+        }
+
         return headingSpeed * GetCurrentOscillationMultiplier();
     }
 
     private float GetCurrentThrustSpeed()
     {
+        if (!stabilityEnabled)
+        {
+            return thrustSpeed;
+        }
+
         return thrustSpeed * GetCurrentOscillationMultiplier();
     }
 
@@ -430,6 +457,11 @@ public class ControlsMinigameController : MonoBehaviour
 
     private float GetCriticalInstability01()
     {
+        if (!stabilityEnabled)
+        {
+            return 0f;
+        }
+
         if (criticalStabilityThreshold <= 0f)
         {
             return 0f;
@@ -537,11 +569,15 @@ public class ControlsMinigameController : MonoBehaviour
 
         float weighted = Mathf.Clamp01(headingWeight * headingNorm + thrustWeight * thrustNorm + correctionWindowWeight * correctionWindowNorm);
         float baseAccuracy = 100f * (1f - weighted);
-        float averageStabilityNormalized = stabilitySampleDuration > 0f
-            ? cumulativeStabilityNormalized / stabilitySampleDuration
-            : GetStabilityNormalized();
-        float stabilityQuality = Mathf.Clamp01((averageStabilityNormalized + lowestStabilityNormalized) * 0.5f);
-        float stabilityPenalty = (1f - stabilityQuality) * 100f * Mathf.Max(stabilityScorePenaltyWeight, 0f);
+        float stabilityPenalty = 0f;
+        if (stabilityEnabled)
+        {
+            float averageStabilityNormalized = stabilitySampleDuration > 0f
+                ? cumulativeStabilityNormalized / stabilitySampleDuration
+                : GetStabilityNormalized();
+            float stabilityQuality = Mathf.Clamp01((averageStabilityNormalized + lowestStabilityNormalized) * 0.5f);
+            stabilityPenalty = (1f - stabilityQuality) * 100f * Mathf.Max(stabilityScorePenaltyWeight, 0f);
+        }
         int distance = Mathf.Clamp(Mathf.RoundToInt(baseAccuracy - stabilityPenalty), 0, 100);
         int stars = ComputeStars(distance);
         int score = ComputeScoreFromStars(stars);
@@ -557,10 +593,10 @@ public class ControlsMinigameController : MonoBehaviour
 
         string label = mode switch
         {
-            ControlMode.Heading => "Heading: Press Space to lock angle | Tap C to stabilize",
-            ControlMode.Thrust => "Thrust: Press Space to lock power | Tap C to stabilize",
-            ControlMode.CorrectionWindow => "Correction Window: Hold Space to set duration | Tap C to stabilize",
-            _ => "Heading: Press Space to lock angle | Tap C to stabilize"
+            ControlMode.Heading => stabilityEnabled ? "Heading: Press Space to lock angle | Tap C to stabilize" : "Heading: Press Space to lock angle",
+            ControlMode.Thrust => stabilityEnabled ? "Thrust: Press Space to lock power | Tap C to stabilize" : "Thrust: Press Space to lock power",
+            ControlMode.CorrectionWindow => stabilityEnabled ? "Correction Window: Hold Space to set duration | Tap C to stabilize" : "Correction Window: Hold Space to set duration",
+            _ => stabilityEnabled ? "Heading: Press Space to lock angle | Tap C to stabilize" : "Heading: Press Space to lock angle"
         };
 
         modeText.text = label;

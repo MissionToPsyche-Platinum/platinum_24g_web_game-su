@@ -165,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   factBank: {fileID: 4900000, guid: c9d50fd1770c941f1bc3cba610335620, type: 3}
   shuttleSprite: {fileID: -6464869995595449900, guid: 14936dd7605d74236a3baf9a59f229e7, type: 3}
-  shuttleSize: {x: 180, y: 220}
+  shuttleSize: {x: 133, y: 161}
   shuttleTint: {r: 1, g: 1, b: 1, a: 1}
   panelColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.95}
   accentColor: {r: 0.2, g: 0.55, b: 0.75, a: 1}

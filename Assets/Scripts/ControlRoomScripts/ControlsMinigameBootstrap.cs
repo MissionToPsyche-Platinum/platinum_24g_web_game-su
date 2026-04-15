@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ControlsMinigameBootstrap : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class ControlsMinigameBootstrap : MonoBehaviour
     [SerializeField] private Sprite shuttleSprite;
 
     [Header("Ship Art")]
-    [SerializeField] private Vector2 shuttleSize = new Vector2(140f, 170f);
+    [SerializeField] private Vector2 shuttleSize = new Vector2(133f, 161f);
     [SerializeField] private Color shuttleTint = Color.white;
 
     [Header("Colors")]
@@ -18,6 +19,8 @@ public class ControlsMinigameBootstrap : MonoBehaviour
 
     private void Awake()
     {
+        bool stabilityEnabled = SceneManager.GetActiveScene().name == "ControlRoomMinigame2";
+
         EnsureEventSystem();
         Canvas canvas = EnsureCanvas();
         if (canvas == null)
@@ -27,6 +30,9 @@ public class ControlsMinigameBootstrap : MonoBehaviour
         }
 
         Font defaultFont = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        float controlPanelX = stabilityEnabled ? 55f : -15f;
+        Vector2 trajectoryOffset = stabilityEnabled ? new Vector2(0f, 40f) : new Vector2(0f, 30f);
+        Vector2 shipOffset = stabilityEnabled ? new Vector2(0f, -80f) : new Vector2(-55f, -20f);
 
         CreateBackground(canvas.transform, backgroundColor);
 
@@ -42,14 +48,25 @@ public class ControlsMinigameBootstrap : MonoBehaviour
             new Vector2(980f, 32f),
             16,
             defaultFont,
-            "Goal: You have veered slightly off course! Lock heading, thrust, and correction timing while tapping C to maintain stability.");
+            stabilityEnabled
+                ? "Goal: You have veered slightly off course! Lock heading, thrust, and correction timing while tapping C to maintain stability."
+                : "Goal: You have veered slightly off course! Lock heading, thrust, and correction timing to restore the planned trajectory.");
         instructionText.color = new Color(0.82f, 0.88f, 0.95f, 1f);
         CreateTrajectoryLegend(canvas.transform, defaultFont);
-        Text modeText = CreateText(canvas.transform, "ModeText", new Vector2(0f, -265f), new Vector2(960f, 32f), 18, defaultFont, "Heading: Press Space to lock angle | Tap C to stabilize");
+        Text modeText = CreateText(
+            canvas.transform,
+            "ModeText",
+            new Vector2(0f, -265f),
+            new Vector2(960f, 32f),
+            18,
+            defaultFont,
+            stabilityEnabled
+                ? "Heading: Press Space to lock angle | Tap C to stabilize"
+                : "Heading: Press Space to lock angle");
 
-        RectTransform headingPanel = CreatePanel(leftPanel, "HeadingPanel", new Vector2(55f, 190f), new Vector2(520f, 180f));
-        RectTransform thrustPanel = CreatePanel(leftPanel, "ThrustPanel", new Vector2(55f, 0f), new Vector2(520f, 180f));
-        RectTransform correctionWindowPanel = CreatePanel(leftPanel, "CorrectionWindowPanel", new Vector2(55f, -190f), new Vector2(520f, 180f));
+        RectTransform headingPanel = CreatePanel(leftPanel, "HeadingPanel", new Vector2(controlPanelX, 190f), new Vector2(520f, 180f));
+        RectTransform thrustPanel = CreatePanel(leftPanel, "ThrustPanel", new Vector2(controlPanelX, 0f), new Vector2(520f, 180f));
+        RectTransform correctionWindowPanel = CreatePanel(leftPanel, "CorrectionWindowPanel", new Vector2(controlPanelX, -190f), new Vector2(520f, 180f));
 
         CreateText(headingPanel, "HeadingTitle", new Vector2(0f, 60f), new Vector2(500f, 26f), 18, defaultFont, "HEADING");
         CreateText(thrustPanel, "ThrustTitle", new Vector2(0f, 60f), new Vector2(500f, 26f), 18, defaultFont, "THRUST");
@@ -68,24 +85,32 @@ public class ControlsMinigameBootstrap : MonoBehaviour
         Text correctionWindowCurrentText = CreateText(correctionWindowPanel, "CorrectionWindowCurrentText", new Vector2(0f, 10f), new Vector2(300f, 26f), 16, defaultFont, "Window Set: 0.00s");
         Image correctionWindowFill = CreateFillBar(correctionWindowPanel, "CorrectionWindowFill", new Vector2(0f, -30f), new Vector2(360f, 16f), new Color(0.2f, 0.75f, 0.9f, 1f));
 
-        RectTransform targetTrajectoryDotsRoot = CreateTrajectoryDotsRoot(rightPanel, "TargetTrajectoryDotsRoot", new Vector2(0f, 40f));
-        RectTransform dottedTrajectoryRoot = CreateTrajectoryDotsRoot(rightPanel, "FinalTrajectoryDotsRoot", new Vector2(0f, 40f));
-        RectTransform shipRoot = CreateShipView(rightPanel, "ShipRoot");
-        RectTransform stabilityPanel = CreatePanel(leftPanel, "StabilityPanel", new Vector2(-255f, 0f), new Vector2(140f, 560f));
-        CreateText(stabilityPanel, "StabilityTitle", new Vector2(0f, 220f), new Vector2(132f, 52f), 20, defaultFont, "STABILITY");
-        Text stabilityValueText = CreateText(stabilityPanel, "StabilityValueText", new Vector2(0f, 165f), new Vector2(132f, 48f), 18, defaultFont, "Stability\n100%");
-        Text stabilityHintText = CreateText(stabilityPanel, "StabilityHintText", new Vector2(0f, -210f), new Vector2(132f, 84f), 15, defaultFont, "Tap C to stabilize");
-        stabilityHintText.alignment = TextAnchor.UpperCenter;
-        Image stabilityMeterBackground = CreateFillBar(stabilityPanel, "StabilityMeterBackground", new Vector2(0f, -5f), new Vector2(26f, 300f), new Color(0.16f, 0.18f, 0.24f, 1f));
-        stabilityMeterBackground.type = Image.Type.Simple;
-        Image stabilityFill = CreateFillBar(stabilityPanel, "StabilityFill", new Vector2(0f, -5f), new Vector2(18f, 284f), new Color(0.2f, 0.78f, 0.95f, 1f));
-        stabilityFill.type = Image.Type.Simple;
-        RectTransform stabilityFillRect = stabilityFill.rectTransform;
-        stabilityFillRect.anchorMin = new Vector2(0.5f, 0f);
-        stabilityFillRect.anchorMax = new Vector2(0.5f, 0f);
-        stabilityFillRect.pivot = new Vector2(0.5f, 0f);
-        stabilityFillRect.sizeDelta = new Vector2(18f, 284f);
-        stabilityFillRect.anchoredPosition = Vector2.zero;
+        RectTransform targetTrajectoryDotsRoot = CreateTrajectoryDotsRoot(rightPanel, "TargetTrajectoryDotsRoot", trajectoryOffset);
+        RectTransform dottedTrajectoryRoot = CreateTrajectoryDotsRoot(rightPanel, "FinalTrajectoryDotsRoot", trajectoryOffset);
+        RectTransform shipRoot = CreateShipView(rightPanel, "ShipRoot", shipOffset);
+        RectTransform stabilityPanel = null;
+        Text stabilityValueText = null;
+        Text stabilityHintText = null;
+        Image stabilityFill = null;
+
+        if (stabilityEnabled)
+        {
+            stabilityPanel = CreatePanel(leftPanel, "StabilityPanel", new Vector2(-255f, 0f), new Vector2(140f, 560f));
+            CreateText(stabilityPanel, "StabilityTitle", new Vector2(0f, 220f), new Vector2(132f, 52f), 20, defaultFont, "STABILITY");
+            stabilityValueText = CreateText(stabilityPanel, "StabilityValueText", new Vector2(0f, 165f), new Vector2(132f, 48f), 18, defaultFont, "Stability\n100%");
+            stabilityHintText = CreateText(stabilityPanel, "StabilityHintText", new Vector2(0f, -210f), new Vector2(132f, 84f), 15, defaultFont, "Tap C to stabilize");
+            stabilityHintText.alignment = TextAnchor.UpperCenter;
+            Image stabilityMeterBackground = CreateFillBar(stabilityPanel, "StabilityMeterBackground", new Vector2(0f, -5f), new Vector2(26f, 300f), new Color(0.16f, 0.18f, 0.24f, 1f));
+            stabilityMeterBackground.type = Image.Type.Simple;
+            stabilityFill = CreateFillBar(stabilityPanel, "StabilityFill", new Vector2(0f, -5f), new Vector2(18f, 284f), new Color(0.2f, 0.78f, 0.95f, 1f));
+            stabilityFill.type = Image.Type.Simple;
+            RectTransform stabilityFillRect = stabilityFill.rectTransform;
+            stabilityFillRect.anchorMin = new Vector2(0.5f, 0f);
+            stabilityFillRect.anchorMax = new Vector2(0.5f, 0f);
+            stabilityFillRect.pivot = new Vector2(0.5f, 0f);
+            stabilityFillRect.sizeDelta = new Vector2(18f, 284f);
+            stabilityFillRect.anchoredPosition = Vector2.zero;
+        }
 
         ControlsTargetGenerator targetGenerator = GetOrAddComponent<ControlsTargetGenerator>();
         ControlsMinigameController controller = GetOrAddComponent<ControlsMinigameController>();
@@ -114,9 +139,10 @@ public class ControlsMinigameBootstrap : MonoBehaviour
             stabilityHintText,
             stabilityValueText,
             stabilityFill,
-            stabilityPanel.GetComponent<Image>(),
+            stabilityPanel != null ? stabilityPanel.GetComponent<Image>() : null,
             factCardPopup,
-            shipView);
+            shipView,
+            stabilityEnabled);
     }
 
     private Canvas EnsureCanvas()
@@ -290,7 +316,7 @@ public class ControlsMinigameBootstrap : MonoBehaviour
         return fill;
     }
 
-    private RectTransform CreateShipView(RectTransform parent, string name)
+    private RectTransform CreateShipView(RectTransform parent, string name, Vector2 anchoredPosition)
     {
         GameObject obj = new GameObject(name, typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
         obj.transform.SetParent(parent, false);
@@ -299,7 +325,7 @@ public class ControlsMinigameBootstrap : MonoBehaviour
         rect.anchorMax = new Vector2(0.5f, 0.2f);
         rect.pivot = new Vector2(0.5f, 0.5f);
         rect.sizeDelta = shuttleSize;
-        rect.anchoredPosition = new Vector2(0f, -80f);
+        rect.anchoredPosition = anchoredPosition;
 
         Image image = obj.GetComponent<Image>();
         if (shuttleSprite != null)

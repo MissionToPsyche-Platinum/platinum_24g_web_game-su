@@ -69,7 +69,7 @@ public class ControlsTrigger : MonoBehaviour
 
         if (hintLabel == null)
         {
-            Canvas canvas = FindFirstObjectByType<Canvas>();
+            Canvas canvas = ResolveUiCanvas();
             if (canvas != null)
             {
                 EnsureHint(canvas);
@@ -156,7 +156,7 @@ public class ControlsTrigger : MonoBehaviour
             return;
         }
 
-        Canvas canvas = FindFirstObjectByType<Canvas>();
+        Canvas canvas = ResolveUiCanvas();
         if (canvas == null)
         {
             Debug.LogWarning("ControlsPopup: No Canvas found in scene.");
@@ -215,6 +215,29 @@ public class ControlsTrigger : MonoBehaviour
         });
 
         popupPanel.SetActive(false);
+    }
+
+    private Canvas ResolveUiCanvas()
+    {
+        if (Global.timerText != null)
+        {
+            Canvas timerCanvas = Global.timerText.GetComponentInParent<Canvas>();
+            if (timerCanvas != null)
+            {
+                return timerCanvas;
+            }
+        }
+
+        Canvas[] canvases = FindObjectsByType<Canvas>(FindObjectsSortMode.None);
+        foreach (Canvas canvas in canvases)
+        {
+            if (canvas.renderMode != RenderMode.WorldSpace)
+            {
+                return canvas;
+            }
+        }
+
+        return FindFirstObjectByType<Canvas>();
     }
 
     private void StartMinigame()
