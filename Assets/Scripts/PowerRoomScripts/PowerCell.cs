@@ -5,7 +5,7 @@ public class PowerCell : MonoBehaviour
 {
     public RectTransform indicator; 
     public RectTransform targetZone; 
-    public float speed = 400f; 
+    public float speed; 
     
     [HideInInspector]
     public bool isCalibrated = false;
@@ -13,6 +13,11 @@ public class PowerCell : MonoBehaviour
     private float rightLimit = 800f; 
     private float leftLimit = 10f; 
     private bool movingRight = true;
+
+    void Start()
+    {
+        speed = 400f * Global.round;
+    }
 
     void Update()
     {
@@ -30,7 +35,7 @@ public class PowerCell : MonoBehaviour
 
     public void AttemptCalibration()
     {
-        if (indicator.anchoredPosition.x <= 450 && indicator.anchoredPosition.x >= 400) 
+        if (indicator.anchoredPosition.x <= 420 && indicator.anchoredPosition.x >= 380) 
         {
             isCalibrated = true;
             targetZone.GetComponent<Image>().color = Color.green; // Feedback!
