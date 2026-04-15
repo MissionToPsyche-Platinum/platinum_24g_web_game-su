@@ -16,6 +16,14 @@ public class PlayerMovement2D : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        footstepSource = GetComponent<AudioSource>();
+
+        if (footstepSource != null)
+        {
+        footstepSource.volume = 0.3f;
+        footstepSource.Play();
+        footstepSource.Pause();
+        }
     }
 
     void Update()
@@ -47,22 +55,22 @@ public class PlayerMovement2D : MonoBehaviour
 
         //play audic clip of foosteps when player moves
         if (footstepSource != null)
+    {
+        if (isMoving)
         {
-            if (isMoving)
+            if (!footstepSource.isPlaying)
             {
-                if (!footstepSource.isPlaying)
-                {
-                    footstepSource.Play();
-                }
-            }
-            else
-            {
-                if (footstepSource.isPlaying)
-                {
-                    footstepSource.Stop();
-                }
+                footstepSource.UnPause();
             }
         }
+        else
+        {
+            if (footstepSource.isPlaying)
+            {
+                footstepSource.Pause();
+            }
+        }
+}
 
         Vector2 animDir = lastMoveDir;
         if (isMoving)
