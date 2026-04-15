@@ -56,6 +56,8 @@ public class Global : MonoBehaviour
     {
         if(currentRoomCompleted) //first check if the current minigame is completed
         {
+            //keep track of the room we just finished before moving on
+            lastRoomFromPreviousRound = currentRoom;
             
             if (minigameRoundOrder.Count > 0)
             {
@@ -68,6 +70,7 @@ public class Global : MonoBehaviour
                 Debug.Log($"Current round: {round}");
 
                 RoundStart();
+                currentRoomCompleted = false;
             }
         }
     }
@@ -157,10 +160,25 @@ public class Global : MonoBehaviour
     {
         string[] rooms = new string[] { "LabRoom", "CargoRoom", "PowerRoom", "ControlRoom" };
 
-        foreach(string item in rooms.OrderBy(x => Guid.NewGuid()))
+        //shuffling the rooms
+        List<string> shuffledRooms = rooms.OrderBy(x => Guid.NewGuid()).ToList();
+        //this checks that if we're not in the first round, the new round minigame isn't
+        //the sme as the one we just finished 
+        if (shuffledRooms.Count > 1 && shuffledRooms[0] == lastRoomFromPreviousRound)
+        {
+            int swapIndex = UnityEngine.Random.Range(1, shuffledRooms.Count);
+
+            string temp = shuffledRooms[0];
+            shuffledRooms[0] = shuffledRooms[swapIndex];
+            shuffledRooms[swapIndex] = temp;
+        }
+
+        minigameRoundOrder.Clear();
+
+        foreach(string item in shuffledRooms)
         {
             minigameRoundOrder.Enqueue(item);
-            //Debug.Log(item);
+            Debug.Log(item);
         }
     }
 
