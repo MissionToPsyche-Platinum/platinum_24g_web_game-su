@@ -1,18 +1,25 @@
 using Unity.Mathematics.Geometry;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CargoBox : MonoBehaviour
 {
     private Rigidbody2D rb;
     public GameObject warning;
-    public GameObject correction;
+    public GameObject correct;
     
-    [SerializeField] private AudioClip[] pushSoundClips;
-    
+    private AudioSource audioSource;
+    private Vector3 lastPosition;
+    public float minMoveDistance;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        correction.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
+        correct.SetActive(false);
+
+        lastPosition = transform.position;
+        minMoveDistance = 0.001f;
     }
 
     // Update is called once per frame
@@ -23,8 +30,29 @@ public class CargoBox : MonoBehaviour
             
             Vector2 movementVelocity = rb.linearVelocity *= -0.99f;
             rb.linearVelocity = Vector2.Max(movementVelocity, Vector2.zero);
-            //SoundFXManager.instance.PlayRandomSoundFXClip(pushSoundClips, transform, 1f);
         }
+
+        float distanceMoved = Vector3.Distance(transform.position, lastPosition);
+        if(audioSource != null)
+        {
+            if (distanceMoved >= minMoveDistance)
+            {
+
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                    Debug.Log(distanceMoved);
+                }
+            }
+            else
+            {
+                if (audioSource.isPlaying)
+                {
+                    audioSource.Stop();
+                }
+            }
+        }
+        lastPosition = transform.position;
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -37,10 +65,10 @@ public class CargoBox : MonoBehaviour
             rb.linearVelocity = pushDir;
         }
     }
-
+  
     public void SwitchSprite(bool finished)
     {
-        correction.SetActive(finished);
+        correct.SetActive(finished);
         warning.SetActive(!finished);
     }
 

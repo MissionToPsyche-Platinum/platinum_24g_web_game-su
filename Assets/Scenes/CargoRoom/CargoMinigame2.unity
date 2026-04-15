@@ -6719,7 +6719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   warning: {fileID: 15638952}
-  correction: {fileID: 1270873583}
+  correct: {fileID: 1270873583}
   pushSoundClips:
   - {fileID: 8300000, guid: f9bc1e42ae71d704cbd5341cfc40e9c0, type: 3}
   - {fileID: 8300000, guid: aa35e43f61e84cd489851bef541e9db9, type: 3}
@@ -8675,7 +8675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   warning: {fileID: 155526587}
-  correction: {fileID: 1034024805}
+  correct: {fileID: 1034024805}
   pushSoundClips:
   - {fileID: 8300000, guid: f9bc1e42ae71d704cbd5341cfc40e9c0, type: 3}
   - {fileID: 8300000, guid: aa35e43f61e84cd489851bef541e9db9, type: 3}
