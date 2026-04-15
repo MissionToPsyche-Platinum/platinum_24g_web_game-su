@@ -32,6 +32,8 @@ public class Global : MonoBehaviour
     public static Queue<string> minigameRoundOrder = new();
 
     public static string lastAwardedFactText = "";
+    //for keeping track of the previous minigame room
+    public static string lastRoomFromPreviousRound = ""; 
 
     void Start()
     {
