@@ -11,6 +11,11 @@ public class CargoRoomController : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        if(player == null)
+        {
+            Debug.LogError("CargoRoomController: Player GameObject with tag 'Player' not found in the scene.");
+            return;
+        }
         player.GetComponent<PlayerMovement2D>().enabled = true;
     }
 

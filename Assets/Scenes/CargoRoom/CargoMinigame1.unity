@@ -3124,7 +3124,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   warning: {fileID: 439666983}
   correct: {fileID: 611437625}
-  minMoveDistance: 0.1
 --- !u!50 &456830940
 Rigidbody2D:
   serializedVersion: 5
@@ -7655,7 +7654,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   warning: {fileID: 562212519}
   correct: {fileID: 1835364362}
-  minMoveDistance: 0.1
 --- !u!111 &1792114437
 Animation:
   m_ObjectHideFlags: 0
