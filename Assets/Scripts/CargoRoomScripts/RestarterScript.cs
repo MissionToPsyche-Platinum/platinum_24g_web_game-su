@@ -14,6 +14,11 @@ public class RestarterScript : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        if(player == null)
+        {
+            Debug.LogError("RestarterScript: Player GameObject with tag 'Player' not found in the scene.");
+            return;
+        }
         helpPanel.SetActive(false);
     }
 
