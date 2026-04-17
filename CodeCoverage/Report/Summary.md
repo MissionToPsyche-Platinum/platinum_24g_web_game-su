@@ -1,21 +1,21 @@
 ﻿# Summary
 |||
 |:---|:---|
-| Generated on: | 4/16/2026 - 10:08:04 PM |
+| Generated on: | 4/16/2026 - 10:34:57 PM |
 | Parser: | MultiReportParser (2x OpenCoverParser) |
 | Assemblies: | 4 |
-| Classes: | 92 |
-| Files: | 91 |
-| Covered lines: | 339 |
-| Uncovered lines: | 5743 |
-| Coverable lines: | 6082 |
-| Total lines: | 11168 |
-| Line coverage: | 5.5% (339 of 6082) |
+| Classes: | 94 |
+| Files: | 93 |
+| Covered lines: | 970 |
+| Uncovered lines: | 5095 |
+| Coverable lines: | 6065 |
+| Total lines: | 11166 |
+| Line coverage: | 15.9% (970 of 6065) |
 | Covered branches: | 0 |
 | Total branches: | 0 |
-| Covered methods: | 35 |
-| Total methods: | 494 |
-| Method coverage: | 7% (35 of 494) |
+| Covered methods: | 105 |
+| Total methods: | 496 |
+| Method coverage: | 21.1% (105 of 496) |
 
 |**Name**|**Covered**|**Uncovered**|**Coverable**|**Total**|**Line coverage**|**Covered**|**Total**|**Branch coverage**|**Covered**|**Total**|**Method coverage**|
 |:---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -57,20 +57,20 @@
 |**EditModeTests**|**0**|**36**|**36**|**90**|**0%**|**0**|**0**|****|**0**|**5**|**0%**|
 |ControlRoomEditTests|0|14|14|39|0%|0|0||0|2|0%|
 |LabRoomEditTests|0|22|22|51|0%|0|0||0|3|0%|
-|**GameScripts**|**165**|**3424**|**3589**|**5846**|**4.5%**|**0**|**0**|****|**23**|**310**|**7.4%**|
+|**GameScripts**|**781**|**2808**|**3589**|**5846**|**21.7%**|**0**|**0**|****|**89**|**310**|**28.7%**|
 |BoxTrigger|4|81|85|137|4.7%|0|0||1|8|12.5%|
-|BroomPickup|0|152|152|270|0%|0|0||0|12|0%|
+|BroomPickup|32|120|152|270|21%|0|0||4|12|33.3%|
 |CargoBox|16|7|23|81|69.5%|0|0||3|4|75%|
 |CargoMinigameController|13|31|44|90|29.5%|0|0||2|4|50%|
 |CargoRoomController|19|0|19|34|100%|0|0||3|3|100%|
 |ChangeScene|0|13|13|26|0%|0|0||0|4|0%|
 |ComputerPopup|0|185|185|269|0%|0|0||0|10|0%|
 |ComputerUIController|0|6|6|16|0%|0|0||0|2|0%|
-|ControlsMinigameBootstrap|0|300|300|425|0%|0|0||0|18|0%|
-|ControlsMinigameController|0|400|400|604|0%|0|0||0|20|0%|
-|ControlsTargetGenerator|0|17|17|28|0%|0|0||0|9|0%|
-|ControlsTrigger|0|209|209|305|0%|0|0||0|13|0%|
-|CorrectionWindowVisual|0|26|26|44|0%|0|0||0|4|0%|
+|ControlsMinigameBootstrap|267|33|300|425|89%|0|0||18|18|100%|
+|ControlsMinigameController|52|348|400|604|13%|0|0||2|20|10%|
+|ControlsTargetGenerator|17|0|17|28|100%|0|0||9|9|100%|
+|ControlsTrigger|5|204|209|305|2.3%|0|0||1|13|7.6%|
+|CorrectionWindowVisual|9|17|26|44|34.6%|0|0||2|4|50%|
 |CurrentMinigameText|0|12|12|29|0%|0|0||0|1|0%|
 |DDOL|0|10|10|18|0%|0|0||0|1|0%|
 |ExitLabMinigame|0|5|5|13|0%|0|0||0|2|0%|
@@ -78,15 +78,15 @@
 |ExitPowerMinigame|0|5|5|13|0%|0|0||0|2|0%|
 |FactCardsPopup|0|85|85|120|0%|0|0||0|4|0%|
 |FactCardsPopupUI|0|82|82|144|0%|0|0||0|9|0%|
-|FactSystem|0|74|74|146|0%|0|0||0|13|0%|
+|FactSystem|1|73|74|146|1.3%|0|0||2|13|15.3%|
 |GameSceneSetup|0|19|19|38|0%|0|0||0|1|0%|
 |GeneratorTrigger|0|161|161|235|0%|0|0||0|10|0%|
-|Global|15|193|208|301|7.2%|0|0||1|21|4.7%|
+|Global|31|177|208|301|14.9%|0|0||4|21|19%|
 |HallwayChangeScene|0|6|6|15|0%|0|0||0|1|0%|
-|HeadingVisual|0|26|26|49|0%|0|0||0|5|0%|
+|HeadingVisual|12|14|26|49|46.1%|0|0||3|5|60%|
 |InteractableAssetControl|6|3|9|19|66.6%|0|0||1|1|100%|
 |LabBoxTrigger|0|154|154|264|0%|0|0||0|13|0%|
-|MiniGameResultsPopup|0|159|159|229|0%|0|0||0|9|0%|
+|MiniGameResultsPopup|83|76|159|229|52.2%|0|0||5|9|55.5%|
 |MinigameUnstick|0|8|8|15|0%|0|0||0|1|0%|
 |MySimpleTestClass|0|3|3|98|0%|0|0||0|1|0%|
 |NasaFactManager|0|27|27|47|0%|0|0||0|4|0%|
@@ -99,19 +99,21 @@
 |RestarterScript|11|41|52|82|21.1%|0|0||2|6|33.3%|
 |RevealFactCard|6|21|27|51|22.2%|0|0||2|4|50%|
 |RoomContextPopup|0|26|26|43|0%|0|0||0|5|0%|
-|ShipView|0|155|155|227|0%|0|0||0|13|0%|
+|ShipView|78|77|155|227|50.3%|0|0||9|13|69.2%|
 |SoundFXManager|0|22|22|52|0%|0|0||0|3|0%|
 |SoundMixerManager|0|34|34|57|0%|0|0||0|5|0%|
 |SpawnPointFinder|0|87|87|107|0%|0|0||0|3|0%|
-|SpillClean|0|15|15|32|0%|0|0||0|2|0%|
-|SpillManager|0|39|39|98|0%|0|0||0|5|0%|
+|SpillClean|12|3|15|32|80%|0|0||2|2|100%|
+|SpillManager|23|16|39|98|58.9%|0|0||4|5|80%|
 |SpillPopupController|0|71|71|107|0%|0|0||0|8|0%|
 |Target|32|6|38|63|84.2%|0|0||3|3|100%|
-|ThrustVisual|0|26|26|47|0%|0|0||0|4|0%|
+|ThrustVisual|9|17|26|47|34.6%|0|0||2|4|50%|
 |WeldGunScript|0|16|16|29|0%|0|0||0|3|0%|
 |WeldHandler|0|39|39|61|0%|0|0||0|5|0%|
 |WinSceneController|0|98|98|139|0%|0|0||0|4|0%|
-|**PlayModeTests**|**174**|**35**|**209**|**384**|**83.2%**|**0**|**0**|****|**12**|**14**|**85.7%**|
-|CargoRoomPlayTests|174|3|177|314|98.3%|0|0||12|12|100%|
-|ControlRoomPlayTests|0|15|15|40|0%|0|0||0|1|0%|
-|LabRoomPlayTests|0|17|17|30|0%|0|0||0|1|0%|
+|**PlayModeTests**|**189**|**3**|**192**|**382**|**98.4%**|**0**|**0**|****|**16**|**16**|**100%**|
+|CargoRoomControllerPlayTests|79|3|82|153|96.3%|0|0||7|7|100%|
+|ControlRoomPlayTests|15|0|15|40|100%|0|0||1|1|100%|
+|ExitMinigamePlayTests|14|0|14|37|100%|0|0||1|1|100%|
+|LabRoomPlayTests|17|0|17|30|100%|0|0||1|1|100%|
+|TargetPlayTests|64|0|64|122|100%|0|0||6|6|100%|
