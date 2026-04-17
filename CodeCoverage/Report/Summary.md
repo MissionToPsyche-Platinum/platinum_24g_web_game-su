@@ -1,21 +1,21 @@
 ﻿# Summary
 |||
 |:---|:---|
-| Generated on: | 4/16/2026 - 1:40:04 PM |
+| Generated on: | 4/16/2026 - 8:51:35 PM |
 | Parser: | MultiReportParser (7x OpenCoverParser) |
 | Assemblies: | 4 |
-| Classes: | 93 |
-| Files: | 92 |
-| Covered lines: | 147 |
-| Uncovered lines: | 5797 |
-| Coverable lines: | 5944 |
-| Total lines: | 10972 |
-| Line coverage: | 2.4% (147 of 5944) |
+| Classes: | 94 |
+| Files: | 93 |
+| Covered lines: | 254 |
+| Uncovered lines: | 5770 |
+| Coverable lines: | 6024 |
+| Total lines: | 11054 |
+| Line coverage: | 4.2% (254 of 6024) |
 | Covered branches: | 0 |
 | Total branches: | 0 |
-| Covered methods: | 34 |
-| Total methods: | 499 |
-| Method coverage: | 6.8% (34 of 499) |
+| Covered methods: | 42 |
+| Total methods: | 503 |
+| Method coverage: | 8.3% (42 of 503) |
 
 |**Name**|**Covered**|**Uncovered**|**Coverable**|**Total**|**Line coverage**|**Covered**|**Total**|**Branch coverage**|**Covered**|**Total**|**Method coverage**|
 |:---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -57,12 +57,12 @@
 |**EditModeTests**|**0**|**36**|**36**|**90**|**0%**|**0**|**0**|****|**0**|**5**|**0%**|
 |ControlRoomEditTests|0|14|14|39|0%|0|0||0|2|0%|
 |LabRoomEditTests|0|22|22|51|0%|0|0||0|3|0%|
-|**GameScripts**|**114**|**3471**|**3585**|**5842**|**3.1%**|**0**|**0**|****|**18**|**310**|**5.8%**|
-|BoxTrigger|0|85|85|137|0%|0|0||0|8|0%|
+|**GameScripts**|**134**|**3451**|**3585**|**5842**|**3.7%**|**0**|**0**|****|**21**|**310**|**6.7%**|
+|BoxTrigger|4|81|85|137|4.7%|0|0||1|8|12.5%|
 |BroomPickup|0|152|152|270|0%|0|0||0|12|0%|
 |CargoBox|8|15|23|81|34.7%|0|0||2|4|50%|
 |CargoMinigameController|13|31|44|90|29.5%|0|0||2|4|50%|
-|CargoRoomController|12|7|19|34|63.1%|0|0||3|3|100%|
+|CargoRoomController|19|0|19|34|100%|0|0||3|3|100%|
 |ChangeScene|0|13|13|26|0%|0|0||0|4|0%|
 |ComputerPopup|0|185|185|269|0%|0|0||0|10|0%|
 |ComputerUIController|0|6|6|16|0%|0|0||0|2|0%|
@@ -74,7 +74,7 @@
 |CurrentMinigameText|0|12|12|29|0%|0|0||0|1|0%|
 |DDOL|0|10|10|18|0%|0|0||0|1|0%|
 |ExitLabMinigame|0|5|5|13|0%|0|0||0|2|0%|
-|ExitMinigame|0|3|3|11|0%|0|0||0|1|0%|
+|ExitMinigame|3|0|3|11|100%|0|0||1|1|100%|
 |ExitPowerMinigame|0|5|5|13|0%|0|0||0|2|0%|
 |FactCardsPopup|0|85|85|120|0%|0|0||0|4|0%|
 |FactCardsPopupUI|0|82|82|144|0%|0|0||0|9|0%|
@@ -84,7 +84,7 @@
 |Global|15|193|208|301|7.2%|0|0||1|21|4.7%|
 |HallwayChangeScene|0|6|6|15|0%|0|0||0|1|0%|
 |HeadingVisual|0|26|26|49|0%|0|0||0|5|0%|
-|InteractableAssetControl|0|9|9|19|0%|0|0||0|1|0%|
+|InteractableAssetControl|6|3|9|19|66.6%|0|0||1|1|100%|
 |LabBoxTrigger|0|154|154|264|0%|0|0||0|13|0%|
 |MiniGameResultsPopup|0|159|159|229|0%|0|0||0|9|0%|
 |MinigameUnstick|0|8|8|15|0%|0|0||0|1|0%|
@@ -111,8 +111,9 @@
 |WeldGunScript|0|16|16|29|0%|0|0||0|3|0%|
 |WeldHandler|0|39|39|61|0%|0|0||0|5|0%|
 |WinSceneController|5|93|98|139|5.1%|0|0||1|4|25%|
-|**PlayModeTests**|**33**|**42**|**75**|**192**|**44%**|**0**|**0**|****|**16**|**19**|**84.2%**|
-|CargoRoomPlayTest|29|10|39|112|74.3%|0|0||7|8|87.5%|
+|**PlayModeTests**|**120**|**35**|**155**|**274**|**77.4%**|**0**|**0**|****|**21**|**23**|**91.3%**|
+|CargoRoomPlayTest|23|0|23|0|100%|0|0||4|4|100%|
+|CargoRoomPlayTests|93|3|96|204|96.8%|0|0||8|8|100%|
 |ControlRoomPlayTests|0|15|15|40|0%|0|0||0|1|0%|
 |LabRoomPlayTests|0|17|17|30|0%|0|0||0|1|0%|
-|PlayModeTests.Mocks.MockGlobal|4|0|4|10|100%|0|0||9|9|100%|
+|PlayModeTests.Mocks.MockGlobal|4|0|4|0|100%|0|0||9|9|100%|
