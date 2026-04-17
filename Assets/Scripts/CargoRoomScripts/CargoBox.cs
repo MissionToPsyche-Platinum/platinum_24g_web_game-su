@@ -5,6 +5,7 @@ using UnityEngine;
 public class CargoBox : MonoBehaviour
 {
     private Rigidbody2D rb;
+    public float pushForce = -0.99f;
     public GameObject warning;
     public GameObject correct;
     
@@ -31,12 +32,12 @@ public class CargoBox : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (rb.linearVelocity.y != 0 || rb.linearVelocity.x != 0)
         {
 
-            Vector2 movementVelocity = rb.linearVelocity *= -0.99f;
+            Vector2 movementVelocity = rb.linearVelocity * pushForce;
             rb.linearVelocity = Vector2.Max(movementVelocity, Vector2.zero);
         }
 
@@ -61,17 +62,16 @@ public class CargoBox : MonoBehaviour
         //lastPosition = transform.position;
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-
-        if (hit.transform.CompareTag("Player"))
+        Rigidbody2D otherRb = collision.rigidbody;
+        if(otherRb != null && collision.gameObject.CompareTag("Player"))
         {
-            Vector2 pushDir = new Vector2(hit.moveDirection.x, hit.moveDirection.y);
-
+            Vector2 pushDir = otherRb.linearVelocity.normalized;
             rb.linearVelocity = pushDir;
         }
     }
-  
+
     public void SwitchSprite(bool finished)
     {
         correct.SetActive(finished);

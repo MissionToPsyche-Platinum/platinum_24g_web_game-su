@@ -1,20 +1,20 @@
 {
   "summary": {
-    "generatedon": "2026-04-17T05:34:57Z",
-    "parser": "MultiReportParser (2x OpenCoverParser)",
+    "generatedon": "2026-04-17T08:06:01Z",
+    "parser": "MultiReportParser (4x OpenCoverParser)",
     "assemblies": 4,
-    "classes": 94,
-    "files": 93,
-    "coveredlines": 970,
-    "uncoveredlines": 5095,
-    "coverablelines": 6065,
-    "totallines": 11166,
-    "linecoverage": 15.9,
+    "classes": 92,
+    "files": 91,
+    "coveredlines": 841,
+    "uncoveredlines": 5085,
+    "coverablelines": 5926,
+    "totallines": 10890,
+    "linecoverage": 14.1,
     "coveredbranches": 0,
     "totalbranches": 0,
-    "coveredmethods": 105,
-    "totalmethods": 496,
-    "methodcoverage": 21.1
+    "coveredmethods": 94,
+    "totalmethods": 484,
+    "methodcoverage": 19.4
  },
   "coverage": {
     "assemblies": [
@@ -53,13 +53,14 @@
         { "name": "TMPro.TMP_DigitValidator", "coverage": 0, "coveredlines": 0, "coverablelines": 8, "totallines": 27, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 1 },
         { "name": "TMPro.TMP_PhoneNumberValidator", "coverage": 0, "coveredlines": 0, "coverablelines": 66, "totallines": 105, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 1 },
         { "name": "TMPro.TMP_TextEventHandler", "coverage": 0, "coveredlines": 0, "coverablelines": 107, "totallines": 263, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 20 } ] },
-      { "name": "EditModeTests", "classes": 2, "coverage": 0, "coveredlines": 0, "coverablelines": 36, "totallines": 90, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 5, "classesinassembly": [
+      { "name": "EditModeTests", "classes": 3, "coverage": 34.5, "coveredlines": 19, "coverablelines": 55, "totallines": 126, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 16.6, "coveredmethods": 1, "totalmethods": 6, "classesinassembly": [
+        { "name": "CargoRoomTests", "coverage": 100, "coveredlines": 19, "coverablelines": 19, "totallines": 36, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 1, "totalmethods": 1 },
         { "name": "ControlRoomEditTests", "coverage": 0, "coveredlines": 0, "coverablelines": 14, "totallines": 39, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 2 },
         { "name": "LabRoomEditTests", "coverage": 0, "coveredlines": 0, "coverablelines": 22, "totallines": 51, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 3 } ] },
-      { "name": "GameScripts", "classes": 53, "coverage": 21.7, "coveredlines": 781, "coverablelines": 3589, "totallines": 5846, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 28.7, "coveredmethods": 89, "totalmethods": 310, "classesinassembly": [
+      { "name": "GameScripts", "classes": 53, "coverage": 21.9, "coveredlines": 790, "coverablelines": 3591, "totallines": 5846, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 29.2, "coveredmethods": 91, "totalmethods": 311, "classesinassembly": [
         { "name": "BoxTrigger", "coverage": 4.7, "coveredlines": 4, "coverablelines": 85, "totallines": 137, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 12.5, "coveredmethods": 1, "totalmethods": 8 },
         { "name": "BroomPickup", "coverage": 21, "coveredlines": 32, "coverablelines": 152, "totallines": 270, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 33.3, "coveredmethods": 4, "totalmethods": 12 },
-        { "name": "CargoBox", "coverage": 69.5, "coveredlines": 16, "coverablelines": 23, "totallines": 81, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 75, "coveredmethods": 3, "totalmethods": 4 },
+        { "name": "CargoBox", "coverage": 100, "coveredlines": 25, "coverablelines": 25, "totallines": 81, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 5, "totalmethods": 5 },
         { "name": "CargoMinigameController", "coverage": 29.5, "coveredlines": 13, "coverablelines": 44, "totallines": 90, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 50, "coveredmethods": 2, "totalmethods": 4 },
         { "name": "CargoRoomController", "coverage": 100, "coveredlines": 19, "coverablelines": 19, "totallines": 34, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 3, "totalmethods": 3 },
         { "name": "ChangeScene", "coverage": 0, "coveredlines": 0, "coverablelines": 13, "totallines": 26, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 4 },
@@ -110,11 +111,8 @@
         { "name": "WeldGunScript", "coverage": 0, "coveredlines": 0, "coverablelines": 16, "totallines": 29, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 3 },
         { "name": "WeldHandler", "coverage": 0, "coveredlines": 0, "coverablelines": 39, "totallines": 61, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 5 },
         { "name": "WinSceneController", "coverage": 0, "coveredlines": 0, "coverablelines": 98, "totallines": 139, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 4 } ] },
-      { "name": "PlayModeTests", "classes": 5, "coverage": 98.4, "coveredlines": 189, "coverablelines": 192, "totallines": 382, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 16, "totalmethods": 16, "classesinassembly": [
-        { "name": "CargoRoomControllerPlayTests", "coverage": 96.3, "coveredlines": 79, "coverablelines": 82, "totallines": 153, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 7, "totalmethods": 7 },
+      { "name": "PlayModeTests", "classes": 2, "coverage": 100, "coveredlines": 32, "coverablelines": 32, "totallines": 70, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 2, "totalmethods": 2, "classesinassembly": [
         { "name": "ControlRoomPlayTests", "coverage": 100, "coveredlines": 15, "coverablelines": 15, "totallines": 40, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 1, "totalmethods": 1 },
-        { "name": "ExitMinigamePlayTests", "coverage": 100, "coveredlines": 14, "coverablelines": 14, "totallines": 37, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 1, "totalmethods": 1 },
-        { "name": "LabRoomPlayTests", "coverage": 100, "coveredlines": 17, "coverablelines": 17, "totallines": 30, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 1, "totalmethods": 1 },
-        { "name": "TargetPlayTests", "coverage": 100, "coveredlines": 64, "coverablelines": 64, "totallines": 122, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 6, "totalmethods": 6 } ] } ]
+        { "name": "LabRoomPlayTests", "coverage": 100, "coveredlines": 17, "coverablelines": 17, "totallines": 30, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 1, "totalmethods": 1 } ] } ]
   }
 }

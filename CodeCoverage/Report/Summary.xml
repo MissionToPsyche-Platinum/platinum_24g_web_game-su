@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CoverageReport scope="Summary">
   <Summary>
-    <Generatedon>4/16/2026 - 10:34:57 PM</Generatedon>
-    <Parser>MultiReportParser (2x OpenCoverParser)</Parser>
+    <Generatedon>4/17/2026 - 1:06:01 AM</Generatedon>
+    <Parser>MultiReportParser (4x OpenCoverParser)</Parser>
     <Assemblies>4</Assemblies>
-    <Classes>94</Classes>
-    <Files>93</Files>
-    <Coveredlines>970</Coveredlines>
-    <Uncoveredlines>5095</Uncoveredlines>
-    <Coverablelines>6065</Coverablelines>
-    <Totallines>11166</Totallines>
-    <Linecoverage>15.9</Linecoverage>
+    <Classes>92</Classes>
+    <Files>91</Files>
+    <Coveredlines>841</Coveredlines>
+    <Uncoveredlines>5085</Uncoveredlines>
+    <Coverablelines>5926</Coverablelines>
+    <Totallines>10890</Totallines>
+    <Linecoverage>14.1</Linecoverage>
     <Coveredbranches>0</Coveredbranches>
     <Totalbranches>0</Totalbranches>
-    <Coveredmethods>105</Coveredmethods>
-    <Totalmethods>496</Totalmethods>
-    <Methodcoverage>21.1</Methodcoverage>
+    <Coveredmethods>94</Coveredmethods>
+    <Totalmethods>484</Totalmethods>
+    <Methodcoverage>19.4</Methodcoverage>
   </Summary>
   <Coverage>
     <Assembly name="Assembly-CSharp" classes="34" coverage="0" coveredlines="0" coverablelines="2248" totallines="4946" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="165" methodcoverage="0">
@@ -54,14 +54,15 @@
       <Class name="TMPro.TMP_PhoneNumberValidator" coverage="0" coveredlines="0" coverablelines="66" totallines="105" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
       <Class name="TMPro.TMP_TextEventHandler" coverage="0" coveredlines="0" coverablelines="107" totallines="263" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="20" methodcoverage="0" />
     </Assembly>
-    <Assembly name="EditModeTests" classes="2" coverage="0" coveredlines="0" coverablelines="36" totallines="90" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="5" methodcoverage="0">
+    <Assembly name="EditModeTests" classes="3" coverage="34.5" coveredlines="19" coverablelines="55" totallines="126" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="1" totalmethods="6" methodcoverage="16.6">
+      <Class name="CargoRoomTests" coverage="100" coveredlines="19" coverablelines="19" totallines="36" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="1" totalmethods="1" methodcoverage="100" />
       <Class name="ControlRoomEditTests" coverage="0" coveredlines="0" coverablelines="14" totallines="39" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
       <Class name="LabRoomEditTests" coverage="0" coveredlines="0" coverablelines="22" totallines="51" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
     </Assembly>
-    <Assembly name="GameScripts" classes="53" coverage="21.7" coveredlines="781" coverablelines="3589" totallines="5846" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="89" totalmethods="310" methodcoverage="28.7">
+    <Assembly name="GameScripts" classes="53" coverage="21.9" coveredlines="790" coverablelines="3591" totallines="5846" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="91" totalmethods="311" methodcoverage="29.2">
       <Class name="BoxTrigger" coverage="4.7" coveredlines="4" coverablelines="85" totallines="137" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="1" totalmethods="8" methodcoverage="12.5" />
       <Class name="BroomPickup" coverage="21" coveredlines="32" coverablelines="152" totallines="270" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="4" totalmethods="12" methodcoverage="33.3" />
-      <Class name="CargoBox" coverage="69.5" coveredlines="16" coverablelines="23" totallines="81" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="3" totalmethods="4" methodcoverage="75" />
+      <Class name="CargoBox" coverage="100" coveredlines="25" coverablelines="25" totallines="81" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="5" totalmethods="5" methodcoverage="100" />
       <Class name="CargoMinigameController" coverage="29.5" coveredlines="13" coverablelines="44" totallines="90" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="4" methodcoverage="50" />
       <Class name="CargoRoomController" coverage="100" coveredlines="19" coverablelines="19" totallines="34" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="3" totalmethods="3" methodcoverage="100" />
       <Class name="ChangeScene" coverage="0" coveredlines="0" coverablelines="13" totallines="26" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="4" methodcoverage="0" />
@@ -113,12 +114,9 @@
       <Class name="WeldHandler" coverage="0" coveredlines="0" coverablelines="39" totallines="61" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="5" methodcoverage="0" />
       <Class name="WinSceneController" coverage="0" coveredlines="0" coverablelines="98" totallines="139" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="4" methodcoverage="0" />
     </Assembly>
-    <Assembly name="PlayModeTests" classes="5" coverage="98.4" coveredlines="189" coverablelines="192" totallines="382" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="16" totalmethods="16" methodcoverage="100">
-      <Class name="CargoRoomControllerPlayTests" coverage="96.3" coveredlines="79" coverablelines="82" totallines="153" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="7" totalmethods="7" methodcoverage="100" />
+    <Assembly name="PlayModeTests" classes="2" coverage="100" coveredlines="32" coverablelines="32" totallines="70" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="2" methodcoverage="100">
       <Class name="ControlRoomPlayTests" coverage="100" coveredlines="15" coverablelines="15" totallines="40" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="1" totalmethods="1" methodcoverage="100" />
-      <Class name="ExitMinigamePlayTests" coverage="100" coveredlines="14" coverablelines="14" totallines="37" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="1" totalmethods="1" methodcoverage="100" />
       <Class name="LabRoomPlayTests" coverage="100" coveredlines="17" coverablelines="17" totallines="30" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="1" totalmethods="1" methodcoverage="100" />
-      <Class name="TargetPlayTests" coverage="100" coveredlines="64" coverablelines="64" totallines="122" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="6" totalmethods="6" methodcoverage="100" />
     </Assembly>
   </Coverage>
 </CoverageReport>

@@ -34,7 +34,6 @@ public class CargoRoomControllerPlayTests
 
     }
 
-    //------------------CargoRoomController.cs Tests-------------------
     [UnityTest]
     public IEnumerator CargoRoomControllerStart_PlayerExists_NoErrorLogAndMovementEnabled()
     {

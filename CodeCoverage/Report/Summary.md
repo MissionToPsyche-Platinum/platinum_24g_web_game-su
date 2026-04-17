@@ -1,21 +1,21 @@
 ﻿# Summary
 |||
 |:---|:---|
-| Generated on: | 4/16/2026 - 10:34:57 PM |
-| Parser: | MultiReportParser (2x OpenCoverParser) |
+| Generated on: | 4/17/2026 - 1:06:01 AM |
+| Parser: | MultiReportParser (4x OpenCoverParser) |
 | Assemblies: | 4 |
-| Classes: | 94 |
-| Files: | 93 |
-| Covered lines: | 970 |
-| Uncovered lines: | 5095 |
-| Coverable lines: | 6065 |
-| Total lines: | 11166 |
-| Line coverage: | 15.9% (970 of 6065) |
+| Classes: | 92 |
+| Files: | 91 |
+| Covered lines: | 841 |
+| Uncovered lines: | 5085 |
+| Coverable lines: | 5926 |
+| Total lines: | 10890 |
+| Line coverage: | 14.1% (841 of 5926) |
 | Covered branches: | 0 |
 | Total branches: | 0 |
-| Covered methods: | 105 |
-| Total methods: | 496 |
-| Method coverage: | 21.1% (105 of 496) |
+| Covered methods: | 94 |
+| Total methods: | 484 |
+| Method coverage: | 19.4% (94 of 484) |
 
 |**Name**|**Covered**|**Uncovered**|**Coverable**|**Total**|**Line coverage**|**Covered**|**Total**|**Branch coverage**|**Covered**|**Total**|**Method coverage**|
 |:---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -54,13 +54,14 @@
 |TMPro.TMP_DigitValidator|0|8|8|27|0%|0|0||0|1|0%|
 |TMPro.TMP_PhoneNumberValidator|0|66|66|105|0%|0|0||0|1|0%|
 |TMPro.TMP_TextEventHandler|0|107|107|263|0%|0|0||0|20|0%|
-|**EditModeTests**|**0**|**36**|**36**|**90**|**0%**|**0**|**0**|****|**0**|**5**|**0%**|
+|**EditModeTests**|**19**|**36**|**55**|**126**|**34.5%**|**0**|**0**|****|**1**|**6**|**16.6%**|
+|CargoRoomTests|19|0|19|36|100%|0|0||1|1|100%|
 |ControlRoomEditTests|0|14|14|39|0%|0|0||0|2|0%|
 |LabRoomEditTests|0|22|22|51|0%|0|0||0|3|0%|
-|**GameScripts**|**781**|**2808**|**3589**|**5846**|**21.7%**|**0**|**0**|****|**89**|**310**|**28.7%**|
+|**GameScripts**|**790**|**2801**|**3591**|**5846**|**21.9%**|**0**|**0**|****|**91**|**311**|**29.2%**|
 |BoxTrigger|4|81|85|137|4.7%|0|0||1|8|12.5%|
 |BroomPickup|32|120|152|270|21%|0|0||4|12|33.3%|
-|CargoBox|16|7|23|81|69.5%|0|0||3|4|75%|
+|CargoBox|25|0|25|81|100%|0|0||5|5|100%|
 |CargoMinigameController|13|31|44|90|29.5%|0|0||2|4|50%|
 |CargoRoomController|19|0|19|34|100%|0|0||3|3|100%|
 |ChangeScene|0|13|13|26|0%|0|0||0|4|0%|
@@ -111,9 +112,6 @@
 |WeldGunScript|0|16|16|29|0%|0|0||0|3|0%|
 |WeldHandler|0|39|39|61|0%|0|0||0|5|0%|
 |WinSceneController|0|98|98|139|0%|0|0||0|4|0%|
-|**PlayModeTests**|**189**|**3**|**192**|**382**|**98.4%**|**0**|**0**|****|**16**|**16**|**100%**|
-|CargoRoomControllerPlayTests|79|3|82|153|96.3%|0|0||7|7|100%|
+|**PlayModeTests**|**32**|**0**|**32**|**70**|**100%**|**0**|**0**|****|**2**|**2**|**100%**|
 |ControlRoomPlayTests|15|0|15|40|100%|0|0||1|1|100%|
-|ExitMinigamePlayTests|14|0|14|37|100%|0|0||1|1|100%|
 |LabRoomPlayTests|17|0|17|30|100%|0|0||1|1|100%|
-|TargetPlayTests|64|0|64|122|100%|0|0||6|6|100%|

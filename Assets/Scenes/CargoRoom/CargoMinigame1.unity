@@ -3122,6 +3122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dccab2666af2c5d4c8fd989c33b0df43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  pushForce: -0.99
   warning: {fileID: 439666983}
   correct: {fileID: 611437625}
 --- !u!50 &456830940
@@ -7651,6 +7652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dccab2666af2c5d4c8fd989c33b0df43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  pushForce: -0.99
   warning: {fileID: 562212519}
   correct: {fileID: 1835364362}
 --- !u!82 &1792114438
