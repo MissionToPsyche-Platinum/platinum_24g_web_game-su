@@ -19,7 +19,7 @@ public class CargoRoomPlayTests
     public void SetUp()
     {
         _playerPrefab = Resources.Load<GameObject>("Player");
-        if(_playerPrefab != null){
+        if (_playerPrefab != null) {
             _player = Object.Instantiate(_playerPrefab);
         }
     }
@@ -31,6 +31,7 @@ public class CargoRoomPlayTests
 
         if (_player != null)
             Object.Destroy(_player);
+
     }
 
     //------------------CargoRoomController.cs Tests-------------------
@@ -58,7 +59,7 @@ public class CargoRoomPlayTests
     [UnityTest]
     public IEnumerator CargoRoomControllerStart_WhenPlayerNotExist_LogError()
     {
-        if(_player != null)
+        if (_player != null)
         {
             Object.Destroy(_player);
             _player = null;
@@ -123,7 +124,7 @@ public class CargoRoomPlayTests
     public IEnumerator CargoRoomControllerStartMinigame_WithRoundExceedingMinigameCount_LoadsRandomMinigame()
     {
         //Arrange
-        int roundsToTest = MinigameSceneNames.Count + 2; 
+        int roundsToTest = MinigameSceneNames.Count + 2;
         for (int roundNumber = MinigameSceneNames.Count + 1; roundNumber <= roundsToTest; roundNumber++)
         {
             GameObject controllerObject = new("CargoRoomController");
@@ -178,27 +179,138 @@ public class CargoRoomPlayTests
     }
 
     //-------------------Target.cs Tests-------------------
-    //[UnityTest]
-    //public IEnumerable TargetOnTriggerEnter2D_WhenCollidingWithMoveableBox_OccupiesTarget()
-    //{
-    //    //Arrange
-    //    GameObject targetObject = new("Target");
-    //    Target target = targetObject.AddComponent<Target>();
+    [UnityTest]
+    public IEnumerator TargetStart_AnimatorExists_GetsAnimatorAndSetsOccupiedToFalse()
+    {
+        //Arrange
+        GameObject gameObject = new("Target");
+        gameObject.AddComponent<Animator>();
+        Target target = gameObject.AddComponent<Target>();
 
-    //    GameObject boxObject = new("MoveableBox");
-    //    boxObject.tag = "MoveableBox";
-    //    CargoBox box = boxObject.AddComponent<CargoBox>();
+        //Act
+        yield return null;
+
+        //Assert
+        var animator = target.GetComponent<Animator>();
+        Assert.IsNotNull(animator, "Animator component is null");
+        Assert.IsFalse(target.occupied, "Target should not be occupied");
+
+        //Cleanup
+        Object.Destroy(gameObject);
+    }
+    [UnityTest]
+    public IEnumerator TargetStart_AnimatorNotExist_LogError()
+    {
+        //Arrange
+        GameObject gameObject = new("Target");
+        Target target = gameObject.AddComponent<Target>();
+
+        LogAssert.Expect(LogType.Error, "Target: Animator component not found");
+
+        //Act
+        yield return null;
+
+        //Assert
+
+        //Cleanup
+        Object.Destroy(gameObject);
+    }
+    
+    [UnityTest]
+    public IEnumerator TargetOnTriggerEnter2D_WhenCollidingWithMoveableBox_OccupiesTarget()
+    {
+        //Arrange
+        GameObject audioListener = new("AudioListener");
+        AudioListener listener = audioListener.AddComponent<AudioListener>();
+
+        GameObject targetObject = new("Target");
+        targetObject.AddComponent<Animator>();
+        Target target = targetObject.AddComponent<Target>();
+
+        GameObject boxObject = new("MoveableBox");
+        boxObject.tag = "MoveableBox";
+
+        GameObject warningObject = new GameObject("Warning");
+        warningObject.SetActive(true);
+        GameObject correctObject = new GameObject("Correct");
+
+        boxObject.AddComponent<BoxCollider2D>();
+        boxObject.AddComponent<Rigidbody2D>();
+        boxObject.AddComponent<AudioSource>();
+        CargoBox box = boxObject.AddComponent<CargoBox>();
+
+        box.warning = warningObject;
+        box.correct = correctObject;
+        target.GetComponent<Animator>().runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Target");
+        target.GetComponent<Animator>().SetBool("ContainsBox", false);
+        yield return null;
 
 
-    //    //Act
-    //    target.OnTriggerEnter2D(boxObject.GetComponent<Collider2D>());
-    //    yield return null;
+        //Act
+        target.SendMessage("OnTriggerEnter2D", box.GetComponent<BoxCollider2D>());
+        yield return new WaitForSeconds(1f);
 
-    //    //Assert
-    //    Assert.IsTrue(target.occupied, "Target should be occupied after colliding with MoveableBox.");
+        //Assert
+        Assert.IsTrue(target.occupied, "Target should be occupied after colliding with MoveableBox.");
+        Assert.IsTrue(target.GetComponent<Animator>().GetBool("ContainsBox"), "Target animator should have 'ContainsBox' set to true when occupied.");
+        Assert.IsTrue(box.correct.activeSelf, "MoveableBox should show checkmark when on target.");
+        Assert.IsFalse(box.warning.activeSelf, "MoveableBox should not show warning when on target.");
 
-    //    //CleanUp
-    //    Object.Destroy(targetObject);
-    //    Object.Destroy(boxObject);
-    //}
+
+        //CleanUp
+        Object.Destroy(targetObject);
+        Object.Destroy(boxObject);
+        Object.Destroy(warningObject);
+        Object.Destroy(correctObject);
+        Object.Destroy(audioListener);
+    }
+
+    [UnityTest]
+    public IEnumerator TargetOnTriggerExit2D_WhenCollidingWithMoveableBox_UnoccupiesTarget()
+    {
+        //Arrange
+        GameObject audioListener = new("AudioListener");
+        AudioListener listener = audioListener.AddComponent<AudioListener>();
+
+        GameObject targetObject = new("Target");
+        targetObject.AddComponent<Animator>();
+        Target target = targetObject.AddComponent<Target>();
+
+        GameObject boxObject = new("MoveableBox");
+        boxObject.tag = "MoveableBox";
+
+        GameObject warningObject = new GameObject("Warning");
+        warningObject.SetActive(true);
+        GameObject correctObject = new GameObject("Correct");
+
+        boxObject.AddComponent<BoxCollider2D>();
+        boxObject.AddComponent<Rigidbody2D>();
+        boxObject.AddComponent<AudioSource>();
+        CargoBox box = boxObject.AddComponent<CargoBox>();
+
+        box.warning = new GameObject("Warning");
+        box.warning.SetActive(true);
+        box.correct = new GameObject("Correct");
+        target.GetComponent<Animator>().runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Target");
+        target.GetComponent<Animator>().SetBool("ContainsBox", false);
+        yield return null;
+
+
+        //Act
+        target.SendMessage("OnTriggerExit2D", box.GetComponent<BoxCollider2D>());
+        yield return new WaitForSeconds(1f);
+
+        //Assert
+        Assert.IsFalse(target.occupied, "Target should not be occupied after not colliding with MoveableBox.");
+        Assert.IsFalse(target.GetComponent<Animator>().GetBool("ContainsBox"), "Target animator should have 'ContainsBox' set to false when unoccupied.");
+        Assert.IsTrue(box.warning.activeSelf, "MoveableBox should show warning when off target.");
+        Assert.IsFalse(box.correct.activeSelf, "MoveableBox should show not checkmark when off target.");
+
+        //CleanUp
+        Object.Destroy(targetObject);
+        Object.Destroy(boxObject);
+        Object.Destroy(warningObject);
+        Object.Destroy(correctObject);
+        Object.Destroy(audioListener);
+    }
 }

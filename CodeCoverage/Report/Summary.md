@@ -1,21 +1,21 @@
 ﻿# Summary
 |||
 |:---|:---|
-| Generated on: | 4/16/2026 - 8:51:35 PM |
-| Parser: | MultiReportParser (7x OpenCoverParser) |
+| Generated on: | 4/16/2026 - 10:08:04 PM |
+| Parser: | MultiReportParser (2x OpenCoverParser) |
 | Assemblies: | 4 |
-| Classes: | 94 |
-| Files: | 93 |
-| Covered lines: | 254 |
-| Uncovered lines: | 5770 |
-| Coverable lines: | 6024 |
-| Total lines: | 11054 |
-| Line coverage: | 4.2% (254 of 6024) |
+| Classes: | 92 |
+| Files: | 91 |
+| Covered lines: | 339 |
+| Uncovered lines: | 5743 |
+| Coverable lines: | 6082 |
+| Total lines: | 11168 |
+| Line coverage: | 5.5% (339 of 6082) |
 | Covered branches: | 0 |
 | Total branches: | 0 |
-| Covered methods: | 42 |
-| Total methods: | 503 |
-| Method coverage: | 8.3% (42 of 503) |
+| Covered methods: | 35 |
+| Total methods: | 494 |
+| Method coverage: | 7% (35 of 494) |
 
 |**Name**|**Covered**|**Uncovered**|**Coverable**|**Total**|**Line coverage**|**Covered**|**Total**|**Branch coverage**|**Covered**|**Total**|**Method coverage**|
 |:---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -57,10 +57,10 @@
 |**EditModeTests**|**0**|**36**|**36**|**90**|**0%**|**0**|**0**|****|**0**|**5**|**0%**|
 |ControlRoomEditTests|0|14|14|39|0%|0|0||0|2|0%|
 |LabRoomEditTests|0|22|22|51|0%|0|0||0|3|0%|
-|**GameScripts**|**134**|**3451**|**3585**|**5842**|**3.7%**|**0**|**0**|****|**21**|**310**|**6.7%**|
+|**GameScripts**|**165**|**3424**|**3589**|**5846**|**4.5%**|**0**|**0**|****|**23**|**310**|**7.4%**|
 |BoxTrigger|4|81|85|137|4.7%|0|0||1|8|12.5%|
 |BroomPickup|0|152|152|270|0%|0|0||0|12|0%|
-|CargoBox|8|15|23|81|34.7%|0|0||2|4|50%|
+|CargoBox|16|7|23|81|69.5%|0|0||3|4|75%|
 |CargoMinigameController|13|31|44|90|29.5%|0|0||2|4|50%|
 |CargoRoomController|19|0|19|34|100%|0|0||3|3|100%|
 |ChangeScene|0|13|13|26|0%|0|0||0|4|0%|
@@ -106,14 +106,12 @@
 |SpillClean|0|15|15|32|0%|0|0||0|2|0%|
 |SpillManager|0|39|39|98|0%|0|0||0|5|0%|
 |SpillPopupController|0|71|71|107|0%|0|0||0|8|0%|
-|Target|4|30|34|59|11.7%|0|0||1|3|33.3%|
+|Target|32|6|38|63|84.2%|0|0||3|3|100%|
 |ThrustVisual|0|26|26|47|0%|0|0||0|4|0%|
 |WeldGunScript|0|16|16|29|0%|0|0||0|3|0%|
 |WeldHandler|0|39|39|61|0%|0|0||0|5|0%|
-|WinSceneController|5|93|98|139|5.1%|0|0||1|4|25%|
-|**PlayModeTests**|**120**|**35**|**155**|**274**|**77.4%**|**0**|**0**|****|**21**|**23**|**91.3%**|
-|CargoRoomPlayTest|23|0|23|0|100%|0|0||4|4|100%|
-|CargoRoomPlayTests|93|3|96|204|96.8%|0|0||8|8|100%|
+|WinSceneController|0|98|98|139|0%|0|0||0|4|0%|
+|**PlayModeTests**|**174**|**35**|**209**|**384**|**83.2%**|**0**|**0**|****|**12**|**14**|**85.7%**|
+|CargoRoomPlayTests|174|3|177|314|98.3%|0|0||12|12|100%|
 |ControlRoomPlayTests|0|15|15|40|0%|0|0||0|1|0%|
 |LabRoomPlayTests|0|17|17|30|0%|0|0||0|1|0%|
-|PlayModeTests.Mocks.MockGlobal|4|0|4|0|100%|0|0||9|9|100%|
