@@ -10,7 +10,6 @@ public class BoxTrigger : MonoBehaviour
 
     public GameObject popupPanel;
     public GameObject hint;
-    private GameObject startGameButton;
     private bool canInteract;
     private PlayerMovement2D playerMovement;
     private Rigidbody2D playerRigidbody;
@@ -24,7 +23,6 @@ public class BoxTrigger : MonoBehaviour
                 HidePopup();
                 return;
             }
-
             if (canInteract)
             {
                 ShowPopup();
@@ -40,26 +38,20 @@ public class BoxTrigger : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
-    {
-        ShowPopup();
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.GetComponent<PlayerMovement2D>() == null || Global.currentRoom != "CargoRoom")
         {
+            Debug.LogError("BoxTrigger: PlayerMovement2D component not found on the colliding object or not in CargoRoom.");
             return;
         }
-
         canInteract = true;
         playerMovement = other.GetComponent<PlayerMovement2D>();
         playerRigidbody = other.GetComponent<Rigidbody2D>();
-
         if (hint == null)
         {
             Debug.LogError("BoxTrigger: hint is NOT assigned in Inspector.");
-            return; ;
+            return;
         }
 
         ToggleHint(true);
@@ -69,16 +61,14 @@ public class BoxTrigger : MonoBehaviour
     {
         if (other.GetComponent<PlayerMovement2D>() == null || Global.currentRoom != "CargoRoom")
         {
+            Debug.LogError("BoxTrigger: PlayerMovement2D component not found on the colliding object or not in CargoRoom.");
             return;
         }
-
         canInteract = false;
-
         if (IsPopupOpen())
         {
             HidePopup();
         }
-
         ToggleHint(false);
     }
 
@@ -86,17 +76,15 @@ public class BoxTrigger : MonoBehaviour
     {
         if (popupPanel == null || Global.currentRoom != "CargoRoom")
         {
+            Debug.LogError("BoxTrigger: popupPanel is NOT assigned in Inspector or not in CargoRoom.");
             return;
         }
-
         popupPanel.SetActive(true);
         ToggleHint(false);
-
         if (playerMovement != null)
         {
             playerMovement.enabled = false;
         }
-
         if (playerRigidbody != null)
         {
             playerRigidbody.linearVelocity = Vector2.zero;
@@ -109,12 +97,10 @@ public class BoxTrigger : MonoBehaviour
         {
             popupPanel.SetActive(false);
         }
-
         if (canInteract)
         {
             ToggleHint(true);
         }
-
         if (playerMovement != null)
         {
             playerMovement.enabled = true;

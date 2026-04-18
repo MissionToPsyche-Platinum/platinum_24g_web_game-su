@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CoverageReport scope="Summary">
   <Summary>
-    <Generatedon>4/17/2026 - 1:06:01 AM</Generatedon>
+    <Generatedon>4/17/2026 - 2:34:52 AM</Generatedon>
     <Parser>MultiReportParser (4x OpenCoverParser)</Parser>
     <Assemblies>4</Assemblies>
     <Classes>92</Classes>
     <Files>91</Files>
-    <Coveredlines>841</Coveredlines>
-    <Uncoveredlines>5085</Uncoveredlines>
-    <Coverablelines>5926</Coverablelines>
-    <Totallines>10890</Totallines>
-    <Linecoverage>14.1</Linecoverage>
+    <Coveredlines>148</Coveredlines>
+    <Uncoveredlines>5802</Uncoveredlines>
+    <Coverablelines>5950</Coverablelines>
+    <Totallines>10876</Totallines>
+    <Linecoverage>2.4</Linecoverage>
     <Coveredbranches>0</Coveredbranches>
     <Totalbranches>0</Totalbranches>
-    <Coveredmethods>94</Coveredmethods>
-    <Totalmethods>484</Totalmethods>
-    <Methodcoverage>19.4</Methodcoverage>
+    <Coveredmethods>21</Coveredmethods>
+    <Totalmethods>491</Totalmethods>
+    <Methodcoverage>4.2</Methodcoverage>
   </Summary>
   <Coverage>
     <Assembly name="Assembly-CSharp" classes="34" coverage="0" coveredlines="0" coverablelines="2248" totallines="4946" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="165" methodcoverage="0">
@@ -59,36 +59,36 @@
       <Class name="ControlRoomEditTests" coverage="0" coveredlines="0" coverablelines="14" totallines="39" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
       <Class name="LabRoomEditTests" coverage="0" coveredlines="0" coverablelines="22" totallines="51" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
     </Assembly>
-    <Assembly name="GameScripts" classes="53" coverage="21.9" coveredlines="790" coverablelines="3591" totallines="5846" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="91" totalmethods="311" methodcoverage="29.2">
-      <Class name="BoxTrigger" coverage="4.7" coveredlines="4" coverablelines="85" totallines="137" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="1" totalmethods="8" methodcoverage="12.5" />
-      <Class name="BroomPickup" coverage="21" coveredlines="32" coverablelines="152" totallines="270" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="4" totalmethods="12" methodcoverage="33.3" />
-      <Class name="CargoBox" coverage="100" coveredlines="25" coverablelines="25" totallines="81" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="5" totalmethods="5" methodcoverage="100" />
-      <Class name="CargoMinigameController" coverage="29.5" coveredlines="13" coverablelines="44" totallines="90" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="4" methodcoverage="50" />
-      <Class name="CargoRoomController" coverage="100" coveredlines="19" coverablelines="19" totallines="34" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="3" totalmethods="3" methodcoverage="100" />
+    <Assembly name="GameScripts" classes="53" coverage="3.5" coveredlines="129" coverablelines="3615" totallines="5832" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="20" totalmethods="318" methodcoverage="6.2">
+      <Class name="BoxTrigger" coverage="63.3" coveredlines="69" coverablelines="109" totallines="123" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="13" totalmethods="15" methodcoverage="86.6" />
+      <Class name="BroomPickup" coverage="0" coveredlines="0" coverablelines="152" totallines="270" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="12" methodcoverage="0" />
+      <Class name="CargoBox" coverage="20" coveredlines="5" coverablelines="25" totallines="81" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="5" methodcoverage="40" />
+      <Class name="CargoMinigameController" coverage="0" coveredlines="0" coverablelines="44" totallines="90" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="4" methodcoverage="0" />
+      <Class name="CargoRoomController" coverage="0" coveredlines="0" coverablelines="19" totallines="34" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
       <Class name="ChangeScene" coverage="0" coveredlines="0" coverablelines="13" totallines="26" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="4" methodcoverage="0" />
       <Class name="ComputerPopup" coverage="0" coveredlines="0" coverablelines="185" totallines="269" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="10" methodcoverage="0" />
       <Class name="ComputerUIController" coverage="0" coveredlines="0" coverablelines="6" totallines="16" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
-      <Class name="ControlsMinigameBootstrap" coverage="89" coveredlines="267" coverablelines="300" totallines="425" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="18" totalmethods="18" methodcoverage="100" />
-      <Class name="ControlsMinigameController" coverage="13" coveredlines="52" coverablelines="400" totallines="604" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="20" methodcoverage="10" />
-      <Class name="ControlsTargetGenerator" coverage="100" coveredlines="17" coverablelines="17" totallines="28" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="9" totalmethods="9" methodcoverage="100" />
-      <Class name="ControlsTrigger" coverage="2.3" coveredlines="5" coverablelines="209" totallines="305" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="1" totalmethods="13" methodcoverage="7.6" />
-      <Class name="CorrectionWindowVisual" coverage="34.6" coveredlines="9" coverablelines="26" totallines="44" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="4" methodcoverage="50" />
+      <Class name="ControlsMinigameBootstrap" coverage="0" coveredlines="0" coverablelines="300" totallines="425" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="18" methodcoverage="0" />
+      <Class name="ControlsMinigameController" coverage="0" coveredlines="0" coverablelines="400" totallines="604" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="20" methodcoverage="0" />
+      <Class name="ControlsTargetGenerator" coverage="0" coveredlines="0" coverablelines="17" totallines="28" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="9" methodcoverage="0" />
+      <Class name="ControlsTrigger" coverage="0" coveredlines="0" coverablelines="209" totallines="305" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="13" methodcoverage="0" />
+      <Class name="CorrectionWindowVisual" coverage="0" coveredlines="0" coverablelines="26" totallines="44" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="4" methodcoverage="0" />
       <Class name="CurrentMinigameText" coverage="0" coveredlines="0" coverablelines="12" totallines="29" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
       <Class name="DDOL" coverage="0" coveredlines="0" coverablelines="10" totallines="18" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
       <Class name="ExitLabMinigame" coverage="0" coveredlines="0" coverablelines="5" totallines="13" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
-      <Class name="ExitMinigame" coverage="100" coveredlines="3" coverablelines="3" totallines="11" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="1" totalmethods="1" methodcoverage="100" />
+      <Class name="ExitMinigame" coverage="0" coveredlines="0" coverablelines="3" totallines="11" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
       <Class name="ExitPowerMinigame" coverage="0" coveredlines="0" coverablelines="5" totallines="13" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
       <Class name="FactCardsPopup" coverage="0" coveredlines="0" coverablelines="85" totallines="120" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="4" methodcoverage="0" />
       <Class name="FactCardsPopupUI" coverage="0" coveredlines="0" coverablelines="82" totallines="144" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="9" methodcoverage="0" />
-      <Class name="FactSystem" coverage="1.3" coveredlines="1" coverablelines="74" totallines="146" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="13" methodcoverage="15.3" />
+      <Class name="FactSystem" coverage="0" coveredlines="0" coverablelines="74" totallines="146" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="13" methodcoverage="0" />
       <Class name="GameSceneSetup" coverage="0" coveredlines="0" coverablelines="19" totallines="38" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
       <Class name="GeneratorTrigger" coverage="0" coveredlines="0" coverablelines="161" totallines="235" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="10" methodcoverage="0" />
-      <Class name="Global" coverage="14.9" coveredlines="31" coverablelines="208" totallines="301" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="4" totalmethods="21" methodcoverage="19" />
+      <Class name="Global" coverage="7.2" coveredlines="15" coverablelines="208" totallines="301" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="1" totalmethods="21" methodcoverage="4.7" />
       <Class name="HallwayChangeScene" coverage="0" coveredlines="0" coverablelines="6" totallines="15" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
-      <Class name="HeadingVisual" coverage="46.1" coveredlines="12" coverablelines="26" totallines="49" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="3" totalmethods="5" methodcoverage="60" />
-      <Class name="InteractableAssetControl" coverage="66.6" coveredlines="6" coverablelines="9" totallines="19" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="1" totalmethods="1" methodcoverage="100" />
+      <Class name="HeadingVisual" coverage="0" coveredlines="0" coverablelines="26" totallines="49" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="5" methodcoverage="0" />
+      <Class name="InteractableAssetControl" coverage="0" coveredlines="0" coverablelines="9" totallines="19" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
       <Class name="LabBoxTrigger" coverage="0" coveredlines="0" coverablelines="154" totallines="264" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="13" methodcoverage="0" />
-      <Class name="MiniGameResultsPopup" coverage="52.2" coveredlines="83" coverablelines="159" totallines="229" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="5" totalmethods="9" methodcoverage="55.5" />
+      <Class name="MiniGameResultsPopup" coverage="0" coveredlines="0" coverablelines="159" totallines="229" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="9" methodcoverage="0" />
       <Class name="MinigameUnstick" coverage="0" coveredlines="0" coverablelines="8" totallines="15" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
       <Class name="MySimpleTestClass" coverage="0" coveredlines="0" coverablelines="3" totallines="98" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
       <Class name="NasaFactManager" coverage="0" coveredlines="0" coverablelines="27" totallines="47" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="4" methodcoverage="0" />
@@ -98,25 +98,25 @@
       <Class name="ProgressBarUpdater" coverage="0" coveredlines="0" coverablelines="4" totallines="17" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
       <Class name="RepairCollisionController" coverage="0" coveredlines="0" coverablelines="31" totallines="62" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="4" methodcoverage="0" />
       <Class name="RepairCollisionMinigame" coverage="0" coveredlines="0" coverablelines="161" totallines="239" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="10" methodcoverage="0" />
-      <Class name="RestarterScript" coverage="21.1" coveredlines="11" coverablelines="52" totallines="82" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="6" methodcoverage="33.3" />
-      <Class name="RevealFactCard" coverage="22.2" coveredlines="6" coverablelines="27" totallines="51" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="4" methodcoverage="50" />
+      <Class name="RestarterScript" coverage="0" coveredlines="0" coverablelines="52" totallines="82" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="6" methodcoverage="0" />
+      <Class name="RevealFactCard" coverage="0" coveredlines="0" coverablelines="27" totallines="51" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="4" methodcoverage="0" />
       <Class name="RoomContextPopup" coverage="0" coveredlines="0" coverablelines="26" totallines="43" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="5" methodcoverage="0" />
-      <Class name="ShipView" coverage="50.3" coveredlines="78" coverablelines="155" totallines="227" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="9" totalmethods="13" methodcoverage="69.2" />
+      <Class name="ShipView" coverage="0" coveredlines="0" coverablelines="155" totallines="227" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="13" methodcoverage="0" />
       <Class name="SoundFXManager" coverage="0" coveredlines="0" coverablelines="22" totallines="52" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
       <Class name="SoundMixerManager" coverage="0" coveredlines="0" coverablelines="34" totallines="57" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="5" methodcoverage="0" />
       <Class name="SpawnPointFinder" coverage="0" coveredlines="0" coverablelines="87" totallines="107" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
-      <Class name="SpillClean" coverage="80" coveredlines="12" coverablelines="15" totallines="32" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="2" methodcoverage="100" />
-      <Class name="SpillManager" coverage="58.9" coveredlines="23" coverablelines="39" totallines="98" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="4" totalmethods="5" methodcoverage="80" />
+      <Class name="SpillClean" coverage="0" coveredlines="0" coverablelines="15" totallines="32" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
+      <Class name="SpillManager" coverage="0" coveredlines="0" coverablelines="39" totallines="98" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="5" methodcoverage="0" />
       <Class name="SpillPopupController" coverage="0" coveredlines="0" coverablelines="71" totallines="107" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="8" methodcoverage="0" />
-      <Class name="Target" coverage="84.2" coveredlines="32" coverablelines="38" totallines="63" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="3" totalmethods="3" methodcoverage="100" />
-      <Class name="ThrustVisual" coverage="34.6" coveredlines="9" coverablelines="26" totallines="47" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="4" methodcoverage="50" />
+      <Class name="Target" coverage="0" coveredlines="0" coverablelines="38" totallines="63" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
+      <Class name="ThrustVisual" coverage="0" coveredlines="0" coverablelines="26" totallines="47" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="4" methodcoverage="0" />
       <Class name="WeldGunScript" coverage="0" coveredlines="0" coverablelines="16" totallines="29" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
       <Class name="WeldHandler" coverage="0" coveredlines="0" coverablelines="39" totallines="61" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="5" methodcoverage="0" />
       <Class name="WinSceneController" coverage="0" coveredlines="0" coverablelines="98" totallines="139" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="4" methodcoverage="0" />
     </Assembly>
-    <Assembly name="PlayModeTests" classes="2" coverage="100" coveredlines="32" coverablelines="32" totallines="70" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="2" methodcoverage="100">
-      <Class name="ControlRoomPlayTests" coverage="100" coveredlines="15" coverablelines="15" totallines="40" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="1" totalmethods="1" methodcoverage="100" />
-      <Class name="LabRoomPlayTests" coverage="100" coveredlines="17" coverablelines="17" totallines="30" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="1" totalmethods="1" methodcoverage="100" />
+    <Assembly name="PlayModeTests" classes="2" coverage="0" coveredlines="0" coverablelines="32" totallines="70" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0">
+      <Class name="ControlRoomPlayTests" coverage="0" coveredlines="0" coverablelines="15" totallines="40" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
+      <Class name="LabRoomPlayTests" coverage="0" coveredlines="0" coverablelines="17" totallines="30" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
     </Assembly>
   </Coverage>
 </CoverageReport>
