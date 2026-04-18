@@ -62,6 +62,7 @@ public class Global : MonoBehaviour
             if (minigameRoundOrder.Count > 0)
             {
                 currentRoom = minigameRoundOrder.Dequeue();
+                Debug.Log($"Current Room: {currentRoom}");
                 currentRoomCompleted = false;
             }
             else 
@@ -178,7 +179,6 @@ public class Global : MonoBehaviour
         foreach(string item in shuffledRooms)
         {
             minigameRoundOrder.Enqueue(item);
-            Debug.Log(item);
         }
     }
 

@@ -75,7 +75,7 @@ public class ControlsMinigameController : MonoBehaviour
     [SerializeField] private float stabilityDrainPerSecond = 14f;
     [SerializeField] private float stabilityRecoverPerTap = 10f;
     [SerializeField] private float tapCooldown = 0.2f;
-    [SerializeField] private float lowStabilityThreshold = 35f;
+    //[SerializeField] private float lowStabilityThreshold = 35f;
     [SerializeField] private float criticalStabilityThreshold = 15f;
     [SerializeField] private float maxOscillationMultiplier = 3.5f;
     [SerializeField] private float stabilityScorePenaltyWeight = 0.18f;

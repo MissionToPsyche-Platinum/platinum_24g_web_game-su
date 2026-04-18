@@ -11,8 +11,12 @@ TagManager:
   - RepairCollisionMinigame
   - WeldMask
   - Timer
-  - Undefined
   - Audio
+  - MainHallTrigger
+  - CargoTrigger
+  - LabTrigger
+  - ControlTrigger
+  - PowerTrigger
   layers:
   - Default
   - TransparentFX
