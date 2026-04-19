@@ -1,6 +1,7 @@
 ﻿<Solution>
   <Project Path="GameScripts.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="CargoRoomPlayTests.csproj" />
   <Project Path="PlayModeTests.csproj" />
   <Project Path="EditModeTests.csproj" />
 </Solution>
