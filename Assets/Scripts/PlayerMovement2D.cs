@@ -10,10 +10,20 @@ public class PlayerMovement2D : MonoBehaviour
     private Vector2 movement;
     private Vector2 lastMoveDir = Vector2.down;
 
+    public AudioSource footstepSource; //footsteps sound
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        footstepSource = GetComponent<AudioSource>();
+
+        if (footstepSource != null)
+        {
+        footstepSource.volume = 0.3f;
+        footstepSource.Play();
+        footstepSource.Pause();
+        }
     }
 
     void Update()
@@ -21,8 +31,8 @@ public class PlayerMovement2D : MonoBehaviour
         
         Vector2 raw = new Vector2(
 
-        Input.GetAxisRaw("Horizontal"),
-        Input.GetAxisRaw("Vertical")
+            Input.GetAxisRaw("Horizontal"),
+            Input.GetAxisRaw("Vertical")
 
         );
 
@@ -42,6 +52,27 @@ public class PlayerMovement2D : MonoBehaviour
         {
             movement = Vector2.zero;
         }
+
+        //play audic clip of foosteps when player moves
+        if (footstepSource != null)
+    {
+        if (isMoving)
+        {
+            if (!footstepSource.isPlaying)
+            {
+                footstepSource.UnPause();
+                Debug.Log("BRUH");
+            }
+        }
+        else
+        {
+            if (footstepSource.isPlaying)
+            {
+                footstepSource.Pause();
+                Debug.Log("WHAT THE HELLY");
+            }
+        }
+}
 
         Vector2 animDir = lastMoveDir;
         if (isMoving)

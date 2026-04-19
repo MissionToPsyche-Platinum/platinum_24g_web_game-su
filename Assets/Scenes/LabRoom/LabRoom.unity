@@ -5482,7 +5482,7 @@ GameObject:
   - component: {fileID: 1625913741}
   m_Layer: 0
   m_Name: MainHallTrigger
-  m_TagString: Untagged
+  m_TagString: MainHallTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6624,7 +6624,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillPopupController
   spillPopup: {fileID: 2122669199}
-  minigameSceneName: LabMinigame
+  minigameSceneNames:
+  - LabMinigame1
+  - LabMinigame2
 --- !u!114 &2122669204
 MonoBehaviour:
   m_ObjectHideFlags: 0

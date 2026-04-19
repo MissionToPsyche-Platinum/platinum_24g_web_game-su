@@ -24,6 +24,7 @@ public class Global : MonoBehaviour
     public static bool repairCollisionMinigamePlayed = false;
     public RectTransform repairMinigamePanel;
     private static bool showRepairPopup = true;
+    private bool repairPopupButtonBound = false;
 
     public static int round = 1;
     public static string currentRoom = "";
@@ -31,6 +32,8 @@ public class Global : MonoBehaviour
     public static Queue<string> minigameRoundOrder = new();
 
     public static string lastAwardedFactText = "";
+    //for keeping track of the previous minigame room
+    public static string lastRoomFromPreviousRound = ""; 
 
     void Start()
     {
@@ -53,10 +56,13 @@ public class Global : MonoBehaviour
     {
         if(currentRoomCompleted) //first check if the current minigame is completed
         {
+            //keep track of the room we just finished before moving on
+            lastRoomFromPreviousRound = currentRoom;
             
             if (minigameRoundOrder.Count > 0)
             {
                 currentRoom = minigameRoundOrder.Dequeue();
+                Debug.Log($"Current Room: {currentRoom}");
                 currentRoomCompleted = false;
             }
             else 
@@ -65,6 +71,7 @@ public class Global : MonoBehaviour
                 Debug.Log($"Current round: {round}");
 
                 RoundStart();
+                currentRoomCompleted = false;
             }
         }
     }
@@ -76,20 +83,23 @@ public class Global : MonoBehaviour
             if(repairMinigamePanel != null && showRepairPopup)
             {
                 repairMinigamePanel.gameObject.SetActive(true);
-                repairMinigamePanel.anchoredPosition = new Vector2(0f, 0f);
+                repairMinigamePanel.anchoredPosition = Vector2.zero;
+                SetPlayerMovementLocked(true);
 
                 Transform returnButton = repairMinigamePanel.Find("ReturnButton");
-                if (returnButton != null)
+                if (returnButton != null && !repairPopupButtonBound)
                 {
                     Button button = returnButton.GetComponent<Button>();
 
                     if (button != null)
                     {
+                        repairPopupButtonBound = true;
                         button.onClick.AddListener(() =>
                         {
                             timerStarted = true;
                             showRepairPopup = false;
                             repairMinigamePanel.gameObject.SetActive(false);
+                            SetPlayerMovementLocked(false);
                         });
                     }
                     else
@@ -113,6 +123,32 @@ public class Global : MonoBehaviour
                 }
             }
         }
+        else if (!showRepairPopup)
+        {
+            SetPlayerMovementLocked(false);
+        }
+    }
+
+    private void SetPlayerMovementLocked(bool locked)
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null)
+        {
+            return;
+        }
+
+        PlayerMovement2D movement = player.GetComponent<PlayerMovement2D>();
+        Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+
+        if (movement != null)
+        {
+            movement.enabled = !locked;
+        }
+
+        if (locked && rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
     }
 
     private static void RoundStart()
@@ -125,10 +161,24 @@ public class Global : MonoBehaviour
     {
         string[] rooms = new string[] { "LabRoom", "CargoRoom", "PowerRoom", "ControlRoom" };
 
-        foreach(string item in rooms.OrderBy(x => Guid.NewGuid()))
+        //shuffling the rooms
+        List<string> shuffledRooms = rooms.OrderBy(x => Guid.NewGuid()).ToList();
+        //this checks that if we're not in the first round, the new round minigame isn't
+        //the sme as the one we just finished 
+        if (shuffledRooms.Count > 1 && shuffledRooms[0] == lastRoomFromPreviousRound)
+        {
+            int swapIndex = UnityEngine.Random.Range(1, shuffledRooms.Count);
+
+            string temp = shuffledRooms[0];
+            shuffledRooms[0] = shuffledRooms[swapIndex];
+            shuffledRooms[swapIndex] = temp;
+        }
+
+        minigameRoundOrder.Clear();
+
+        foreach(string item in shuffledRooms)
         {
             minigameRoundOrder.Enqueue(item);
-            //Debug.Log(item);
         }
     }
 
@@ -150,6 +200,13 @@ public class Global : MonoBehaviour
     {
         totalScore += score;
         AwardFact();
+        CheckWin();
+    }
+
+    public static void MinigameScoreNoFact(int score)
+    {
+        totalScore += score;
+        lastAwardedFactText = "";
         CheckWin();
     }
     public static void SubtractScore(int score)

@@ -4,7 +4,6 @@ public class Target : MonoBehaviour
 {
     private Animator animator;
     public bool occupied;
-    private CargoBox box;
 
     [SerializeField] private AudioClip occupiedSoundClip;
     [SerializeField] private AudioClip unoccupiedSoundClip;
@@ -12,6 +11,11 @@ public class Target : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if(GetComponent<Animator>() == null)
+        {
+            Debug.LogError("Target: Animator component not found");
+            return;
+        }
         animator = GetComponent<Animator>();
         occupied = false;
     }

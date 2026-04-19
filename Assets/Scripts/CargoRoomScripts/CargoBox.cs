@@ -1,46 +1,80 @@
 using Unity.Mathematics.Geometry;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CargoBox : MonoBehaviour
 {
     private Rigidbody2D rb;
+    public float pushForce = -0.99f;
     public GameObject warning;
-    public GameObject correction;
+    public GameObject correct;
     
-    [SerializeField] private AudioClip[] pushSoundClips;
-    
+    private AudioSource audioSource;
+    //private Vector3 lastPosition;
+    //private float minMoveDistance;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        correction.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
+        correct.SetActive(false);
+
+        //lastPosition = transform.position;
+        //minMoveDistance = 0.001f;
+        //if(audioSource != null)
+        //{
+        //    audioSource.volume = 0.0f;
+        //    audioSource.Play();
+        //    audioSource.Pause();
+        //    audioSource.volume = 0.3f;
+
+        //}
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if(rb.linearVelocity.y != 0 || rb.linearVelocity.x != 0)
+        if (rb.linearVelocity.y != 0 || rb.linearVelocity.x != 0)
         {
-            
-            Vector2 movementVelocity = rb.linearVelocity *= -0.99f;
+
+            Vector2 movementVelocity = rb.linearVelocity * pushForce;
             rb.linearVelocity = Vector2.Max(movementVelocity, Vector2.zero);
-            //SoundFXManager.instance.PlayRandomSoundFXClip(pushSoundClips, transform, 1f);
         }
+
+        //float distanceMoved = Vector3.Distance(transform.position, lastPosition);
+        //if (audioSource != null)
+        //{
+        //    if (distanceMoved >= minMoveDistance)
+        //    {
+        //        if (!audioSource.isPlaying)
+        //        {
+        //            audioSource.UnPause();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (audioSource.isPlaying)
+        //        {
+        //            audioSource.Pause();
+        //        }
+        //    }
+        //}
+        //lastPosition = transform.position;
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-
-        if (hit.transform.CompareTag("Player"))
+        Rigidbody2D otherRb = collision.rigidbody;
+        if(otherRb != null && collision.gameObject.CompareTag("Player"))
         {
-            Vector2 pushDir = new Vector2(hit.moveDirection.x, hit.moveDirection.y);
-
+            Vector2 pushDir = otherRb.linearVelocity.normalized;
             rb.linearVelocity = pushDir;
         }
     }
 
     public void SwitchSprite(bool finished)
     {
-        correction.SetActive(finished);
+        correct.SetActive(finished);
         warning.SetActive(!finished);
     }
 

@@ -21,7 +21,20 @@ public class CargoMinigameController : MonoBehaviour
     void Start()
     {
         targets = GameObject.FindGameObjectsWithTag("CargoroomTarget");
+
+        if(targets == null || targets.Length == 0)
+        {
+            Debug.LogError("CargoMinigameController: No GameObjects with tag 'CargoroomTarget' found in the scene.");
+            return;
+        }
+
         player = GameObject.FindGameObjectWithTag("Player");
+        if(player == null)
+        {
+            Debug.LogError("CargoMinigameController: Player GameObject with tag 'Player' not found in the scene.");
+            return;
+        }
+
         player.GetComponent<PlayerMovement2D>().enabled = true;
 
         transform = completedPanelTransform;

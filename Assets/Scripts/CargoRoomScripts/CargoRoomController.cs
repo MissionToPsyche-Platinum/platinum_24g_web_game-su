@@ -4,13 +4,18 @@ using UnityEngine.SceneManagement;
 
 public class CargoRoomController : MonoBehaviour
 {
-    private GameObject player;
+    public GameObject player;
     private List<string> MinigameSceneNames = new() { "CargoMinigame1", "CargoMinigame2" };
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        if(player == null)
+        {
+            Debug.LogError("CargoRoomController: Player GameObject with tag 'Player' not found in the scene.");
+            return;
+        }
         player.GetComponent<PlayerMovement2D>().enabled = true;
     }
 

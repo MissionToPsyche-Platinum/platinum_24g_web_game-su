@@ -6653,7 +6653,7 @@ GameObject:
   - component: {fileID: 2011003561}
   m_Layer: 0
   m_Name: MainHallTrigger
-  m_TagString: Untagged
+  m_TagString: MainHallTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7359,10 +7359,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1830e4eae144b459c9d2c341e5b041c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ControlsTrigger
-  hintAnchoredPosition: {x: -120, y: 0}
+  hintAnchoredPosition: {x: 0, y: 0}
   startButtonAnchoredPosition: {x: 0, y: 0}
-  popupAnchoredPosition: {x: -120, y: 0}
+  popupAnchoredPosition: {x: 0, y: 0}
   hintSize: {x: 300, y: 40}
+  minigameSceneNames:
+  - ControlRoomMinigame1
+  - ControlRoomMinigame2
 --- !u!61 &2028972068
 BoxCollider2D:
   m_ObjectHideFlags: 0

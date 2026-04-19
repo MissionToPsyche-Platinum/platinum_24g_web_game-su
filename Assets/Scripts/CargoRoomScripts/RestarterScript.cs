@@ -14,12 +14,17 @@ public class RestarterScript : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        if(player == null)
+        {
+            Debug.LogError("RestarterScript: Player GameObject with tag 'Player' not found in the scene.");
+            return;
+        }
         helpPanel.SetActive(false);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && !helpPanel.activeSelf )
         {
             if (SoundFXManager.instance != null)
             {
@@ -71,6 +76,7 @@ public class RestarterScript : MonoBehaviour
     public void RestartMinigame()
     {
         player.GetComponent<PlayerMovement2D>().enabled = true;
-        SceneManager.LoadScene("CargoMinigame2");
+        string sceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(sceneName);
     }
 }

@@ -5906,6 +5906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d05b1d58027b044afa82f90774efc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CargoRoomController
+  player: {fileID: 0}
 --- !u!1 &1625913738
 GameObject:
   m_ObjectHideFlags: 0
@@ -5919,7 +5920,7 @@ GameObject:
   - component: {fileID: 1625913741}
   m_Layer: 0
   m_Name: MainHallTrigger
-  m_TagString: Untagged
+  m_TagString: MainHallTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

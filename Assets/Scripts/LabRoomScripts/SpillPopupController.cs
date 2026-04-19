@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class SpillPopupController : MonoBehaviour
 {
-    [SerializeField] private GameObject spillPopup;
+    [SerializeField] public GameObject spillPopup;
     //round 1 loads index 0, round 2 loads index 1
     [SerializeField] private List<string> minigameSceneNames = new() { "LabMinigame1", "LabMinigame2" };
 
@@ -12,6 +12,11 @@ public class SpillPopupController : MonoBehaviour
     private bool popupOpen = false;
     private bool readyToClick = false;
     private float nextPingTime = 0f;
+
+    public void SetPopup(GameObject popup)
+    {
+        spillPopup = popup;
+    }
 
     public void ShowPopup()
     {

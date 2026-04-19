@@ -2,8 +2,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+
 public class SpillManager : MonoBehaviour
 {
+    
     public static SpillManager Instance;
 
     [Header("UI")]
@@ -85,3 +87,12 @@ public class SpillManager : MonoBehaviour
         SceneManager.LoadScene(labRoomSceneName);
     }
 }
+public static class MySimpleTestClass
+    {
+        public static int GetTestData()
+        {
+            return 5;
+        }
+        
+    }
+    

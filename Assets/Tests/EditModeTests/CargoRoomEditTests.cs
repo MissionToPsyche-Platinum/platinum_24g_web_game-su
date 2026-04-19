@@ -5,20 +5,32 @@ using UnityEngine.TestTools;
 
 public class CargoRoomTests
 {
-    // A Test behaves as an ordinary method
     [Test]
-    public void CargoRoomTestsSimplePasses()
+    public void CargoBoxSwitchSprite_True_CorrectActive()
     {
-        // Use the Assert class to test conditions
-    }
+        //Arrange
+        GameObject cargoBox = new("CargoBox");
+        cargoBox.tag = "MoveableBox";
+        GameObject warningObject = new("Warning");
+        warningObject.SetActive(true);
+        GameObject correctObject = new("Correct");
+        cargoBox.AddComponent<BoxCollider2D>();
+        cargoBox.AddComponent<Rigidbody2D>();
+        cargoBox.AddComponent<AudioSource>();
+        CargoBox cargoBoxComponent = cargoBox.AddComponent<CargoBox>();
+        cargoBoxComponent.warning = warningObject;
+        cargoBoxComponent.correct = correctObject;
 
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator CargoRoomTestsWithEnumeratorPasses()
-    {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
-        yield return null;
+        //Act
+        cargoBoxComponent.SwitchSprite(true);
+
+        //Assert
+        Assert.IsTrue(cargoBoxComponent.correct.activeSelf, "SwitchSprite with true should set `correct` active.");
+        Assert.IsFalse(cargoBoxComponent.warning.activeSelf, "SwitchSprite with true should set `warning` inactive.");
+
+        //CleanUp
+        Object.DestroyImmediate(warningObject);
+        Object.DestroyImmediate(correctObject);
+        Object.DestroyImmediate(cargoBox);
     }
 }

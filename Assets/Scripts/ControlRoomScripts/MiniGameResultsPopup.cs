@@ -14,8 +14,11 @@ public class MiniGameResultsPopup : MonoBehaviour
     [SerializeField] private Text titleText;
     [SerializeField] private Text bodyText;
     [SerializeField] private Button returnButton;
+    [SerializeField] private Button replayButton;
 
     private string[] facts;
+    private bool allowReplayCurrentResult;
+    private int currentResultScore;
 
     private void Awake()
     {
@@ -32,11 +35,14 @@ public class MiniGameResultsPopup : MonoBehaviour
         LoadFacts();
     }
 
-    public void ShowResults(int distance, int score, int stars)
+    public void ShowResults(int distance, int score, int stars, bool allowReplay, bool allowFact)
     {
         EnsurePopup();
+        allowReplayCurrentResult = allowReplay;
+        currentResultScore = score;
+
         string fact = "(No facts available)";
-        if (facts != null && facts.Length > 0)
+        if (allowFact && facts != null && facts.Length > 0)
         {
             fact = facts[Random.Range(0, facts.Length)];
         }
@@ -49,7 +55,35 @@ public class MiniGameResultsPopup : MonoBehaviour
 
         if (bodyText != null)
         {
-            bodyText.text = fact;
+            bodyText.text = allowFact ? fact : "Fact card awarded only for 3-star runs.";
+        }
+
+        if (titleText != null)
+        {
+            titleText.text = allowFact ? "Psyche Fact" : "Course Debrief";
+        }
+
+        if (replayButton != null)
+        {
+            replayButton.gameObject.SetActive(allowReplay);
+        }
+
+        if (returnButton != null)
+        {
+            RectTransform returnRect = returnButton.GetComponent<RectTransform>();
+            if (returnRect != null)
+            {
+                returnRect.anchoredPosition = allowReplay ? new Vector2(-90f, 20f) : new Vector2(0f, 20f);
+            }
+        }
+
+        if (replayButton != null)
+        {
+            RectTransform replayRect = replayButton.GetComponent<RectTransform>();
+            if (replayRect != null)
+            {
+                replayRect.anchoredPosition = new Vector2(90f, 20f);
+            }
         }
 
         if (popupRoot != null)
@@ -98,27 +132,49 @@ public class MiniGameResultsPopup : MonoBehaviour
         titleText = CreateText("Title", popupRoot.transform, new Vector2(0f, 80f), new Vector2(480f, 40f), 24, "Psyche Fact");
         bodyText = CreateText("Body", popupRoot.transform, new Vector2(0f, -10f), new Vector2(500f, 160f), 18, "(No fact)");
 
-        GameObject buttonObj = new GameObject("ReturnButton", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(Button));
-        buttonObj.transform.SetParent(popupRoot.transform, false);
-
-        RectTransform buttonTransform = buttonObj.GetComponent<RectTransform>();
-        buttonTransform.anchorMin = new Vector2(0.5f, 0f);
-        buttonTransform.anchorMax = new Vector2(0.5f, 0f);
-        buttonTransform.pivot = new Vector2(0.5f, 0f);
-        buttonTransform.sizeDelta = new Vector2(160f, 44f);
-        buttonTransform.anchoredPosition = new Vector2(0f, 20f);
-
-        Image buttonImage = buttonObj.GetComponent<Image>();
-        buttonImage.color = new Color(0.2f, 0.55f, 0.75f, 1f);
-
-        Text label = CreateText("Label", buttonObj.transform, Vector2.zero, new Vector2(160f, 44f), 20, "Return");
-        label.alignment = TextAnchor.MiddleCenter;
-
-        returnButton = buttonObj.GetComponent<Button>();
+        GameObject returnObj = new GameObject("ReturnButton", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(Button));
+        returnObj.transform.SetParent(popupRoot.transform, false);
+        RectTransform returnTransform = returnObj.GetComponent<RectTransform>();
+        returnTransform.anchorMin = new Vector2(0.5f, 0f);
+        returnTransform.anchorMax = new Vector2(0.5f, 0f);
+        returnTransform.pivot = new Vector2(0.5f, 0f);
+        returnTransform.sizeDelta = new Vector2(160f, 44f);
+        returnTransform.anchoredPosition = new Vector2(-90f, 20f);
+        Image returnImage = returnObj.GetComponent<Image>();
+        returnImage.color = new Color(0.2f, 0.55f, 0.75f, 1f);
+        Text returnLabel = CreateText("Label", returnObj.transform, Vector2.zero, new Vector2(160f, 44f), 20, "Return");
+        returnLabel.alignment = TextAnchor.MiddleCenter;
+        returnButton = returnObj.GetComponent<Button>();
         returnButton.onClick.AddListener(() =>
         {
             SceneManager.LoadScene("ControlRoom", LoadSceneMode.Single);
         });
+
+        GameObject replayObj = new GameObject("ReplayButton", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(Button));
+        replayObj.transform.SetParent(popupRoot.transform, false);
+        RectTransform replayTransform = replayObj.GetComponent<RectTransform>();
+        replayTransform.anchorMin = new Vector2(0.5f, 0f);
+        replayTransform.anchorMax = new Vector2(0.5f, 0f);
+        replayTransform.pivot = new Vector2(0.5f, 0f);
+        replayTransform.sizeDelta = new Vector2(160f, 44f);
+        replayTransform.anchoredPosition = new Vector2(90f, 20f);
+        Image replayImage = replayObj.GetComponent<Image>();
+        replayImage.color = new Color(0.2f, 0.55f, 0.75f, 1f);
+        Text replayLabel = CreateText("Label", replayObj.transform, Vector2.zero, new Vector2(160f, 44f), 20, "Replay");
+        replayLabel.alignment = TextAnchor.MiddleCenter;
+        replayButton = replayObj.GetComponent<Button>();
+        replayButton.onClick.AddListener(ReplayCurrentScene);
+    }
+
+    private void ReplayCurrentScene()
+    {
+        if (!allowReplayCurrentResult)
+        {
+            return;
+        }
+
+        Global.SubtractScore(currentResultScore);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
     }
 
     private void LoadFacts()
