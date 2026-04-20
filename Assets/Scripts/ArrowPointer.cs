@@ -32,9 +32,13 @@ public class ArrowPointer : MonoBehaviour
         else 
         {
             arrowSprite.SetActive(true);
-            
+
             //if you're in the main hall, arrow points to room of current minigame
-            if (currentRoom == "MainHall")
+            if (Global.inTimeSensitiveMinigame)
+            {
+                arrowSprite.SetActive(false);
+            }
+            else if (currentRoom == "MainHall")
             {
                 if(Global.currentRoom == "CargoRoom")
                 {

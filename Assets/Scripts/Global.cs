@@ -25,6 +25,7 @@ public class Global : MonoBehaviour
     public RectTransform repairMinigamePanel;
     private static bool showRepairPopup = true;
     private bool repairPopupButtonBound = false;
+    public static bool inTimeSensitiveMinigame = false;
 
     public static int round = 1;
     public static string currentRoom = "";
@@ -82,6 +83,7 @@ public class Global : MonoBehaviour
         {   
             if(repairMinigamePanel != null && showRepairPopup)
             {
+                inTimeSensitiveMinigame = true;
                 repairMinigamePanel.gameObject.SetActive(true);
                 repairMinigamePanel.anchoredPosition = Vector2.zero;
                 SetPlayerMovementLocked(true);

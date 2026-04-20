@@ -34,7 +34,7 @@ public class RepairCollisionController : MonoBehaviour
         {
             getCount = crack.transform.childCount;
 
-            if (getCount > 550)
+            if (getCount > 500)
             {
                 crack.GetComponent<WeldHandler>().Reveal();
                 EndMinigame();
@@ -50,6 +50,7 @@ public class RepairCollisionController : MonoBehaviour
         transform.anchoredPosition = new Vector2(0f, 0f);
 
         Global.repairCollisionMinigamePlayed = true;
+        Global.inTimeSensitiveMinigame = false;
 
     }
 
