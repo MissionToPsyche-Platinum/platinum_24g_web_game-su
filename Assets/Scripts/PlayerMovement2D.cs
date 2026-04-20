@@ -55,7 +55,7 @@ public class PlayerMovement2D : MonoBehaviour
             if (!footstepSource.isPlaying)
             {
                 footstepSource.UnPause();
-                Debug.Log("BRUH");
+                
             }
         }
         else
@@ -63,7 +63,7 @@ public class PlayerMovement2D : MonoBehaviour
             if (footstepSource.isPlaying)
             {
                 footstepSource.Pause();
-                Debug.Log("WHAT THE HELLY");
+                
             }
         }
 }
