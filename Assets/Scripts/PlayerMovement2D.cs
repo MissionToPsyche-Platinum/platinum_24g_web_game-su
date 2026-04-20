@@ -28,13 +28,7 @@ public class PlayerMovement2D : MonoBehaviour
 
     void Update()
     {
-        
-        Vector2 raw = new Vector2(
-
-            Input.GetAxisRaw("Horizontal"),
-            Input.GetAxisRaw("Vertical")
-
-        );
+        Vector2 raw = GetRawMovementInput();
 
         if (Mathf.Abs(raw.x) > Mathf.Abs(raw.y))
             raw.y = 0;
@@ -83,6 +77,31 @@ public class PlayerMovement2D : MonoBehaviour
         anim.SetBool("IsMoving", isMoving);
         anim.SetFloat("LastMoveX", lastMoveDir.x);
         anim.SetFloat("LastMoveY", lastMoveDir.y);
+    }
+
+    private static Vector2 GetRawMovementInput()
+    {
+        float horizontal = 0f;
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        {
+            horizontal -= 1f;
+        }
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        {
+            horizontal += 1f;
+        }
+
+        float vertical = 0f;
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+        {
+            vertical -= 1f;
+        }
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+        {
+            vertical += 1f;
+        }
+
+        return new Vector2(horizontal, vertical);
     }
 
     void FixedUpdate()
