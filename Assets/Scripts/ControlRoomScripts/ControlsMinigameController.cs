@@ -504,20 +504,23 @@ public class ControlsMinigameController : MonoBehaviour
 
         state = GameState.Completed;
 
-        if (factCardPopup != null)
-        {
-            bool allowReplay = result.stars < 3;
-            bool allowFact = result.stars >= 3;
-            factCardPopup.ShowResults(result.distance, result.score, result.stars, allowReplay, allowFact);
-        }
+        bool allowReplay = result.stars < 3;
+        bool allowFact = result.stars >= 3;
 
-        if (result.stars >= 3)
+        if (allowFact)
         {
             Global.MinigameScore(result.score);
         }
         else
         {
             Global.MinigameScoreNoFact(result.score);
+        }
+
+        Global.currentRoomCompleted = true;
+
+        if (factCardPopup != null)
+        {
+            factCardPopup.ShowResults(result.distance, result.score, result.stars, allowReplay, allowFact);
         }
     }
 

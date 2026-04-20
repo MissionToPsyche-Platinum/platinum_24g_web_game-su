@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class ControlsMinigameBootstrap : MonoBehaviour
 {
     [Header("Data")]
-    [SerializeField] private TextAsset factBank;
     [SerializeField] private Sprite shuttleSprite;
 
     [Header("Ship Art")]
@@ -114,16 +113,17 @@ public class ControlsMinigameBootstrap : MonoBehaviour
 
         ControlsTargetGenerator targetGenerator = GetOrAddComponent<ControlsTargetGenerator>();
         ControlsMinigameController controller = GetOrAddComponent<ControlsMinigameController>();
-        MiniGameResultsPopup factCardPopup = GetOrAddComponent<MiniGameResultsPopup>();
+        MiniGameResultsPopup factCardPopup = FindFirstObjectByType<MiniGameResultsPopup>();
+        if (factCardPopup == null)
+        {
+            factCardPopup = GetOrAddComponent<MiniGameResultsPopup>();
+        }
         HeadingVisual headingVisual = GetOrAddComponent<HeadingVisual>();
         ThrustVisual thrustVisual = GetOrAddComponent<ThrustVisual>();
         CorrectionWindowVisual correctionWindowVisual = GetOrAddComponent<CorrectionWindowVisual>();
         ShipView shipView = GetOrAddComponent<ShipView>();
 
-        if (factBank != null)
-        {
-            factCardPopup.SetFactBank(factBank);
-        }
+        factCardPopup.AttachToCanvas(canvas.transform);
 
         headingVisual.Bind(headingLine, null, targetBand);
         thrustVisual.Bind(thrustBar, thrustNeedle, thrustTargetTick, 0f, 100f);
