@@ -209,7 +209,6 @@ public class ControlsMinigameController : MonoBehaviour
         {
             UpdateStability();
         }
-        HandleModeSwitch();
         HandleInput();
 
         if (headingVisual != null)
@@ -235,25 +234,6 @@ public class ControlsMinigameController : MonoBehaviour
         if (state == GameState.CourseCorrection)
         {
             return;
-        }
-    }
-
-    private void HandleModeSwitch()
-    {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            mode = ControlMode.Heading;
-            UpdateModeText();
-        }
-        else if (Input.GetKeyDown(KeyCode.T))
-        {
-            mode = ControlMode.Thrust;
-            UpdateModeText();
-        }
-        else if (Input.GetKeyDown(KeyCode.B))
-        {
-            mode = ControlMode.CorrectionWindow;
-            UpdateModeText();
         }
     }
 
@@ -596,10 +576,10 @@ public class ControlsMinigameController : MonoBehaviour
 
         string label = mode switch
         {
-            ControlMode.Heading => stabilityEnabled ? "Heading: Press Space to lock angle | Tap C to stabilize" : "Heading: Press Space to lock angle",
-            ControlMode.Thrust => stabilityEnabled ? "Thrust: Press Space to lock power | Tap C to stabilize" : "Thrust: Press Space to lock power",
-            ControlMode.CorrectionWindow => stabilityEnabled ? "Correction Window: Hold Space to set duration | Tap C to stabilize" : "Correction Window: Hold Space to set duration",
-            _ => stabilityEnabled ? "Heading: Press Space to lock angle | Tap C to stabilize" : "Heading: Press Space to lock angle"
+            ControlMode.Heading => stabilityEnabled ? "Heading: Press Space to lock angle | Then thrust unlocks | Tap C to stabilize" : "Heading: Press Space to lock angle | Then thrust unlocks",
+            ControlMode.Thrust => stabilityEnabled ? "Thrust: Press Space to lock power | Then burn window unlocks | Tap C to stabilize" : "Thrust: Press Space to lock power | Then burn window unlocks",
+            ControlMode.CorrectionWindow => stabilityEnabled ? "Burn Window: Hold Space to set duration | Tap C to stabilize" : "Burn Window: Hold Space to set duration",
+            _ => stabilityEnabled ? "Heading: Press Space to lock angle | Then thrust unlocks | Tap C to stabilize" : "Heading: Press Space to lock angle | Then thrust unlocks"
         };
 
         modeText.text = label;

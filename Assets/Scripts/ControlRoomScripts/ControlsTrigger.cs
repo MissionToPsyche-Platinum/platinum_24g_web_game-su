@@ -8,10 +8,15 @@ public class ControlsTrigger : MonoBehaviour
 {
     private const string PopupName = "ControlsPopUp";
     private const string HintName = "ControlsInteractHint";
+    private const string PopupTitle = "MID-COURSE CORRECTION";
+    private const string PopupBody = "Your ship has drifted off course. Lock in heading, then thrust, then the burn window to guide it back onto its planned trajectory.\n\nPress Space to lock each stage as it appears.";
+    private const string PopupBodyRoundTwo = "Your ship has drifted off course. Lock in heading, then thrust, then the burn window to guide it back onto its planned trajectory.\n\nPress Space to lock each stage as it appears, and tap C repeatedly to keep the ship stable.";
+    private const string PixelFontResourcePath = "Fonts & Materials/Electronic Highway Sign SDF";
+    private const string BodyFontResourcePath = "Fonts & Materials/LiberationSans SDF";
 
     [Header("Hint Placement (Screen Center Offset)")]
     [SerializeField] private Vector2 hintAnchoredPosition = new Vector2(400f, 0f);
-    [SerializeField] private Vector2 startButtonAnchoredPosition = new Vector2(0f, 0f);
+    [SerializeField] private Vector2 startButtonAnchoredPosition = new Vector2(0f, -112f);
     [SerializeField] private Vector2 popupAnchoredPosition = new Vector2(400f, 0f);
     [SerializeField] private Vector2 hintSize = new Vector2(300f, 40f);
 
@@ -25,6 +30,9 @@ public class ControlsTrigger : MonoBehaviour
     private PlayerMovement2D playerMovement;
     private Rigidbody2D playerRigidbody;
     private RectTransform hintRectTransform;
+    private TMP_FontAsset popupTitleFont;
+    private TMP_FontAsset popupBodyFont;
+    private TMP_Text popupBodyText;
 
     private void Update()
     {
@@ -104,6 +112,7 @@ public class ControlsTrigger : MonoBehaviour
             return;
         }
 
+        UpdatePopupText();
         popupPanel.SetActive(true);
         ToggleHint(false);
 
@@ -172,12 +181,33 @@ public class ControlsTrigger : MonoBehaviour
         panelTransform.anchorMin = new Vector2(0.5f, 0.5f);
         panelTransform.anchorMax = new Vector2(0.5f, 0.5f);
         panelTransform.pivot = new Vector2(0.5f, 0.5f);
-        panelTransform.sizeDelta = new Vector2(420f, 240f);
+        panelTransform.sizeDelta = new Vector2(820f, 380f);
         panelTransform.anchoredPosition = popupAnchoredPosition;
 
         Image panelImage = popupPanel.GetComponent<Image>();
-        panelImage.color = new Color(0.1f, 0.12f, 0.16f, 0.95f);
+        panelImage.color = new Color(0.14f, 0.20f, 0.24f, 0.98f);
 
+        TMP_Text titleText = CreatePopupText(
+            popupPanel.transform,
+            "Title",
+            new Vector2(0f, 122f),
+            new Vector2(700f, 48f),
+            34f,
+            PopupTitle,
+            TextAlignmentOptions.Center,
+            ResolvePopupTitleFont());
+        titleText.color = Color.white;
+
+        popupBodyText = CreatePopupText(
+            popupPanel.transform,
+            "Body",
+            new Vector2(0f, -2f),
+            new Vector2(720f, 170f),
+            30f,
+            GetPopupBodyText(),
+            TextAlignmentOptions.Center,
+            ResolvePopupBodyFont());
+        popupBodyText.color = Color.white;
 
         startGameButton = new GameObject("StartGameButton",
             typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(Button));
@@ -187,13 +217,13 @@ public class ControlsTrigger : MonoBehaviour
         factButtonTransform.anchorMin = new Vector2(0.5f, 0.5f);
         factButtonTransform.anchorMax = new Vector2(0.5f, 0.5f);
         factButtonTransform.pivot = new Vector2(0.5f, 0.5f);
-        factButtonTransform.sizeDelta = new Vector2(220f, 60f);
-        factButtonTransform.anchoredPosition = startButtonAnchoredPosition;
+        factButtonTransform.sizeDelta = new Vector2(300f, 64f);
+        factButtonTransform.anchoredPosition = new Vector2(startButtonAnchoredPosition.x, -136f);
 
         Image factButtonImage = startGameButton.GetComponent<Image>();
-        factButtonImage.color = new Color(0.2f, 0.55f, 0.75f, 1f);
+        factButtonImage.color = new Color(0.22f, 0.53f, 0.80f, 1f);
 
-        GameObject factLabelObject = new GameObject("Label", typeof(RectTransform), typeof(CanvasRenderer), typeof(Text));
+        GameObject factLabelObject = new GameObject("Label", typeof(RectTransform), typeof(CanvasRenderer), typeof(TextMeshProUGUI));
         factLabelObject.transform.SetParent(startGameButton.transform, false);
 
         RectTransform factLabelTransform = factLabelObject.GetComponent<RectTransform>();
@@ -202,12 +232,13 @@ public class ControlsTrigger : MonoBehaviour
         factLabelTransform.offsetMin = Vector2.zero;
         factLabelTransform.offsetMax = Vector2.zero;
 
-        Text factLabel = factLabelObject.GetComponent<Text>();
-        factLabel.text = "Start minigame";
-        factLabel.alignment = TextAnchor.MiddleCenter;
-        factLabel.color = Color.white;
-        factLabel.fontSize = 24;
-        factLabel.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        TextMeshProUGUI factLabel = factLabelObject.GetComponent<TextMeshProUGUI>();
+        factLabel.text = "START MINIGAME";
+        factLabel.alignment = TextAlignmentOptions.Center;
+        factLabel.color = new Color(0.9f, 0.9f, 0.9f, 1f);
+        factLabel.fontSize = 28.2f;
+        factLabel.font = ResolvePopupTitleFont();
+        factLabel.raycastTarget = false;
 
         startGameButton.GetComponent<Button>().onClick.AddListener(() =>
         {
@@ -215,6 +246,19 @@ public class ControlsTrigger : MonoBehaviour
         });
 
         popupPanel.SetActive(false);
+    }
+
+    private void UpdatePopupText()
+    {
+        if (popupBodyText != null)
+        {
+            popupBodyText.text = GetPopupBodyText();
+        }
+    }
+
+    private string GetPopupBodyText()
+    {
+        return Global.round >= 2 ? PopupBodyRoundTwo : PopupBody;
     }
 
     private Canvas ResolveUiCanvas()
@@ -301,5 +345,66 @@ public class ControlsTrigger : MonoBehaviour
         hintText.raycastTarget = false;
 
         hintLabel.SetActive(false);
+    }
+
+    private TMP_Text CreatePopupText(
+        Transform parent,
+        string objectName,
+        Vector2 anchoredPosition,
+        Vector2 size,
+        float fontSize,
+        string text,
+        TextAlignmentOptions alignment,
+        TMP_FontAsset font)
+    {
+        GameObject textObject = new GameObject(objectName, typeof(RectTransform), typeof(CanvasRenderer), typeof(TextMeshProUGUI));
+        textObject.transform.SetParent(parent, false);
+
+        RectTransform rectTransform = textObject.GetComponent<RectTransform>();
+        rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+        rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+        rectTransform.pivot = new Vector2(0.5f, 0.5f);
+        rectTransform.sizeDelta = size;
+        rectTransform.anchoredPosition = anchoredPosition;
+
+        TextMeshProUGUI uiText = textObject.GetComponent<TextMeshProUGUI>();
+        uiText.text = text;
+        uiText.alignment = alignment;
+        uiText.color = Color.white;
+        uiText.fontSize = fontSize;
+        uiText.font = font;
+        uiText.enableWordWrapping = true;
+        uiText.overflowMode = TextOverflowModes.Overflow;
+        uiText.raycastTarget = false;
+
+        return uiText;
+    }
+
+    private TMP_FontAsset ResolvePopupTitleFont()
+    {
+        if (popupTitleFont == null)
+        {
+            popupTitleFont = Resources.Load<TMP_FontAsset>(PixelFontResourcePath);
+            if (popupTitleFont == null)
+            {
+                popupTitleFont = TMP_Settings.defaultFontAsset;
+            }
+        }
+
+        return popupTitleFont;
+    }
+
+    private TMP_FontAsset ResolvePopupBodyFont()
+    {
+        if (popupBodyFont == null)
+        {
+            popupBodyFont = Resources.Load<TMP_FontAsset>(BodyFontResourcePath);
+            if (popupBodyFont == null)
+            {
+                popupBodyFont = TMP_Settings.defaultFontAsset;
+            }
+        }
+
+        return popupBodyFont;
     }
 }

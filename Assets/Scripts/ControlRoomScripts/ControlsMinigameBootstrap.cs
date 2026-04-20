@@ -48,8 +48,8 @@ public class ControlsMinigameBootstrap : MonoBehaviour
             16,
             defaultFont,
             stabilityEnabled
-                ? "Goal: You have veered slightly off course! Lock heading, thrust, and correction timing while tapping C to maintain stability."
-                : "Goal: You have veered slightly off course! Lock heading, thrust, and correction timing to restore the planned trajectory.");
+                ? "Goal: You have veered slightly off course! Lock heading, then thrust, then the burn window while tapping C to maintain stability."
+                : "Goal: You have veered slightly off course! Lock heading, then thrust, then the burn window to restore the planned trajectory.");
         instructionText.color = new Color(0.82f, 0.88f, 0.95f, 1f);
         CreateTrajectoryLegend(canvas.transform, defaultFont);
         Text modeText = CreateText(
@@ -60,8 +60,8 @@ public class ControlsMinigameBootstrap : MonoBehaviour
             18,
             defaultFont,
             stabilityEnabled
-                ? "Heading: Press Space to lock angle | Tap C to stabilize"
-                : "Heading: Press Space to lock angle");
+                ? "Heading: Press Space to lock angle | Then thrust unlocks | Tap C to stabilize"
+                : "Heading: Press Space to lock angle | Then thrust unlocks");
 
         RectTransform headingPanel = CreatePanel(leftPanel, "HeadingPanel", new Vector2(controlPanelX, 190f), new Vector2(520f, 180f));
         RectTransform thrustPanel = CreatePanel(leftPanel, "ThrustPanel", new Vector2(controlPanelX, 0f), new Vector2(520f, 180f));
