@@ -34,7 +34,9 @@ public class Global : MonoBehaviour
 
     public static string lastAwardedFactText = "";
     //for keeping track of the previous minigame room
-    public static string lastRoomFromPreviousRound = ""; 
+    public static string lastRoomFromPreviousRound = "";
+
+    public static bool tutorialShown = false;
 
     void Start()
     {

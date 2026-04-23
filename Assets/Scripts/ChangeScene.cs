@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-   public void goToCreditScene()
+    public void goToCreditScene()
     {
         SceneManager.LoadScene("Credits");
     }
@@ -23,4 +23,22 @@ public class ChangeScene : MonoBehaviour
     {
         SceneManager.LoadScene("MainHall");
     }
+
+    public void goToBeginningCutscene()
+    {
+        SceneManager.LoadScene("BeginningCutscene");
+    }
+
+    public void goToCutsceneOrMainHall() 
+    {         
+        if (Global.tutorialShown)
+        {
+            goToMainHallScene();
+        }
+        else
+        {
+            goToBeginningCutscene();
+        }
+    }
+
 }
