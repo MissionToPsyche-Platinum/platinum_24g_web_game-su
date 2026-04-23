@@ -62,6 +62,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LabRoom/LabRoom.unity
     guid: 63ce2d1a36d9e477aacd9ab87369357d
+  - enabled: 1
+    path: Assets/Scenes/BeginningCutscene.unity
+    guid: 0d929de09f9cd644682ecf92b3df8226
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
