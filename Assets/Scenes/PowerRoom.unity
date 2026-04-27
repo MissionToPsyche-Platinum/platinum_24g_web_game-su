@@ -3846,9 +3846,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: '
 
-    The ship''s Power Cells are misaligned.  Head to the genrator  to
-    fix it! Use the Spacebar to lock each indicator in the center. Precision is key
-    to restoring main power, hurry before its too late....'
+    The ship''s Power Cells are misaligned.  Head to the genrator to
+    fix it!  while in the game, tap the spacebar while each indicator is within the
+    target zone. Precision is key to restoring main power, hurry before its too late....'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
