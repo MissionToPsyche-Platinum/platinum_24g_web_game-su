@@ -3837,8 +3837,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6454,8 +6454,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Minigame Completed!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6719,9 +6719,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dccab2666af2c5d4c8fd989c33b0df43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  pushForce: -0.99
   warning: {fileID: 15638952}
   correct: {fileID: 1270873583}
-  minMoveDistance: 0
+  audioSource: {fileID: 1256698863}
 --- !u!50 &1256698860
 Rigidbody2D:
   serializedVersion: 5
@@ -6864,7 +6865,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8071863781860506929, guid: e0050211f4714204e8fe10feb8386c5e, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: f9bc1e42ae71d704cbd5341cfc40e9c0, type: 3}
+  m_Resource: {fileID: 8300000, guid: 5d6a229aeca592d4db8776def3bb70c9, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -8715,7 +8716,6 @@ GameObject:
   - component: {fileID: 2094216927}
   - component: {fileID: 2094216926}
   - component: {fileID: 2094216925}
-  - component: {fileID: 2094216924}
   - component: {fileID: 2094216929}
   m_Layer: 0
   m_Name: Crate (1)
@@ -8741,23 +8741,6 @@ Transform:
   - {fileID: 1034024806}
   m_Father: {fileID: 1473518765}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!111 &2094216924
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2094216922}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: ce19c2b2d84df9f4e9ef7224c3bca184, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: ce19c2b2d84df9f4e9ef7224c3bca184, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
 --- !u!114 &2094216925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8770,9 +8753,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dccab2666af2c5d4c8fd989c33b0df43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  pushForce: -0.99
   warning: {fileID: 155526587}
   correct: {fileID: 1034024805}
-  minMoveDistance: 0
+  audioSource: {fileID: 2094216929}
 --- !u!50 &2094216926
 Rigidbody2D:
   serializedVersion: 5
@@ -8915,7 +8899,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8071863781860506929, guid: e0050211f4714204e8fe10feb8386c5e, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: f9bc1e42ae71d704cbd5341cfc40e9c0, type: 3}
+  m_Resource: {fileID: 8300000, guid: 5d6a229aeca592d4db8776def3bb70c9, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

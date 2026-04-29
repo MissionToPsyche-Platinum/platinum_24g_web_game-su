@@ -9,9 +9,9 @@ public class CargoBox : MonoBehaviour
     public GameObject warning;
     public GameObject correct;
     
-    private AudioSource audioSource;
-    //private Vector3 lastPosition;
-    //private float minMoveDistance;
+    public AudioSource audioSource;
+    private Vector3 lastPosition;
+    private float minMoveDistance;
 
     void Start()
     {
@@ -19,16 +19,16 @@ public class CargoBox : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         correct.SetActive(false);
 
-        //lastPosition = transform.position;
-        //minMoveDistance = 0.001f;
-        //if(audioSource != null)
-        //{
-        //    audioSource.volume = 0.0f;
-        //    audioSource.Play();
-        //    audioSource.Pause();
-        //    audioSource.volume = 0.3f;
+        lastPosition = transform.position;
+        minMoveDistance = 0.001f;
+        if (audioSource != null)
+        {
+            audioSource.volume = 0.0f;
+            audioSource.Play();
+            audioSource.Pause();
+            audioSource.volume = 0.3f;
 
-        //}
+        }
     }
 
     // Update is called once per frame
@@ -41,25 +41,25 @@ public class CargoBox : MonoBehaviour
             rb.linearVelocity = Vector2.Max(movementVelocity, Vector2.zero);
         }
 
-        //float distanceMoved = Vector3.Distance(transform.position, lastPosition);
-        //if (audioSource != null)
-        //{
-        //    if (distanceMoved >= minMoveDistance)
-        //    {
-        //        if (!audioSource.isPlaying)
-        //        {
-        //            audioSource.UnPause();
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (audioSource.isPlaying)
-        //        {
-        //            audioSource.Pause();
-        //        }
-        //    }
-        //}
-        //lastPosition = transform.position;
+        float distanceMoved = Vector3.Distance(transform.position, lastPosition);
+        if (audioSource != null)
+        {
+            if (distanceMoved >= minMoveDistance)
+            {
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.UnPause();
+                }
+            }
+            else
+            {
+                if (audioSource.isPlaying)
+                {
+                    audioSource.Pause();
+                }
+            }
+        }
+        lastPosition = transform.position;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
