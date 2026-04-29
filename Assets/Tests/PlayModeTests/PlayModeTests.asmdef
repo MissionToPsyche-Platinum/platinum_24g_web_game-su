@@ -3,7 +3,9 @@
     "rootNamespace": "",
     "references": [
         "GameScripts",
-        "UnityEngine.TestRunner"
+        "UnityEngine.TestRunner",
+        "UnityEngine.UI",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
