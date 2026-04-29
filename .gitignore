@@ -101,3 +101,6 @@ InitTestScene*.unity*
 
 # TextMesh Pro example font assets (avoid accidental atlas regen diffs)
 Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/*.asset
+
+# Unity Code Coverage output
+CodeCoverage/
