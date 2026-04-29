@@ -9,7 +9,7 @@ public class PowerCell : MonoBehaviour
     
     [HideInInspector]
     public bool isCalibrated = false;
-
+    [SerializeField] private AudioClip callibratedSoundClip;
     private float rightLimit = 800f; 
     private float leftLimit = 10f; 
     private bool movingRight = true;
@@ -38,6 +38,10 @@ public class PowerCell : MonoBehaviour
         if (indicator.anchoredPosition.x <= 420 && indicator.anchoredPosition.x >= 380) 
         {
             isCalibrated = true;
+            if (SoundFXManager.instance != null)
+            {
+                SoundFXManager.instance.PlaySoundFXClip(callibratedSoundClip, transform, 1f);
+            }
             targetZone.GetComponent<Image>().color = Color.green; // Feedback!
             Debug.Log(gameObject.name + " Calibrated!");
         }

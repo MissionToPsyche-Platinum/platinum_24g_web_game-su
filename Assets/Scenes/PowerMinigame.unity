@@ -1237,6 +1237,7 @@ MonoBehaviour:
   targetZone: {fileID: 920407736}
   speed: 400
   isCalibrated: 0
+  callibratedSoundClip: {fileID: 8300000, guid: 029c22788afbd4e419cad25cc6c72de0, type: 3}
 --- !u!1 &734330641
 GameObject:
   m_ObjectHideFlags: 0
@@ -2708,6 +2709,7 @@ MonoBehaviour:
   targetZone: {fileID: 1114752532}
   speed: 400
   isCalibrated: 0
+  callibratedSoundClip: {fileID: 8300000, guid: 029c22788afbd4e419cad25cc6c72de0, type: 3}
 --- !u!1 &1612208320
 GameObject:
   m_ObjectHideFlags: 0
@@ -2802,6 +2804,7 @@ MonoBehaviour:
   targetZone: {fileID: 887427358}
   speed: 400
   isCalibrated: 0
+  callibratedSoundClip: {fileID: 8300000, guid: 029c22788afbd4e419cad25cc6c72de0, type: 3}
 --- !u!1 &1715397334
 GameObject:
   m_ObjectHideFlags: 0
@@ -3050,6 +3053,7 @@ MonoBehaviour:
   targetZone: {fileID: 888308396}
   speed: 400
   isCalibrated: 0
+  callibratedSoundClip: {fileID: 8300000, guid: 029c22788afbd4e419cad25cc6c72de0, type: 3}
 --- !u!1 &2088552433
 GameObject:
   m_ObjectHideFlags: 0
