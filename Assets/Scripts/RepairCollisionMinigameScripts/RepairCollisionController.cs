@@ -34,7 +34,7 @@ public class RepairCollisionController : MonoBehaviour
         {
             getCount = crack.transform.childCount;
 
-            if (getCount > 500)
+            if (getCount > 450)
             {
                 crack.GetComponent<WeldHandler>().Reveal();
                 EndMinigame();
