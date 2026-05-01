@@ -162,7 +162,7 @@ public class GeneratorTrigger : MonoBehaviour
         panelTransform.anchorMax = new Vector2(0.5f, 0.5f);
         panelTransform.pivot = new Vector2(0.5f, 0.5f);
         panelTransform.sizeDelta = new Vector2(420f, 240f);
-        panelTransform.anchoredPosition = new Vector2(460f, 250f);
+        panelTransform.anchoredPosition = new Vector2(0f, 0f);
 
         Image panelImage = popupPanel.GetComponent<Image>();
         panelImage.color = new Color(0.1f, 0.12f, 0.16f, 0.95f);
@@ -220,7 +220,7 @@ public class GeneratorTrigger : MonoBehaviour
         hintTransform.anchorMax = new Vector2(0.5f, 0.5f);
         hintTransform.pivot = new Vector2(0.5f, 0.5f);
         hintTransform.sizeDelta = new Vector2(300f, 40f);
-        hintTransform.anchoredPosition = new Vector2(460f, 190f);
+        hintTransform.anchoredPosition = new Vector2(0f, -80f);
 
         Text hintText = hintLabel.GetComponent<Text>();
         hintText.text = "Press E to interact";

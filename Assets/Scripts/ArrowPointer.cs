@@ -37,6 +37,7 @@ public class ArrowPointer : MonoBehaviour
             if (Global.inTimeSensitiveMinigame)
             {
                 arrowSprite.SetActive(false);
+                
             }
             else if (currentRoom == "MainHall")
             {
@@ -78,11 +79,6 @@ public class ArrowPointer : MonoBehaviour
                 Vector3 direction = targetTransform.position - transform.position;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(0, 0, angle + rotationOffset);
-            }
-            else
-            {
-                Debug.LogError("ArrowPointer: Target object not found for the current room.");
-                return;
             }
             
         }
