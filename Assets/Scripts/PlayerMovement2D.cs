@@ -8,7 +8,7 @@ public class PlayerMovement2D : MonoBehaviour
     private Animator anim;
 
     private Vector2 movement;
-    private Vector2 lastMoveDir = Vector2.down;
+    public Vector2 lastMoveDir = Vector2.down;
 
     public AudioSource footstepSource; //footsteps sound
 

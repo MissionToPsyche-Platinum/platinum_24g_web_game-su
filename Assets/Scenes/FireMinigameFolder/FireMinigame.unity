@@ -11560,7 +11560,8 @@ PrefabInstance:
       value: -1565090193
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1446265748118064902, guid: cddd84281912e1d47b04d59e59a8fa68, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7707962121498541723, guid: cddd84281912e1d47b04d59e59a8fa68, type: 3}
       insertIndex: 0
@@ -11570,11 +11571,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7176125614000821228}
   m_SourcePrefab: {fileID: 100100000, guid: cddd84281912e1d47b04d59e59a8fa68, type: 3}
---- !u!4 &7176125614000821226 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5237385109407322396, guid: cddd84281912e1d47b04d59e59a8fa68, type: 3}
-  m_PrefabInstance: {fileID: 7176125614000821225}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7176125614000821227 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4865577728343608928, guid: cddd84281912e1d47b04d59e59a8fa68, type: 3}
@@ -11593,7 +11589,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: GameScripts::ExtinguisherSpray
   smokePrefab: {fileID: 4230745506257910437, guid: 5d6e0bc82a7104b37b6905f4de4a4fa9, type: 3}
-  sprayPoint: {fileID: 7176125614000821226}
+  ExtinguisherSprayUp: {fileID: 0}
+  ExtinguisherSprayDown: {fileID: 0}
+  ExtinguisherSprayLeft: {fileID: 0}
+  ExtinguisherSprayRight: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
