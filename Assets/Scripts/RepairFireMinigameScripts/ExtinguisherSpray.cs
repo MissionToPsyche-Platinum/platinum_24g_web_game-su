@@ -62,7 +62,7 @@ public class ExtinguisherSpray : MonoBehaviour
 
             if (chosenPoint == null)
             {
-                Debug.Log("Missing spray point child on Player. Check exact object names.");
+                Debug.Log("Missing spray point");
                 return;
             }
 

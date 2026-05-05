@@ -4,17 +4,23 @@ using UnityEngine.SceneManagement;
 public class FireMinigameController : MonoBehaviour
 {
     private GameObject player;
+    private int firesLeft;
+
+    public GameObject completedPanel;
 
     private void Start()
     {
         Global.StopTimer();
 
         player = GameObject.FindGameObjectWithTag("Player");
-        
-        firesLeft = FindObjectsByType<FireSpot>(FindObjectsSortMode.None).Length;
-    }
 
-    private int firesLeft;
+        firesLeft = FindObjectsByType<FireSpot>(FindObjectsSortMode.None).Length;
+
+        if (completedPanel != null)
+        {
+            completedPanel.SetActive(false);
+        }
+    }
 
     public void FirePutOut()
     {
@@ -32,18 +38,22 @@ public class FireMinigameController : MonoBehaviour
     {
         Debug.Log("Fire minigame complete!");
 
+        Global.fireMinigamePlayed = true;
         Global.inTimeSensitiveMinigame = false;
 
-        GoToMainHall();
+        if (completedPanel == null)
+        {
+            Debug.Log("Completed panel is NOT assigned!");
+        }
+            else
+        {   
+            Debug.Log("Completed panel assigned, showing now.");
+            completedPanel.SetActive(true);
+        }
     }
 
     public void GoToMainHall()
     {
-        if (player != null)
-        {
-            player.SetActive(true);
-        }
-
         SceneManager.LoadScene("MainHall");
     }
 }
