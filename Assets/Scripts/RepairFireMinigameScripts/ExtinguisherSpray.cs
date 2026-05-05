@@ -4,61 +4,69 @@ public class ExtinguisherSpray : MonoBehaviour
 {
     public GameObject smokePrefab;
 
-    public Transform ExtinguisherSprayUp;
-    public Transform ExtinguisherSprayDown;
-    public Transform ExtinguisherSprayLeft;
-    public Transform ExtinguisherSprayRight;
-
     private PlayerMovement2D playerMovement;
+
+    private Transform sprayUp;
+    private Transform sprayDown;
+    private Transform sprayLeft;
+    private Transform sprayRight;
 
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement2D>();
+
+        sprayUp = transform.Find("ExtinguisherSprayUp");
+        sprayDown = transform.Find("ExtinguisherSprayDown");
+        sprayLeft = transform.Find("ExtinguisherSprayLeft");
+        sprayRight = transform.Find("ExtinguisherSprayRight");
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (smokePrefab != null && playerMovement != null)
+            if (smokePrefab == null || playerMovement == null)
+                return;
+
+            Vector2 dir = playerMovement.lastMoveDir;
+
+            Transform chosenPoint;
+            float angle;
+
+            if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
             {
-                Vector2 dir = playerMovement.lastMoveDir;
-
-                Transform chosenPoint = ExtinguisherSprayRight;
-                float angle = 0f;
-
-                // decide direction
-                if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+                if (dir.x > 0)
                 {
-                    // horizontal
-                    if (dir.x > 0)
-                    {
-                        chosenPoint = ExtinguisherSprayRight;
-                        angle = -90f;
-                    }
-                    else
-                    {
-                        chosenPoint = ExtinguisherSprayLeft;
-                        angle = 90f;
-                    }
+                    chosenPoint = sprayRight;
+                    angle = -90f;
                 }
                 else
                 {
-                    // vertical
-                    if (dir.y > 0)
-                    {
-                        chosenPoint = ExtinguisherSprayUp;
-                        angle = 0f;
-                    }
-                    else
-                    {
-                        chosenPoint = ExtinguisherSprayDown;
-                        angle = 0f;
-                    }
+                    chosenPoint = sprayLeft;
+                    angle = 90f;
                 }
-
-                Instantiate(smokePrefab, chosenPoint.position, Quaternion.Euler(0, 0, angle));
             }
+            else
+            {
+                if (dir.y > 0)
+                {
+                    chosenPoint = sprayUp;
+                    angle = 0f;
+                }
+                else
+                {
+                    chosenPoint = sprayDown;
+                    angle = 180f;
+                }
+            }
+
+            if (chosenPoint == null)
+            {
+                Debug.Log("Missing spray point child on Player. Check exact object names.");
+                return;
+            }
+
+            GameObject smoke = Instantiate(smokePrefab, chosenPoint.position, Quaternion.Euler(0, 0, angle));
         }
     }
 }

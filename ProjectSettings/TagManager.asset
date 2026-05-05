@@ -18,6 +18,7 @@ TagManager:
   - ControlTrigger
   - PowerTrigger
   - FireEmergencyObjects
+  - Smoke
   layers:
   - Default
   - TransparentFX
