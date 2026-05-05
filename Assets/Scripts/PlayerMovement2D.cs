@@ -20,9 +20,14 @@ public class PlayerMovement2D : MonoBehaviour
 
         if (footstepSource != null)
         {
-        footstepSource.volume = 0.3f;
-        footstepSource.Play();
-        footstepSource.Pause();
+            footstepSource.enabled = true;
+            footstepSource.volume = 0.3f;
+
+            if (footstepSource.clip != null)
+            {
+                footstepSource.Play();
+                footstepSource.Pause();
+            }
         }
     }
 

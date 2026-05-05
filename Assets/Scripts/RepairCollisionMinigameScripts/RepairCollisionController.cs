@@ -57,6 +57,16 @@ public class RepairCollisionController : MonoBehaviour
     public void GoToMainHall()
     {
         player.SetActive(true);
+        //reenable footsteps audio once player is taken back to main hall
+        AudioSource footstepSource = player.GetComponent<AudioSource>();
+
+        if (footstepSource != null)
+        {
+            footstepSource.Stop();
+            footstepSource.Play();
+            footstepSource.Pause();
+        }
+
         SceneManager.LoadScene("MainHall");
 
     }
