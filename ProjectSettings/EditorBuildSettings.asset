@@ -65,6 +65,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BeginningCutscene.unity
     guid: 0d929de09f9cd644682ecf92b3df8226
+  - enabled: 1
+    path: Assets/Scenes/FireMinigameFolder/FireMinigame.unity
+    guid: 2deb52da0d613472f957e9e5e9ec0ac2
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

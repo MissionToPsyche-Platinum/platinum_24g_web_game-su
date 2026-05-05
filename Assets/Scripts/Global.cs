@@ -27,6 +27,12 @@ public class Global : MonoBehaviour
     private bool repairPopupButtonBound = false;
     public static bool inTimeSensitiveMinigame = false;
 
+    public static int FIRE_MINIGAME_THRESHOLD = 60;
+    public static bool fireMinigamePlayed = false;
+    public RectTransform fireMinigamePanel;
+    private static bool showFirePopup = true;
+    private bool firePopupButtonBound = false;
+
     public static int round = 1;
     public static string currentRoom = "";
     public static bool currentRoomCompleted = false;
@@ -53,6 +59,7 @@ public class Global : MonoBehaviour
         RoundHandler();
         Timer();
         RepairCollisionController();
+        FireEmergencyController();
     }
     
     private static void RoundHandler()
@@ -132,6 +139,49 @@ public class Global : MonoBehaviour
             SetPlayerMovementLocked(false);
         }
     }
+
+    private void FireEmergencyController()
+{
+    if (!fireMinigamePlayed && totalScore >= FIRE_MINIGAME_THRESHOLD)
+    {
+        if (fireMinigamePanel != null && showFirePopup)
+        {
+            inTimeSensitiveMinigame = true;
+            fireMinigamePanel.gameObject.SetActive(true);
+            fireMinigamePanel.anchoredPosition = Vector2.zero;
+            SetPlayerMovementLocked(true);
+
+            Transform returnButton = fireMinigamePanel.Find("ReturnButton");
+
+            if (returnButton != null && !firePopupButtonBound)
+            {
+                Button button = returnButton.GetComponent<Button>();
+
+                if (button != null)
+                {
+                    firePopupButtonBound = true;
+                    button.onClick.AddListener(() =>
+                    {
+                        timerStarted = true;
+                        showFirePopup = false;
+                        fireMinigamePanel.gameObject.SetActive(false);
+                        SetPlayerMovementLocked(false);
+                    });
+                }
+            }
+        }
+
+        GameObject fireEmergencyObjects = GameObject.FindWithTag("FireEmergencyObjects");
+
+        if (fireEmergencyObjects != null)
+        {
+            foreach (Transform child in fireEmergencyObjects.transform)
+            {
+                child.gameObject.SetActive(true);
+            }
+        }
+    }
+}
 
     private void SetPlayerMovementLocked(bool locked)
     {
