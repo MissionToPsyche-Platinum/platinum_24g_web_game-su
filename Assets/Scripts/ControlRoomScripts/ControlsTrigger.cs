@@ -373,7 +373,6 @@ public class ControlsTrigger : MonoBehaviour
         uiText.color = Color.white;
         uiText.fontSize = fontSize;
         uiText.font = font;
-        uiText.enableWordWrapping = true;
         uiText.overflowMode = TextOverflowModes.Overflow;
         uiText.raycastTarget = false;
 

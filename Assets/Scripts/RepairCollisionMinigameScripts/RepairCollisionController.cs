@@ -1,3 +1,4 @@
+using Codice.Client.GameUI.Checkin;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,9 +9,10 @@ public class RepairCollisionController : MonoBehaviour
     private GameObject player;
     private new RectTransform transform;
 
-    //helps make sure the correct panel is found
     [SerializeField] private RectTransform completedPanelTransform;
-   
+
+    private int totalColliders = 34;
+    private int reachedColliders = 0;
 
     private void Start()
     {
@@ -69,5 +71,20 @@ public class RepairCollisionController : MonoBehaviour
 
         SceneManager.LoadScene("MainHall");
 
+    }
+
+    public void ColliderReached()
+    {
+        reachedColliders++;
+        Debug.Log("reachedColliders: " + reachedColliders);
+        CheckProgress();
+    }
+
+    private void CheckProgress()
+    {
+        if((reachedColliders / (float)totalColliders) >= 0.50f)
+        {
+            EndMinigame();
+        }
     }
 }
