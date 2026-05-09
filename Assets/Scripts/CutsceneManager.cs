@@ -15,18 +15,12 @@ public class CutsceneManager : MonoBehaviour
     private List<Image> images;
     private List<string> script = new List<string>
     {
-        "On October 13th, 2023 at 10:13am EDT, NASA launched the Psyche spacecraft from the Kennedy Space Center.",
-        "The spacecraft is now enroute to the asteroid Psyche, where it will spend two years orbiting and sending data back to NASA.",
+        "On October 13th, 2023 at 10:13am EDT, NASA launched the Psyche spacecraft from the Kennedy Space Center to study the asteroid Psyche.",
+        "One hundred years later, NASA has sent the Psyche II spacecraft to return to Psyche in order to learn more about its metal-rich properties.",
         "A lonely robot is left in charge of maintaining the spacecraft.",
         "Aid the robot and help the mission prevail...."
     };
     private int clickCount = 0;
-
-
-    //private Animator animator;
-    //public string animationName = "Cutscene";
-    //public float targetFrame = 5f;
-    //public float totalFrames = 15f;
 
     void Start()
     {

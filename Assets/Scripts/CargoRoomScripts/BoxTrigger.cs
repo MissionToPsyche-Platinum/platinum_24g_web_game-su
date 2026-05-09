@@ -40,7 +40,11 @@ public class BoxTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<PlayerMovement2D>() == null || Global.currentRoom != "CargoRoom")
+        if(Global.currentRoom != "CargoRoom")
+        {
+            return;
+        }
+        if (other.GetComponent<PlayerMovement2D>() == null )
         {
             Debug.LogError("BoxTrigger: PlayerMovement2D component not found on the colliding object or not in CargoRoom.");
             return;
@@ -59,7 +63,11 @@ public class BoxTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.GetComponent<PlayerMovement2D>() == null || Global.currentRoom != "CargoRoom")
+        if (Global.currentRoom != "CargoRoom")
+        {
+            return;
+        }
+        if (other.GetComponent<PlayerMovement2D>() == null)
         {
             Debug.LogError("BoxTrigger: PlayerMovement2D component not found on the colliding object or not in CargoRoom.");
             return;

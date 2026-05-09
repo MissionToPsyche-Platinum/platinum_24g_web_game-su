@@ -42,10 +42,7 @@ public class RestarterScript : MonoBehaviour
             {
                 SoundFXManager.instance.PlaySoundFXClip(blipSoundClip, transform, 1f);
             }
-            helpPanel.SetActive(false);
-            player.GetComponent<PlayerMovement2D>().enabled = true;
-
-            ToggleHint(true);
+            ExitPanel();
         }
     }
 
@@ -78,5 +75,13 @@ public class RestarterScript : MonoBehaviour
         player.GetComponent<PlayerMovement2D>().enabled = true;
         string sceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void ExitPanel()
+    {
+        helpPanel.SetActive(false);
+        player.GetComponent<PlayerMovement2D>().enabled = true;
+
+        ToggleHint(true);
     }
 }
