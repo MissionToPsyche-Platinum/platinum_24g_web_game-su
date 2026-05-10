@@ -36,11 +36,7 @@ public class RepairCollisionController : MonoBehaviour
         {
             getCount = crack.transform.childCount;
 
-            if (getCount > 450)
-            {
-                crack.GetComponent<WeldHandler>().Reveal();
-                EndMinigame();
-            }
+            CheckProgress();
         }
     }
 
@@ -77,12 +73,11 @@ public class RepairCollisionController : MonoBehaviour
     {
         reachedColliders++;
         Debug.Log("reachedColliders: " + reachedColliders);
-        CheckProgress();
     }
 
     private void CheckProgress()
     {
-        if((reachedColliders / (float)totalColliders) >= 0.50f)
+        if((reachedColliders / (float)totalColliders) >= 0.55f)
         {
             EndMinigame();
         }
