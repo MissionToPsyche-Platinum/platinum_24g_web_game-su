@@ -24,10 +24,10 @@ EditorBuildSettings:
     path: Assets/Scenes/CargoRoom/CargoRoom.unity
     guid: b313cb8a39c24da4e8a82d83b0c97f5b
   - enabled: 1
-    path: Assets/Scenes/PowerRoom.unity
+    path: Assets/Scenes/PowerRoom/PowerRoom.unity
     guid: 1009c70709ce30e44b1a7313a8fe63c6
   - enabled: 1
-    path: Assets/Scenes/ControlRoom.unity
+    path: Assets/Scenes/ControlRoom/ControlRoom.unity
     guid: 784b7c4457754fcb93d6d82f8bb001ce
   - enabled: 1
     path: Assets/Scenes/CargoRoom/CargoMinigame1.unity
@@ -36,13 +36,13 @@ EditorBuildSettings:
     path: Assets/Scenes/LabMinigame.unity
     guid: cd54c8ea2f80342a88e1b1ae0002fffa
   - enabled: 1
-    path: Assets/Scenes/ControlRoomMinigame1.unity
+    path: Assets/Scenes/ControlRoom/ControlRoomMinigame1.unity
     guid: f0e62af10c1504026893cb5daa6c2e76
   - enabled: 1
-    path: Assets/Scenes/ControlRoomMinigame2.unity
+    path: Assets/Scenes/ControlRoom/ControlRoomMinigame2.unity
     guid: 5862e0b1b2524721a0b3651d3148830f
   - enabled: 1
-    path: Assets/Scenes/PowerMinigame.unity
+    path: Assets/Scenes/PowerRoom/PowerMinigame.unity
     guid: b1470ae8df5ea9c41affcbb445055fe4
   - enabled: 1
     path: Assets/Scenes/WinScene.unity
