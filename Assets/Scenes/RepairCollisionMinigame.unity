@@ -2778,7 +2778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   crack: {fileID: 89274340}
-  completedPanel: {fileID: 0}
+  completedPanel: {fileID: 1712494168}
 --- !u!4 &1377810149
 Transform:
   m_ObjectHideFlags: 0

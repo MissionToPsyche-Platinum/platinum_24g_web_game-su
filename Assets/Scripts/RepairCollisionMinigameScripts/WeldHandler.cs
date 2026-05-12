@@ -23,11 +23,9 @@ public class WeldHandler : MonoBehaviour
                 GameObject maskSprite = Instantiate(maskPrefab, currentMousePosition, Quaternion.identity);
                 maskSprite.transform.parent = gameObject.transform;
             }
-            Debug.Log("Mouse is pressed and colliding. Current mouse position: " + currentMousePosition);
 
             if (Input.GetMouseButtonUp(0))
             {
-                Debug.Log("Mouse released, setting isPressed to false");
                 isPressed = false;
             }
         }
