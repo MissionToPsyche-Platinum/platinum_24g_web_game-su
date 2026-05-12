@@ -20,13 +20,8 @@ public class LabBoxTrigger : MonoBehaviour
     [SerializeField] private Vector2 hintSize = new Vector2(300f, 40f);
 
     [Header("Popup Content")]
-    [SerializeField] private string popupTitle = "LAB STATION";
 
     [SerializeField, TextArea(4, 10)]
-    private string popupBody =
-    "Welcome to the Lab Room!\n\n" +
-    "This station is used to analyze and test data collected during the space mission.\n\n" +
-    "However, something doesn’t look right here… Explore the room and investigate.";
 
 
     private GameObject hintLabel;
@@ -129,12 +124,6 @@ private void ShowPopup()
         Debug.LogWarning("LabBoxTrigger: welcomePopup not assigned and could not be found.");
         return;
     }
-
-    if (string.IsNullOrWhiteSpace(popupTitle)) popupTitle = "LAB STATION";
-    if (string.IsNullOrWhiteSpace(popupBody)) popupBody = "Welcome to the Lab Room!";
-
-    if (titleTMP != null) titleTMP.text = popupTitle;
-    if (bodyTMP != null) bodyTMP.text = popupBody;
 
     Debug.Log($"Triggered by: {gameObject.name}");
     welcomePopup.SetActive(true);
