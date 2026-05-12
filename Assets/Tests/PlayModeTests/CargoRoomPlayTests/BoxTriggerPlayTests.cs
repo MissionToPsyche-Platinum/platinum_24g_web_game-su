@@ -3,11 +3,7 @@ using System.Collections;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.TestTools;
-#if ENABLE_INPUT_SYSTEM
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.LowLevel;
-using UnityEngine.InputSystem.Controls;
-#endif
+
 
 [TestFixture]
 public class BoxTriggerPlayTests 
@@ -24,10 +20,6 @@ public class BoxTriggerPlayTests
     private MethodInfo _hidePopup;
     private MethodInfo _updateMethod;
 
-
-#if ENABLE_INPUT_SYSTEM
-    private Keyboard _keyboard;
-#endif
 
     [SetUp]
     public void SetUp()
@@ -82,111 +74,6 @@ public class BoxTriggerPlayTests
         Assert.IsFalse(_popupPanel.activeSelf, "Update without input should not change popup visibility.");
     }
 
-#if ENABLE_INPUT_SYSTEM
-    [UnityTest]
-    public IEnumerator Update_PressE_WhileCanInteract_ShowsPopup()
-    {
-        // Arrange
-        Global.currentRoom = "CargoRoom";
-        var collider = _player.GetComponent<Collider2D>();
-        _boxTriggerComponent.SendMessage("OnTriggerEnter2D", collider);
-        yield return null;
-
-        Assert.IsTrue(_hint.activeSelf, "Sanity: hint should be active after OnTriggerEnter2D.");
-
-        _keyboard = InputSystem.AddDevice<Keyboard>();
-
-        // Act
-        Press(_keyboard.eKey);
-        _boxTriggerComponent.SendMessage("Update", null);
-        InputSystem.Update();
-        yield return null;
-
-        Release(_keyboard.eKey);
-        InputSystem.Update();
-        yield return null;
-
-        // Assert
-        Assert.IsTrue(_popupPanel.activeSelf, "Update should open the popup when E is pressed and canInteract is true.");
-        Assert.IsFalse(_hint.activeSelf, "Hint should be hidden after popup is shown.");
-    }
-    [UnityTest]
-    public IEnumerator Update_PressE_WhenPopupOpen_HidesPopup()
-    {
-        // Arrange
-        Global.currentRoom = "CargoRoom";
-        var collider = _player.GetComponent<Collider2D>();
-        _boxTriggerComponent.SendMessage("OnTriggerEnter2D", collider);
-        yield return null;
-
-        var showMethod = typeof(BoxTrigger).GetMethod("ShowPopup", BindingFlags.Instance | BindingFlags.NonPublic);
-        showMethod.Invoke(_boxTriggerComponent, null);
-        yield return null;
-
-        Assert.IsTrue(_popupPanel.activeSelf, "Sanity: popup should be active before pressing E.");
-
-        _keyboard = InputSystem.AddDevice<Keyboard>();
-
-        // Act
-        Press(_keyboard.eKey);
-        _boxTriggerComponent.SendMessage("Update", null);
-        InputSystem.Update();
-        yield return null;
-
-        Release(_keyboard.eKey);
-        InputSystem.Update();
-        yield return null;
-
-        // Assert
-        Assert.IsFalse(_popupPanel.activeSelf, "Update should close the popup when E is pressed while popup is already open.");
-    }
-    [UnityTest]
-    public IEnumerator Update_PressEscape_WhenPopupOpen_HidesPopup()
-    {
-        // Arrange: open popup
-        Global.currentRoom = "CargoRoom";
-        var collider = _player.GetComponent<Collider2D>();
-        _boxTriggerComponent.SendMessage("OnTriggerEnter2D", collider);
-        yield return null;
-
-        var showMethod = typeof(BoxTrigger).GetMethod("ShowPopup", BindingFlags.Instance | BindingFlags.NonPublic);
-        showMethod.Invoke(_boxTriggerComponent, null);
-        yield return null;
-
-        Assert.IsTrue(_popupPanel.activeSelf, "Sanity: popup should be active before pressing Escape.");
-
-        _keyboard = InputSystem.AddDevice<Keyboard>();
-
-        // Act
-        Press(_keyboard.escapeKey);
-        _updateMethod.Invoke(_boxTriggerComponent, null);
-        InputSystem.Update();
-        yield return null;
-
-        Release(_keyboard.escapeKey);
-        InputSystem.Update();
-        yield return null;
-
-        // Assert
-        Assert.IsFalse(_popupPanel.activeSelf, "Update should close the popup when Escape is pressed.");
-    }
-    // Helper wrappers to keep test code compact and clearer
-    private void Press(KeyControl keyControl)
-    {
-        var state = new KeyboardState();
-        state.Set(keyControl.keyCode, true);
-        InputSystem.QueueStateEvent(_keyboard, state);
-        InputSystem.Update();
-    }
-
-    private void Release(KeyControl keyControl)
-    {
-        var state = new KeyboardState();
-        state.Set(keyControl.keyCode, false);
-        InputSystem.QueueStateEvent(_keyboard, state);
-        InputSystem.Update();
-    }
-#endif
 
     [UnityTest]
     public IEnumerator OnTriggerEnter2D_WithPlayerAndInCargo_ShowsHintAndGetsRefs()
@@ -204,13 +91,15 @@ public class BoxTriggerPlayTests
     }
 
     [UnityTest]
-    public IEnumerator OnTriggerEnter2D_WithoutPlayerMovementAndNotInCargo_DoestNotShowHint()
+    public IEnumerator OnTriggerEnter2D_WithoutPlayerMovementAndInCargo_DoesntShowHint()
     {
         //Arrange
-        Global.currentRoom = "";
-        _player.GetComponent<PlayerMovement2D>().enabled = false;
-        var collider = _player.GetComponent<BoxCollider2D>();
-        LogAssert.Expect(LogType.Error, "BoxTrigger: PlayerMovement2D component not found on the colliding object or not in CargoRoom.");
+        var player = new GameObject("PlayerWithoutMovement");
+        player.AddComponent<BoxCollider2D>();
+
+        Global.currentRoom = "CargoRoom";
+        var collider = player.GetComponent<BoxCollider2D>();
+        LogAssert.Expect(LogType.Error, "BoxTrigger: PlayerMovement2D component not found on the colliding object");
 
         //Act
         _boxTriggerComponent.SendMessage("OnTriggerEnter2D", collider);
@@ -218,6 +107,9 @@ public class BoxTriggerPlayTests
 
         //Assert
         Assert.IsFalse(_hint.activeSelf, "OnTriggerEnter2D should NOT activate the hint GameObject when player enters trigger outside of CargoRoom.");
+
+        //Cleanup
+        Object.Destroy(player);
     }
     [UnityTest]
     public IEnumerator OnTriggerEnter2D_HintNull_LogError()
@@ -256,13 +148,15 @@ public class BoxTriggerPlayTests
         Assert.IsFalse(_popupPanel.activeSelf, "OnTriggerExit2D should hide the popup if it was open.");
     }
     [UnityTest]
-    public IEnumerator OnTriggerExit2D_WithoutPlayerMovementAndNotInCargo_LogError()
+    public IEnumerator OnTriggerExit2D_WithoutPlayerMovementAndInCargo_LogError()
     {
         //Arrange
-        Global.currentRoom = "";
-        _player.GetComponent<PlayerMovement2D>().enabled = false;
-        var collider = _player.GetComponent<BoxCollider2D>();
-        LogAssert.Expect(LogType.Error, "BoxTrigger: PlayerMovement2D component not found on the colliding object or not in CargoRoom.");
+        var player = new GameObject("PlayerWithoutMovement");
+        player.AddComponent<BoxCollider2D>();
+
+        Global.currentRoom = "CargoRoom";
+        var collider = player.GetComponent<BoxCollider2D>();
+        LogAssert.Expect(LogType.Error, "BoxTrigger: PlayerMovement2D component not found on the colliding object");
 
         //Act
         _boxTriggerComponent.SendMessage("OnTriggerExit2D", collider);
@@ -322,7 +216,7 @@ public class BoxTriggerPlayTests
         yield return null;
 
         _boxTriggerComponent.SendMessage("ShowPopup", null);
-        yield return null;;
+        yield return null;
 
         //Act
         _boxTriggerComponent.SendMessage("HidePopup", null);

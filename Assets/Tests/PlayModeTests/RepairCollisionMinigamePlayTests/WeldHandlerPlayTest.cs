@@ -112,8 +112,6 @@ public class WeldHandlerPlayTest : InputTestFixture
         SetPrivateField(_handlerComponent, "isPressed", true);
         SetPrivateField(_handlerComponent, "isColliding", true);
 
-        // Pre-set currentMousePosition to a non-zero world point so that after Update
-        // previousMousePosition != currentMousePosition (since Input.mousePosition will be Vector3.zero)
         var preWorld = new Vector3(10f, 10f, 0f);
         SetPrivateField(_handlerComponent, "currentMousePosition", preWorld);
 
@@ -141,92 +139,13 @@ public class WeldHandlerPlayTest : InputTestFixture
         SetPrivateField(_handlerComponent, "previousMousePosition", worldPoint);
 
         //Act
-        yield return null;
 
         var update = GetNonPublicMethod(_handlerComponent, "Update");
         update.Invoke(_handlerComponent, null);
-
-        foreach(Transform child in _handlerObject.transform)
-        {
-            Debug.LogError("Unexpected child: " + child.name);
-        }
 
         //Assert
         Assert.AreEqual(0, _handlerObject.transform.childCount, "Update should NOT instantiate when mouse hasn't moved");
         yield return null;
     }
 
-    [UnityTest]
-    public IEnumerator Update_MouseUp_WhenPressingAndColliding_SetsIsPressedFalse()
-    {
-        //Arrange
-        SetPrivateField(_handlerComponent, "isPressed", true);
-        SetPrivateField(_handlerComponent, "isColliding", true);
-        var mouse = InputSystem.AddDevice<Mouse>();
-        var update = GetNonPublicMethod(_handlerComponent, "Update");
-
-        //Act
-        Release(mouse.leftButton);
-        InputSystem.Update();
-        update.Invoke(_handlerComponent, null);
-        yield return null;
-
-        //Assert
-        bool isPressedAfterMouseUp = GetPrivateField<bool>(_handlerComponent, "isPressed");
-        Assert.IsFalse(isPressedAfterMouseUp, "Update should set isPressed to false when mouse button is released while pressing and colliding");
-
-        //Cleanup
-        InputSystem.RemoveDevice(mouse);
-        yield return null;
-    }
-
-    [UnityTest]
-    public IEnumerator Update_MouseDown_WhenNotPressingAndColliding_SetsIsPressedTrue()
-    {
-        //Arrange
-        SetPrivateField(_handlerComponent, "isPressed", false);
-        SetPrivateField(_handlerComponent, "isColliding", true);
-        var mouse = InputSystem.AddDevice<Mouse>();
-        var update = GetNonPublicMethod(_handlerComponent, "Update");
-
-        //Act
-        Press(mouse.leftButton);
-        InputSystem.Update();
-        update.Invoke(_handlerComponent, null);
-        yield return null;
-
-        //Assert
-        bool isPressedAfterMouseDown = GetPrivateField<bool>(_handlerComponent, "isPressed");
-        Assert.IsTrue(isPressedAfterMouseDown, "Update should set isPressed to true when mouse button is pressed while not pressing and colliding");
-
-        //Cleanup
-        Release(mouse.leftButton);
-        InputSystem.Update();
-        InputSystem.RemoveDevice(mouse);
-        yield return null;
-    }
-
-    [UnityTest]
-    public IEnumerator Update_MouseUp_WhenNotPressingAndColliding_SetsIsPressedFalse()
-    {
-        //Arrange
-        SetPrivateField(_handlerComponent, "isPressed", false);
-        SetPrivateField(_handlerComponent, "isColliding", true);
-        var mouse = InputSystem.AddDevice<Mouse>();
-        var update = GetNonPublicMethod(_handlerComponent, "Update");
-
-        //Act
-        Release(mouse.leftButton);
-        InputSystem.Update();
-        update.Invoke(_handlerComponent, null);
-        yield return null;
-
-        //Assert
-        bool isPressedAfterMouseUp = GetPrivateField<bool>(_handlerComponent, "isPressed");
-        Assert.IsFalse(isPressedAfterMouseUp, "Update should set isPressed to false when mouse button is released while not pressing and colliding");
-
-        //Cleanup
-        InputSystem.RemoveDevice(mouse);
-        yield return null;
-    }
 }

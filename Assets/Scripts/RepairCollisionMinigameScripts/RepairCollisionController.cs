@@ -4,14 +4,12 @@ using UnityEngine.SceneManagement;
 
 public class RepairCollisionController : MonoBehaviour
 {
-    private int getCount;
     public GameObject crack;
     private GameObject player;
-    private new RectTransform transform;
 
-    [SerializeField] private RectTransform completedPanelTransform;
+    [SerializeField] public GameObject completedPanel;
 
-    private int totalColliders = 34;
+    private readonly int totalColliders = 34;
     private int reachedColliders = 0;
 
     private void Start()
@@ -19,14 +17,6 @@ public class RepairCollisionController : MonoBehaviour
         Global.StopTimer();
         player = GameObject.FindGameObjectWithTag("Player");
         player.SetActive(false);
-
-        transform = completedPanelTransform;
-        if (transform == null)
-        {
-            Debug.LogError("RepairCollisionController: completedPanelTransform is NOT assigned in Inspector.");
-            return;
-        }
-        transform.anchoredPosition = new Vector2(1000f, 1000f);
     }
 
     // Update is called once per frame
@@ -34,18 +24,13 @@ public class RepairCollisionController : MonoBehaviour
     {
         if (crack != null)
         {
-            getCount = crack.transform.childCount;
-
             CheckProgress();
         }
     }
 
     private void EndMinigame()
     {
-
-        //ensures the panel is active before showing it
-        transform.gameObject.SetActive(true);
-        transform.anchoredPosition = new Vector2(0f, 0f);
+        completedPanel.SetActive(true);
 
         Global.repairCollisionMinigamePlayed = true;
         Global.inTimeSensitiveMinigame = false;

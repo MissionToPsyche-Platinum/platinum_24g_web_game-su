@@ -2778,7 +2778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   crack: {fileID: 89274340}
-  completedPanelTransform: {fileID: 1712494169}
+  completedPanel: {fileID: 0}
 --- !u!4 &1377810149
 Transform:
   m_ObjectHideFlags: 0
@@ -3710,7 +3710,6 @@ GameObject:
   - component: {fileID: 1712494169}
   - component: {fileID: 1712494172}
   - component: {fileID: 1712494171}
-  - component: {fileID: 1712494170}
   m_Layer: 5
   m_Name: CompletedPanel
   m_TagString: Untagged
@@ -3740,20 +3739,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.000061035156, y: -39.660004}
   m_SizeDelta: {x: 771.81, y: 349.1}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1712494170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1712494168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f02e7905a17a448cebebed12c9650d0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RevealFactCard
-  completedPanel: {fileID: 1712494168}
-  factBodyText: {fileID: 727975880}
 --- !u!114 &1712494171
 MonoBehaviour:
   m_ObjectHideFlags: 0

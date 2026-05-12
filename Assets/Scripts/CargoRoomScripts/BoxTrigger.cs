@@ -46,7 +46,7 @@ public class BoxTrigger : MonoBehaviour
         }
         if (other.GetComponent<PlayerMovement2D>() == null )
         {
-            Debug.LogError("BoxTrigger: PlayerMovement2D component not found on the colliding object or not in CargoRoom.");
+            Debug.LogError("BoxTrigger: PlayerMovement2D component not found on the colliding object");
             return;
         }
         canInteract = true;
@@ -69,7 +69,7 @@ public class BoxTrigger : MonoBehaviour
         }
         if (other.GetComponent<PlayerMovement2D>() == null)
         {
-            Debug.LogError("BoxTrigger: PlayerMovement2D component not found on the colliding object or not in CargoRoom.");
+            Debug.LogError("BoxTrigger: PlayerMovement2D component not found on the colliding object");
             return;
         }
         canInteract = false;

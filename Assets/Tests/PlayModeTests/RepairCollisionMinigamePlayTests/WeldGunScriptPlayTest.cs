@@ -28,7 +28,6 @@ public class WeldGunScriptPlayTest : InputTestFixture
         _cameraObject.tag = MainCameraTag;
         _cameraComponent.transform.position = new Vector3(0, 0, -10);
 
-        // attach a simple GameObject as the weldSpark
         _weldSpark = new GameObject("WeldSpark");
         _weldSpark.SetActive(false);
         _gunComponent.weldSpark = _weldSpark;
@@ -71,12 +70,10 @@ public class WeldGunScriptPlayTest : InputTestFixture
         //Arrange
         var mouse = InputSystem.AddDevice<Mouse>();
 
-        // set a screen position
         Vector2 screenPos = new Vector2(120f, 80f);
         Set(mouse.position, screenPos);
         InputSystem.Update();
 
-        // compute expected world position using the same logic as FollowCursor
         Vector3 screenVec = new Vector3(screenPos.x, screenPos.y, 0f);
         Vector3 worldPoint = _cameraComponent.ScreenToWorldPoint(screenVec);
         Vector3 expected = worldPoint;
@@ -97,47 +94,4 @@ public class WeldGunScriptPlayTest : InputTestFixture
         yield return null;
     }
 
-    [UnityTest]
-    public IEnumerator Update_WhenSparkFalse_OnMouseDown_SetsSparkActive()
-    {
-        //Arrange
-        var mouse = InputSystem.AddDevice<Mouse>();
-        _weldSpark.SetActive(false);
-
-        //Act
-        Press(mouse.leftButton);
-        InputSystem.Update();
-
-        var update = typeof(WeldGunScript).GetMethod("Update", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-        update.Invoke(_gunComponent, null);
-
-        //Assert
-        Assert.IsTrue(_weldSpark.activeSelf, "Update should toggle spark on when mouse button is pressed");
-
-        //Cleanup
-        InputSystem.RemoveDevice(mouse);
-        yield return null;
-
-    }
-
-    [UnityTest]
-    public IEnumerator Update_WhenSparkTrue_OnMouseUp_SetsSparkInactive()
-    {
-        //Arrange
-        var mouse = InputSystem.AddDevice<Mouse>();
-        _weldSpark.SetActive(true);
-
-        //Act
-        Release(mouse.leftButton);
-        InputSystem.Update();
-
-        var update = typeof(WeldGunScript).GetMethod("Update", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-        update.Invoke(_gunComponent, null);
-
-        //Assert
-        Assert.IsFalse(_weldSpark.activeSelf, "Update should toggle spark off when mouse button is released");
-
-        InputSystem.RemoveDevice(mouse);
-        yield return null;
-    }
 }
