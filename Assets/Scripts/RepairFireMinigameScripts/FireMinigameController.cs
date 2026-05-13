@@ -16,6 +16,8 @@ public class FireMinigameController : MonoBehaviour
 
         firesLeft = FindObjectsByType<FireSpot>(FindObjectsSortMode.None).Length;
 
+        Debug.Log("Completed panel assigned at Start? " + (completedPanel != null));
+
         if (completedPanel != null)
         {
             completedPanel.SetActive(false);
@@ -44,9 +46,9 @@ public class FireMinigameController : MonoBehaviour
         if (completedPanel == null)
         {
             Debug.Log("Completed panel is NOT assigned!");
-        }
-            else
-        {   
+        } 
+        else
+        {
             Debug.Log("Completed panel assigned, showing now.");
             completedPanel.SetActive(true);
         }
