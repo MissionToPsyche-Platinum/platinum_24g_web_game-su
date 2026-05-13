@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class LabBoxTrigger : MonoBehaviour
 {
@@ -12,17 +13,12 @@ public class LabBoxTrigger : MonoBehaviour
     [SerializeField] private TMP_Text titleTMP;
     [SerializeField] private TMP_Text bodyTMP;
 
-    [Header("Popup Content")]
+    [SerializeField] private string minigameSceneName = "LabMinigame1";
 
     
     [Header("Hint Placement (Above Object)")]
     [SerializeField] private Vector3 hintWorldOffset = new Vector3(0f, 1.2f, 0f);
     [SerializeField] private Vector2 hintSize = new Vector2(300f, 40f);
-
-    [Header("Popup Content")]
-
-    [SerializeField, TextArea(4, 10)]
-
 
     private GameObject hintLabel;
     private RectTransform hintRectTransform;
@@ -33,6 +29,17 @@ public class LabBoxTrigger : MonoBehaviour
     private Rigidbody2D playerRigidbody;
 
     private bool warnedMissingPopup; 
+
+    public void StartMinigame()
+    {
+        if (playerMovement != null)
+            playerMovement.enabled = true;
+
+        if (playerRigidbody != null)
+            playerRigidbody.WakeUp();
+
+        SceneManager.LoadScene(minigameSceneName);
+    }  
 
     private void Awake()
     {

@@ -2323,9 +2323,9 @@ MonoBehaviour:
   welcomePopup: {fileID: 2122669199}
   titleTMP: {fileID: 1216188764}
   bodyTMP: {fileID: 1675753263}
+  minigameSceneName: LabMinigame1
   hintWorldOffset: {x: -1.4, y: 1.2, z: 0}
   hintSize: {x: 300, y: 40}
-  hintLabel: {fileID: 0}
 --- !u!61 &597987166
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3570,9 +3570,9 @@ MonoBehaviour:
   welcomePopup: {fileID: 1634584990}
   titleTMP: {fileID: 0}
   bodyTMP: {fileID: 0}
+  minigameSceneName: LabMinigame1
   hintWorldOffset: {x: 0, y: 0.75, z: 0}
   hintSize: {x: 300, y: 40}
-  hintLabel: {fileID: 0}
 --- !u!1 &655758229
 GameObject:
   m_ObjectHideFlags: 0
@@ -4507,8 +4507,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CargoRoomController, Assembly-CSharp
+      - m_Target: {fileID: 597987165}
+        m_TargetAssemblyTypeName: LabBoxTrigger, GameScripts
         m_MethodName: StartMinigame
         m_Mode: 1
         m_Arguments:
