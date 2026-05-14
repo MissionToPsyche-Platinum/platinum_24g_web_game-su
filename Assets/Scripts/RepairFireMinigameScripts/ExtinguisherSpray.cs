@@ -4,12 +4,17 @@ public class ExtinguisherSpray : MonoBehaviour
 {
     public GameObject smokePrefab;
 
+    [SerializeField] private AudioSource sprayAudioSource;
+
     private PlayerMovement2D playerMovement;
 
     private Transform sprayUp;
     private Transform sprayDown;
     private Transform sprayLeft;
     private Transform sprayRight;
+
+    private float nextSmokeTime = 0f;
+    [SerializeField] private float smokeCooldown = 0.1f;
 
     void Start()
     {
@@ -23,10 +28,20 @@ public class ExtinguisherSpray : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             if (smokePrefab == null || playerMovement == null)
                 return;
+
+            if (sprayAudioSource != null && !sprayAudioSource.isPlaying)
+{
+    Debug.Log("Playing extinguisher sound");
+    sprayAudioSource.Play();
+}
+else if (sprayAudioSource == null)
+{
+    Debug.Log("Spray Audio Source is missing");
+}
 
             Vector2 dir = playerMovement.lastMoveDir;
 
@@ -66,7 +81,16 @@ public class ExtinguisherSpray : MonoBehaviour
                 return;
             }
 
-            GameObject smoke = Instantiate(smokePrefab, chosenPoint.position, Quaternion.Euler(0, 0, angle));
+            if (Time.time >= nextSmokeTime)
+            {
+                Instantiate(smokePrefab, chosenPoint.position, Quaternion.Euler(0, 0, angle));
+                nextSmokeTime = Time.time + smokeCooldown;
+            }
+        }
+        else
+        {
+            if (sprayAudioSource != null && sprayAudioSource.isPlaying)
+                sprayAudioSource.Stop();
         }
     }
 }
