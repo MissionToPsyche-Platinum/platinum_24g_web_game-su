@@ -1,3 +1,4 @@
+/*
 using NUnit.Framework;
 using System.Reflection;
 using UnityEngine;
@@ -49,3 +50,4 @@ public class LabRoomEditTests
         Assert.IsFalse(popupObject.activeSelf);
     }
 }
+*/

@@ -1,64 +1,41 @@
 using UnityEngine;
-using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class LabBoxTrigger : MonoBehaviour
 {
-    private const string HintName = "LabBoxInteractHint";
+    [Header("UI References")]
+    [SerializeField] private GameObject popupPanel;
+    [SerializeField] private GameObject hintLabel;
 
-    [Header("References")]
-    [SerializeField] private GameObject welcomePopup;
+    [Header("Minigame")]
 
-    [Header("Popup (EXISTING scene UI refs)")]
-    [SerializeField] private TMP_Text titleTMP;
-    [SerializeField] private TMP_Text bodyTMP;
-
-    [SerializeField] private string minigameSceneName = "LabMinigame1";
-
-    
-    [Header("Hint Placement (Above Object)")]
-    [SerializeField] private Vector3 hintWorldOffset = new Vector3(0f, 1.2f, 0f);
-    [SerializeField] private Vector2 hintSize = new Vector2(300f, 40f);
-
-    private GameObject hintLabel;
-    private RectTransform hintRectTransform;
-    private Camera mainCam;
+    [Header("Hint Position")]
+    [SerializeField] private Vector2 hintPosition;
 
     private bool canInteract;
     private PlayerMovement2D playerMovement;
     private Rigidbody2D playerRigidbody;
-
-    private bool warnedMissingPopup; 
-
-    public void StartMinigame()
-    {
-        if (playerMovement != null)
-            playerMovement.enabled = true;
-
-        if (playerRigidbody != null)
-            playerRigidbody.WakeUp();
-
-        SceneManager.LoadScene(minigameSceneName);
-    }  
-
-    private void Awake()
-    {
-        mainCam = Camera.main;
-    }
+    [SerializeField] private List<string> minigameSceneNames = new List<string>() 
+    { 
+        "LabMinigame1", 
+        "LabMinigame2" 
+    };
 
     private void Start()
     {
-        EnsurePopupRefs();
 
-        //start hidden if found
-        if (welcomePopup != null)
-            welcomePopup.SetActive(false);
+        if (hintLabel != null)
+            hintLabel.SetActive(false);
+
+        //make sure player is not stuck frozen when scene starts
+        PlayerMovement2D pm = FindFirstObjectByType<PlayerMovement2D>();
+        if (pm != null)
+            pm.enabled = true;
     }
 
     private void Update()
     {
-        UpdateHintPosition();
-
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (IsPopupOpen())
@@ -80,22 +57,24 @@ public class LabBoxTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(Global.currentRoom != "LabRoom")
+        Debug.Log("Entered trigger: " + gameObject.name + " by " + other.name);
+
+        if (Global.currentRoom != "LabRoom")
         {
+            Debug.Log("Blocked because currentRoom is: " + Global.currentRoom);
             return;
         }
+
         PlayerMovement2D pm = other.GetComponent<PlayerMovement2D>();
-        if (pm == null) return;
+        if (pm == null)
+        {
+            Debug.Log("Entered object does not have PlayerMovement2D.");
+            return;
+        }
 
         canInteract = true;
         playerMovement = pm;
         playerRigidbody = other.GetComponent<Rigidbody2D>();
-
-        if (hintLabel == null)
-        {
-            Canvas canvas = FindFirstObjectByType<Canvas>();
-            if (canvas != null) EnsureHint(canvas);
-        }
 
         ToggleHint(true);
     }
@@ -103,10 +82,10 @@ public class LabBoxTrigger : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         if (Global.currentRoom != "LabRoom")
-        {
             return;
-        }
-        if (other.GetComponent<PlayerMovement2D>() == null) return;
+
+        if (other.GetComponent<PlayerMovement2D>() == null)
+            return;
 
         canInteract = false;
 
@@ -116,145 +95,92 @@ public class LabBoxTrigger : MonoBehaviour
         ToggleHint(false);
     }
 
-
-
-private void ShowPopup()
-{
-    if(Global.currentRoom != "LabRoom")
+    private void ShowPopup()
     {
-        return;
-    }
-    EnsurePopupRefs();
+        if (Global.currentRoom != "LabRoom")
+            return;
 
-    if (welcomePopup == null)
+        if (popupPanel == null)
+        {
+            Debug.LogWarning("LabBoxTrigger: popupPanel is not assigned.");
+            return;
+        }
+
+        Debug.Log("Showing popup: " + popupPanel.name);
+
+        popupPanel.SetActive(true);
+        ToggleHint(false);
+
+        if (playerRigidbody != null)
+        {
+            playerRigidbody.linearVelocity = Vector2.zero;
+            playerRigidbody.angularVelocity = 0f;
+            playerRigidbody.Sleep();
+        }
+
+        if (playerMovement != null)
+            playerMovement.enabled = false;
+    }
+
+    public void HidePopup()
     {
-        Debug.LogWarning("LabBoxTrigger: welcomePopup not assigned and could not be found.");
-        return;
+        if (popupPanel != null)
+            popupPanel.SetActive(false);
+
+        ToggleHint(false);
+
+        if (playerMovement != null)
+            playerMovement.enabled = true;
+
+        if (playerRigidbody != null)
+        {
+            playerRigidbody.WakeUp();
+            playerRigidbody.linearVelocity = Vector2.zero;
+        }
     }
 
-    Debug.Log($"Triggered by: {gameObject.name}");
-    welcomePopup.SetActive(true);
-    ToggleHint(false);
-
-   
-    if (playerRigidbody != null)
+    public void StartMinigame()
     {
-        playerRigidbody.linearVelocity = Vector2.zero;
-        playerRigidbody.angularVelocity = 0f;
-        playerRigidbody.Sleep(); 
+        HidePopup();
+
+        if (playerMovement != null)
+            playerMovement.enabled = true;
+
+        if (playerRigidbody != null)
+            playerRigidbody.WakeUp();
+
+        if (minigameSceneNames == null || minigameSceneNames.Count == 0)
+        {
+            Debug.LogError("No lab minigame scenes assigned.");
+            return;
+        }
+
+        if (Global.round <= minigameSceneNames.Count)
+        {
+            SceneManager.LoadScene(minigameSceneNames[Global.round - 1]);
+        }
+        else
+        {
+            int choice = Random.Range(0, minigameSceneNames.Count);
+            SceneManager.LoadScene(minigameSceneNames[choice]);
+        }
     }
-
-    
-    if (playerMovement != null)
-        playerMovement.enabled = false;
-}
-
-
-
-
-
-private void HidePopup()
-{
-    if (welcomePopup != null)
-        welcomePopup.SetActive(false);
-
-    ToggleHint(false);
-
-    if (playerMovement != null)
-        playerMovement.enabled = true;
-
-    if (playerRigidbody != null)
-        playerRigidbody.linearVelocity = Vector2.zero;
-}
 
     private bool IsPopupOpen()
     {
-        return welcomePopup != null && welcomePopup.activeSelf;
-    }
-
-    private void EnsurePopupRefs()
-    {
-        //if already assigned, stop
-        if (welcomePopup != null && titleTMP != null && bodyTMP != null)
-            return;
-
-        Canvas canvas = FindFirstObjectByType<Canvas>();
-        if (canvas == null) return;
-
-        if (welcomePopup == null)
-        {
-       
-            Transform t = canvas.transform.Find("WelcomePopup");
-            if (t != null) welcomePopup = t.gameObject;
-        }
-
-        if (welcomePopup != null)
-        {
-            if (titleTMP == null)
-            {
-                Transform t = welcomePopup.transform.Find("TitleText");
-                if (t != null) titleTMP = t.GetComponent<TMP_Text>();
-            }
-
-            if (bodyTMP == null)
-            {
-                Transform t = welcomePopup.transform.Find("BodyText");
-                if (t != null) bodyTMP = t.GetComponent<TMP_Text>();
-            }
-        }
+        return popupPanel != null && popupPanel.activeSelf;
     }
 
     private void ToggleHint(bool isVisible)
     {
-        if (Global.currentRoom != "LabRoom")
-        {
-            return;
-        }
-        if (hintLabel != null)
-            hintLabel.SetActive(isVisible);
-    }
-
-    private void UpdateHintPosition()
-    {
-        if (!canInteract || hintRectTransform == null || hintLabel == null || !hintLabel.activeSelf)
+        if (hintLabel == null)
             return;
 
-        if (mainCam == null) mainCam = Camera.main;
-        if (mainCam == null) return;
+        hintLabel.SetActive(isVisible);
 
-        Vector3 screenPos = mainCam.WorldToScreenPoint(transform.position + hintWorldOffset);
+        RectTransform rect = hintLabel.GetComponent<RectTransform>();
 
-        if (screenPos.z < 0f)
-        {
-            hintLabel.SetActive(false);
-            return;
-        }
-
-        hintRectTransform.position = screenPos;
-    }
-
-    private void EnsureHint(Canvas canvas)
-    {
-        if (hintLabel != null) return;
-
-        hintLabel = new GameObject(HintName, typeof(RectTransform), typeof(CanvasRenderer), typeof(UnityEngine.UI.Text));
-        hintLabel.transform.SetParent(canvas.transform, false);
-        hintLabel.transform.SetAsLastSibling();
-
-        hintRectTransform = hintLabel.GetComponent<RectTransform>();
-        hintRectTransform.anchorMin = Vector2.zero;
-        hintRectTransform.anchorMax = Vector2.zero;
-        hintRectTransform.pivot = new Vector2(0.5f, 0f);
-        hintRectTransform.sizeDelta = hintSize;
-
-        UnityEngine.UI.Text hintText = hintLabel.GetComponent<UnityEngine.UI.Text>();
-        hintText.text = "Press E to interact";
-        hintText.alignment = TextAnchor.MiddleCenter;
-        hintText.color = Color.white;
-        hintText.fontSize = 18;
-        hintText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-        hintText.raycastTarget = false;
-
-        hintLabel.SetActive(false);
+        if (rect != null)
+            rect.anchoredPosition = hintPosition;
     }
 }
