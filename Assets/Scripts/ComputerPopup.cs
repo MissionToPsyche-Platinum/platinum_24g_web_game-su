@@ -7,9 +7,9 @@ public class ComputerPopup : MonoBehaviour
     private const string HintName = "ComputerInteractHint";
 
     [SerializeField] private FactCardsPopupUI factCardsPopupUI;
+    [SerializeField] private GameObject hintLabel;
 
     private GameObject popupPanel;
-    private GameObject hintLabel;
     private bool canInteract;
     private PlayerMovement2D playerMovement;
     private Rigidbody2D playerRigidbody;
@@ -54,15 +54,6 @@ public class ComputerPopup : MonoBehaviour
         canInteract = true;
         playerMovement = other.GetComponent<PlayerMovement2D>();
         playerRigidbody = other.GetComponent<Rigidbody2D>();
-
-        if (hintLabel == null)
-        {
-            Canvas canvas = FindFirstObjectByType<Canvas>();
-            if (canvas != null)
-            {
-                EnsureHint(canvas);
-            }
-        }
 
         ToggleHint(true);
     }
@@ -144,8 +135,6 @@ private void ShowPopup()
             Debug.LogWarning("ComputerPopup: No Canvas found in scene.");
             return;
         }
-
-        EnsureHint(canvas);
 
         popupPanel = new GameObject(PopupName, typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
         popupPanel.transform.SetParent(canvas.transform, false);
@@ -238,6 +227,7 @@ private void ShowPopup()
         popupPanel.SetActive(false);
     }
 
+    /*
     private void EnsureHint(Canvas canvas)
     {
         if (hintLabel != null)
@@ -266,4 +256,5 @@ private void ShowPopup()
 
         hintLabel.SetActive(false);
     }
+    */
 }
