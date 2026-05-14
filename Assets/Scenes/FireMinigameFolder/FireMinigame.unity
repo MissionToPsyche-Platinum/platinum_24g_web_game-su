@@ -5480,6 +5480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 944f948dfcd764488b0506d5542c08dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GameScripts::FireMinigameController
+  heldExtinguisher: {fileID: 150015657}
   completedPanel: {fileID: 210305607}
 --- !u!4 &1005611309
 Transform:

@@ -6,6 +6,8 @@ public class FireMinigameController : MonoBehaviour
     private GameObject player;
     private int firesLeft;
 
+    [SerializeField] private GameObject heldExtinguisher;
+
     public GameObject completedPanel;
 
     private void Start()
@@ -14,14 +16,22 @@ public class FireMinigameController : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player");
 
+        Debug.Log("FireMinigame hasExtinguisher: " + Global.hasExtinguisher);
+
+        GameObject held = GameObject.Find("HeldExtinguisher");
+
+        if (held != null)
+        {
+            SpriteRenderer sr = held.GetComponent<SpriteRenderer>();
+
+            if (sr != null)
+                sr.enabled = Global.hasExtinguisher;
+        }
+
         firesLeft = FindObjectsByType<FireSpot>(FindObjectsSortMode.None).Length;
 
-        Debug.Log("Completed panel assigned at Start? " + (completedPanel != null));
-
         if (completedPanel != null)
-        {
             completedPanel.SetActive(false);
-        }
     }
 
     public void FirePutOut()
@@ -46,7 +56,7 @@ public class FireMinigameController : MonoBehaviour
         if (completedPanel == null)
         {
             Debug.Log("Completed panel is NOT assigned!");
-        } 
+        }
         else
         {
             Debug.Log("Completed panel assigned, showing now.");
@@ -56,6 +66,18 @@ public class FireMinigameController : MonoBehaviour
 
     public void GoToMainHall()
     {
+        Global.hasExtinguisher = false;
+
+        GameObject held = GameObject.Find("HeldExtinguisher");
+
+        if (held != null)
+        {
+            SpriteRenderer sr = held.GetComponent<SpriteRenderer>();
+
+            if (sr != null)
+                sr.enabled = false;
+        }
+
         SceneManager.LoadScene("MainHall");
     }
 }

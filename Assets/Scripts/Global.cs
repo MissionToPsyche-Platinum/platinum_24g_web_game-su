@@ -44,6 +44,8 @@ public class Global : MonoBehaviour
 
     public static bool tutorialShown = false;
 
+    public static bool hasExtinguisher = false;
+
     void Start()
     {
         timerText = GameObject.FindGameObjectWithTag("Timer");
@@ -241,6 +243,7 @@ public class Global : MonoBehaviour
         totalScore = 0;
         hasWon = false;
         lastAwardedFactText = "";
+        hasExtinguisher = false;
     }
 
     public static void MinigameWin()

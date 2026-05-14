@@ -2240,7 +2240,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165212698}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -2417,7 +2417,6 @@ GameObject:
   - component: {fileID: 268386402}
   - component: {fileID: 268386403}
   - component: {fileID: 268386405}
-  - component: {fileID: 268386406}
   m_Layer: 0
   m_Name: __DontDestroy
   m_TagString: Untagged
@@ -2494,18 +2493,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundFXManager
   soundFXObject: {fileID: 9050498495406777913, guid: 405f7c5009a619640b472250809b460f, type: 3}
---- !u!114 &268386406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 268386398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10a304ac5be4940eabcf5b870468e0e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: GameScripts::HideHeldExtinguisherInMainHall
 --- !u!1 &342362792
 GameObject:
   m_ObjectHideFlags: 0

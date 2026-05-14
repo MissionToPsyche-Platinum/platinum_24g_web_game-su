@@ -18,25 +18,15 @@ public class FireExtinguisherMainHallTrigger : MonoBehaviour
             promptText.SetActive(false);
     }
 
-void Update()
-{
-    if (playerNearby && Input.GetKeyDown(KeyCode.E))
+    void Update()
     {
-        GameObject held = GameObject.Find("HeldExtinguisher");
-
-        if (held != null)
+        if (playerNearby && Input.GetKeyDown(KeyCode.E))
         {
-            SpriteRenderer sr = held.GetComponent<SpriteRenderer>();
 
-            if (sr != null)
-            {
-                sr.enabled = true;
-            }
+            Global.hasExtinguisher = true;
+            SceneManager.LoadScene("FireMinigame");
         }
-
-        SceneManager.LoadScene("FireMinigame");
     }
-}
 
     void OnTriggerEnter2D(Collider2D other)
     {
