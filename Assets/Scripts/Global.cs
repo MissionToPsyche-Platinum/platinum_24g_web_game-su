@@ -41,10 +41,15 @@ public class Global : MonoBehaviour
     public static string lastAwardedFactText = "";
     //for keeping track of the previous minigame room
     public static string lastRoomFromPreviousRound = "";
+    //tracks room player is currently in
+    public static string playerRoomTracker = "StartMenu";
 
     public static bool tutorialShown = false;
 
     public static bool hasExtinguisher = false;
+
+    public GameObject optionsButton;
+    public GameObject factCardButton;
 
     void Start()
     {
@@ -62,6 +67,17 @@ public class Global : MonoBehaviour
         Timer();
         RepairCollisionController();
         FireEmergencyController();
+
+        if(CheckIfInMinigame())
+        {
+            optionsButton.SetActive(false);
+            factCardButton.SetActive(false);
+        }
+        else
+        {
+            optionsButton.SetActive(true);
+            factCardButton.SetActive(true);
+        }
     }
     
     private static void RoundHandler()
@@ -354,5 +370,19 @@ public class Global : MonoBehaviour
         timerStarted = false;
         targetTime = 20.0f;
         timerText.GetComponent<TextMeshProUGUI>().text = "";
+    }
+
+    public static bool CheckIfInMinigame()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+        if (currentScene == "MainHall" || currentScene == "LabRoom" || currentScene == "CargoRoom" || currentScene == "PowerRoom" || currentScene == "ControlRoom")
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
     }
 }

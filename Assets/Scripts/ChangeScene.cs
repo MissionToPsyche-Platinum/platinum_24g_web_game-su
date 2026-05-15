@@ -41,4 +41,9 @@ public class ChangeScene : MonoBehaviour
         }
     }
 
+    public void goToPreviousScene()
+    {
+        Debug.Log(Global.playerRoomTracker);
+        SceneManager.LoadScene(Global.playerRoomTracker);
+    }
 }

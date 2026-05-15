@@ -145,17 +145,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6283426}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1073371861}
-  m_Father: {fileID: 447873351}
+  m_Father: {fileID: 1994507273}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 63, y: -31}
+  m_AnchoredPosition: {x: 63.00001, y: -31}
   m_SizeDelta: {x: 90, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6283428
@@ -202,8 +202,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 447873352}
-        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+      - m_Target: {fileID: 1994507277}
+        m_TargetAssemblyTypeName: ChangeScene, GameScripts
         m_MethodName: goToOptionScene
         m_Mode: 1
         m_Arguments:
@@ -2714,6 +2714,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   repairMinigamePanel: {fileID: 1904975335}
   fireMinigamePanel: {fileID: 1727889816}
+  optionsButton: {fileID: 6283426}
+  factCardButton: {fileID: 910000000}
 --- !u!114 &268386405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2979,7 +2981,6 @@ GameObject:
   - component: {fileID: 447873350}
   - component: {fileID: 447873349}
   - component: {fileID: 447873348}
-  - component: {fileID: 447873352}
   - component: {fileID: 447873353}
   m_Layer: 5
   m_Name: Canvas
@@ -3064,10 +3065,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1194288233}
-  - {fileID: 1091537464}
   - {fileID: 2055973705}
-  - {fileID: 6283427}
-  - {fileID: 910000001}
   - {fileID: 805071858}
   - {fileID: 32123531}
   - {fileID: 949552876}
@@ -3078,18 +3076,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &447873352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 447873347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bf3b1cde19b6dc449e281918188dacd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChangeScene
 --- !u!114 &447873353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6390,17 +6376,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 910000000}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 910000006}
-  m_Father: {fileID: 447873351}
+  m_Father: {fileID: 1994507273}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 82, y: -71}
+  m_AnchoredPosition: {x: 82.00001, y: -71}
   m_SizeDelta: {x: 128.1277, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &910000002
@@ -7601,12 +7587,12 @@ Transform:
   m_GameObject: {fileID: 1091537462}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 320, y: 180, z: 0}
+  m_LocalPosition: {x: 320.00003, y: 180, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1270834432}
-  m_Father: {fileID: 447873351}
+  m_Father: {fileID: 1994507273}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1091537465
 MonoBehaviour:
@@ -11768,6 +11754,7 @@ GameObject:
   - component: {fileID: 1994507276}
   - component: {fileID: 1994507275}
   - component: {fileID: 1994507274}
+  - component: {fileID: 1994507277}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -11793,6 +11780,9 @@ RectTransform:
   - {fileID: 781329231}
   - {fileID: 1904975335}
   - {fileID: 1727889816}
+  - {fileID: 6283427}
+  - {fileID: 1091537464}
+  - {fileID: 910000001}
   m_Father: {fileID: 268386400}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -11863,6 +11853,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1994507277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994507272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf3b1cde19b6dc449e281918188dacd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameScripts::ChangeScene
 --- !u!1 &2033355626
 GameObject:
   m_ObjectHideFlags: 0

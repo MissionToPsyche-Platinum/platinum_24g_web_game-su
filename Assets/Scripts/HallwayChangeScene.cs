@@ -9,6 +9,7 @@ public class HallwayChangeScene : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            Global.playerRoomTracker = loadScene;
             SceneManager.LoadScene(loadScene);
         }
     }

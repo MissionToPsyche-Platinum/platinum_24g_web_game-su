@@ -43,6 +43,7 @@ public class CutsceneManager : MonoBehaviour
             {
                 images[clickCount].CrossFadeAlpha(0f, 0.7f, false);
                 Global.tutorialShown = true;
+                Global.playerRoomTracker = "MainHall";
                 SceneManager.LoadScene("MainHall");
             }
         }

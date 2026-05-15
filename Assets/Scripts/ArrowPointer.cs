@@ -24,7 +24,7 @@ public class ArrowPointer : MonoBehaviour
         currentRoom = SceneManager.GetActiveScene().name;
 
         //if you're in the room of current minigame or in minigame, hide arrow
-        if (currentRoom == Global.currentRoom || CheckIfInMinigame())
+        if (currentRoom == Global.currentRoom || Global.CheckIfInMinigame())
         {
             arrowSprite.SetActive(false);
             return;
@@ -82,19 +82,5 @@ public class ArrowPointer : MonoBehaviour
             }
             
         }
-    }
-
-    private bool CheckIfInMinigame()
-    {
-        string currentScene = SceneManager.GetActiveScene().name;
-        if (currentScene == "MainHall" || currentScene == "LabRoom" || currentScene == "CargoRoom" || currentScene == "PowerRoom" || currentScene == "ControlRoom")
-        {
-            return false;
-        }
-        else
-        {
-           return true;
-        }
-        
     }
 }
