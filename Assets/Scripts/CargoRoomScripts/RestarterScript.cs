@@ -8,6 +8,7 @@ public class RestarterScript : MonoBehaviour
     public GameObject helpPanel;
     public GameObject hint;
     private GameObject player;
+    private bool canInteract;
 
     [SerializeField] private AudioClip blipSoundClip;
 
@@ -24,7 +25,7 @@ public class RestarterScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && !helpPanel.activeSelf )
+        if (Input.GetKeyDown(KeyCode.E) && !helpPanel.activeSelf && canInteract)
         {
             if (SoundFXManager.instance != null)
             {
@@ -36,7 +37,7 @@ public class RestarterScript : MonoBehaviour
             ToggleHint(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && helpPanel.activeSelf)
         {
             if (SoundFXManager.instance != null)
             {
@@ -53,12 +54,14 @@ public class RestarterScript : MonoBehaviour
             Debug.LogError("RestarterScript: hint is NOT assigned in Inspector.");
             return; ;
         }
+        canInteract = true;
 
         ToggleHint(true);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        canInteract = false;
         ToggleHint(false);
     }
 
