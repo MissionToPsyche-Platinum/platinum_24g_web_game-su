@@ -5,7 +5,7 @@ using UnityEngine;
 public class CargoBox : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float pushForce = 3f;
+    public float pushForce = -0.99f;
     public GameObject warning;
     public GameObject correct;
     
@@ -26,7 +26,7 @@ public class CargoBox : MonoBehaviour
             audioSource.volume = 0.0f;
             audioSource.Play();
             audioSource.Stop();
-            audioSource.volume = 0.3f;
+            audioSource.volume = 0.1f;
 
         }
     }

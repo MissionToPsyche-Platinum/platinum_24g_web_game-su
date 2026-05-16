@@ -244,7 +244,7 @@ TextureImporter:
         width: 32
         height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -266,7 +266,7 @@ TextureImporter:
         width: 32
         height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -288,7 +288,7 @@ TextureImporter:
         width: 32
         height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -297,6 +297,28 @@ TextureImporter:
       bones: []
       spriteID: 2da9a7967d161ed47997de17c91d5326
       internalID: -868264086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileSet v1.0_2
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 193
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 2}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b982df8631015f940929c06ba844efd7
+      internalID: -1906598826
       vertices: []
       indices: 
       edges: []
@@ -323,6 +345,7 @@ TextureImporter:
       Shelf with Drawer: -868264086
       TileSet v1.0_0: -884601194
       TileSet v1.0_1: -173713812
+      TileSet v1.0_2: -1906598826
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
