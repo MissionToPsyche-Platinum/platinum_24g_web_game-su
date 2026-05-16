@@ -8,6 +8,7 @@ public class SoundMixerManager : MonoBehaviour
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Slider masterSlider;
     [SerializeField] private Slider fxSlider;
+    [SerializeField] private Slider musicSlider;
 
     private void Start()
     {
@@ -28,6 +29,15 @@ public class SoundMixerManager : MonoBehaviour
         {
             SetSoundFXVolume();
         }
+
+        if(PlayerPrefs.HasKey("musicVolume"))
+        {
+            LoadMusicVolume();
+        }
+        else
+        {
+            SetMusicVolume();
+        }
     }
     public void SetMasterVolume()
     {
@@ -43,6 +53,11 @@ public class SoundMixerManager : MonoBehaviour
         PlayerPrefs.SetFloat("soundFXVolume", volume);
 
     }
+    public void SetMusicVolume() {         
+        float volume = musicSlider.value;
+        audioMixer.SetFloat("musicVolume", Mathf.Log10(volume) * 20f);
+        PlayerPrefs.SetFloat("musicVolume", volume);
+    }
 
     private void LoadMasterVolume()
     {
@@ -53,5 +68,10 @@ public class SoundMixerManager : MonoBehaviour
     {
         fxSlider.value = PlayerPrefs.GetFloat("soundFXVolume");
         SetSoundFXVolume();
+    }
+    private void LoadMusicVolume()
+    {
+        musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        SetMusicVolume();
     }
 }

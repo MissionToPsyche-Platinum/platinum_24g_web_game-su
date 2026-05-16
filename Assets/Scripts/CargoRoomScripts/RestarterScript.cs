@@ -39,10 +39,6 @@ public class RestarterScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape) && helpPanel.activeSelf)
         {
-            if (SoundFXManager.instance != null)
-            {
-                SoundFXManager.instance.PlaySoundFXClip(blipSoundClip, transform, 1f);
-            }
             ExitPanel();
         }
     }
@@ -82,6 +78,10 @@ public class RestarterScript : MonoBehaviour
 
     public void ExitPanel()
     {
+        if (SoundFXManager.instance != null)
+        {
+            SoundFXManager.instance.PlaySoundFXClip(blipSoundClip, transform, 1f);
+        }
         helpPanel.SetActive(false);
         player.GetComponent<PlayerMovement2D>().enabled = true;
 
