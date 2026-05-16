@@ -575,6 +575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &39986643
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -715,6 +716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!58 &54937903
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -988,6 +990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &134300588
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1287,6 +1290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &180490014
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2647,6 +2651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &192829086
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2787,6 +2792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &197013716
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3236,6 +3242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &310963175
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3321,11 +3328,11 @@ Transform:
   m_GameObject: {fileID: 384550726}
   serializedVersion: 2
   m_LocalRotation: {x: 0.003293596, y: -0, z: -0, w: 0.99999464}
-  m_LocalPosition: {x: 7.21, y: 1.29, z: -0}
+  m_LocalPosition: {x: 2.68262, y: 2.593, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 930428969}
+  m_Father: {fileID: 548968569}
   m_LocalEulerAnglesHint: {x: 0.377, y: 0, z: 0}
 --- !u!61 &384550728
 BoxCollider2D:
@@ -3458,11 +3465,11 @@ Transform:
   m_GameObject: {fileID: 417467580}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.7356095, y: 1.4747102, z: 0}
+  m_LocalPosition: {x: -9.262989, y: 2.7777102, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 930428969}
+  m_Father: {fileID: 548968569}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &417467582
 SpriteRenderer:
@@ -3614,6 +3621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &429778745
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3754,6 +3762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!58 &465941431
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3988,6 +3997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!58 &506683047
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4265,6 +4275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!58 &538214316
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4386,11 +4397,11 @@ Transform:
   m_GameObject: {fileID: 543379292}
   serializedVersion: 2
   m_LocalRotation: {x: 0.003293596, y: -0, z: -0, w: 0.99999464}
-  m_LocalPosition: {x: -2.07, y: -0.21, z: -0}
+  m_LocalPosition: {x: -6.59738, y: 1.0929999, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 930428969}
+  m_Father: {fileID: 548968569}
   m_LocalEulerAnglesHint: {x: 0.377, y: 0, z: 0}
 --- !u!61 &543379294
 BoxCollider2D:
@@ -4525,6 +4536,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1249181624}
   - {fileID: 12535733}
   - {fileID: 1591938877}
   - {fileID: 1823185602}
@@ -4534,6 +4546,14 @@ Transform:
   - {fileID: 1372835268}
   - {fileID: 1025388973}
   - {fileID: 242640561}
+  - {fileID: 1970057126}
+  - {fileID: 417467581}
+  - {fileID: 543379293}
+  - {fileID: 1707637250}
+  - {fileID: 1828736279}
+  - {fileID: 384550727}
+  - {fileID: 986856419}
+  - {fileID: 1443103032}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &550254171
@@ -4766,6 +4786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!58 &585511433
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5799,6 +5820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &629458840
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5939,6 +5961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &803383910
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6079,6 +6102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &825570601
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6219,6 +6243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!58 &827962538
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6359,6 +6384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &858465508
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6599,46 +6625,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900104544}
   m_CullTransparentMesh: 1
---- !u!1 &930428968
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 930428969}
-  m_Layer: 0
-  m_Name: MinigameRoot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &930428969
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 930428968}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.61439, y: 0.06529, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1970057126}
-  - {fileID: 417467581}
-  - {fileID: 543379293}
-  - {fileID: 1707637250}
-  - {fileID: 1828736279}
-  - {fileID: 384550727}
-  - {fileID: 986856419}
-  - {fileID: 1443103032}
-  - {fileID: 1249181624}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &964321928
 GameObject:
   m_ObjectHideFlags: 0
@@ -6834,11 +6820,11 @@ Transform:
   m_GameObject: {fileID: 986856418}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.28, y: -0.61, z: 0}
+  m_LocalPosition: {x: -1.2473803, y: 0.69299996, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 930428969}
+  m_Father: {fileID: 548968569}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &986856420
 BoxCollider2D:
@@ -6990,6 +6976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!58 &1003080986
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7224,6 +7211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!1 &1015088961
 GameObject:
   m_ObjectHideFlags: 0
@@ -7337,6 +7325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &1021695120
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7578,6 +7567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &1034597768
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7718,6 +7708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &1059265769
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7858,6 +7849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &1059372780
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7998,6 +7990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &1090770604
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8271,6 +8264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &1110972695
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8770,6 +8764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!58 &1223791572
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8931,6 +8926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &1232493167
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9071,6 +9067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &1243118010
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9190,7 +9187,7 @@ Transform:
   m_GameObject: {fileID: 1249181623}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.24677, y: 0.059930004, z: 0}
+  m_LocalPosition: {x: -0.28061008, y: 1.36293, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9237,7 +9234,7 @@ Transform:
   - {fileID: 310963172}
   - {fileID: 1034597766}
   - {fileID: 1021695117}
-  m_Father: {fileID: 930428969}
+  m_Father: {fileID: 548968569}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1269916610
 GameObject:
@@ -9285,6 +9282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!58 &1269916613
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9562,6 +9560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &1375422428
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9821,11 +9820,11 @@ Transform:
   m_GameObject: {fileID: 1443103031}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.41, y: -0.73, z: 0}
+  m_LocalPosition: {x: 0.88261986, y: 0.57299995, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 930428969}
+  m_Father: {fileID: 548968569}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1443103033
 BoxCollider2D:
@@ -10013,6 +10012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &1499635162
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10117,6 +10117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!58 &1531640729
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -10772,6 +10773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!58 &1629124329
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -10912,6 +10914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &1662042596
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11052,6 +11055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!58 &1692659937
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -11269,11 +11273,11 @@ Transform:
   m_GameObject: {fileID: 1707637249}
   serializedVersion: 2
   m_LocalRotation: {x: 0.003293596, y: -0, z: -0, w: 0.99999464}
-  m_LocalPosition: {x: 1.72, y: -1.44, z: 0}
+  m_LocalPosition: {x: -2.8073802, y: -0.13700008, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 930428969}
+  m_Father: {fileID: 548968569}
   m_LocalEulerAnglesHint: {x: 0.377, y: 0, z: 0}
 --- !u!61 &1707637251
 BoxCollider2D:
@@ -11425,6 +11429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &1745093972
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11601,6 +11606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &1801311711
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11823,11 +11829,11 @@ Transform:
   m_GameObject: {fileID: 1828736278}
   serializedVersion: 2
   m_LocalRotation: {x: 0.003293596, y: -0, z: -0, w: 0.99999464}
-  m_LocalPosition: {x: -0.37, y: -1, z: 0}
+  m_LocalPosition: {x: -4.89738, y: 0.30299997, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 930428969}
+  m_Father: {fileID: 548968569}
   m_LocalEulerAnglesHint: {x: 0.377, y: 0, z: 0}
 --- !u!61 &1828736280
 BoxCollider2D:
@@ -12115,6 +12121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &1836957752
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12255,6 +12262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!212 &1879085429
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12395,6 +12403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!58 &1897253908
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -12673,6 +12682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!58 &1920928944
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -12794,11 +12804,11 @@ Transform:
   m_GameObject: {fileID: 1970057125}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.835609, y: 1.4747102, z: 0}
+  m_LocalPosition: {x: -8.362989, y: 2.7777102, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 930428969}
+  m_Father: {fileID: 548968569}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1970057127
 SpriteRenderer:
@@ -13008,6 +13018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!58 &2016869461
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -13228,6 +13239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b5a78187a14ffea00de30121bf098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpillClean
+  mopSound: {fileID: 8300000, guid: 4893e6051010d484995f59dafcc91060, type: 3}
 --- !u!58 &2098142832
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -13331,7 +13343,6 @@ SceneRoots:
   - {fileID: 1575232305}
   - {fileID: 1227481655}
   - {fileID: 1015088962}
-  - {fileID: 930428969}
   - {fileID: 550254173}
   - {fileID: 1172216386}
   - {fileID: 548968569}
