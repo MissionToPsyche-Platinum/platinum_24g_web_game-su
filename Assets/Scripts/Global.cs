@@ -32,6 +32,7 @@ public class Global : MonoBehaviour
     public RectTransform fireMinigamePanel;
     private static bool showFirePopup = true;
     private bool firePopupButtonBound = false;
+    public static bool hasExtinguisher = false;
 
     public static int round = 1;
     public static string currentRoom = "";
@@ -45,8 +46,6 @@ public class Global : MonoBehaviour
     public static string playerRoomTracker = "StartMenu";
 
     public static bool tutorialShown = false;
-
-    public static bool hasExtinguisher = false;
 
     public GameObject optionsButton;
     public GameObject factCardButton;
@@ -360,6 +359,10 @@ public class Global : MonoBehaviour
         StopTimer();
 
         if (!repairCollisionMinigamePlayed)
+        {
+            SubtractScore(20);
+        }
+        if (!fireMinigamePlayed)
         {
             SubtractScore(20);
         }
