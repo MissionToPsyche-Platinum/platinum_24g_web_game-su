@@ -2849,7 +2849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dccab2666af2c5d4c8fd989c33b0df43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  pushForce: -0.99
+  pushForce: 1
   warning: {fileID: 439666983}
   correct: {fileID: 611437625}
   audioSource: {fileID: 456830943}
@@ -2997,7 +2997,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 5d6a229aeca592d4db8776def3bb70c9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -7479,7 +7479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dccab2666af2c5d4c8fd989c33b0df43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  pushForce: -0.99
+  pushForce: 1
   warning: {fileID: 562212519}
   correct: {fileID: 1835364362}
   audioSource: {fileID: 1792114438}
@@ -7496,7 +7496,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 5d6a229aeca592d4db8776def3bb70c9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
