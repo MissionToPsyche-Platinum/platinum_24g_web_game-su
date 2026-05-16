@@ -12,6 +12,10 @@ public class LabBoxTrigger : MonoBehaviour
 
     [Header("Hint Position")]
     [SerializeField] private Vector2 hintPosition;
+    [Header("Popup Audio")]
+    [SerializeField] private AudioSource popupAudioSource;
+    [SerializeField] private AudioClip openSound;
+    [SerializeField] private AudioClip closeSound;
 
     private bool canInteract;
     private PlayerMovement2D playerMovement;
@@ -120,10 +124,21 @@ public class LabBoxTrigger : MonoBehaviour
 
         if (playerMovement != null)
             playerMovement.enabled = false;
+
+        if (popupAudioSource != null && openSound != null)
+        {
+            popupAudioSource.PlayOneShot(openSound);
+        }
     }
 
     public void HidePopup()
     {
+        if (popupAudioSource != null && closeSound != null)
+        {
+            popupAudioSource.PlayOneShot(closeSound);
+            Debug.Log("played close audio");
+        }
+
         if (popupPanel != null)
             popupPanel.SetActive(false);
 
@@ -136,7 +151,7 @@ public class LabBoxTrigger : MonoBehaviour
         {
             playerRigidbody.WakeUp();
             playerRigidbody.linearVelocity = Vector2.zero;
-        }
+        }   
     }
 
     public void StartMinigame()
