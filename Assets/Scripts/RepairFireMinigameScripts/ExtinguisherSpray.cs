@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ExtinguisherSpray : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class ExtinguisherSpray : MonoBehaviour
     private Transform sprayRight;
 
     private float nextSmokeTime = 0f;
+
     [SerializeField] private float smokeCooldown = 0.1f;
 
     void Start()
@@ -28,20 +30,28 @@ public class ExtinguisherSpray : MonoBehaviour
 
     void Update()
     {
+        if (SceneManager.GetActiveScene().name != "FireMinigame")
+        {
+            if (sprayAudioSource != null && sprayAudioSource.isPlaying)
+                sprayAudioSource.Stop();
+
+            return;
+        }
+
         if (Input.GetKey(KeyCode.Space))
         {
             if (smokePrefab == null || playerMovement == null)
                 return;
 
             if (sprayAudioSource != null && !sprayAudioSource.isPlaying)
-{
-    Debug.Log("Playing extinguisher sound");
-    sprayAudioSource.Play();
-}
-else if (sprayAudioSource == null)
-{
-    Debug.Log("Spray Audio Source is missing");
-}
+            {
+                Debug.Log("Playing extinguisher sound");
+                sprayAudioSource.Play();
+            }
+            else if (sprayAudioSource == null)
+            {
+                Debug.Log("Spray Audio Source is missing");
+            }
 
             Vector2 dir = playerMovement.lastMoveDir;
 
@@ -83,7 +93,12 @@ else if (sprayAudioSource == null)
 
             if (Time.time >= nextSmokeTime)
             {
-                Instantiate(smokePrefab, chosenPoint.position, Quaternion.Euler(0, 0, angle));
+                Instantiate(
+                    smokePrefab,
+                    chosenPoint.position,
+                    Quaternion.Euler(0, 0, angle)
+                );
+
                 nextSmokeTime = Time.time + smokeCooldown;
             }
         }
