@@ -35,7 +35,7 @@ public class PowerCell : MonoBehaviour
 
     public void AttemptCalibration()
     {
-        if (indicator.anchoredPosition.x <= 420 && indicator.anchoredPosition.x >= 380) 
+        if (indicator.anchoredPosition.x <= 435 && indicator.anchoredPosition.x >= 365) 
         {
             isCalibrated = true;
             if (SoundFXManager.instance != null)
