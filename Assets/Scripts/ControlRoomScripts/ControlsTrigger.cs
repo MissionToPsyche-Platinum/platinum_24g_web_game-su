@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class ControlsTrigger : MonoBehaviour
 {
+    //popup audio
+    public AudioSource popupAudioSource;
+    public AudioClip openSound;
+    public AudioClip closeSound;
     private const string PopupName = "ControlsPopUp";
     private const string HintName = "ControlsInteractHint";
     private const string PopupTitle = "MID-COURSE CORRECTION";
@@ -125,10 +129,19 @@ public class ControlsTrigger : MonoBehaviour
         {
             playerRigidbody.linearVelocity = Vector2.zero;
         }
+        if (popupAudioSource != null && openSound != null)
+        {
+            popupAudioSource.PlayOneShot(openSound);
+        }
     }
 
     private void HidePopup()
     {
+        if (popupAudioSource != null && closeSound != null)
+        {
+            popupAudioSource.PlayOneShot(closeSound);
+            Debug.Log("played close audio");
+        }
         if (popupPanel != null)
         {
             popupPanel.SetActive(false);
