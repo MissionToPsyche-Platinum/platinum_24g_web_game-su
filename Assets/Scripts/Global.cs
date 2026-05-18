@@ -36,7 +36,8 @@ public class Global : MonoBehaviour
 
     public AudioSource popupAudioSource;
     public AudioClip timeSensitiveAlertSound;
-    private bool timeSensitiveAlertPlayed = false;
+    private bool repairFireAlertPlayed = false;
+    private bool repairCollisionAlertPlayed = false;
 
     public static int round = 1;
     public static string currentRoom = "";
@@ -116,6 +117,15 @@ public class Global : MonoBehaviour
                 inTimeSensitiveMinigame = true;
                 repairMinigamePanel.gameObject.SetActive(true);
                 repairMinigamePanel.anchoredPosition = Vector2.zero;
+                if (!repairCollisionAlertPlayed &&
+                    popupAudioSource != null &&
+                    timeSensitiveAlertSound != null)
+                {
+                    popupAudioSource.PlayOneShot(timeSensitiveAlertSound);
+                    repairCollisionAlertPlayed = true;
+                }
+
+                SetPlayerMovementLocked(true);
                 SetPlayerMovementLocked(true);
 
                 Transform returnButton = repairMinigamePanel.Find("ReturnButton");
@@ -175,12 +185,12 @@ public class Global : MonoBehaviour
             SetPlayerMovementLocked(true);
 
             //play alert sound only once
-            if (!timeSensitiveAlertPlayed &&
+            if (!repairFireAlertPlayed &&
                 popupAudioSource != null &&
                 timeSensitiveAlertSound != null)
             {
                 popupAudioSource.PlayOneShot(timeSensitiveAlertSound);
-                timeSensitiveAlertPlayed = true;
+                repairFireAlertPlayed = true;
             }
 
             Transform returnButton = fireMinigamePanel.Find("ReturnButton");
