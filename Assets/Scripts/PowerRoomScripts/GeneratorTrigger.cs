@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class GeneratorTrigger : MonoBehaviour
 {
+    //popup audio
+    public AudioSource popupAudioSource;
+    public AudioClip openSound;
+    public AudioClip closeSound;
     private const string PopupName = "BoxPopUp";
     private const string HintName = "BoxInteractHint";
 
@@ -105,10 +109,19 @@ public class GeneratorTrigger : MonoBehaviour
         {
             playerRigidbody.linearVelocity = Vector2.zero;
         }
+        if (popupAudioSource != null && openSound != null)
+        {
+            popupAudioSource.PlayOneShot(openSound);
+        }
     }
 
     private void HidePopup()
     {
+        if (popupAudioSource != null && closeSound != null)
+        {
+            popupAudioSource.PlayOneShot(closeSound);
+            Debug.Log("played close audio");
+        }
         if (popupPanel != null)
         {
             popupPanel.SetActive(false);
