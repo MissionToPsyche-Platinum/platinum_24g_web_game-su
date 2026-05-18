@@ -1,11 +1,11 @@
 using NUnit.Framework;
 using UnityEngine;
 
-public class ExitLabMinigameTests
+public class ExitLabMinigamePlayTests
 {
     /*
-     * Test:
-     * verifies default scene name is LabRoom
+     - Test:
+     - verifies default scene name is LabRoom
      */
     [Test]
     public void DefaultSceneNameIsLabRoom()

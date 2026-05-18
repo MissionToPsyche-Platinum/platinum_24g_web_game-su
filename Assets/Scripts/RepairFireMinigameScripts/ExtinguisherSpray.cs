@@ -4,16 +4,12 @@ using UnityEngine.SceneManagement;
 public class ExtinguisherSpray : MonoBehaviour
 {
     public GameObject smokePrefab;
-
-    [SerializeField] private AudioSource sprayAudioSource;
-
+    public AudioSource sprayAudioSource;
     private PlayerMovement2D playerMovement;
-
     private Transform sprayUp;
     private Transform sprayDown;
     private Transform sprayLeft;
     private Transform sprayRight;
-
     private float nextSmokeTime = 0f;
 
     [SerializeField] private float smokeCooldown = 0.1f;

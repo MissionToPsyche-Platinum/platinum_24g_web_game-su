@@ -2,11 +2,11 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Reflection;
 
-public class LabBoxTriggerTests
+public class LabBoxTriggerPlayTests
 {
     /*
-     * Helper:
-     * calls a private method by name
+     - Helper:
+     - calls a private method by name
      */
     private void CallPrivateMethod(object obj, string methodName, object[] parameters = null)
     {
@@ -19,8 +19,8 @@ public class LabBoxTriggerTests
     }
 
     /*
-     * Test:
-     * verifies Start hides the hint label
+     - Test:
+     - verifies Start hides the hint label
      */
     [Test]
     public void StartHidesHintLabel()
@@ -39,8 +39,8 @@ public class LabBoxTriggerTests
     }
 
     /*
-     * Test:
-     * verifies HidePopup hides both the popup and hint
+     - Test:
+     - verifies HidePopup hides both the popup and hint
      */
     [Test]
     public void HidePopupHidesPopupAndHint()
@@ -63,8 +63,8 @@ public class LabBoxTriggerTests
     }
 
     /*
-     * Test:
-     * verifies HidePopup re-enables player movement
+     - Test:
+     - verifies HidePopup re-enables player movement
      */
     [Test]
     public void HidePopupReEnablesPlayerMovement()
@@ -92,8 +92,8 @@ public class LabBoxTriggerTests
     }
 
     /*
-     * Test:
-     * verifies entering trigger in LabRoom shows hint
+     - Test:
+     - verifies entering trigger in LabRoom shows hint
      */
     [Test]
     public void TriggerEnterInLabRoomShowsHint()
@@ -123,8 +123,8 @@ public class LabBoxTriggerTests
     }
 
     /*
-     * Test:
-     * verifies entering trigger outside LabRoom does NOT show hint
+     - Test:
+     - verifies entering trigger outside LabRoom does NOT show hint
      */
     [Test]
     public void TriggerEnterOutsideLabRoomDoesNotShowHint()

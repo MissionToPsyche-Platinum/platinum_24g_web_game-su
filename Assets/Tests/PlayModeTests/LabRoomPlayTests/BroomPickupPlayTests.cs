@@ -2,12 +2,12 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Reflection;
 
-public class BroomPickupTests
+public class BroomPickupPlayTests
 {
     /*
-     * Test:
-     * verifies ResetBroom properly resets
-     * the broom state and UI objects
+     - Test:
+     - verifies ResetBroom properly resets
+     - the broom state and UI objects
      */
     [Test]
     public void ResetBroomResetsEverything()
@@ -74,8 +74,8 @@ public class BroomPickupTests
 
 
     /*
-     * Test:
-     * verifies ClosePopupButton closes popup
+     - Test:
+     - verifies ClosePopupButton closes popup
      */
     [Test]
     public void ClosePopupButtonClosesPopup()
