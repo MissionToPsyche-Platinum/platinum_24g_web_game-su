@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class SpillClean : MonoBehaviour
 {
-    [SerializeField] private AudioClip mopSound;
-
+    public AudioClip mopSound;
     private bool cleaned = false;
 
     private void OnTriggerEnter2D(Collider2D other)

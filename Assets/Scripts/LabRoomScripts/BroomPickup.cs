@@ -2,44 +2,25 @@ using UnityEngine;
 
 public class BroomPickup : MonoBehaviour
 {
-    [Header("Assign in Inspector")]
-    [SerializeField] private GameObject hintText;               
-    [SerializeField] private GameObject interactSignal;         
-    [SerializeField] private GameObject broomFoundPopup;        
-
-    [Header("Hint Placement (Above Object)")]
-    [SerializeField] private Vector3 hintWorldOffset = new Vector3(0f, 0.75f, 0f);
-    [SerializeField] private Vector2 hintSize = new Vector2(300f, 40f);
-
-    [Header("Auto-find settings")]
-    [SerializeField] private string playerTag = "Player";
-    [SerializeField] private string holdPointName = "BroomHoldPoint";
-    [SerializeField] private Vector3 holdPointLocalPos = new Vector3(0.35f, 0.0f, 0f);
-
-    [Header("Controls")]
-    [SerializeField] private KeyCode pickupKey = KeyCode.E;
-
-    [Header("Broom Cleaning")]
-    [SerializeField] private Collider2D broomCleanerHitbox;
-
-    [Header("Popup Behavior")]
-    [SerializeField] private bool freezePlayerWhilePopupOpen = false; 
-
+    public GameObject hintText;
+    public GameObject interactSignal;
+    public GameObject broomFoundPopup;
+    public Vector3 hintWorldOffset = new Vector3(0f, 0.75f, 0f);
+    public Vector2 hintSize = new Vector2(300f, 40f);
+    public string playerTag = "Player";
+    public string holdPointName = "BroomHoldPoint";
+    public Vector3 holdPointLocalPos = new Vector3(0.35f, 0.0f, 0f);
+    public KeyCode pickupKey = KeyCode.E;
+    public Collider2D broomCleanerHitbox;
+    public bool freezePlayerWhilePopupOpen = false;
     private bool pickedUp = false;
     private bool playerInRange = false;
-
-    
     private bool broomPopupOpen = false;
-
     public bool isHoldingBroom;
-
     private Transform playerTransform;
     private Transform broomHoldPoint;
-
-    
     private PlayerMovement2D playerMovement;
     private Rigidbody2D playerRb;
-
     private RectTransform hintRect;
 
     private void Start()

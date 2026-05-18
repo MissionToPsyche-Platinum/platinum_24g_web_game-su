@@ -7,17 +7,10 @@ public class SpillManager : MonoBehaviour
 {
     
     public static SpillManager Instance;
-
-    [Header("UI")]
-    [SerializeField] private GameObject gameOverPanel;  
-    [SerializeField] private TMP_Text scoreText;         
-
-    [Header("Fact UI (optional)")]
-    [SerializeField] private RevealFactCard revealFactCard; 
-
-    [Header("Scenes")]
-    [SerializeField] private string labRoomSceneName = "LabRoom";
-
+    public GameObject gameOverPanel;
+    public TMP_Text scoreText;
+    public RevealFactCard revealFactCard;
+    public string labRoomSceneName = "LabRoom";
     private int spillsRemaining;
     private bool awarded;
 

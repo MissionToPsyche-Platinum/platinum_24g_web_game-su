@@ -4,22 +4,20 @@ using System.Collections.Generic;
 
 public class LabBoxTrigger : MonoBehaviour
 {
-    [Header("UI References")]
-    [SerializeField] private GameObject popupPanel;
-    [SerializeField] private GameObject hintLabel;
 
-    [Header("Minigame")]
+    public GameObject popupPanel;
+    public GameObject hintLabel;
+    public Vector2 hintPosition;
 
-    [Header("Hint Position")]
-    [SerializeField] private Vector2 hintPosition;
-    [Header("Popup Audio")]
-    [SerializeField] private AudioSource popupAudioSource;
-    [SerializeField] private AudioClip openSound;
-    [SerializeField] private AudioClip closeSound;
+    //popup audio
+    public AudioSource popupAudioSource;
+    public AudioClip openSound;
+    public AudioClip closeSound;
 
     private bool canInteract;
     private PlayerMovement2D playerMovement;
     private Rigidbody2D playerRigidbody;
+    
     [SerializeField] private List<string> minigameSceneNames = new List<string>() 
     { 
         "LabMinigame1", 
