@@ -34,6 +34,10 @@ public class Global : MonoBehaviour
     private bool firePopupButtonBound = false;
     public static bool hasExtinguisher = false;
 
+    public AudioSource popupAudioSource;
+    public AudioClip timeSensitiveAlertSound;
+    private bool timeSensitiveAlertPlayed = false;
+
     public static int round = 1;
     public static string currentRoom = "";
     public static bool currentRoomCompleted = false;
@@ -164,9 +168,20 @@ public class Global : MonoBehaviour
         if (fireMinigamePanel != null && showFirePopup)
         {
             inTimeSensitiveMinigame = true;
+
             fireMinigamePanel.gameObject.SetActive(true);
             fireMinigamePanel.anchoredPosition = Vector2.zero;
+
             SetPlayerMovementLocked(true);
+
+            //play alert sound only once
+            if (!timeSensitiveAlertPlayed &&
+                popupAudioSource != null &&
+                timeSensitiveAlertSound != null)
+            {
+                popupAudioSource.PlayOneShot(timeSensitiveAlertSound);
+                timeSensitiveAlertPlayed = true;
+            }
 
             Transform returnButton = fireMinigamePanel.Find("ReturnButton");
 
@@ -177,11 +192,14 @@ public class Global : MonoBehaviour
                 if (button != null)
                 {
                     firePopupButtonBound = true;
+
                     button.onClick.AddListener(() =>
                     {
                         timerStarted = true;
                         showFirePopup = false;
+
                         fireMinigamePanel.gameObject.SetActive(false);
+
                         SetPlayerMovementLocked(false);
                     });
                 }
@@ -199,7 +217,6 @@ public class Global : MonoBehaviour
         }
     }
 }
-
     private void SetPlayerMovementLocked(bool locked)
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");

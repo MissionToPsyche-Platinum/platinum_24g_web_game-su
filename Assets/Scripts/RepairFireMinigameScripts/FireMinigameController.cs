@@ -3,13 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class FireMinigameController : MonoBehaviour
 {
+    public GameObject heldExtinguisher;
+    public GameObject completedPanel;
     private GameObject player;
     private int firesLeft;
-
-    [SerializeField] private GameObject heldExtinguisher;
-
-    public GameObject completedPanel;
-
     private void Start()
     {
         Global.StopTimer();

@@ -6,8 +6,6 @@ public class FireExtinguisherMainHallTrigger : MonoBehaviour
     public GameObject interactSignal;
     public GameObject promptText;
     private bool playerNearby = false;
- 
-
 
     void Start()
     {
