@@ -10,9 +10,16 @@ public class BoxTrigger : MonoBehaviour
 
     public GameObject popupPanel;
     public GameObject hint;
+    //popup audio
+    public AudioSource popupAudioSource;
+    public AudioClip openSound;
+    public AudioClip closeSound;
+    
     private bool canInteract;
     private PlayerMovement2D playerMovement;
     private Rigidbody2D playerRigidbody;
+    
+    
 
     private void Update()
     {
@@ -97,10 +104,20 @@ public class BoxTrigger : MonoBehaviour
         {
             playerRigidbody.linearVelocity = Vector2.zero;
         }
+        if (popupAudioSource != null && openSound != null)
+        {
+            popupAudioSource.PlayOneShot(openSound);
+        }
     }
 
     private void HidePopup()
     {
+        if (popupAudioSource != null && closeSound != null)
+        {
+            popupAudioSource.PlayOneShot(closeSound);
+            Debug.Log("played close audio");
+        }
+        
         if (popupPanel != null)
         {
             popupPanel.SetActive(false);
