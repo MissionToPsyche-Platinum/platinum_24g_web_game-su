@@ -18,6 +18,10 @@ public class ControlsTrigger : MonoBehaviour
     private const string PixelFontResourcePath = "Fonts & Materials/Electronic Highway Sign SDF";
     private const string BodyFontResourcePath = "Fonts & Materials/LiberationSans SDF";
 
+    [Header("Inspector-Assigned UI (optional — falls back to runtime generation)")]
+    [SerializeField] public GameObject popupPanel;
+    [SerializeField] public GameObject hint;
+
     [Header("Hint Placement (Screen Center Offset)")]
     [SerializeField] private Vector2 hintAnchoredPosition = new Vector2(400f, 0f);
     [SerializeField] private Vector2 startButtonAnchoredPosition = new Vector2(0f, -112f);
@@ -27,7 +31,6 @@ public class ControlsTrigger : MonoBehaviour
     [Header("Minigame Scenes (Round 1 -> index 0, Round 2 -> index 1)")]
     [SerializeField] private List<string> minigameSceneNames = new() { "ControlRoomMinigame1", "ControlRoomMinigame2" };
 
-    private GameObject popupPanel;
     private GameObject hintLabel;
     private GameObject startGameButton;
     private bool canInteract;
@@ -79,7 +82,7 @@ public class ControlsTrigger : MonoBehaviour
         playerMovement = other.GetComponent<PlayerMovement2D>();
         playerRigidbody = other.GetComponent<Rigidbody2D>();
 
-        if (hintLabel == null)
+        if (hint == null && hintLabel == null)
         {
             Canvas canvas = ResolveUiCanvas();
             if (canvas != null)
@@ -160,6 +163,11 @@ public class ControlsTrigger : MonoBehaviour
 
     private void ToggleHint(bool isVisible)
     {
+        if (hint != null)
+        {
+            hint.SetActive(isVisible);
+            return;
+        }
         if (hintLabel != null)
         {
             hintLabel.SetActive(isVisible);
@@ -263,6 +271,18 @@ public class ControlsTrigger : MonoBehaviour
 
     private void UpdatePopupText()
     {
+        if (popupBodyText == null && popupPanel != null)
+        {
+            foreach (TMP_Text t in popupPanel.GetComponentsInChildren<TMP_Text>(true))
+            {
+                if (t.gameObject.name == "Body")
+                {
+                    popupBodyText = t;
+                    break;
+                }
+            }
+        }
+
         if (popupBodyText != null)
         {
             popupBodyText.text = GetPopupBodyText();
@@ -297,7 +317,7 @@ public class ControlsTrigger : MonoBehaviour
         return FindFirstObjectByType<Canvas>();
     }
 
-    private void StartMinigame()
+    public void StartMinigame()
     {
         if (minigameSceneNames == null || minigameSceneNames.Count == 0)
         {

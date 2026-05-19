@@ -9,7 +9,7 @@ public class ShipView : MonoBehaviour
     [SerializeField] private RectTransform dottedTrajectoryRoot;
 
     [Header("Trajectory")]
-    [SerializeField] private float travelDistancePixels = 410f;
+    [SerializeField] private float travelDistancePixels = 328f;
     [SerializeField] private float targetAngleMinFromVertical = -30f;
     [SerializeField] private float targetAngleMaxFromVertical = 30f;
     [SerializeField] private float maxMissAngle = 22f;
@@ -132,12 +132,12 @@ public class ShipView : MonoBehaviour
         {
             float t = Mathf.Clamp01(elapsed / Mathf.Max(travelDuration, 0.01f));
             float eased = 1f - Mathf.Pow(1f - t, 3f);
-            shipRoot.anchoredPosition = Vector2.Lerp(startPos, finalPoint, eased);
+            shipRoot.anchoredPosition = Vector2.Lerp(startPos, Vector2.Lerp(startPos, finalPoint, 0.9f), eased);
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        shipRoot.anchoredPosition = finalPoint;
+        shipRoot.anchoredPosition = Vector2.Lerp(startPos, finalPoint, 0.9f);
         yield return new WaitForSeconds(holdAtEndSeconds);
         playing = false;
     }

@@ -61,28 +61,6 @@ public class MiniGameResultsPopup : MonoBehaviour
             titleText.text = allowFact ? "Psyche Fact" : "Course Debrief";
         }
 
-        if (replayButton != null)
-        {
-            replayButton.gameObject.SetActive(allowReplay);
-        }
-
-        if (returnButton != null)
-        {
-            RectTransform returnRect = returnButton.GetComponent<RectTransform>();
-            if (returnRect != null)
-            {
-                returnRect.anchoredPosition = allowReplay ? new Vector2(-90f, 20f) : new Vector2(0f, 20f);
-            }
-        }
-
-        if (replayButton != null)
-        {
-            RectTransform replayRect = replayButton.GetComponent<RectTransform>();
-            if (replayRect != null)
-            {
-                replayRect.anchoredPosition = new Vector2(90f, 20f);
-            }
-        }
 
         if (popupRoot != null)
         {
@@ -134,8 +112,6 @@ public class MiniGameResultsPopup : MonoBehaviour
         rootTransform.sizeDelta = new Vector2(560f, 320f);
         rootTransform.anchoredPosition = Vector2.zero;
 
-        Image panelImage = popupRoot.GetComponent<Image>();
-        panelImage.color = new Color(0.08f, 0.1f, 0.12f, 0.95f);
     }
 
     private void ValidateReferences()
@@ -171,12 +147,8 @@ public class MiniGameResultsPopup : MonoBehaviour
 
     private void ReplayCurrentScene()
     {
-        if (!allowReplayCurrentResult)
-        {
-            return;
-        }
-
         Global.SubtractScore(currentResultScore);
+        Global.currentRoomCompleted = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
     }
 

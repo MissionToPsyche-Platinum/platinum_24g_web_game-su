@@ -41,7 +41,7 @@ public class ControlsMinigameController : MonoBehaviour
     [SerializeField] private ShipView shipView;
 
     [Header("Course Correction")]
-    [SerializeField] private float courseCorrectionDelaySeconds = 1.5f;
+    [SerializeField] private float courseCorrectionDelaySeconds = 1.8f;
 
     [Header("Ranges")]
     [SerializeField] private float headingMin = -70f;
@@ -473,6 +473,11 @@ public class ControlsMinigameController : MonoBehaviour
     private IEnumerator CourseCorrectionSequence()
     {
         state = GameState.CourseCorrection;
+
+        if (modeText != null)
+        {
+            modeText.gameObject.SetActive(false);
+        }
 
         ScoreResult result = ComputeScore();
         if (shipView != null)
