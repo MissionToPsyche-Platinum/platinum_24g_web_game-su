@@ -43,6 +43,7 @@ public class Global : MonoBehaviour
     public static string currentRoom = "";
     public static bool currentRoomCompleted = false;
     public static Queue<string> minigameRoundOrder = new();
+    public static string controlRoomSelectedScene = null;
 
     public static string lastAwardedFactText = "";
     //for keeping track of the previous minigame room
@@ -90,7 +91,11 @@ public class Global : MonoBehaviour
         {
             //keep track of the room we just finished before moving on
             lastRoomFromPreviousRound = currentRoom;
-            
+            if (currentRoom == "ControlRoom")
+            {
+                controlRoomSelectedScene = null;
+            }
+
             if (minigameRoundOrder.Count > 0)
             {
                 currentRoom = minigameRoundOrder.Dequeue();

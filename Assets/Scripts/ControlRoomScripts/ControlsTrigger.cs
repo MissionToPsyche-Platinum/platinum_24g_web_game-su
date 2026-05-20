@@ -28,7 +28,7 @@ public class ControlsTrigger : MonoBehaviour
     [SerializeField] private Vector2 popupAnchoredPosition = new Vector2(400f, 0f);
     [SerializeField] private Vector2 hintSize = new Vector2(300f, 40f);
 
-    [Header("Minigame Scenes (Round 1 -> index 0, Round 2 -> index 1)")]
+    [Header("Minigame Scenes (Round 1 -> index 0, Round 2 -> index 1, Round 3+ -> random)")]
     [SerializeField] private List<string> minigameSceneNames = new() { "ControlRoomMinigame1", "ControlRoomMinigame2" };
 
     private GameObject hintLabel;
@@ -119,6 +119,7 @@ public class ControlsTrigger : MonoBehaviour
             return;
         }
 
+        ResolveSelectedScene();
         UpdatePopupText();
         popupPanel.SetActive(true);
         ToggleHint(false);
@@ -291,7 +292,7 @@ public class ControlsTrigger : MonoBehaviour
 
     private string GetPopupBodyText()
     {
-        return Global.round >= 2 ? PopupBodyRoundTwo : PopupBody;
+        return Global.controlRoomSelectedScene == "ControlRoomMinigame2" ? PopupBodyRoundTwo : PopupBody;
     }
 
     private Canvas ResolveUiCanvas()
@@ -319,9 +320,29 @@ public class ControlsTrigger : MonoBehaviour
 
     public void StartMinigame()
     {
+        if (string.IsNullOrEmpty(Global.controlRoomSelectedScene))
+        {
+            ResolveSelectedScene();
+        }
+
+        if (string.IsNullOrEmpty(Global.controlRoomSelectedScene))
+        {
+            Debug.LogError("ControlsTrigger: No loadable control minigame scene found.");
+            return;
+        }
+
+        SceneManager.LoadScene(Global.controlRoomSelectedScene, LoadSceneMode.Single);
+    }
+
+    private void ResolveSelectedScene()
+    {
+        if (!string.IsNullOrEmpty(Global.controlRoomSelectedScene))
+        {
+            return;
+        }
+
         if (minigameSceneNames == null || minigameSceneNames.Count == 0)
         {
-            Debug.LogError("ControlsTrigger: No control minigame scenes assigned.");
             return;
         }
 
@@ -342,12 +363,11 @@ public class ControlsTrigger : MonoBehaviour
 
         if (Global.round <= loadableScenes.Count)
         {
-            SceneManager.LoadScene(loadableScenes[Global.round - 1], LoadSceneMode.Single);
+            Global.controlRoomSelectedScene = loadableScenes[Global.round - 1];
         }
         else
         {
-            int choice = Random.Range(0, loadableScenes.Count);
-            SceneManager.LoadScene(loadableScenes[choice], LoadSceneMode.Single);
+            Global.controlRoomSelectedScene = loadableScenes[Random.Range(0, loadableScenes.Count)];
         }
     }
 
