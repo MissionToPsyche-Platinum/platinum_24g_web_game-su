@@ -73,7 +73,10 @@ public class LabBoxTriggerPlayTests
         LabBoxTrigger trigger = triggerObj.AddComponent<LabBoxTrigger>();
 
         GameObject playerObj = new GameObject();
+        playerObj.SetActive(false);
+        playerObj.AddComponent<Animator>();
         PlayerMovement2D movement = playerObj.AddComponent<PlayerMovement2D>();
+        playerObj.SetActive(true);
         movement.enabled = false;
 
         FieldInfo playerMovementField = typeof(LabBoxTrigger).GetField(
@@ -107,8 +110,11 @@ public class LabBoxTriggerPlayTests
         trigger.hintLabel.SetActive(false);
 
         GameObject playerObj = new GameObject();
+        playerObj.SetActive(false);
+        playerObj.AddComponent<Animator>();
         playerObj.AddComponent<PlayerMovement2D>();
         BoxCollider2D playerCollider = playerObj.AddComponent<BoxCollider2D>();
+        playerObj.SetActive(true);
 
         CallPrivateMethod(
             trigger,
@@ -138,8 +144,11 @@ public class LabBoxTriggerPlayTests
         trigger.hintLabel.SetActive(false);
 
         GameObject playerObj = new GameObject();
+        playerObj.SetActive(false);
+        playerObj.AddComponent<Animator>();
         playerObj.AddComponent<PlayerMovement2D>();
         BoxCollider2D playerCollider = playerObj.AddComponent<BoxCollider2D>();
+        playerObj.SetActive(true);
 
         CallPrivateMethod(
             trigger,

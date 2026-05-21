@@ -207,9 +207,15 @@ public class ControlsMinigameController : MonoBehaviour
 
         if (stabilityEnabled)
         {
-            UpdateStability();
+            TickStability(Time.deltaTime);
         }
-        HandleInput();
+        HandleInputFrame(
+            Input.GetKey(KeyCode.Space),
+            Input.GetKeyUp(KeyCode.Space),
+            Input.GetKeyDown(KeyCode.Space),
+            Input.GetKeyDown(KeyCode.C),
+            Time.deltaTime,
+            Time.time);
 
         if (headingVisual != null)
         {
@@ -237,126 +243,139 @@ public class ControlsMinigameController : MonoBehaviour
         }
     }
 
-    private void HandleInput()
+    private void HandleInputFrame(bool spaceHeld, bool spaceUp, bool spaceDown, bool cDown, float deltaTime, float currentTime)
     {
         if (stabilityEnabled)
         {
-            HandleStabilityInput();
+            HandleStabilityTap(cDown, currentTime);
         }
 
         switch (mode)
         {
             case ControlMode.Heading:
-                if (state != GameState.Aligning)
-                {
-                    break;
-                }
-
-                bool headingHeld = Input.GetKey(KeyCode.Space);
-                if (waitingForRelease)
-                {
-                    if (Input.GetKeyUp(KeyCode.Space))
-                    {
-                        waitingForRelease = false;
-                    }
-                    break;
-                }
-                if (!headingHeld && Time.time >= headingPauseUntil)
-                {
-                    headingPhase += GetCurrentHeadingSpeed() * Time.deltaTime;
-                    headingAngle = Mathf.Lerp(headingMin, headingMax, Mathf.PingPong(headingPhase, 1f));
-                }
-                if (headingHeld)
-                {
-                    headingPauseUntil = Time.time + missPauseSeconds;
-                    currentHeading = headingAngle;
-                    mode = ControlMode.Thrust;
-                    UpdateModeText();
-                    waitingForRelease = true;
-                }
+                HandleHeadingInput(spaceHeld, spaceUp, deltaTime, currentTime);
                 break;
             case ControlMode.Thrust:
-                if (state != GameState.Aligning)
-                {
-                    break;
-                }
-
-                bool thrustHeld = Input.GetKey(KeyCode.Space);
-                if (waitingForRelease)
-                {
-                    if (Input.GetKeyUp(KeyCode.Space))
-                    {
-                        waitingForRelease = false;
-                    }
-                    break;
-                }
-                if (!thrustHeld && Time.time >= thrustPauseUntil)
-                {
-                    thrustPhase += GetCurrentThrustSpeed() * Time.deltaTime;
-                    thrustValue = Mathf.Lerp(thrustMin, thrustMax, Mathf.PingPong(thrustPhase, 1f));
-                }
-                if (thrustHeld)
-                {
-                    thrustPauseUntil = Time.time + missPauseSeconds;
-                    currentThrust = thrustValue;
-                    mode = ControlMode.CorrectionWindow;
-                    UpdateModeText();
-                    waitingForRelease = true;
-                }
+                HandleThrustInput(spaceHeld, spaceUp, deltaTime, currentTime);
                 break;
             case ControlMode.CorrectionWindow:
-                if (waitingForRelease)
-                {
-                    if (Input.GetKeyUp(KeyCode.Space))
-                    {
-                        waitingForRelease = false;
-                    }
-                    break;
-                }
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    correctionWindowTiming = true;
-                    correctionWindowTimer = 0f;
-                }
-
-                if (correctionWindowTiming)
-                {
-                    correctionWindowTimer += Time.deltaTime;
-                    if (Input.GetKeyUp(KeyCode.Space))
-                    {
-                        correctionWindowTiming = false;
-                        currentCorrectionWindow = correctionWindowTimer;
-                        StartCoroutine(CourseCorrectionSequence());
-                        waitingForRelease = true;
-                    }
-                }
+                HandleCorrectionWindowInput(spaceDown, spaceUp, spaceHeld, deltaTime);
                 break;
         }
     }
 
-    private void HandleStabilityInput()
+    private void HandleHeadingInput(bool spaceHeld, bool spaceUp, float deltaTime, float currentTime)
     {
-        if (!Input.GetKeyDown(KeyCode.C))
+        if (state != GameState.Aligning)
         {
             return;
         }
 
-        if (Time.time < lastStabilityTapTime + tapCooldown)
+        if (waitingForRelease)
+        {
+            if (spaceUp)
+            {
+                waitingForRelease = false;
+            }
+            return;
+        }
+        if (!spaceHeld && currentTime >= headingPauseUntil)
+        {
+            headingPhase += GetCurrentHeadingSpeed() * deltaTime;
+            headingAngle = Mathf.Lerp(headingMin, headingMax, Mathf.PingPong(headingPhase, 1f));
+        }
+        if (spaceHeld)
+        {
+            headingPauseUntil = currentTime + missPauseSeconds;
+            currentHeading = headingAngle;
+            mode = ControlMode.Thrust;
+            UpdateModeText();
+            waitingForRelease = true;
+        }
+    }
+
+    private void HandleThrustInput(bool spaceHeld, bool spaceUp, float deltaTime, float currentTime)
+    {
+        if (state != GameState.Aligning)
         {
             return;
         }
 
-        lastStabilityTapTime = Time.time;
+        if (waitingForRelease)
+        {
+            if (spaceUp)
+            {
+                waitingForRelease = false;
+            }
+            return;
+        }
+        if (!spaceHeld && currentTime >= thrustPauseUntil)
+        {
+            thrustPhase += GetCurrentThrustSpeed() * deltaTime;
+            thrustValue = Mathf.Lerp(thrustMin, thrustMax, Mathf.PingPong(thrustPhase, 1f));
+        }
+        if (spaceHeld)
+        {
+            thrustPauseUntil = currentTime + missPauseSeconds;
+            currentThrust = thrustValue;
+            mode = ControlMode.CorrectionWindow;
+            UpdateModeText();
+            waitingForRelease = true;
+        }
+    }
+
+    private void HandleCorrectionWindowInput(bool spaceDown, bool spaceUp, bool spaceHeld, float deltaTime)
+    {
+        if (waitingForRelease)
+        {
+            if (spaceUp)
+            {
+                waitingForRelease = false;
+            }
+            return;
+        }
+        if (spaceDown)
+        {
+            correctionWindowTiming = true;
+            correctionWindowTimer = 0f;
+        }
+
+        if (correctionWindowTiming)
+        {
+            correctionWindowTimer += deltaTime;
+            if (spaceUp)
+            {
+                correctionWindowTiming = false;
+                currentCorrectionWindow = correctionWindowTimer;
+                StartCoroutine(CourseCorrectionSequence());
+                waitingForRelease = true;
+            }
+        }
+    }
+
+    private void HandleStabilityTap(bool cDown, float currentTime)
+    {
+        if (!cDown)
+        {
+            return;
+        }
+
+        if (currentTime < lastStabilityTapTime + tapCooldown)
+        {
+            return;
+        }
+
+        lastStabilityTapTime = currentTime;
         currentStability = Mathf.Clamp(currentStability + stabilityRecoverPerTap, 0f, stabilityMax);
     }
 
-    private void UpdateStability()
+    private void TickStability(float deltaTime)
     {
-        currentStability = Mathf.Clamp(currentStability - stabilityDrainPerSecond * Time.deltaTime, 0f, stabilityMax);
+        currentStability = Mathf.Clamp(currentStability - stabilityDrainPerSecond * deltaTime, 0f, stabilityMax);
 
         float stabilityNormalized = GetStabilityNormalized();
-        cumulativeStabilityNormalized += stabilityNormalized * Time.deltaTime;
-        stabilitySampleDuration += Time.deltaTime;
+        cumulativeStabilityNormalized += stabilityNormalized * deltaTime;
+        stabilitySampleDuration += deltaTime;
         lowestStabilityNormalized = Mathf.Min(lowestStabilityNormalized, stabilityNormalized);
 
         if (shipView != null)

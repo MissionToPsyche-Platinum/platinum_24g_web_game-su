@@ -1,4 +1,3 @@
-using Codice.Client.GameUI.Checkin;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

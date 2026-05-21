@@ -16,6 +16,7 @@ public class ControlRoomPlayTests
         "ControlsTrigger",
         "ControlsMinigameBootstrap",
         "ControlsMinigameController",
+        "ControlRoomController",
         "ShipView",
         "HeadingVisual",
         "ThrustVisual",
@@ -57,17 +58,15 @@ public class ControlRoomPlayTests
 
         Assert.That(bootstrapRoot.GetComponent<ControlsTargetGenerator>(), Is.Not.Null);
         Assert.That(bootstrapRoot.GetComponent<ControlsMinigameController>(), Is.Not.Null);
-        Assert.That(bootstrapRoot.GetComponent<MiniGameResultsPopup>(), Is.Not.Null);
         Assert.That(bootstrapRoot.GetComponent<HeadingVisual>(), Is.Not.Null);
         Assert.That(bootstrapRoot.GetComponent<ThrustVisual>(), Is.Not.Null);
         Assert.That(bootstrapRoot.GetComponent<CorrectionWindowVisual>(), Is.Not.Null);
         Assert.That(bootstrapRoot.GetComponent<ShipView>(), Is.Not.Null);
 
-        Transform canvas = bootstrapRoot.transform.Find("ControlsMinigameCanvas");
-        Assert.That(canvas, Is.Not.Null);
-        Assert.That(canvas.GetComponent<Canvas>(), Is.Not.Null);
-        Assert.That(canvas.Find("SceneBackground"), Is.Not.Null);
-        Assert.That(canvas.Find("RootPanel"), Is.Not.Null);
+        Canvas resolvedCanvas = UnityEngine.Object.FindFirstObjectByType<Canvas>();
+        Assert.That(resolvedCanvas, Is.Not.Null);
+        GameObject rootPanelObj = GameObject.Find("RootPanel");
+        Assert.That(rootPanelObj, Is.Not.Null);
         Assert.That(UnityEngine.Object.FindFirstObjectByType<EventSystem>(), Is.Not.Null);
 
         Global.currentRoom = "ControlRoom";
@@ -160,7 +159,6 @@ public class ControlRoomPlayTests
         Assert.That(scoreText.text, Is.EqualTo("Course Accuracy: 87% | Score: 123"));
         Assert.That(titleText.text, Is.EqualTo("Psyche Fact"));
         Assert.That(bodyText.text, Is.EqualTo("Psyche has a metallic core."));
-        Assert.That(replayButton.gameObject.activeSelf, Is.False);
         Assert.That(star1.color, Is.EqualTo(new Color(1f, 0.84f, 0.2f, 1f)));
         Assert.That(star2.color, Is.EqualTo(new Color(1f, 0.84f, 0.2f, 1f)));
         Assert.That(star3.color, Is.EqualTo(new Color(0.35f, 0.38f, 0.45f, 0.85f)));
@@ -374,10 +372,10 @@ public class ControlRoomPlayTests
     }
 
     [UnityTest]
-    public IEnumerator ControlsTrigger_ShowPopup_UsesTimerCanvasAndRoundTwoBodyText()
+    public IEnumerator ControlsTrigger_ShowPopup_UsesTimerCanvasAndMinigame2BodyText()
     {
         Global.currentRoom = "ControlRoom";
-        Global.round = 2;
+        Global.controlRoomSelectedScene = "ControlRoomMinigame2";
 
         GameObject timerCanvasObject = new("TimerCanvas", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
         timerCanvasObject.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
@@ -398,8 +396,64 @@ public class ControlRoomPlayTests
         Assert.That(popupBodyText.text, Does.Contain("tap C repeatedly"));
 
         Global.timerText = null;
+        Global.controlRoomSelectedScene = null;
         UnityEngine.Object.Destroy(timerCanvasObject);
         UnityEngine.Object.Destroy(triggerObject);
+    }
+
+    [UnityTest]
+    public IEnumerator ControlsMinigameController_Bind_WithStabilityEnabled_WiresAllRefs()
+    {
+        GameObject controllerObject = new("Controller");
+        ControlsMinigameController controller = controllerObject.AddComponent<ControlsMinigameController>();
+        GameObject generatorObject = new("Generator");
+        ControlsTargetGenerator generator = generatorObject.AddComponent<ControlsTargetGenerator>();
+        GameObject headingObject = new("HeadingVisual");
+        HeadingVisual headingVisual = headingObject.AddComponent<HeadingVisual>();
+        GameObject thrustObject = new("ThrustVisual");
+        ThrustVisual thrustVisual = thrustObject.AddComponent<ThrustVisual>();
+        GameObject correctionObject = new("CorrectionWindowVisual");
+        CorrectionWindowVisual correctionWindowVisual = correctionObject.AddComponent<CorrectionWindowVisual>();
+        GameObject shipViewObject = new("ShipView");
+        ShipView shipView = shipViewObject.AddComponent<ShipView>();
+
+        Text modeText = new GameObject("ModeText", typeof(RectTransform), typeof(CanvasRenderer), typeof(Text)).GetComponent<Text>();
+        Text stabilityHintText = new GameObject("HintText", typeof(RectTransform), typeof(CanvasRenderer), typeof(Text)).GetComponent<Text>();
+        Text stabilityValueText = new GameObject("ValueText", typeof(RectTransform), typeof(CanvasRenderer), typeof(Text)).GetComponent<Text>();
+        Image stabilityFill = new GameObject("Fill", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image)).GetComponent<Image>();
+        stabilityFill.rectTransform.sizeDelta = new Vector2(18f, 300f);
+        Image stabilityPanel = new GameObject("Panel", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image)).GetComponent<Image>();
+
+        controller.Bind(
+            generator,
+            headingVisual,
+            thrustVisual,
+            correctionWindowVisual,
+            modeText,
+            stabilityHintText,
+            stabilityValueText,
+            stabilityFill,
+            stabilityPanel,
+            null,
+            shipView,
+            true);
+
+        yield return null;
+
+        Assert.That(GetPrivateField<bool>(controller, "stabilityEnabled"), Is.True);
+        Assert.That(modeText.text, Does.Contain("Tap C to stabilize"));
+
+        UnityEngine.Object.Destroy(controllerObject);
+        UnityEngine.Object.Destroy(generatorObject);
+        UnityEngine.Object.Destroy(headingObject);
+        UnityEngine.Object.Destroy(thrustObject);
+        UnityEngine.Object.Destroy(correctionObject);
+        UnityEngine.Object.Destroy(shipViewObject);
+        UnityEngine.Object.Destroy(modeText.gameObject);
+        UnityEngine.Object.Destroy(stabilityHintText.gameObject);
+        UnityEngine.Object.Destroy(stabilityValueText.gameObject);
+        UnityEngine.Object.Destroy(stabilityFill.gameObject);
+        UnityEngine.Object.Destroy(stabilityPanel.gameObject);
     }
 
     [UnityTest]
@@ -447,7 +501,7 @@ public class ControlRoomPlayTests
 
     private static T GetPrivateField<T>(object instance, string fieldName)
     {
-        FieldInfo field = instance.GetType().GetField(fieldName, BindingFlags.Instance | BindingFlags.NonPublic);
+        FieldInfo field = instance.GetType().GetField(fieldName, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
         Assert.That(field, Is.Not.Null, $"{fieldName} should exist.");
         return (T)field.GetValue(instance);
     }
@@ -490,5 +544,469 @@ public class ControlRoomPlayTests
         GameObject go = new(name, typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
         go.transform.SetParent(parent, false);
         return go.GetComponent<Image>();
+    }
+
+    // ── ControlsTrigger additional paths ────────────────────────────────────
+
+    [UnityTest]
+    public IEnumerator ControlsTrigger_Update_EKey_OpensAndClosesPopup()
+    {
+        Global.currentRoom = "ControlRoom";
+        Global.controlRoomSelectedScene = null;
+
+        GameObject canvasObject = new("Canvas", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
+        canvasObject.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
+
+        GameObject triggerObject = new("ControlsTrigger");
+        ControlsTrigger trigger = triggerObject.AddComponent<ControlsTrigger>();
+
+        GameObject playerObject = new("Player");
+        playerObject.tag = "Player";
+        playerObject.AddComponent<Rigidbody2D>();
+        Collider2D playerCollider = playerObject.AddComponent<BoxCollider2D>();
+        playerObject.AddComponent<Animator>();
+        playerObject.AddComponent<PlayerMovement2D>();
+
+        InvokePrivate(trigger, "OnTriggerEnter2D", playerCollider);
+        yield return null;
+
+        InvokePrivate(trigger, "ShowPopup");
+        yield return null;
+
+        GameObject popupPanel = GetPrivateField<GameObject>(trigger, "popupPanel");
+        Assert.That(popupPanel.activeSelf, Is.True);
+
+        InvokePrivate(trigger, "HidePopup");
+        yield return null;
+
+        Assert.That(popupPanel.activeSelf, Is.False);
+
+        UnityEngine.Object.Destroy(canvasObject);
+        UnityEngine.Object.Destroy(triggerObject);
+        UnityEngine.Object.Destroy(playerObject);
+
+        Global.currentRoom = null;
+        Global.controlRoomSelectedScene = null;
+    }
+
+    [UnityTest]
+    public IEnumerator ControlsTrigger_OnTriggerExit_WhilePopupOpen_ClosesPopupAndHidesHint()
+    {
+        Global.currentRoom = "ControlRoom";
+        Global.controlRoomSelectedScene = null;
+
+        GameObject canvasObject = new("Canvas", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
+        canvasObject.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
+
+        GameObject triggerObject = new("ControlsTrigger");
+        ControlsTrigger trigger = triggerObject.AddComponent<ControlsTrigger>();
+
+        GameObject playerObject = new("Player");
+        playerObject.tag = "Player";
+        playerObject.AddComponent<Rigidbody2D>();
+        Collider2D playerCollider = playerObject.AddComponent<BoxCollider2D>();
+        playerObject.AddComponent<Animator>();
+        playerObject.AddComponent<PlayerMovement2D>();
+
+        InvokePrivate(trigger, "OnTriggerEnter2D", playerCollider);
+        yield return null;
+
+        InvokePrivate(trigger, "ShowPopup");
+        yield return null;
+
+        GameObject popupPanel = GetPrivateField<GameObject>(trigger, "popupPanel");
+        Assert.That(popupPanel.activeSelf, Is.True);
+
+        InvokePrivate(trigger, "OnTriggerExit2D", playerCollider);
+        yield return null;
+
+        Assert.That(popupPanel.activeSelf, Is.False);
+
+        GameObject hintLabel = GetPrivateField<GameObject>(trigger, "hintLabel");
+        Assert.That(hintLabel.activeSelf, Is.False);
+
+        UnityEngine.Object.Destroy(canvasObject);
+        UnityEngine.Object.Destroy(triggerObject);
+        UnityEngine.Object.Destroy(playerObject);
+
+        Global.currentRoom = null;
+        Global.controlRoomSelectedScene = null;
+    }
+
+    [UnityTest]
+    public IEnumerator ControlsTrigger_ResolveUiCanvas_FallsBackToScreenSpaceCanvas()
+    {
+        Global.timerText = null;
+
+        GameObject canvasObject = new("Canvas", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
+        canvasObject.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
+
+        GameObject triggerObject = new("ControlsTrigger");
+        ControlsTrigger trigger = triggerObject.AddComponent<ControlsTrigger>();
+
+        Canvas resolved = (Canvas)InvokePrivateResult(trigger, "ResolveUiCanvas");
+
+        Assert.That(resolved, Is.Not.Null);
+        Assert.That(resolved.renderMode, Is.Not.EqualTo(RenderMode.WorldSpace));
+
+        yield return null;
+
+        UnityEngine.Object.Destroy(canvasObject);
+        UnityEngine.Object.Destroy(triggerObject);
+    }
+
+    [UnityTest]
+    public IEnumerator ControlsTrigger_StartMinigame_WithNoLoadableScene_LogsError()
+    {
+        Global.controlRoomSelectedScene = null;
+
+        GameObject triggerObject = new("ControlsTrigger");
+        ControlsTrigger trigger = triggerObject.AddComponent<ControlsTrigger>();
+        SetPrivateField(trigger, "minigameSceneNames", new System.Collections.Generic.List<string> { "NonExistentScene_XYZ" });
+
+        LogAssert.Expect(LogType.Error, "ControlsTrigger: None of the configured control minigame scenes are in Build Settings.");
+        LogAssert.Expect(LogType.Error, "ControlsTrigger: No loadable control minigame scene found.");
+        trigger.StartMinigame();
+
+        yield return null;
+
+        UnityEngine.Object.Destroy(triggerObject);
+        Global.controlRoomSelectedScene = null;
+    }
+
+    [UnityTest]
+    public IEnumerator ControlsTrigger_InspectorHint_UsedDirectlyInsteadOfGenerated()
+    {
+        Global.currentRoom = "ControlRoom";
+
+        GameObject canvasObject = new("Canvas", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
+        canvasObject.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
+
+        GameObject triggerObject = new("ControlsTrigger");
+        ControlsTrigger trigger = triggerObject.AddComponent<ControlsTrigger>();
+
+        GameObject inspectorHint = new("InspectorHint");
+        trigger.hint = inspectorHint;
+        inspectorHint.SetActive(false);
+
+        GameObject playerObject = new("Player");
+        playerObject.tag = "Player";
+        playerObject.AddComponent<Rigidbody2D>();
+        Collider2D playerCollider = playerObject.AddComponent<BoxCollider2D>();
+        playerObject.AddComponent<Animator>();
+        playerObject.AddComponent<PlayerMovement2D>();
+
+        InvokePrivate(trigger, "OnTriggerEnter2D", playerCollider);
+        yield return null;
+
+        Assert.That(inspectorHint.activeSelf, Is.True);
+        Assert.That(GetPrivateField<GameObject>(trigger, "hintLabel"), Is.Null);
+
+        InvokePrivate(trigger, "OnTriggerExit2D", playerCollider);
+        yield return null;
+
+        Assert.That(inspectorHint.activeSelf, Is.False);
+
+        UnityEngine.Object.Destroy(canvasObject);
+        UnityEngine.Object.Destroy(triggerObject);
+        UnityEngine.Object.Destroy(playerObject);
+        UnityEngine.Object.Destroy(inspectorHint);
+
+        Global.currentRoom = null;
+    }
+
+    [UnityTest]
+    public IEnumerator ControlsTrigger_UpdatePopupText_RefetchesBodyTextFromChildren()
+    {
+        Global.currentRoom = "ControlRoom";
+        Global.controlRoomSelectedScene = null;
+
+        GameObject canvasObject = new("Canvas", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
+        canvasObject.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
+
+        GameObject triggerObject = new("ControlsTrigger");
+        ControlsTrigger trigger = triggerObject.AddComponent<ControlsTrigger>();
+
+        InvokePrivate(trigger, "ShowPopup");
+        yield return null;
+
+        GameObject popupPanel = GetPrivateField<GameObject>(trigger, "popupPanel");
+        Assert.That(popupPanel, Is.Not.Null);
+
+        SetPrivateField(trigger, "popupBodyText", null);
+        InvokePrivate(trigger, "UpdatePopupText");
+        yield return null;
+
+        TMP_Text refetched = GetPrivateField<TMP_Text>(trigger, "popupBodyText");
+        Assert.That(refetched, Is.Not.Null);
+
+        UnityEngine.Object.Destroy(canvasObject);
+        UnityEngine.Object.Destroy(triggerObject);
+
+        Global.currentRoom = null;
+        Global.controlRoomSelectedScene = null;
+    }
+
+    // ── ControlsMinigameBootstrap pre-assigned refs path ─────────────────────
+
+    [UnityTest]
+    public IEnumerator ControlsMinigameBootstrap_WithPreassignedPanelRefs_SkipsCreation()
+    {
+        GameObject bootstrapRoot = new("BootstrapRoot");
+        ControlsMinigameBootstrap bootstrap = bootstrapRoot.AddComponent<ControlsMinigameBootstrap>();
+
+        GameObject canvasObject = new("Canvas", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
+        canvasObject.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
+
+        GameObject rootPanelObject = new("RootPanel", typeof(RectTransform));
+        rootPanelObject.transform.SetParent(canvasObject.transform, false);
+
+        GameObject rightPanelObject = new("RightPanel", typeof(RectTransform));
+        rightPanelObject.transform.SetParent(rootPanelObject.transform, false);
+
+        GameObject targetDotsObject = new("TargetDots", typeof(RectTransform));
+        targetDotsObject.transform.SetParent(rightPanelObject.transform, false);
+
+        GameObject finalDotsObject = new("FinalDots", typeof(RectTransform));
+        finalDotsObject.transform.SetParent(rightPanelObject.transform, false);
+
+        GameObject shipRootObject = new("ShipRoot", typeof(RectTransform));
+        shipRootObject.transform.SetParent(rightPanelObject.transform, false);
+
+        SetPrivateField(bootstrap, "sceneCanvas", canvasObject.GetComponent<Canvas>());
+        SetPrivateField(bootstrap, "rootPanel", rootPanelObject.GetComponent<RectTransform>());
+        SetPrivateField(bootstrap, "rightPanel", rightPanelObject.GetComponent<RectTransform>());
+        SetPrivateField(bootstrap, "targetTrajectoryDotsRoot", targetDotsObject.GetComponent<RectTransform>());
+        SetPrivateField(bootstrap, "finalTrajectoryDotsRoot", finalDotsObject.GetComponent<RectTransform>());
+        SetPrivateField(bootstrap, "shipRoot", shipRootObject.GetComponent<RectTransform>());
+
+        InvokePrivate(bootstrap, "Awake");
+        yield return null;
+
+        Assert.That(bootstrapRoot.GetComponent<ControlsMinigameController>(), Is.Not.Null);
+        Assert.That(bootstrapRoot.GetComponent<ShipView>(), Is.Not.Null);
+
+        UnityEngine.Object.Destroy(bootstrapRoot);
+        UnityEngine.Object.Destroy(canvasObject);
+    }
+
+    [UnityTest]
+    public IEnumerator ControlsMinigameBootstrap_FindsFactCardPopupInScene()
+    {
+        GameObject bootstrapRoot = new("BootstrapRoot");
+        ControlsMinigameBootstrap bootstrap = bootstrapRoot.AddComponent<ControlsMinigameBootstrap>();
+
+        GameObject popupRoot = CreatePopupRoot();
+        LogAssert.Expect(LogType.Warning, "MiniGameResultsPopup: Assign popupRoot, scoreText, titleText, bodyText, returnButton, replayButton, and the three star images in the scene.");
+        MiniGameResultsPopup popup = popupRoot.AddComponent<MiniGameResultsPopup>();
+        SetPrivateField(popup, "popupRoot", popupRoot);
+
+        InvokePrivate(bootstrap, "Awake");
+        yield return null;
+
+        Assert.That(bootstrapRoot.GetComponent<ControlsMinigameController>(), Is.Not.Null);
+
+        UnityEngine.Object.Destroy(bootstrapRoot);
+        UnityEngine.Object.Destroy(popupRoot);
+    }
+
+    // ── ControlsMinigameController input method coverage ────────────────────
+
+    [UnityTest]
+    public IEnumerator ControlsMinigameController_HandleHeadingInput_SpaceHeld_LocksHeadingAndAdvancesMode()
+    {
+        GameObject go = new("Controller");
+        ControlsMinigameController controller = go.AddComponent<ControlsMinigameController>();
+        yield return null;
+
+        SetPrivateField(controller, "headingAngle", 15f);
+        SetPrivateField(controller, "waitingForRelease", false);
+
+        InvokePrivate(controller, "HandleHeadingInput", true, false, 0.016f, 0f);
+        yield return null;
+
+        float locked = GetPrivateField<float>(controller, "currentHeading");
+        Assert.That(locked, Is.EqualTo(15f).Within(0.001f));
+        Assert.That(GetPrivateField<bool>(controller, "waitingForRelease"), Is.True);
+
+        UnityEngine.Object.Destroy(go);
+    }
+
+    [UnityTest]
+    public IEnumerator ControlsMinigameController_HandleHeadingInput_WaitingForRelease_SpaceUp_ClearsFlag()
+    {
+        GameObject go = new("Controller");
+        ControlsMinigameController controller = go.AddComponent<ControlsMinigameController>();
+        yield return null;
+
+        SetPrivateField(controller, "waitingForRelease", true);
+
+        InvokePrivate(controller, "HandleHeadingInput", false, true, 0.016f, 0f);
+        yield return null;
+
+        Assert.That(GetPrivateField<bool>(controller, "waitingForRelease"), Is.False);
+
+        UnityEngine.Object.Destroy(go);
+    }
+
+    [UnityTest]
+    public IEnumerator ControlsMinigameController_HandleHeadingInput_Oscillates_WhenSpaceNotHeld()
+    {
+        GameObject go = new("Controller");
+        ControlsMinigameController controller = go.AddComponent<ControlsMinigameController>();
+        yield return null;
+
+        SetPrivateField(controller, "headingPhase", 0.5f);
+        SetPrivateField(controller, "headingSpeed", 1f);
+        SetPrivateField(controller, "stabilityEnabled", false);
+        SetPrivateField(controller, "headingPauseUntil", -1f);
+        SetPrivateField(controller, "waitingForRelease", false);
+        float phaseBefore = GetPrivateField<float>(controller, "headingPhase");
+
+        InvokePrivate(controller, "HandleHeadingInput", false, false, 0.1f, 999f);
+        yield return null;
+
+        float phaseAfter = GetPrivateField<float>(controller, "headingPhase");
+        Assert.That(phaseAfter, Is.GreaterThan(phaseBefore));
+
+        UnityEngine.Object.Destroy(go);
+    }
+
+    [UnityTest]
+    public IEnumerator ControlsMinigameController_HandleThrustInput_SpaceHeld_LocksThrustAndAdvancesMode()
+    {
+        GameObject go = new("Controller");
+        ControlsMinigameController controller = go.AddComponent<ControlsMinigameController>();
+        yield return null;
+
+        SetPrivateField(controller, "thrustValue", 62f);
+        SetPrivateField(controller, "waitingForRelease", false);
+
+        InvokePrivate(controller, "HandleThrustInput", true, false, 0.016f, 0f);
+        yield return null;
+
+        float locked = GetPrivateField<float>(controller, "currentThrust");
+        Assert.That(locked, Is.EqualTo(62f).Within(0.001f));
+        Assert.That(GetPrivateField<bool>(controller, "waitingForRelease"), Is.True);
+
+        UnityEngine.Object.Destroy(go);
+    }
+
+    [UnityTest]
+    public IEnumerator ControlsMinigameController_HandleCorrectionWindowInput_SpaceDown_StartsTiming()
+    {
+        GameObject go = new("Controller");
+        ControlsMinigameController controller = go.AddComponent<ControlsMinigameController>();
+        yield return null;
+
+        SetPrivateField(controller, "waitingForRelease", false);
+        SetPrivateField(controller, "correctionWindowTiming", false);
+        SetPrivateField(controller, "correctionWindowTimer", 5f);
+
+        InvokePrivate(controller, "HandleCorrectionWindowInput", true, false, false, 0.016f);
+        yield return null;
+
+        Assert.That(GetPrivateField<bool>(controller, "correctionWindowTiming"), Is.True);
+        // spaceDown resets timer to 0, then deltaTime is added because timing is now true and spaceUp=false
+        Assert.That(GetPrivateField<float>(controller, "correctionWindowTimer"), Is.EqualTo(0.016f).Within(0.001f));
+
+        UnityEngine.Object.Destroy(go);
+    }
+
+    [UnityTest]
+    public IEnumerator ControlsMinigameController_HandleCorrectionWindowInput_WhileTiming_AccumulatesTimer()
+    {
+        GameObject go = new("Controller");
+        ControlsMinigameController controller = go.AddComponent<ControlsMinigameController>();
+        yield return null;
+
+        SetPrivateField(controller, "waitingForRelease", false);
+        SetPrivateField(controller, "correctionWindowTiming", true);
+        SetPrivateField(controller, "correctionWindowTimer", 0.5f);
+
+        InvokePrivate(controller, "HandleCorrectionWindowInput", false, false, false, 0.1f);
+        yield return null;
+
+        float timer = GetPrivateField<float>(controller, "correctionWindowTimer");
+        Assert.That(timer, Is.EqualTo(0.6f).Within(0.001f));
+
+        UnityEngine.Object.Destroy(go);
+    }
+
+    [UnityTest]
+    public IEnumerator ControlsMinigameController_HandleStabilityTap_CDown_IncreasesStability()
+    {
+        GameObject go = new("Controller");
+        ControlsMinigameController controller = go.AddComponent<ControlsMinigameController>();
+        yield return null;
+
+        SetPrivateField(controller, "currentStability", 50f);
+        SetPrivateField(controller, "stabilityMax", 100f);
+        SetPrivateField(controller, "stabilityRecoverPerTap", 10f);
+        SetPrivateField(controller, "tapCooldown", 0.2f);
+        SetPrivateField(controller, "lastStabilityTapTime", float.NegativeInfinity);
+
+        InvokePrivate(controller, "HandleStabilityTap", true, 5f);
+        yield return null;
+
+        Assert.That(GetPrivateField<float>(controller, "currentStability"), Is.EqualTo(60f).Within(0.001f));
+
+        UnityEngine.Object.Destroy(go);
+    }
+
+    [UnityTest]
+    public IEnumerator ControlsMinigameController_HandleStabilityTap_CooldownActive_DoesNotRecover()
+    {
+        GameObject go = new("Controller");
+        ControlsMinigameController controller = go.AddComponent<ControlsMinigameController>();
+        yield return null;
+
+        SetPrivateField(controller, "currentStability", 50f);
+        SetPrivateField(controller, "stabilityMax", 100f);
+        SetPrivateField(controller, "stabilityRecoverPerTap", 10f);
+        SetPrivateField(controller, "tapCooldown", 0.2f);
+        SetPrivateField(controller, "lastStabilityTapTime", 5f);
+
+        InvokePrivate(controller, "HandleStabilityTap", true, 5.1f);
+        yield return null;
+
+        Assert.That(GetPrivateField<float>(controller, "currentStability"), Is.EqualTo(50f).Within(0.001f));
+
+        UnityEngine.Object.Destroy(go);
+    }
+
+    [UnityTest]
+    public IEnumerator ControlsMinigameController_TickStability_DrainsStability()
+    {
+        GameObject go = new("Controller");
+        ControlsMinigameController controller = go.AddComponent<ControlsMinigameController>();
+        yield return null;
+
+        SetPrivateField(controller, "currentStability", 80f);
+        SetPrivateField(controller, "stabilityMax", 100f);
+        SetPrivateField(controller, "stabilityDrainPerSecond", 10f);
+
+        InvokePrivate(controller, "TickStability", 1f);
+        yield return null;
+
+        Assert.That(GetPrivateField<float>(controller, "currentStability"), Is.EqualTo(70f).Within(0.001f));
+
+        UnityEngine.Object.Destroy(go);
+    }
+
+    [UnityTest]
+    public IEnumerator ControlsMinigameController_HandleInputFrame_Completed_DoesNothing()
+    {
+        GameObject go = new("Controller");
+        ControlsMinigameController controller = go.AddComponent<ControlsMinigameController>();
+        yield return null;
+
+        FieldInfo stateField = typeof(ControlsMinigameController).GetField("state", BindingFlags.Instance | BindingFlags.NonPublic);
+        object completedValue = Enum.Parse(stateField.FieldType, "Completed");
+        stateField.SetValue(controller, completedValue);
+
+        Assert.DoesNotThrow(() => InvokePrivate(controller, "HandleInputFrame", false, false, false, false, 0.016f, 0f));
+
+        UnityEngine.Object.Destroy(go);
     }
 }

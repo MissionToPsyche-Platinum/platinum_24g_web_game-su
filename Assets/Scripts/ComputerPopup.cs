@@ -17,25 +17,31 @@ public class ComputerPopup : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (IsPopupOpen())
-            {
-                HidePopup();
-                return;
-            }
-
-            if (canInteract)
-            {
-                ShowPopup();
-            }
-        }
+            HandleEKey();
 
         if (Input.GetKeyDown(KeyCode.Escape))
+            HandleEscapeKey();
+    }
+
+    private void HandleEKey()
+    {
+        if (IsPopupOpen())
         {
-            if (IsPopupOpen())
-            {
-                HidePopup();
-            }
+            HidePopup();
+            return;
+        }
+
+        if (canInteract)
+        {
+            ShowPopup();
+        }
+    }
+
+    private void HandleEscapeKey()
+    {
+        if (IsPopupOpen())
+        {
+            HidePopup();
         }
     }
 

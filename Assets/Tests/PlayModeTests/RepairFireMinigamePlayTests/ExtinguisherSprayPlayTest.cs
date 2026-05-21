@@ -27,10 +27,12 @@ public class ExtinguisherSprayTests
     public void StartFindsPlayerMovementAndSprayPoints()
     {
         GameObject playerObj = new GameObject();
+        playerObj.SetActive(false);
         ExtinguisherSpray spray = playerObj.AddComponent<ExtinguisherSpray>();
-
+        playerObj.AddComponent<Animator>();
         PlayerMovement2D movement =
             playerObj.AddComponent<PlayerMovement2D>();
+        playerObj.SetActive(true);
 
         new GameObject("ExtinguisherSprayUp").transform.SetParent(playerObj.transform);
         new GameObject("ExtinguisherSprayDown").transform.SetParent(playerObj.transform);

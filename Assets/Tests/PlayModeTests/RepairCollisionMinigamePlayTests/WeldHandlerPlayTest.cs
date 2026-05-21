@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.TestTools;
 using UnityEngine.UIElements.InputSystem;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class WeldHandlerPlayTest : InputTestFixture
 {
