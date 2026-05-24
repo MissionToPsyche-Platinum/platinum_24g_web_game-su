@@ -108,3 +108,9 @@ CodeCoverage/
 
 # Test result XML output
 TestResults*.xml
+
+# Performance test run files
+Assets/Resources/PerformanceTestRunSettings.json
+Assets/Resources/PerformanceTestRunSettings.json.meta
+Assets/Resources/PerformanceTestRunInfo.json
+Assets/Resources/PerformanceTestRunInfo.json.meta
