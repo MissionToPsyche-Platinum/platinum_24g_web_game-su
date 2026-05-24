@@ -8,38 +8,63 @@ public class ArrowPointer : MonoBehaviour
 
     private string currentRoom;
     public float rotationOffset = -90f;
-    //private float maxDistance = 3f;
 
     private GameObject arrowSprite;
+    private SpriteRenderer arrowSpriteRenderer;
+
+    private static readonly Color NormalColor = Color.white;
+    private static readonly Color TimeSensitiveColor = Color.red;
 
     void Start()
     {
         arrowSprite = transform.GetChild(0).gameObject;
+        arrowSpriteRenderer = arrowSprite.GetComponent<SpriteRenderer>();
     }
+
+    protected virtual string GetCurrentScene() => SceneManager.GetActiveScene().name;
 
     // Update is called once per frame
     void Update()
     {
-        currentRoom = SceneManager.GetActiveScene().name;
+        currentRoom = GetCurrentScene();
+
+        bool inMinigame = currentRoom != "MainHall" && currentRoom != "LabRoom" &&
+                          currentRoom != "CargoRoom" && currentRoom != "PowerRoom" &&
+                          currentRoom != "ControlRoom";
 
         //if you're in the room of current minigame or in minigame, hide arrow
-        if (currentRoom == Global.currentRoom || Global.CheckIfInMinigame())
+        if (currentRoom == Global.currentRoom || inMinigame)
         {
             arrowSprite.SetActive(false);
             return;
         }
-        else 
+        else
         {
             arrowSprite.SetActive(true);
 
-            //if you're in the main hall, arrow points to room of current minigame
-            if (Global.inTimeSensitiveMinigame)
+            // time-sensitive + timer running: red arrow pointing to MainHall exit
+            if (Global.inTimeSensitiveMinigame && Global.timerStarted)
             {
+                bool isInRoom = currentRoom == "CargoRoom" || currentRoom == "ControlRoom" ||
+                                currentRoom == "LabRoom" || currentRoom == "PowerRoom";
+                if (isInRoom)
+                {
+                    targetObject = GameObject.FindGameObjectWithTag("MainHallTrigger");
+                    if (arrowSpriteRenderer != null) arrowSpriteRenderer.color = TimeSensitiveColor;
+                }
+                else
+                {
+                    arrowSprite.SetActive(false);
+                }
+            }
+            else if (Global.inTimeSensitiveMinigame)
+            {
+                // popup still showing, hide arrow
                 arrowSprite.SetActive(false);
-                
             }
             else if (currentRoom == "MainHall")
             {
+                if (arrowSpriteRenderer != null) arrowSpriteRenderer.color = NormalColor;
                 if(Global.currentRoom == "CargoRoom")
                 {
                     targetObject = GameObject.FindGameObjectWithTag("CargoTrigger");
@@ -63,6 +88,7 @@ public class ArrowPointer : MonoBehaviour
             }
             else if(currentRoom == "CargoRoom" || currentRoom == "ControlRoom" || currentRoom == "LabRoom" || currentRoom == "PowerRoom")
             {
+                if (arrowSpriteRenderer != null) arrowSpriteRenderer.color = NormalColor;
                 targetObject = GameObject.FindGameObjectWithTag("MainHallTrigger");
             }
             else

@@ -66,14 +66,25 @@ public class ControlsTrigger : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if (popupPanel != null)
+        {
+            popupPanel.SetActive(false);
+        }
+    }
+
     private void OnMouseDown()
     {
-        ShowPopup();
+        if (canInteract && !Global.currentRoomCompleted)
+        {
+            ShowPopup();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<PlayerMovement2D>() == null || Global.currentRoom != "ControlRoom")
+        if (other.GetComponent<PlayerMovement2D>() == null || Global.currentRoom != "ControlRoom" || Global.currentRoomCompleted)
         {
             return;
         }

@@ -747,6 +747,68 @@ public class ControlRoomPlayTests
         Global.controlRoomSelectedScene = null;
     }
 
+    [UnityTest]
+    public IEnumerator ControlsTrigger_RoomCompleted_BlocksTriggerEnterAndPopup()
+    {
+        Global.currentRoom = "ControlRoom";
+        Global.currentRoomCompleted = true;
+
+        GameObject canvasObject = new("Canvas", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
+        canvasObject.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
+
+        GameObject triggerObject = new("ControlsTrigger");
+        ControlsTrigger trigger = triggerObject.AddComponent<ControlsTrigger>();
+
+        GameObject playerObject = new("Player");
+        playerObject.tag = "Player";
+        playerObject.AddComponent<Rigidbody2D>();
+        Collider2D playerCollider = playerObject.AddComponent<BoxCollider2D>();
+        playerObject.AddComponent<Animator>();
+        playerObject.AddComponent<PlayerMovement2D>();
+
+        InvokePrivate(trigger, "OnTriggerEnter2D", playerCollider);
+        yield return null;
+
+        // hint should not appear — trigger enter is blocked when room completed
+        Assert.That(GetPrivateField<GameObject>(trigger, "hintLabel"), Is.Null);
+
+        // popup should not open via OnMouseDown when room completed
+        InvokePrivate(trigger, "OnMouseDown");
+        yield return null;
+
+        Assert.That(GetPrivateField<GameObject>(trigger, "popupPanel"), Is.Null);
+
+        UnityEngine.Object.Destroy(canvasObject);
+        UnityEngine.Object.Destroy(triggerObject);
+        UnityEngine.Object.Destroy(playerObject);
+
+        Global.currentRoom = null;
+        Global.currentRoomCompleted = false;
+    }
+
+    [UnityTest]
+    public IEnumerator ControlsTrigger_Start_ForceHidesInspectorAssignedPopup()
+    {
+        GameObject canvasObject = new("Canvas", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
+        canvasObject.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
+
+        GameObject panelObject = new("StartMinigamePanel", typeof(RectTransform));
+        panelObject.SetActive(true);
+
+        GameObject triggerObject = new("ControlsTrigger");
+        ControlsTrigger trigger = triggerObject.AddComponent<ControlsTrigger>();
+        trigger.popupPanel = panelObject;
+
+        InvokePrivate(trigger, "Start");
+        yield return null;
+
+        Assert.That(panelObject.activeSelf, Is.False);
+
+        UnityEngine.Object.Destroy(canvasObject);
+        UnityEngine.Object.Destroy(triggerObject);
+        UnityEngine.Object.Destroy(panelObject);
+    }
+
     // ── ControlsMinigameBootstrap pre-assigned refs path ─────────────────────
 
     [UnityTest]
