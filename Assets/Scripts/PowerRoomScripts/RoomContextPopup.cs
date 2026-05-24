@@ -4,6 +4,10 @@ public class RoomContextPopup : MonoBehaviour
 {
     public GameObject myPopupUI; 
     private bool isPlayerInZone = false;
+    
+    public AudioSource popupAudioSource;
+    public AudioClip openSound;
+    public AudioClip closeSound;
 
     private void Start()
     {
@@ -19,6 +23,7 @@ public class RoomContextPopup : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 myPopupUI.SetActive(false);
+                popupAudioSource.PlayOneShot(closeSound);
             }
         }
     }
@@ -29,6 +34,7 @@ public class RoomContextPopup : MonoBehaviour
         {
             isPlayerInZone = true;
             myPopupUI.SetActive(true);
+            popupAudioSource.PlayOneShot(openSound);
         }
     }
 
@@ -37,7 +43,8 @@ public class RoomContextPopup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInZone = false;
-            
+            myPopupUI.SetActive(false);
+            popupAudioSource.PlayOneShot(closeSound);
         }
     }
 }
