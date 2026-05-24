@@ -225,7 +225,7 @@ public class ControlsTrigger : MonoBehaviour
             "Title",
             new Vector2(0f, 122f),
             new Vector2(700f, 48f),
-            34f,
+            40f,
             PopupTitle,
             TextAlignmentOptions.Center,
             ResolvePopupTitleFont());
@@ -236,7 +236,7 @@ public class ControlsTrigger : MonoBehaviour
             "Body",
             new Vector2(0f, -2f),
             new Vector2(720f, 170f),
-            30f,
+            40f,
             GetPopupBodyText(),
             TextAlignmentOptions.Center,
             ResolvePopupBodyFont());
@@ -269,7 +269,7 @@ public class ControlsTrigger : MonoBehaviour
         factLabel.text = "START MINIGAME";
         factLabel.alignment = TextAlignmentOptions.Center;
         factLabel.color = new Color(0.9f, 0.9f, 0.9f, 1f);
-        factLabel.fontSize = 28.2f;
+        factLabel.fontSize = 40f;
         factLabel.font = ResolvePopupTitleFont();
         factLabel.raycastTarget = false;
 
