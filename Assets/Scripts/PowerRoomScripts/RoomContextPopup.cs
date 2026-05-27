@@ -40,7 +40,7 @@ public class RoomContextPopup : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && myPopupUI.activeSelf)
         {
             isPlayerInZone = false;
             myPopupUI.SetActive(false);
