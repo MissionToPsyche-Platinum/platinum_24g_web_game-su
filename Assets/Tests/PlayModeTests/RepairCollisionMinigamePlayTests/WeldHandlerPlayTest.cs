@@ -62,9 +62,9 @@ public class WeldHandlerPlayTest : InputTestFixture
     public IEnumerator OnMouseEnter_SetsIsCollidingTrue()
     {
         //Act
-
-        //Arange
         var onEnter = GetNonPublicMethod(_handlerComponent, "OnMouseEnter");
+
+        //Arrange
         onEnter.Invoke(_handlerComponent, null);
         yield return null; 
 
@@ -79,9 +79,10 @@ public class WeldHandlerPlayTest : InputTestFixture
     public IEnumerator OnMouseExit_SetsIsCollidingFalse()
     {
         //Arrange
+        SetPrivateField(_handlerComponent, "isColliding", true);
+        var onExit = GetNonPublicMethod(_handlerComponent, "OnMouseExit");
 
         //Act
-        var onExit = GetNonPublicMethod(_handlerComponent, "OnMouseExit");
         onExit.Invoke(_handlerComponent, null);
         yield return null;
 
@@ -136,15 +137,18 @@ public class WeldHandlerPlayTest : InputTestFixture
 
         SetPrivateField(_handlerComponent, "currentMousePosition", worldPoint);
         SetPrivateField(_handlerComponent, "previousMousePosition", worldPoint);
+        foreach (Transform child in _handlerObject.transform)
+        {
+            Debug.Log("Child: " + child.name);
+        }
 
         //Act
-
         var update = GetNonPublicMethod(_handlerComponent, "Update");
         update.Invoke(_handlerComponent, null);
 
         //Assert
-        Assert.AreEqual(0, _handlerObject.transform.childCount, "Update should NOT instantiate when mouse hasn't moved");
         yield return null;
+        Assert.AreEqual(0, _handlerObject.transform.childCount, "Update should NOT instantiate when mouse hasn't moved");
     }
 
 }

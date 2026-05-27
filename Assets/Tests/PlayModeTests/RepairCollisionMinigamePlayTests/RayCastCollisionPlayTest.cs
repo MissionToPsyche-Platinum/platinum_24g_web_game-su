@@ -1,6 +1,7 @@
+using NUnit.Framework;
 using System.Collections;
 using System.Reflection;
-using NUnit.Framework;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.TestTools;
@@ -16,16 +17,7 @@ public class RayCastCollisionPlayTest : InputTestFixture
 
     private GameObject _targetObject;
     private GameObject _testControllerObject;
-
-    // A tiny test controller that exposes ColliderReached so RepairColliderScript can call it.
-    private class TestController : MonoBehaviour
-    {
-        public int calledCount = 0;
-        public void ColliderReached()
-        {
-            calledCount++;
-        }
-    }
+    private GameObject _playerObject;
 
     public override void Setup()
     {
@@ -39,15 +31,16 @@ public class RayCastCollisionPlayTest : InputTestFixture
         _rayCastObject = new GameObject("RayCastCollision");
         _rayCastComponent = _rayCastObject.AddComponent<RayCastCollision>();
 
-        _targetObject = new GameObject("Target");
-        _targetObject.transform.position = Vector3.zero;
-        var collider = _targetObject.AddComponent<BoxCollider2D>();
-        collider.size = new Vector2(2f, 2f);
-        var repairScript = _targetObject.AddComponent<RepairColliderScript>();
+        // Provide a real RepairCollisionController in case any RepairColliderScript references it.
+        _playerObject = new GameObject("Player");
+        _playerObject.tag = "Player";
+        _playerObject.SetActive(true);
 
         _testControllerObject = new GameObject("TestController");
-        _testControllerObject.AddComponent<TestController>();
-        repairScript.repairColliderController = _testControllerObject;
+        _testControllerObject.AddComponent<RepairCollisionController>();
+
+        Global.timerText = new GameObject("TimerText");
+        Global.timerText.AddComponent<TextMeshProUGUI>();
     }
 
     public override void TearDown()
@@ -56,6 +49,7 @@ public class RayCastCollisionPlayTest : InputTestFixture
         Object.Destroy(_targetObject);
         Object.Destroy(_testControllerObject);
         Object.Destroy(_cameraObject);
+        Object.Destroy(_playerObject);
 
         base.TearDown();
     }
@@ -65,44 +59,28 @@ public class RayCastCollisionPlayTest : InputTestFixture
         return instance.GetType().GetMethod(methodName, BindingFlags.Instance | BindingFlags.NonPublic);
     }
 
-    TestController GetTestController()
+    RepairCollisionController GetTestController()
     {
-        return _testControllerObject.GetComponent<TestController>();
+        return _testControllerObject.GetComponent<RepairCollisionController>();
+    }
+
+    int GetReachedColliders(RepairCollisionController controller)
+    {
+        var field = typeof(RepairCollisionController).GetField("reachedColliders", BindingFlags.Instance | BindingFlags.NonPublic);
+        return (int)field.GetValue(controller);
     }
 
     [UnityTest]
-    public IEnumerator Update_WhenMouseDownOverCollider_CallsOnClick()
+    public IEnumerator Update_WhenMouseOverColliderWithoutRepairScript_DoesNotCallOnClick()
     {
-        yield return null;
+        // Arrange: create a collider but DO NOT add RepairColliderScript
+        _targetObject = new GameObject("Target_NoRepairScript");
+        _targetObject.transform.position = Vector3.zero;
+        var collider = _targetObject.AddComponent<BoxCollider2D>();
+        collider.size = new Vector2(2f, 2f);
 
-        //Arrange
-        Vector3 worldPoint = _targetObject.transform.position;
-        Vector3 screenPoint = _cameraComponent.WorldToScreenPoint(worldPoint);
-
-        var mouse = InputSystem.AddDevice<Mouse>();
-        Set(mouse.position, new Vector2(screenPoint.x, screenPoint.y));
-        InputSystem.Update();
-
-        // Act 
-        Press(mouse.leftButton);
-        InputSystem.Update();
-
-        var update = GetNonPublicMethod(_rayCastComponent, "Update");
-        update.Invoke(_rayCastComponent, null);
-
-        // Assert 
-        Assert.AreEqual(1, GetTestController().calledCount, "RepairColliderScript.OnClick should call Controller.ColliderReached when mouse is pressed over collider");
-
-        // Cleanup
-        Release(mouse.leftButton);
-        InputSystem.RemoveDevice(mouse);
-
-        yield return null;
-    }
-
-    [UnityTest]
-    public IEnumerator Update_WhenMouseHeldOverCollider_CallsOnClick()
-    {
+        // Controller exists but is not referenced by any RepairColliderScript
+        // (no RepairColliderScript attached), so reachedColliders should remain 0.
         // Allow Start() to run
         yield return null;
 
@@ -113,20 +91,57 @@ public class RayCastCollisionPlayTest : InputTestFixture
         Set(mouse.position, new Vector2(screenPoint.x, screenPoint.y));
         InputSystem.Update();
 
-        // Simulate holding the mouse button (pressed)
+        // Act: press mouse over the collider
         Press(mouse.leftButton);
         InputSystem.Update();
 
-        // First Update should call OnClick
         var update = GetNonPublicMethod(_rayCastComponent, "Update");
         update.Invoke(_rayCastComponent, null);
 
-        // Holding should still satisfy Input.GetMouseButton(0) in subsequent frames; call Update again.
+        // Assert: no RepairColliderScript existed, so controller should still report 0.
+        Assert.AreEqual(0, GetReachedColliders(GetTestController()), "No RepairColliderScript attached — OnClick should not be called.");
+
+        // Cleanup
+        Release(mouse.leftButton);
+        InputSystem.RemoveDevice(mouse);
+
+        yield return null;
+    }
+
+    [UnityTest]
+    public IEnumerator Update_WhenMouseNotOverCollider_DoesNotCallOnClick()
+    {
+        // Arrange: create a target with RepairColliderScript and wire the controller,
+        // but position the mouse away from the collider so Update should not trigger OnClick.
+        _targetObject = new GameObject("Target_WithRepairScript");
+        _targetObject.transform.position = Vector3.zero;
+        var collider = _targetObject.AddComponent<BoxCollider2D>();
+        collider.size = new Vector2(2f, 2f);
+        var repairScript = _targetObject.AddComponent<RepairColliderScript>();
+
+        // RepairColliderScript expects a controller reference.
+        repairScript.repairColliderController = _testControllerObject;
+
+        // Allow Start() to run
+        yield return null;
+
+        // Position mouse far away from the collider (offscreen relative to the target)
+        Vector3 worldPoint = _targetObject.transform.position + new Vector3(100f, 100f, 0f);
+        Vector3 screenPoint = _cameraComponent.WorldToScreenPoint(worldPoint);
+
+        var mouse = InputSystem.AddDevice<Mouse>();
+        Set(mouse.position, new Vector2(screenPoint.x, screenPoint.y));
         InputSystem.Update();
+
+        // Act: press mouse away from collider
+        Press(mouse.leftButton);
+        InputSystem.Update();
+
+        var update = GetNonPublicMethod(_rayCastComponent, "Update");
         update.Invoke(_rayCastComponent, null);
 
-        // RepairColliderScript activates once; controller called only once.
-        Assert.AreEqual(1, GetTestController().calledCount, "RepairColliderScript.OnClick should only activate once even if button is held across frames");
+        // Assert: mouse wasn't over the collider, so reachedColliders should remain 0.
+        Assert.AreEqual(0, GetReachedColliders(GetTestController()), "Mouse not over collider — OnClick should not be called.");
 
         // Cleanup
         Release(mouse.leftButton);

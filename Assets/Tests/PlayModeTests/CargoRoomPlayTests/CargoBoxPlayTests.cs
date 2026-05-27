@@ -23,6 +23,7 @@ public class CargoBoxPlayTests
         _cargoBox.AddComponent<Rigidbody2D>();
         _cargoBox.AddComponent<AudioSource>();
         _cargoBox.AddComponent<CargoBox>();
+
         _cargoBox.GetComponent<CargoBox>().warning = warningObject;
         _cargoBox.GetComponent<CargoBox>().correct = correctObject;
 

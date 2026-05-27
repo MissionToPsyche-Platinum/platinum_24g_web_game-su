@@ -50,15 +50,14 @@ public class WeldGunScriptPlayTest : InputTestFixture
     [UnityTest]
     public IEnumerator TriggerSpark_TogglesWeldSparkActive()
     {
-        // initially false
+        // Arrange
         Assert.IsFalse(_weldSpark.activeSelf);
 
-        // call public TriggerSpark()
+        // Act
         _gunComponent.TriggerSpark();
         yield return null;
         Assert.IsTrue(_weldSpark.activeSelf, "TriggerSpark should enable the spark when it was disabled");
 
-        // call again toggles off
         _gunComponent.TriggerSpark();
         yield return null;
         Assert.IsFalse(_weldSpark.activeSelf, "TriggerSpark should disable the spark when it was enabled");
@@ -67,31 +66,28 @@ public class WeldGunScriptPlayTest : InputTestFixture
     [UnityTest]
     public IEnumerator FollowCursor_MovesTransform_ToMouseWorldPosition()
     {
-        //Arrange
-        var mouse = InputSystem.AddDevice<Mouse>();
-
-        Vector2 screenPos = new Vector2(120f, 80f);
-        Set(mouse.position, screenPos);
-        InputSystem.Update();
-
-        Vector3 screenVec = new Vector3(screenPos.x, screenPos.y, 0f);
-        Vector3 worldPoint = _cameraComponent.ScreenToWorldPoint(screenVec);
+        // Arrange
+        
+        Vector3 screenPoint = Vector3.zero;
+        Vector3 worldPoint = _cameraComponent.ScreenToWorldPoint(screenPoint);
         Vector3 expected = worldPoint;
-        expected.z = _gunObject.transform.position.z;
+        expected.z = _gunObject.transform.position.z; 
         expected = expected - new Vector3(-1.5f, 1.5f);
 
-        var follow = GetNonPublicMethod(_gunComponent, "FollowCursor");
+        var mouse = InputSystem.AddDevice<Mouse>();
+        Set(mouse.position, new Vector2(screenPoint.x, screenPoint.y));
+        InputSystem.Update();
 
-        //Act
+        // Act
+        var follow = GetNonPublicMethod(_gunComponent, "FollowCursor");
+        Assert.IsNotNull(follow, "FollowCursor method should exist");
         follow.Invoke(_gunComponent, null);
 
-        //Assert
-        Assert.AreEqual(expected.x, _gunObject.transform.position.x, 1e-3f, "FollowCursor should set X position");
-        Assert.AreEqual(expected.y, _gunObject.transform.position.y, 1e-3f, "FollowCursor should set Y position");
-
-        //Cleanup
-        InputSystem.RemoveDevice(mouse);
+        // Assert
+        Assert.AreEqual(expected.x, _gunObject.transform.position.x, 1e-3f, "FollowCursor should set X position as expected");
+        Assert.AreEqual(expected.y, _gunObject.transform.position.y, 1e-3f, "FollowCursor should set Y position as expected");
         yield return null;
+
     }
 
 }
