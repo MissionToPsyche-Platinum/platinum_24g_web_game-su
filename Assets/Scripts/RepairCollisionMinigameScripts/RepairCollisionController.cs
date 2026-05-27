@@ -61,7 +61,7 @@ public class RepairCollisionController : MonoBehaviour
 
     private void CheckProgress()
     {
-        if((reachedColliders / (float)totalColliders) >= 0.80f)
+        if((reachedColliders / (float)totalColliders) >= 0.70f)
         {
             EndMinigame();
         }
