@@ -74,18 +74,23 @@ public class SpillCleanPlayTests
 
     [UnityTest]
     public IEnumerator Spill_IsCleaned_WhenBroomTouchesIt()
-    {
-        //Arrange
-        _broomPickup.isHoldingBroom = true;
+    {   
+    // Arrange
+    _broomPickup.isHoldingBroom = true;
 
-        _spillObject.transform.position = Vector2.zero;
-        _broomObject.transform.position = Vector2.zero;
+    _spillObject.transform.position = Vector2.zero;
+    _broomObject.transform.position = new Vector2(5f, 0f);
 
-        //Act
-        yield return new WaitForFixedUpdate();
+    yield return new WaitForFixedUpdate();
 
-        //Assert
-        Assert.IsTrue(_spillObject == null || !_spillObject,
-            "Spill object should be destroyed after cleaning");
+    // Act
+    _broomObject.transform.position = Vector2.zero;
+
+    yield return new WaitForFixedUpdate();
+    yield return null; //allow Destroy() to complete
+
+    // Assert
+    Assert.IsTrue(_spillObject == null || !_spillObject,
+        "Spill object should be destroyed after cleaning");
     }
 }
