@@ -9,19 +9,14 @@ public class FactSystem : MonoBehaviour
 {
     
     public static FactSystem Instance { get; private set; }
-
-    [Header("Assign PsycheFactBank.txt here (one fact per line)")]
-    [SerializeField] private TextAsset factsFile;
-
+    public TextAsset factsFile;
     private readonly List<string> allFacts = new List<string>();
-    
     private readonly HashSet<int> collectedFactIds = new HashSet<int>();
-
     public int TotalFacts => allFacts.Count;
     public int CollectedCount => collectedFactIds.Count;
 
     //loads facts from the txt file
-    private void Awake()
+    private void Start()
     {
         
         if (Instance != null && Instance != this)

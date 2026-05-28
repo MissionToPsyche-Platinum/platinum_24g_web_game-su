@@ -6,24 +6,18 @@ using UnityEngine.EventSystems;
 
 public class FactCardsPopupUI : MonoBehaviour
 {
-    [Header("Assign in Inspector")]
-    [SerializeField] private GameObject popupPanel;  
-    [SerializeField] private TMP_Text bodyText;      
-
-    [Header("Close Keys")]
-    [SerializeField] private KeyCode closeKey1 = KeyCode.Escape;
-    [SerializeField] private KeyCode closeKey2 = KeyCode.E;
-
-    [Header("Movement Safeguards")]
-    [SerializeField] private bool freezePlayerWhileOpen = true;
-    [SerializeField] private PlayerMovement2D playerMovement;   
-    [SerializeField] private Rigidbody2D playerRigidbody;       
+    public GameObject popupPanel;
+    public TMP_Text bodyText;
+    public KeyCode closeKey1 = KeyCode.Escape;
+    public KeyCode closeKey2 = KeyCode.E;
+    public bool freezePlayerWhileOpen = true;
+    public PlayerMovement2D playerMovement;
+    public Rigidbody2D playerRigidbody;
 
     private bool isOpen = false;
 
     private void Awake()
     {
-        // start closed
         if (popupPanel != null)
             popupPanel.SetActive(false);
 
@@ -38,7 +32,6 @@ public class FactCardsPopupUI : MonoBehaviour
             Close();
     }
 
-   
     private void OnDisable()
     {
         if (isOpen)
@@ -73,14 +66,12 @@ public class FactCardsPopupUI : MonoBehaviour
         if (freezePlayerWhileOpen)
             RestorePlayerMovement();
 
-        
         if (EventSystem.current != null)
             EventSystem.current.SetSelectedGameObject(null);
     }
 
     private void FreezePlayerMovement()
     {
-        
         if (playerMovement == null)
             playerMovement = FindFirstObjectByType<PlayerMovement2D>();
 

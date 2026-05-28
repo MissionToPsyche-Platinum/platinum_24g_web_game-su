@@ -3,12 +3,11 @@ using UnityEngine;
 
 public class NasaFactManager : MonoBehaviour
 {
-    [SerializeField] private TextAsset factsFile;
-
+    public TextAsset factsFile;
     private List<string> facts = new List<string>();
     private HashSet<int> usedFacts = new HashSet<int>();
 
-    void Awake()
+    void Start()
     {
         LoadFacts();
     }

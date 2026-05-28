@@ -1,13 +1,11 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-//shows completion panel of the facts
+
 public class RevealFactCard : MonoBehaviour
 {
-    [Header("Assign in Inspector")]
-    [SerializeField] private GameObject completedPanel;
-    [SerializeField] private TMP_Text factBodyText;
-
+    public GameObject completedPanel;
+    public TMP_Text factBodyText;
     private bool shown = false;
 
     private void Awake()
@@ -21,6 +19,7 @@ public class RevealFactCard : MonoBehaviour
     public void ShowLastAwardedFact()
     {
         if (shown) return;
+
         shown = true;
 
         if (completedPanel != null)
@@ -35,17 +34,19 @@ public class RevealFactCard : MonoBehaviour
         }
     }
 
-public void Hide()
-{
-    if (completedPanel != null)
-        completedPanel.SetActive(false);
+    public void Hide()
+    {
+        if (completedPanel != null)
+            completedPanel.SetActive(false);
 
-    var move = FindFirstObjectByType<PlayerMovement2D>();
-    if (move != null) move.enabled = true;
+        PlayerMovement2D move = FindFirstObjectByType<PlayerMovement2D>();
 
-    if (EventSystem.current != null)
-        EventSystem.current.SetSelectedGameObject(null);
+        if (move != null)
+            move.enabled = true;
 
-    shown = false;
-}
+        if (EventSystem.current != null)
+            EventSystem.current.SetSelectedGameObject(null);
+
+        shown = false;
+    }
 }
