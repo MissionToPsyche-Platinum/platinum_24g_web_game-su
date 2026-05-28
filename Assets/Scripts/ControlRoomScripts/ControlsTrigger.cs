@@ -298,6 +298,7 @@ public class ControlsTrigger : MonoBehaviour
         if (popupBodyText != null)
         {
             popupBodyText.text = GetPopupBodyText();
+            popupBodyText.fontSize = Global.controlRoomSelectedScene == "ControlRoomMinigame2" ? 25f : 28f;
         }
     }
 
