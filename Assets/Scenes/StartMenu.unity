@@ -1127,7 +1127,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1600,13 +1600,17 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8172591460291738337, guid: cddd84281912e1d47b04d59e59a8fa68, type: 3}
+      propertyPath: m_SortingOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8865798271032607327, guid: cddd84281912e1d47b04d59e59a8fa68, type: 3}
       propertyPath: m_SortingLayer
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8865798271032607327, guid: cddd84281912e1d47b04d59e59a8fa68, type: 3}
       propertyPath: m_SortingOrder
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8865798271032607327, guid: cddd84281912e1d47b04d59e59a8fa68, type: 3}
       propertyPath: m_SortingLayerID
@@ -3123,7 +3127,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press E to close
+  m_text: Press E or ESC to close
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a60311fba0ecd7c468564e6b7807df59, type: 2}
   m_sharedMaterial: {fileID: -6372824371405214784, guid: a60311fba0ecd7c468564e6b7807df59, type: 2}
@@ -3564,7 +3568,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1386343942
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4714,7 +4718,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1785239669
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5710,7 +5714,7 @@ MonoBehaviour:
   m_fontSizeMax: 28
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

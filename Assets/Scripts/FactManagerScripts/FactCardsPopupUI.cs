@@ -14,27 +14,32 @@ public class FactCardsPopupUI : MonoBehaviour
     public PlayerMovement2D playerMovement;
     public Rigidbody2D playerRigidbody;
 
-    private bool isOpen = false;
+    public bool IsOpen { get; private set; }
 
     private void Awake()
     {
         if (popupPanel != null)
             popupPanel.SetActive(false);
 
-        isOpen = false;
+        IsOpen = false;
     }
+
+    public System.Action onClosedByKey;
 
     private void Update()
     {
-        if (!isOpen) return;
+        if (!IsOpen) return;
 
         if (Input.GetKeyDown(closeKey1) || Input.GetKeyDown(closeKey2))
+        {
             Close();
+            onClosedByKey?.Invoke();
+        }
     }
 
     private void OnDisable()
     {
-        if (isOpen)
+        if (IsOpen)
             RestorePlayerMovement();
     }
 
@@ -48,7 +53,7 @@ public class FactCardsPopupUI : MonoBehaviour
 
         popupPanel.SetActive(true);
         popupPanel.transform.SetAsLastSibling();
-        isOpen = true;
+        IsOpen = true;
 
         if (freezePlayerWhileOpen)
             FreezePlayerMovement();
@@ -61,7 +66,7 @@ public class FactCardsPopupUI : MonoBehaviour
         if (popupPanel != null)
             popupPanel.SetActive(false);
 
-        isOpen = false;
+        IsOpen = false;
 
         if (freezePlayerWhileOpen)
             RestorePlayerMovement();
