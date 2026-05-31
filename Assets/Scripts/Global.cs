@@ -13,21 +13,21 @@ public class Global : MonoBehaviour
 {
     public static int totalScore = 0;
     public static int minigameAddScore = 10;
-    public static int maxScore = 100;
+    public static int maxScore = 150;
     public static bool hasWon = false;
 
     public static float targetTime = 20f;
     public static bool timerStarted = false;
     public static GameObject timerText;
 
-    public static int REPAIR_COLLISION_MINIGAME_THRESHOLD = 30;
+    public static int REPAIR_COLLISION_MINIGAME_THRESHOLD = 50;
     public static bool repairCollisionMinigamePlayed = false;
     public RectTransform repairMinigamePanel;
     private static bool showRepairPopup = true;
     private bool repairPopupButtonBound = false;
     public static bool inTimeSensitiveMinigame = false;
 
-    public static int FIRE_MINIGAME_THRESHOLD = 60;
+    public static int FIRE_MINIGAME_THRESHOLD = 100;
     public static bool fireMinigamePlayed = false;
     public RectTransform fireMinigamePanel;
     private static bool showFirePopup = true;
