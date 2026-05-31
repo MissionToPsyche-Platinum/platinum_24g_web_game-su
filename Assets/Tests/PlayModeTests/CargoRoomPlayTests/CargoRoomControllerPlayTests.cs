@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,12 +17,13 @@ public class CargoRoomControllerPlayTests
     private readonly List<string> MinigameSceneNames = new() { "CargoMinigame1", "CargoMinigame2" };
 
     [SetUp]
-    public void SetUp()
+    public void SetUp() 
     {
         _playerPrefab = Resources.Load<GameObject>("Player");
         if (_playerPrefab != null) {
             _player = Object.Instantiate(_playerPrefab);
         }
+
     }
 
     [TearDown]
@@ -30,7 +32,7 @@ public class CargoRoomControllerPlayTests
         Global.round = 1;
 
         if (_player != null)
-            Object.Destroy(_player);
+            Object.DestroyImmediate(_player);
 
     }
 
@@ -52,7 +54,7 @@ public class CargoRoomControllerPlayTests
         Assert.IsTrue(movement.enabled, "PlayerMovement2D component should be enabled.");
 
         //CleanUp
-        Object.Destroy(gameObject);
+        Object.DestroyImmediate(gameObject);
     }
 
     [UnityTest]
@@ -60,7 +62,7 @@ public class CargoRoomControllerPlayTests
     {
         if (_player != null)
         {
-            Object.Destroy(_player);
+            Object.DestroyImmediate(_player);
             _player = null;
             yield return null;
         }
@@ -76,13 +78,12 @@ public class CargoRoomControllerPlayTests
         //Assert
 
         //CleanUp
-        Object.Destroy(controllerObject);
+        Object.DestroyImmediate(controllerObject);
     }
 
     [UnityTest]
     public IEnumerator CargoRoomControllerStartMinigame_WithRoundWithinMinigameCount_LoadsExpectedMinigame()
     {
-        //Arrange
         int roundsToTest = MinigameSceneNames.Count;
 
         for (int roundNumber = 1; roundNumber <= roundsToTest; roundNumber++)
@@ -113,8 +114,8 @@ public class CargoRoomControllerPlayTests
             }
 
             //Cleanup
-            Object.Destroy(controllerObject);
-            Object.Destroy(player);
+            Object.DestroyImmediate(controllerObject);
+            Object.DestroyImmediate(player);
             yield return null;
         }
     }
@@ -122,7 +123,6 @@ public class CargoRoomControllerPlayTests
     [UnityTest]
     public IEnumerator CargoRoomControllerStartMinigame_WithRoundExceedingMinigameCount_LoadsRandomMinigame()
     {
-        //Arrange
         int roundsToTest = MinigameSceneNames.Count + 2;
         for (int roundNumber = MinigameSceneNames.Count + 1; roundNumber <= roundsToTest; roundNumber++)
         {
@@ -136,16 +136,16 @@ public class CargoRoomControllerPlayTests
             LogAssert.Expect(LogType.Error, new Regex(@"(CargoMinigameController|RestarterScript): Player GameObject with tag 'Player' not found in the scene."));
             Global.round = roundNumber;
 
-            //Act
+            // Act
             controller.StartMinigame();
             yield return null;
 
-            //Assert
+            // Assert
             Assert.IsTrue(MinigameSceneNames.Contains(SceneManager.GetActiveScene().name), $"Expected active scene to be one of: {string.Join(", ", MinigameSceneNames)} but was {SceneManager.GetActiveScene().name}");
 
-            //Cleanup
-            Object.Destroy(controllerObject);
-            Object.Destroy(player);
+            // Cleanup
+            Object.DestroyImmediate(controllerObject);
+            Object.DestroyImmediate(player);
             yield return null;
         }
     }

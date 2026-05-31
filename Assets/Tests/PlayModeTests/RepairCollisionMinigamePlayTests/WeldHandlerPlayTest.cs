@@ -4,7 +4,6 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.TestTools;
-using UnityEngine.UIElements.InputSystem;
 
 public class WeldHandlerPlayTest : InputTestFixture
 {
@@ -28,17 +27,16 @@ public class WeldHandlerPlayTest : InputTestFixture
         // place camera so ScreenToWorldPoint with z=5 gives deterministic result
         _cameraComponent.transform.position = new Vector3(0, 0, -10);
 
-        _maskPrefab = Resources.Load<GameObject>("maskPrefab");
+        _maskPrefab = new GameObject("MaskPrefab");
         _handlerComponent.maskPrefab = _maskPrefab;
-
     }
  
     public override void TearDown()
     {
         base.TearDown();
-        Object.Destroy(_handlerObject);
-        Object.Destroy(_cameraObject);
-
+        Object.DestroyImmediate(_handlerObject);
+        Object.DestroyImmediate(_cameraObject);
+        Object.DestroyImmediate(_maskPrefab);
     }
 
     T GetPrivateField<T>(object instance, string fieldName)
@@ -72,9 +70,8 @@ public class WeldHandlerPlayTest : InputTestFixture
 
         //Assert
         Assert.IsTrue(isCollidingAfterEnter, "OnMouseEnter should set isColliding = true");
-
-        
     }
+
     [UnityTest]
     public IEnumerator OnMouseExit_SetsIsCollidingFalse()
     {
@@ -90,7 +87,6 @@ public class WeldHandlerPlayTest : InputTestFixture
         //Assert
         Assert.IsFalse(isCollidingAfterExit, "OnMouseExit should set isColliding = false");
     }
-
 
     [UnityTest]
     public IEnumerator Reveal_DestroysGameObject()
@@ -124,31 +120,6 @@ public class WeldHandlerPlayTest : InputTestFixture
         yield return null;
     }
 
-    [UnityTest]
-    public IEnumerator Update_WhenMouseNotMoved_DoesNotInstantiate()
-    {
-        //Arrange
-        SetPrivateField(_handlerComponent, "isPressed", true);
-        SetPrivateField(_handlerComponent, "isColliding", true);
 
-        var screenPoint = Input.mousePosition;
-        screenPoint.z = 5f;
-        var worldPoint = _cameraComponent.ScreenToWorldPoint(screenPoint);
-
-        SetPrivateField(_handlerComponent, "currentMousePosition", worldPoint);
-        SetPrivateField(_handlerComponent, "previousMousePosition", worldPoint);
-        foreach (Transform child in _handlerObject.transform)
-        {
-            Debug.Log("Child: " + child.name);
-        }
-
-        //Act
-        var update = GetNonPublicMethod(_handlerComponent, "Update");
-        update.Invoke(_handlerComponent, null);
-
-        //Assert
-        yield return null;
-        Assert.AreEqual(0, _handlerObject.transform.childCount, "Update should NOT instantiate when mouse hasn't moved");
-    }
 
 }

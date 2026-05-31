@@ -15,6 +15,7 @@ public class WeldGunScriptPlayTest : InputTestFixture
     private GameObject _gunObject;
     private WeldGunScript _gunComponent;
     private GameObject _weldSpark;
+    private GameObject _helpPanel; 
 
     public override void Setup()
     {
@@ -31,13 +32,19 @@ public class WeldGunScriptPlayTest : InputTestFixture
         _weldSpark = new GameObject("WeldSpark");
         _weldSpark.SetActive(false);
         _gunComponent.weldSpark = _weldSpark;
+
+        _helpPanel = new GameObject("HelpPanel");
+        _helpPanel.SetActive(true);
+        _gunComponent.helpPanel = _helpPanel;
     }
 
     public override void TearDown()
     {
-        Object.Destroy(_gunObject);
-        Object.Destroy(_cameraObject);
-        Object.Destroy(_weldSpark);
+
+        if (_gunObject != null) Object.DestroyImmediate(_gunObject);
+        if (_cameraObject != null) Object.DestroyImmediate(_cameraObject);
+        if (_weldSpark != null) Object.DestroyImmediate(_weldSpark);
+        if (_helpPanel != null) Object.DestroyImmediate(_helpPanel);
 
         base.TearDown();
     }

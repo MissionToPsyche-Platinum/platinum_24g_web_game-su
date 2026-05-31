@@ -51,12 +51,6 @@ public class RepairColliderScriptPlayTest
         return (T)fi.GetValue(instance);
     }
 
-    void SetPrivateField(object instance, string fieldName, object value)
-    {
-        var fi = instance.GetType().GetField(fieldName, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-        fi.SetValue(instance, value);
-    }
-
     [UnityTest]
     public IEnumerator OnClick_WhenNotActivated_CallsControllerColliderReached_AndSetsActivated()
     {
