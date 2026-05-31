@@ -3,6 +3,7 @@ using TMPro;
 using System.Text;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class FactCardsPopupUI : MonoBehaviour
 {
@@ -13,6 +14,12 @@ public class FactCardsPopupUI : MonoBehaviour
     public bool freezePlayerWhileOpen = true;
     public PlayerMovement2D playerMovement;
     public Rigidbody2D playerRigidbody;
+    public RectTransform contentRectTransform;
+    public ScrollRect scrollRect;
+    //popup audio
+    public AudioSource popupAudioSource;
+    public AudioClip openSound;
+    public AudioClip closeSound;
 
     public bool IsOpen { get; private set; }
 
@@ -55,6 +62,11 @@ public class FactCardsPopupUI : MonoBehaviour
         popupPanel.transform.SetAsLastSibling();
         IsOpen = true;
 
+        if (popupAudioSource != null && openSound != null)
+        {
+            popupAudioSource.PlayOneShot(openSound);
+        }
+
         if (freezePlayerWhileOpen)
             FreezePlayerMovement();
 
@@ -63,6 +75,11 @@ public class FactCardsPopupUI : MonoBehaviour
 
     public void Close()
     {
+        if (popupAudioSource != null && closeSound != null)
+        {
+            popupAudioSource.PlayOneShot(closeSound);
+        }
+
         if (popupPanel != null)
             popupPanel.SetActive(false);
 
@@ -121,20 +138,34 @@ public class FactCardsPopupUI : MonoBehaviour
             return;
         }
 
+        
+
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < ids.Count; i++)
         {
             int id = ids[i];
-            sb.Append("[");
-            sb.Append(id);
-            sb.Append("] ");
+            //sb.Append("[");
+            //sb.Append(id);
+            //sb.Append("] ");
             sb.Append(FactSystem.Instance.GetFactText(id));
 
             if (i < ids.Count - 1)
                 sb.Append("\n\n");
         }
 
-        bodyText.text = sb.ToString();
+       bodyText.text = sb.ToString();
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(bodyText.rectTransform);
+
+        float preferredHeight = bodyText.preferredHeight;
+
+        contentRectTransform.sizeDelta =
+            new Vector2(contentRectTransform.sizeDelta.x, preferredHeight + 200);
+
+        Canvas.ForceUpdateCanvases();
+
+        scrollRect.verticalNormalizedPosition = 1f;
+        
     }
 }
