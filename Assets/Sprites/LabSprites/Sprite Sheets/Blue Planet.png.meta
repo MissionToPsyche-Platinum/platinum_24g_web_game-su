@@ -1,0 +1,1794 @@
+fileFormatVersion: 2
+guid: 1dc267d94cd9f4df1ac0397effbb9f71
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -170928499246337200
+    second: Blue Planet_0
+  - first:
+      213: 9080931129341057803
+    second: Blue Planet_1
+  - first:
+      213: -854790883480937207
+    second: Blue Planet_2
+  - first:
+      213: 8962652682609068506
+    second: Blue Planet_3
+  - first:
+      213: 8928593363378921554
+    second: Blue Planet_4
+  - first:
+      213: -3037647761297867574
+    second: Blue Planet_5
+  - first:
+      213: -6223121593053444827
+    second: Blue Planet_6
+  - first:
+      213: 5004428162120092389
+    second: Blue Planet_7
+  - first:
+      213: 6368652993985675459
+    second: Blue Planet_8
+  - first:
+      213: -3192386072442619267
+    second: Blue Planet_9
+  - first:
+      213: 5671143783723361260
+    second: Blue Planet_10
+  - first:
+      213: -916428288095605367
+    second: Blue Planet_11
+  - first:
+      213: 7021178982073282598
+    second: Blue Planet_12
+  - first:
+      213: -7552527501809978926
+    second: Blue Planet_13
+  - first:
+      213: 2425913544190242018
+    second: Blue Planet_14
+  - first:
+      213: 4053190147122164549
+    second: Blue Planet_15
+  - first:
+      213: -3709775421008890624
+    second: Blue Planet_16
+  - first:
+      213: 1847111850144286003
+    second: Blue Planet_17
+  - first:
+      213: -3357709279400166845
+    second: Blue Planet_18
+  - first:
+      213: -7590238846923006917
+    second: Blue Planet_19
+  - first:
+      213: 7397131685254265615
+    second: Blue Planet_20
+  - first:
+      213: -5758478846976429274
+    second: Blue Planet_21
+  - first:
+      213: 4450639294031593591
+    second: Blue Planet_22
+  - first:
+      213: 1489126266568259740
+    second: Blue Planet_23
+  - first:
+      213: 5433943128993320212
+    second: Blue Planet_24
+  - first:
+      213: 6026052953809378447
+    second: Blue Planet_25
+  - first:
+      213: -1503972222336058593
+    second: Blue Planet_26
+  - first:
+      213: -1622885876424547812
+    second: Blue Planet_27
+  - first:
+      213: -6246506958400848003
+    second: Blue Planet_28
+  - first:
+      213: -8816110636211410367
+    second: Blue Planet_29
+  - first:
+      213: 2452075065494324070
+    second: Blue Planet_30
+  - first:
+      213: 643839027013110966
+    second: Blue Planet_31
+  - first:
+      213: -9004533524752074225
+    second: Blue Planet_32
+  - first:
+      213: -2802187244936098527
+    second: Blue Planet_33
+  - first:
+      213: -1534763278347848597
+    second: Blue Planet_34
+  - first:
+      213: 7272548358256931328
+    second: Blue Planet_35
+  - first:
+      213: 1939969602973316919
+    second: Blue Planet_36
+  - first:
+      213: 4247206758087809377
+    second: Blue Planet_37
+  - first:
+      213: 9044868623314119656
+    second: Blue Planet_38
+  - first:
+      213: 8973373601837208565
+    second: Blue Planet_39
+  - first:
+      213: -5301051377547356113
+    second: Blue Planet_40
+  - first:
+      213: -7311062948165355623
+    second: Blue Planet_41
+  - first:
+      213: -3488322847602129390
+    second: Blue Planet_42
+  - first:
+      213: -8241768020146014364
+    second: Blue Planet_43
+  - first:
+      213: 8144122668574558556
+    second: Blue Planet_44
+  - first:
+      213: 5031299067017447088
+    second: Blue Planet_45
+  - first:
+      213: -8336363178747150417
+    second: Blue Planet_46
+  - first:
+      213: 5078915056633995573
+    second: Blue Planet_47
+  - first:
+      213: -5684390683946699332
+    second: Blue Planet_48
+  - first:
+      213: -581158408055988045
+    second: Blue Planet_49
+  - first:
+      213: -4356653054212805036
+    second: Blue Planet_50
+  - first:
+      213: 6834864339503761808
+    second: Blue Planet_51
+  - first:
+      213: 745602379238838643
+    second: Blue Planet_52
+  - first:
+      213: -6189679542532484520
+    second: Blue Planet_53
+  - first:
+      213: 8761721193929797575
+    second: Blue Planet_54
+  - first:
+      213: -3307326028976528696
+    second: Blue Planet_55
+  - first:
+      213: -3915005035744895434
+    second: Blue Planet_56
+  - first:
+      213: -3732642571157679935
+    second: Blue Planet_57
+  - first:
+      213: -5881187482847236891
+    second: Blue Planet_58
+  - first:
+      213: 1583458094873688536
+    second: Blue Planet_59
+  - first:
+      213: -5831987989561499896
+    second: Blue Planet_60
+  - first:
+      213: 5925041230985326961
+    second: Blue Planet_61
+  - first:
+      213: -3546629971893979203
+    second: Blue Planet_62
+  - first:
+      213: 2293786989390357524
+    second: Blue Planet_63
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Blue Planet_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 137
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0537e608f6db0adf0800000000000000
+      internalID: -170928499246337200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0b1922dfb2f50e70800000000000000
+      internalID: 9080931129341057803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_2
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90d50e8683c2324f0800000000000000
+      internalID: -854790883480937207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_3
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 103
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad98d10f02db16c70800000000000000
+      internalID: 8962652682609068506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_4
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2506c18bb5cb8eb70800000000000000
+      internalID: 8928593363378921554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_5
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acc741b847b18d5d0800000000000000
+      internalID: -3037647761297867574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_6
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5258cf3f1e703a9a0800000000000000
+      internalID: -6223121593053444827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_7
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ea012b16ec437540800000000000000
+      internalID: 5004428162120092389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_8
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c08e3cc720026850800000000000000
+      internalID: 6368652993985675459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_9
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7a3726f7cd52b3d0800000000000000
+      internalID: -3192386072442619267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_10
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce3eefa6933f3be40800000000000000
+      internalID: 5671143783723361260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_11
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98d21f1d3513843f0800000000000000
+      internalID: -916428288095605367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_12
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 620baea951d307160800000000000000
+      internalID: 7021178982073282598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_13
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d17f3a8048003790800000000000000
+      internalID: -7552527501809978926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_14
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2eca441f3839aa120800000000000000
+      internalID: 2425913544190242018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_15
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 543745ec6f2df3830800000000000000
+      internalID: 4053190147122164549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_16
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0053a4ae8ea348cc0800000000000000
+      internalID: -3709775421008890624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_17
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 335c348f07242a910800000000000000
+      internalID: 1847111850144286003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_18
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34af15643350761d0800000000000000
+      internalID: -3357709279400166845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_19
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3c98c8cbfd0aa690800000000000000
+      internalID: -7590238846923006917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_20
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0bfd587314e7a660800000000000000
+      internalID: 7397131685254265615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_21
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6237e579ff5c510b0800000000000000
+      internalID: -5758478846976429274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_22
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77006208bd8d3cd30800000000000000
+      internalID: 4450639294031593591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_23
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c98318023707aa410800000000000000
+      internalID: 1489126266568259740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_24
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41d425d4c7e396b40800000000000000
+      internalID: 5433943128993320212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_25
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8c508deb37d0a350800000000000000
+      internalID: 6026052953809378447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_26
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1bba9f6b31d02be0800000000000000
+      internalID: -1503972222336058593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_27
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1267b0d4e95a79e0800000000000000
+      internalID: -1622885876424547812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_28
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7ff2894403ff49a0800000000000000
+      internalID: -6246506958400848003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_29
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14a631c0612e6a580800000000000000
+      internalID: -8816110636211410367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_30
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 663c169c745870220800000000000000
+      internalID: 2452075065494324070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_31
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bc46a11f206fe800800000000000000
+      internalID: 643839027013110966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_32
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0a7e01a778790380800000000000000
+      internalID: -9004533524752074225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_33
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12d047f1c81ac19d0800000000000000
+      internalID: -2802187244936098527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_34
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 69
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6433cb0eec63bae0800000000000000
+      internalID: -1534763278347848597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_35
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00231c143384de460800000000000000
+      internalID: 7272548358256931328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_36
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 737b74453182cea10800000000000000
+      internalID: 1939969602973316919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_37
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 35
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16956773b0c11fa30800000000000000
+      internalID: 4247206758087809377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_38
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ebe6b45714d58d70800000000000000
+      internalID: 9044868623314119656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_39
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f3df567fb3d78c70800000000000000
+      internalID: 8973373601837208565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_40
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f28d139bbd1ee66b0800000000000000
+      internalID: -5301051377547356113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_41
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 997751cfbf2e98a90800000000000000
+      internalID: -7311062948165355623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_42
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 216cbce1adcf69fc0800000000000000
+      internalID: -3488322847602129390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_43
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 467b50607ab5f9d80800000000000000
+      internalID: -8241768020146014364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_44
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c59c79bea6cb50170800000000000000
+      internalID: 8144122668574558556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_45
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b6445038d3c2d540800000000000000
+      internalID: 5031299067017447088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_46
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: faf312c5bd94f4c80800000000000000
+      internalID: -8336363178747150417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_47
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5316d03b55eeb7640800000000000000
+      internalID: 5078915056633995573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_48
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb531d64accfc11b0800000000000000
+      internalID: -5684390683946699332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_49
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b06799c18f4fe7f0800000000000000
+      internalID: -581158408055988045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_50
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45e6606312f0a83c0800000000000000
+      internalID: -4356653054212805036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_51
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0994b1477e05ade50800000000000000
+      internalID: 6834864339503761808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_52
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 371973ed969e85a00800000000000000
+      internalID: 745602379238838643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_53
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85259d91047d91aa0800000000000000
+      internalID: -6189679542532484520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_54
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cf62391103e79970800000000000000
+      internalID: 8761721193929797575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_55
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c26376ef740a12d0800000000000000
+      internalID: -3307326028976528696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_56
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63e5f8e99ab1ba9c0800000000000000
+      internalID: -3915005035744895434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_57
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c055a0ab5df23cc0800000000000000
+      internalID: -3732642571157679935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_58
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ecaa6be423d16ea0800000000000000
+      internalID: -5881187482847236891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_59
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d9b9ad6fb299f510800000000000000
+      internalID: 1583458094873688536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_60
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80f97db92dd901fa0800000000000000
+      internalID: -5831987989561499896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_61
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 1
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1717c6c7b99f93250800000000000000
+      internalID: 5925041230985326961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_62
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 1
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db77187d4d6d7cec0800000000000000
+      internalID: -3546629971893979203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Planet_63
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 1
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41466052d1b25df10800000000000000
+      internalID: 2293786989390357524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Blue Planet_0: -170928499246337200
+      Blue Planet_1: 9080931129341057803
+      Blue Planet_10: 5671143783723361260
+      Blue Planet_11: -916428288095605367
+      Blue Planet_12: 7021178982073282598
+      Blue Planet_13: -7552527501809978926
+      Blue Planet_14: 2425913544190242018
+      Blue Planet_15: 4053190147122164549
+      Blue Planet_16: -3709775421008890624
+      Blue Planet_17: 1847111850144286003
+      Blue Planet_18: -3357709279400166845
+      Blue Planet_19: -7590238846923006917
+      Blue Planet_2: -854790883480937207
+      Blue Planet_20: 7397131685254265615
+      Blue Planet_21: -5758478846976429274
+      Blue Planet_22: 4450639294031593591
+      Blue Planet_23: 1489126266568259740
+      Blue Planet_24: 5433943128993320212
+      Blue Planet_25: 6026052953809378447
+      Blue Planet_26: -1503972222336058593
+      Blue Planet_27: -1622885876424547812
+      Blue Planet_28: -6246506958400848003
+      Blue Planet_29: -8816110636211410367
+      Blue Planet_3: 8962652682609068506
+      Blue Planet_30: 2452075065494324070
+      Blue Planet_31: 643839027013110966
+      Blue Planet_32: -9004533524752074225
+      Blue Planet_33: -2802187244936098527
+      Blue Planet_34: -1534763278347848597
+      Blue Planet_35: 7272548358256931328
+      Blue Planet_36: 1939969602973316919
+      Blue Planet_37: 4247206758087809377
+      Blue Planet_38: 9044868623314119656
+      Blue Planet_39: 8973373601837208565
+      Blue Planet_4: 8928593363378921554
+      Blue Planet_40: -5301051377547356113
+      Blue Planet_41: -7311062948165355623
+      Blue Planet_42: -3488322847602129390
+      Blue Planet_43: -8241768020146014364
+      Blue Planet_44: 8144122668574558556
+      Blue Planet_45: 5031299067017447088
+      Blue Planet_46: -8336363178747150417
+      Blue Planet_47: 5078915056633995573
+      Blue Planet_48: -5684390683946699332
+      Blue Planet_49: -581158408055988045
+      Blue Planet_5: -3037647761297867574
+      Blue Planet_50: -4356653054212805036
+      Blue Planet_51: 6834864339503761808
+      Blue Planet_52: 745602379238838643
+      Blue Planet_53: -6189679542532484520
+      Blue Planet_54: 8761721193929797575
+      Blue Planet_55: -3307326028976528696
+      Blue Planet_56: -3915005035744895434
+      Blue Planet_57: -3732642571157679935
+      Blue Planet_58: -5881187482847236891
+      Blue Planet_59: 1583458094873688536
+      Blue Planet_6: -6223121593053444827
+      Blue Planet_60: -5831987989561499896
+      Blue Planet_61: 5925041230985326961
+      Blue Planet_62: -3546629971893979203
+      Blue Planet_63: 2293786989390357524
+      Blue Planet_7: 5004428162120092389
+      Blue Planet_8: 6368652993985675459
+      Blue Planet_9: -3192386072442619267
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,1794 @@
+fileFormatVersion: 2
+guid: 2a50df7bf271d44f78c26284c6bfd341
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1664244504362962266
+    second: Purple Planet_0
+  - first:
+      213: -6002686481758373483
+    second: Purple Planet_1
+  - first:
+      213: 3862951424327406915
+    second: Purple Planet_2
+  - first:
+      213: -1448305816627586856
+    second: Purple Planet_3
+  - first:
+      213: 360810487460880995
+    second: Purple Planet_4
+  - first:
+      213: 1707146325951271787
+    second: Purple Planet_5
+  - first:
+      213: -9007915356711204119
+    second: Purple Planet_6
+  - first:
+      213: -448283874147850758
+    second: Purple Planet_7
+  - first:
+      213: -5001738494987111575
+    second: Purple Planet_8
+  - first:
+      213: -5182092039699839671
+    second: Purple Planet_9
+  - first:
+      213: -7647245853410993700
+    second: Purple Planet_10
+  - first:
+      213: 6435908501250818385
+    second: Purple Planet_11
+  - first:
+      213: -8512635834300346381
+    second: Purple Planet_12
+  - first:
+      213: 4582857047478247400
+    second: Purple Planet_13
+  - first:
+      213: -8678744475232593030
+    second: Purple Planet_14
+  - first:
+      213: 7103501390022660752
+    second: Purple Planet_15
+  - first:
+      213: 4722097407554159440
+    second: Purple Planet_16
+  - first:
+      213: 4873609350394064622
+    second: Purple Planet_17
+  - first:
+      213: 2477775848783184248
+    second: Purple Planet_18
+  - first:
+      213: 5647203328404802273
+    second: Purple Planet_19
+  - first:
+      213: -5114724478013361750
+    second: Purple Planet_20
+  - first:
+      213: -1267299947343952084
+    second: Purple Planet_21
+  - first:
+      213: 3499663258867098776
+    second: Purple Planet_22
+  - first:
+      213: 921282454022571348
+    second: Purple Planet_23
+  - first:
+      213: 1272535923491107462
+    second: Purple Planet_24
+  - first:
+      213: 686658013413454125
+    second: Purple Planet_25
+  - first:
+      213: 1647097600783904095
+    second: Purple Planet_26
+  - first:
+      213: -3507357806012820980
+    second: Purple Planet_27
+  - first:
+      213: 1617764785748762992
+    second: Purple Planet_28
+  - first:
+      213: 5947779486723471044
+    second: Purple Planet_29
+  - first:
+      213: 1627559586702293503
+    second: Purple Planet_30
+  - first:
+      213: 8038508289794996156
+    second: Purple Planet_31
+  - first:
+      213: -7666519706296199807
+    second: Purple Planet_32
+  - first:
+      213: 8143399114158671597
+    second: Purple Planet_33
+  - first:
+      213: -9121072611188123471
+    second: Purple Planet_34
+  - first:
+      213: -3801976460978666216
+    second: Purple Planet_35
+  - first:
+      213: -6839418853299958044
+    second: Purple Planet_36
+  - first:
+      213: 5411592922168741399
+    second: Purple Planet_37
+  - first:
+      213: 9205501615666857992
+    second: Purple Planet_38
+  - first:
+      213: -2004006131109275324
+    second: Purple Planet_39
+  - first:
+      213: -4658485843622272436
+    second: Purple Planet_40
+  - first:
+      213: 7314820000219746479
+    second: Purple Planet_41
+  - first:
+      213: 748218800486708056
+    second: Purple Planet_42
+  - first:
+      213: 5880299040866537192
+    second: Purple Planet_43
+  - first:
+      213: 1583786555254529430
+    second: Purple Planet_44
+  - first:
+      213: 7290988450797574279
+    second: Purple Planet_45
+  - first:
+      213: -161707752545731069
+    second: Purple Planet_46
+  - first:
+      213: -1988765250543203415
+    second: Purple Planet_47
+  - first:
+      213: -3747702445498050602
+    second: Purple Planet_48
+  - first:
+      213: -2747551028525996717
+    second: Purple Planet_49
+  - first:
+      213: 1323609077934898976
+    second: Purple Planet_50
+  - first:
+      213: -8383835777451944587
+    second: Purple Planet_51
+  - first:
+      213: 5378311938414000516
+    second: Purple Planet_52
+  - first:
+      213: -5115029169497347927
+    second: Purple Planet_53
+  - first:
+      213: -7835416208140149866
+    second: Purple Planet_54
+  - first:
+      213: 7714651693747481941
+    second: Purple Planet_55
+  - first:
+      213: -9221626364599957550
+    second: Purple Planet_56
+  - first:
+      213: 3936690476314048999
+    second: Purple Planet_57
+  - first:
+      213: 6292239521176070163
+    second: Purple Planet_58
+  - first:
+      213: 8558983552949986909
+    second: Purple Planet_59
+  - first:
+      213: -6971414168301361677
+    second: Purple Planet_60
+  - first:
+      213: -8452569231290554244
+    second: Purple Planet_61
+  - first:
+      213: 8458458166869227895
+    second: Purple Planet_62
+  - first:
+      213: -1817297236526121927
+    second: Purple Planet_63
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Purple Planet_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 137
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5d43f52f85981710800000000000000
+      internalID: 1664244504362962266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 599b0ccc27c22bca0800000000000000
+      internalID: -6002686481758373483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_2
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 345df978ad5fb9530800000000000000
+      internalID: 3862951424327406915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_3
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 103
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d8d7c1888596ebe0800000000000000
+      internalID: -1448305816627586856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_4
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36267580a3bd10500800000000000000
+      internalID: 360810487460880995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_5
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6350f1e98001b710800000000000000
+      internalID: 1707146325951271787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_6
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ea417485b47df280800000000000000
+      internalID: -9007915356711204119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_7
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af5a1ea013067c9f0800000000000000
+      internalID: -448283874147850758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_8
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96375e2d651469ab0800000000000000
+      internalID: -5001738494987111575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_9
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 945cf4ceeb28518b0800000000000000
+      internalID: -5182092039699839671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_10
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd9db55c9668fd590800000000000000
+      internalID: -7647245853410993700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_11
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 151c8f7dea0f05950800000000000000
+      internalID: 6435908501250818385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_12
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ff44428fca0dd980800000000000000
+      internalID: -8512635834300346381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_13
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ef16532434999f30800000000000000
+      internalID: 4582857047478247400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_14
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7b9069b1e7ee8780800000000000000
+      internalID: -8678744475232593030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_15
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0925bc5d0e4b49260800000000000000
+      internalID: 7103501390022660752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_16
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0530f0cc292488140800000000000000
+      internalID: 4722097407554159440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_17
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eeea248f1e982a340800000000000000
+      internalID: 4873609350394064622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_18
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87183c3b104d26220800000000000000
+      internalID: 2477775848783184248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_19
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1eac8fbc185ee5e40800000000000000
+      internalID: 5647203328404802273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_20
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa1b40caf29d409b0800000000000000
+      internalID: -5114724478013361750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_21
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2741be8965a96ee0800000000000000
+      internalID: -1267299947343952084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_22
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8946242213d419030800000000000000
+      internalID: 3499663258867098776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_23
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 455c0d1c28d09cc00800000000000000
+      internalID: 921282454022571348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_24
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6827c932ea4f8a110800000000000000
+      internalID: 1272535923491107462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_25
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d213fab33df778900800000000000000
+      internalID: 686658013413454125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_26
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5d6f1d8a8aabd610800000000000000
+      internalID: 1647097600783904095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_27
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c02996088ac535fc0800000000000000
+      internalID: -3507357806012820980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_28
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 071e0b85084737610800000000000000
+      internalID: 1617764785748762992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_29
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c6f1843ee1ca8250800000000000000
+      internalID: 5947779486723471044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_30
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff9fb2822d0469610800000000000000
+      internalID: 1627559586702293503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_31
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb7734123b48e8f60800000000000000
+      internalID: 8038508289794996156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_32
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 185dea232fc0b9590800000000000000
+      internalID: -7666519706296199807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_33
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de688a7495a230170800000000000000
+      internalID: 8143399114158671597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_34
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 69
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b8569f19c07b6180800000000000000
+      internalID: -9121072611188123471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_35
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81548fe6d8aac3bc0800000000000000
+      internalID: -3801976460978666216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_36
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ee42fa2ac08511a0800000000000000
+      internalID: -6839418853299958044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_37
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 35
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71ec2e24717d91b40800000000000000
+      internalID: 5411592922168741399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_38
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8088b1552f280cf70800000000000000
+      internalID: 9205501615666857992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_39
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 449d68b9a075034e0800000000000000
+      internalID: -2004006131109275324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_40
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4265b39ecbb95fb0800000000000000
+      internalID: -4658485843622272436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_41
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa0550dd806738560800000000000000
+      internalID: 7314820000219746479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_42
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8537749e805326a00800000000000000
+      internalID: 748218800486708056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_43
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ee8bef82d40b9150800000000000000
+      internalID: 5880299040866537192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_44
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69d5cf11b7dbaf510800000000000000
+      internalID: 1583786555254529430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_45
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 788d34fdd5bce2560800000000000000
+      internalID: 7290988450797574279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_46
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30eb514e7af71cdf0800000000000000
+      internalID: -161707752545731069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_47
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ab4bb3aa8c7664e0800000000000000
+      internalID: -1988765250543203415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_48
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d7d9346b7c7dfbc0800000000000000
+      internalID: -3747702445498050602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_49
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 355e27e85ecbed9d0800000000000000
+      internalID: -2747551028525996717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_50
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02fbacf81776e5210800000000000000
+      internalID: 1323609077934898976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_51
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57514c5a7c1a6ab80800000000000000
+      internalID: -8383835777451944587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_52
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 489b864663a93aa40800000000000000
+      internalID: 5378311938414000516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_53
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a869582214c309b0800000000000000
+      internalID: -5115029169497347927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_54
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69bd776f872034390800000000000000
+      internalID: -7835416208140149866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_55
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55d2fab67d2ff0b60800000000000000
+      internalID: 7714651693747481941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_56
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d784aefda3360080800000000000000
+      internalID: -9221626364599957550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_57
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e9bc57712fe1a630800000000000000
+      internalID: 3936690476314048999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_58
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 318af5db186825750800000000000000
+      internalID: 6292239521176070163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_59
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d56aef7a13e97c670800000000000000
+      internalID: 8558983552949986909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_60
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f5a54400cf804f90800000000000000
+      internalID: -6971414168301361677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_61
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 1
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c78a789511172ba80800000000000000
+      internalID: -8452569231290554244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_62
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 1
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 779fdbf43ea726570800000000000000
+      internalID: 8458458166869227895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Planet_63
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 1
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93cbf85bac9a7c6e0800000000000000
+      internalID: -1817297236526121927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Purple Planet_0: 1664244504362962266
+      Purple Planet_1: -6002686481758373483
+      Purple Planet_10: -7647245853410993700
+      Purple Planet_11: 6435908501250818385
+      Purple Planet_12: -8512635834300346381
+      Purple Planet_13: 4582857047478247400
+      Purple Planet_14: -8678744475232593030
+      Purple Planet_15: 7103501390022660752
+      Purple Planet_16: 4722097407554159440
+      Purple Planet_17: 4873609350394064622
+      Purple Planet_18: 2477775848783184248
+      Purple Planet_19: 5647203328404802273
+      Purple Planet_2: 3862951424327406915
+      Purple Planet_20: -5114724478013361750
+      Purple Planet_21: -1267299947343952084
+      Purple Planet_22: 3499663258867098776
+      Purple Planet_23: 921282454022571348
+      Purple Planet_24: 1272535923491107462
+      Purple Planet_25: 686658013413454125
+      Purple Planet_26: 1647097600783904095
+      Purple Planet_27: -3507357806012820980
+      Purple Planet_28: 1617764785748762992
+      Purple Planet_29: 5947779486723471044
+      Purple Planet_3: -1448305816627586856
+      Purple Planet_30: 1627559586702293503
+      Purple Planet_31: 8038508289794996156
+      Purple Planet_32: -7666519706296199807
+      Purple Planet_33: 8143399114158671597
+      Purple Planet_34: -9121072611188123471
+      Purple Planet_35: -3801976460978666216
+      Purple Planet_36: -6839418853299958044
+      Purple Planet_37: 5411592922168741399
+      Purple Planet_38: 9205501615666857992
+      Purple Planet_39: -2004006131109275324
+      Purple Planet_4: 360810487460880995
+      Purple Planet_40: -4658485843622272436
+      Purple Planet_41: 7314820000219746479
+      Purple Planet_42: 748218800486708056
+      Purple Planet_43: 5880299040866537192
+      Purple Planet_44: 1583786555254529430
+      Purple Planet_45: 7290988450797574279
+      Purple Planet_46: -161707752545731069
+      Purple Planet_47: -1988765250543203415
+      Purple Planet_48: -3747702445498050602
+      Purple Planet_49: -2747551028525996717
+      Purple Planet_5: 1707146325951271787
+      Purple Planet_50: 1323609077934898976
+      Purple Planet_51: -8383835777451944587
+      Purple Planet_52: 5378311938414000516
+      Purple Planet_53: -5115029169497347927
+      Purple Planet_54: -7835416208140149866
+      Purple Planet_55: 7714651693747481941
+      Purple Planet_56: -9221626364599957550
+      Purple Planet_57: 3936690476314048999
+      Purple Planet_58: 6292239521176070163
+      Purple Planet_59: 8558983552949986909
+      Purple Planet_6: -9007915356711204119
+      Purple Planet_60: -6971414168301361677
+      Purple Planet_61: -8452569231290554244
+      Purple Planet_62: 8458458166869227895
+      Purple Planet_63: -1817297236526121927
+      Purple Planet_7: -448283874147850758
+      Purple Planet_8: -5001738494987111575
+      Purple Planet_9: -5182092039699839671
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

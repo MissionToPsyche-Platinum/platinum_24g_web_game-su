@@ -1,0 +1,1794 @@
+fileFormatVersion: 2
+guid: ba628d61dd32a4a8b87926e1139a4047
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6003916280535680189
+    second: Brown Planet_0
+  - first:
+      213: -5797609346877879838
+    second: Brown Planet_1
+  - first:
+      213: 4059488077071684047
+    second: Brown Planet_2
+  - first:
+      213: 754084468114372712
+    second: Brown Planet_3
+  - first:
+      213: 8551080115285687727
+    second: Brown Planet_4
+  - first:
+      213: -96984880047958426
+    second: Brown Planet_5
+  - first:
+      213: 7291544675936025915
+    second: Brown Planet_6
+  - first:
+      213: -5149891575854086474
+    second: Brown Planet_7
+  - first:
+      213: 7296441842540159913
+    second: Brown Planet_8
+  - first:
+      213: -4284693230014166449
+    second: Brown Planet_9
+  - first:
+      213: 5321288836592368542
+    second: Brown Planet_10
+  - first:
+      213: -2883404686871259958
+    second: Brown Planet_11
+  - first:
+      213: -6587150019806887410
+    second: Brown Planet_12
+  - first:
+      213: -5027977741394921436
+    second: Brown Planet_13
+  - first:
+      213: 6614815633226619792
+    second: Brown Planet_14
+  - first:
+      213: -9011876068984742665
+    second: Brown Planet_15
+  - first:
+      213: -5965753521728837261
+    second: Brown Planet_16
+  - first:
+      213: -2376178761762834587
+    second: Brown Planet_17
+  - first:
+      213: -5393026774539251017
+    second: Brown Planet_18
+  - first:
+      213: 7057310152835509154
+    second: Brown Planet_19
+  - first:
+      213: 1712860639436335430
+    second: Brown Planet_20
+  - first:
+      213: 4145916734502279518
+    second: Brown Planet_21
+  - first:
+      213: 6424391824358009368
+    second: Brown Planet_22
+  - first:
+      213: 973195158099307244
+    second: Brown Planet_23
+  - first:
+      213: 201399104301676404
+    second: Brown Planet_24
+  - first:
+      213: 598421474747281006
+    second: Brown Planet_25
+  - first:
+      213: 7432521300936790390
+    second: Brown Planet_26
+  - first:
+      213: -6458537781451629423
+    second: Brown Planet_27
+  - first:
+      213: 1594147231836001358
+    second: Brown Planet_28
+  - first:
+      213: -7148011487151247325
+    second: Brown Planet_29
+  - first:
+      213: -7409626999710378363
+    second: Brown Planet_30
+  - first:
+      213: -3014756047694886246
+    second: Brown Planet_31
+  - first:
+      213: -8006995840070492408
+    second: Brown Planet_32
+  - first:
+      213: -5287751415161458676
+    second: Brown Planet_33
+  - first:
+      213: -8907057226068660240
+    second: Brown Planet_34
+  - first:
+      213: -4129164745438732294
+    second: Brown Planet_35
+  - first:
+      213: -5780783761934925160
+    second: Brown Planet_36
+  - first:
+      213: -1170024478500076699
+    second: Brown Planet_37
+  - first:
+      213: 9040783160384625453
+    second: Brown Planet_38
+  - first:
+      213: 4988234862721030506
+    second: Brown Planet_39
+  - first:
+      213: -6795306555545735610
+    second: Brown Planet_40
+  - first:
+      213: -5985470206873562393
+    second: Brown Planet_41
+  - first:
+      213: 699362696284638346
+    second: Brown Planet_42
+  - first:
+      213: 3900440586963991266
+    second: Brown Planet_43
+  - first:
+      213: -2129751244269242682
+    second: Brown Planet_44
+  - first:
+      213: 5701709414608157062
+    second: Brown Planet_45
+  - first:
+      213: -6253414185150448570
+    second: Brown Planet_46
+  - first:
+      213: -813000482960441725
+    second: Brown Planet_47
+  - first:
+      213: -6216328090776849663
+    second: Brown Planet_48
+  - first:
+      213: -2323214831387823004
+    second: Brown Planet_49
+  - first:
+      213: 6040316867827849892
+    second: Brown Planet_50
+  - first:
+      213: 159790650405544929
+    second: Brown Planet_51
+  - first:
+      213: 2306938019553344060
+    second: Brown Planet_52
+  - first:
+      213: 7246186598297331798
+    second: Brown Planet_53
+  - first:
+      213: 6899814383544695782
+    second: Brown Planet_54
+  - first:
+      213: 3696034287214731757
+    second: Brown Planet_55
+  - first:
+      213: 5344208962825318694
+    second: Brown Planet_56
+  - first:
+      213: -6183056652282661205
+    second: Brown Planet_57
+  - first:
+      213: 3811684310213672234
+    second: Brown Planet_58
+  - first:
+      213: 4044003650593364377
+    second: Brown Planet_59
+  - first:
+      213: -7772840691856169983
+    second: Brown Planet_60
+  - first:
+      213: 8676856232314470413
+    second: Brown Planet_61
+  - first:
+      213: -7096530159142004939
+    second: Brown Planet_62
+  - first:
+      213: 5355373470993108367
+    second: Brown Planet_63
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Brown Planet_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 137
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34b7c75f3fdcdaca0800000000000000
+      internalID: -6003916280535680189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e90cdc1401ca8fa0800000000000000
+      internalID: -5797609346877879838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_2
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc19ac3e5e2365830800000000000000
+      internalID: 4059488077071684047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_3
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 103
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 868b89414db077a00800000000000000
+      internalID: 754084468114372712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_4
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fad728d2f0a8ba670800000000000000
+      internalID: 8551080115285687727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_5
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6665824f3c077aef0800000000000000
+      internalID: -96984880047958426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_6
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3dbe012045c03560800000000000000
+      internalID: 7291544675936025915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_7
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b6c075a5e8e788b0800000000000000
+      internalID: -5149891575854086474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_8
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a327e4923b224560800000000000000
+      internalID: 7296441842540159913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_9
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4a0c756536b984c0800000000000000
+      internalID: -4284693230014166449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_10
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9bf654e00409d940800000000000000
+      internalID: 5321288836592368542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_11
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac49757d6b61cf7d0800000000000000
+      internalID: -2883404686871259958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_12
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e02043b05fdb594a0800000000000000
+      internalID: -6587150019806887410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_13
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 428b59132e8093ab0800000000000000
+      internalID: -5027977741394921436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_14
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09b5c2985cb8ccb50800000000000000
+      internalID: 6614815633226619792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_15
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fc125456726fe280800000000000000
+      internalID: -9011876068984742665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_16
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37921d7a7c2653da0800000000000000
+      internalID: -5965753521728837261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_17
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5677c46710e160fd0800000000000000
+      internalID: -2376178761762834587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_18
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b2da67d8be1825b0800000000000000
+      internalID: -5393026774539251017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_19
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2aba489513a90f160800000000000000
+      internalID: 7057310152835509154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_20
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 649e95b2dad45c710800000000000000
+      internalID: 1712860639436335430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_21
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e591b54dd41498930800000000000000
+      internalID: 4145916734502279518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_22
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81a68cc8356082950800000000000000
+      internalID: 6424391824358009368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_23
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ceaa3af07db718d00800000000000000
+      internalID: 973195158099307244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_24
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 477bbf51b638bc200800000000000000
+      internalID: 201399104301676404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_25
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6ee64429250e4800800000000000000
+      internalID: 598421474747281006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_26
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6719cd77ebe952760800000000000000
+      internalID: 7432521300936790390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_27
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19cd2284b1aae56a0800000000000000
+      internalID: -6458537781451629423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_28
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e44d141167c8f1610800000000000000
+      internalID: 1594147231836001358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_29
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32030f99c692dcc90800000000000000
+      internalID: -7148011487151247325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_30
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5869e1c6087bb2990800000000000000
+      internalID: -7409626999710378363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_31
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9a8fa4f85f6926d0800000000000000
+      internalID: -3014756047694886246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_32
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80f5192d4bf61e090800000000000000
+      internalID: -8006995840070492408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_33
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c007bb68a122e96b0800000000000000
+      internalID: -5287751415161458676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_34
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 69
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ffe91ef4a6c36480800000000000000
+      internalID: -8907057226068660240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_35
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: affde019a8242b6c0800000000000000
+      internalID: -4129164745438732294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_36
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 892c582ebc786cfa0800000000000000
+      internalID: -5780783761934925160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_37
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 35
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 563cd749fec33cfe0800000000000000
+      internalID: -1170024478500076699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_38
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2b1f0e5260577d70800000000000000
+      internalID: 9040783160384625453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_39
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a69d4b8cd25c93540800000000000000
+      internalID: 4988234862721030506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_40
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64e20d8d0b832b1a0800000000000000
+      internalID: -6795306555545735610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_41
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e21e992f865feca0800000000000000
+      internalID: -5985470206873562393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_42
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8c8439baa2a4b900800000000000000
+      internalID: 699362696284638346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_43
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ea31856c06212630800000000000000
+      internalID: 3900440586963991266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_44
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c6b269f68a9172e0800000000000000
+      internalID: -2129751244269242682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_45
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 689383ee08a802f40800000000000000
+      internalID: 5701709414608157062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_46
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64cf7bc3ee86739a0800000000000000
+      internalID: -6253414185150448570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_47
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38efbe24e54a7b4f0800000000000000
+      internalID: -813000482960441725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_48
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 103b6f5798a2bb9a0800000000000000
+      internalID: -6216328090776849663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_49
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 464b5367b6842cfd0800000000000000
+      internalID: -2323214831387823004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_50
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4aadda5303483d350800000000000000
+      internalID: 6040316867827849892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_51
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e3e9dbffb0b73200800000000000000
+      internalID: 159790650405544929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_52
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3af156f7e3e30020800000000000000
+      internalID: 2306938019553344060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_53
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65865b7b150af8460800000000000000
+      internalID: 7246186598297331798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_54
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ebff4300a011cf50800000000000000
+      internalID: 6899814383544695782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_55
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de1291f0a93fa4330800000000000000
+      internalID: 3696034287214731757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_56
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62179a2acb17a2a40800000000000000
+      internalID: 5344208962825318694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_57
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba67396ebbe513aa0800000000000000
+      internalID: -6183056652282661205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_58
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2d373a5fa2d5e430800000000000000
+      internalID: 3811684310213672234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_59
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9991008e4ef2f1830800000000000000
+      internalID: 4044003650593364377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_60
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1042632b292512490800000000000000
+      internalID: -7772840691856169983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_61
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 1
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d000d3675c26a6870800000000000000
+      internalID: 8676856232314470413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_62
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 1
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5379e765b6f048d90800000000000000
+      internalID: -7096530159142004939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown Planet_63
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 1
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8d48124ccb125a40800000000000000
+      internalID: 5355373470993108367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Brown Planet_0: -6003916280535680189
+      Brown Planet_1: -5797609346877879838
+      Brown Planet_10: 5321288836592368542
+      Brown Planet_11: -2883404686871259958
+      Brown Planet_12: -6587150019806887410
+      Brown Planet_13: -5027977741394921436
+      Brown Planet_14: 6614815633226619792
+      Brown Planet_15: -9011876068984742665
+      Brown Planet_16: -5965753521728837261
+      Brown Planet_17: -2376178761762834587
+      Brown Planet_18: -5393026774539251017
+      Brown Planet_19: 7057310152835509154
+      Brown Planet_2: 4059488077071684047
+      Brown Planet_20: 1712860639436335430
+      Brown Planet_21: 4145916734502279518
+      Brown Planet_22: 6424391824358009368
+      Brown Planet_23: 973195158099307244
+      Brown Planet_24: 201399104301676404
+      Brown Planet_25: 598421474747281006
+      Brown Planet_26: 7432521300936790390
+      Brown Planet_27: -6458537781451629423
+      Brown Planet_28: 1594147231836001358
+      Brown Planet_29: -7148011487151247325
+      Brown Planet_3: 754084468114372712
+      Brown Planet_30: -7409626999710378363
+      Brown Planet_31: -3014756047694886246
+      Brown Planet_32: -8006995840070492408
+      Brown Planet_33: -5287751415161458676
+      Brown Planet_34: -8907057226068660240
+      Brown Planet_35: -4129164745438732294
+      Brown Planet_36: -5780783761934925160
+      Brown Planet_37: -1170024478500076699
+      Brown Planet_38: 9040783160384625453
+      Brown Planet_39: 4988234862721030506
+      Brown Planet_4: 8551080115285687727
+      Brown Planet_40: -6795306555545735610
+      Brown Planet_41: -5985470206873562393
+      Brown Planet_42: 699362696284638346
+      Brown Planet_43: 3900440586963991266
+      Brown Planet_44: -2129751244269242682
+      Brown Planet_45: 5701709414608157062
+      Brown Planet_46: -6253414185150448570
+      Brown Planet_47: -813000482960441725
+      Brown Planet_48: -6216328090776849663
+      Brown Planet_49: -2323214831387823004
+      Brown Planet_5: -96984880047958426
+      Brown Planet_50: 6040316867827849892
+      Brown Planet_51: 159790650405544929
+      Brown Planet_52: 2306938019553344060
+      Brown Planet_53: 7246186598297331798
+      Brown Planet_54: 6899814383544695782
+      Brown Planet_55: 3696034287214731757
+      Brown Planet_56: 5344208962825318694
+      Brown Planet_57: -6183056652282661205
+      Brown Planet_58: 3811684310213672234
+      Brown Planet_59: 4044003650593364377
+      Brown Planet_6: 7291544675936025915
+      Brown Planet_60: -7772840691856169983
+      Brown Planet_61: 8676856232314470413
+      Brown Planet_62: -7096530159142004939
+      Brown Planet_63: 5355373470993108367
+      Brown Planet_7: -5149891575854086474
+      Brown Planet_8: 7296441842540159913
+      Brown Planet_9: -4284693230014166449
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

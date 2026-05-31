@@ -1,0 +1,1794 @@
+fileFormatVersion: 2
+guid: 1952ecc3342814a5ab62c7f318897796
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5725997863364011365
+    second: Green Planet_0
+  - first:
+      213: -2156672542701141917
+    second: Green Planet_1
+  - first:
+      213: 3143372391992213536
+    second: Green Planet_2
+  - first:
+      213: -4953265344740757175
+    second: Green Planet_3
+  - first:
+      213: 8412114052438576611
+    second: Green Planet_4
+  - first:
+      213: -7361177574946130193
+    second: Green Planet_5
+  - first:
+      213: -4146507604571740015
+    second: Green Planet_6
+  - first:
+      213: -478603727174916995
+    second: Green Planet_7
+  - first:
+      213: 9085756570253915712
+    second: Green Planet_8
+  - first:
+      213: 3287009459590956617
+    second: Green Planet_9
+  - first:
+      213: -1740298427532866296
+    second: Green Planet_10
+  - first:
+      213: -1675518499159999166
+    second: Green Planet_11
+  - first:
+      213: -3199499624166084033
+    second: Green Planet_12
+  - first:
+      213: 5044030210334719089
+    second: Green Planet_13
+  - first:
+      213: 1701238507932946162
+    second: Green Planet_14
+  - first:
+      213: 2537406731978805341
+    second: Green Planet_15
+  - first:
+      213: -1561744915017902518
+    second: Green Planet_16
+  - first:
+      213: -5124262792306901230
+    second: Green Planet_17
+  - first:
+      213: -296002406697792758
+    second: Green Planet_18
+  - first:
+      213: 685237436251103917
+    second: Green Planet_19
+  - first:
+      213: 1080147166141016636
+    second: Green Planet_20
+  - first:
+      213: 8883842677437367369
+    second: Green Planet_21
+  - first:
+      213: -7955239821756443016
+    second: Green Planet_22
+  - first:
+      213: -2862317814271517196
+    second: Green Planet_23
+  - first:
+      213: 7851092519484592067
+    second: Green Planet_24
+  - first:
+      213: 1095897570447952159
+    second: Green Planet_25
+  - first:
+      213: 7755706516397157277
+    second: Green Planet_26
+  - first:
+      213: 8510086114349998646
+    second: Green Planet_27
+  - first:
+      213: -8654366674613722609
+    second: Green Planet_28
+  - first:
+      213: 1586950136542538071
+    second: Green Planet_29
+  - first:
+      213: -2714671888031522994
+    second: Green Planet_30
+  - first:
+      213: -1293974102766196504
+    second: Green Planet_31
+  - first:
+      213: 846870583616267476
+    second: Green Planet_32
+  - first:
+      213: 2085095347677323618
+    second: Green Planet_33
+  - first:
+      213: -6072890254955922071
+    second: Green Planet_34
+  - first:
+      213: -4223021922232887719
+    second: Green Planet_35
+  - first:
+      213: -1702198240216476242
+    second: Green Planet_36
+  - first:
+      213: -1745270165444834788
+    second: Green Planet_37
+  - first:
+      213: -1070011427550798808
+    second: Green Planet_38
+  - first:
+      213: 5187496384874972406
+    second: Green Planet_39
+  - first:
+      213: -1096402357741298184
+    second: Green Planet_40
+  - first:
+      213: 791133638908510933
+    second: Green Planet_41
+  - first:
+      213: 7854972967203672326
+    second: Green Planet_42
+  - first:
+      213: 5547528591325088216
+    second: Green Planet_43
+  - first:
+      213: 2567745292691956264
+    second: Green Planet_44
+  - first:
+      213: -5036517743707825301
+    second: Green Planet_45
+  - first:
+      213: 5160065832162858723
+    second: Green Planet_46
+  - first:
+      213: 1921191635126644327
+    second: Green Planet_47
+  - first:
+      213: 8168475022721225874
+    second: Green Planet_48
+  - first:
+      213: 1121717350765660746
+    second: Green Planet_49
+  - first:
+      213: -7409341518671980220
+    second: Green Planet_50
+  - first:
+      213: -3327293136328664231
+    second: Green Planet_51
+  - first:
+      213: -8840209895857216961
+    second: Green Planet_52
+  - first:
+      213: -4369720546978792294
+    second: Green Planet_53
+  - first:
+      213: -3708411361091776414
+    second: Green Planet_54
+  - first:
+      213: 6479078975974916949
+    second: Green Planet_55
+  - first:
+      213: 4579181978247922791
+    second: Green Planet_56
+  - first:
+      213: -8263530545374721610
+    second: Green Planet_57
+  - first:
+      213: 1742189245787309272
+    second: Green Planet_58
+  - first:
+      213: -9162608073267149674
+    second: Green Planet_59
+  - first:
+      213: 447176824749643444
+    second: Green Planet_60
+  - first:
+      213: 1106020603722233090
+    second: Green Planet_61
+  - first:
+      213: 5089503995733516056
+    second: Green Planet_62
+  - first:
+      213: 668397320184597328
+    second: Green Planet_63
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Green Planet_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 137
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 565257618b4d67f40800000000000000
+      internalID: 5725997863364011365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 360c57bbfb5f112e0800000000000000
+      internalID: -2156672542701141917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_2
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 020477549808f9b20800000000000000
+      internalID: 3143372391992213536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_3
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 103
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94179789967724bb0800000000000000
+      internalID: -4953265344740757175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_4
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ed4ca15925ddb470800000000000000
+      internalID: 8412114052438576611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_5
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe6b3cc2ff7d7d990800000000000000
+      internalID: -7361177574946130193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_6
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 198ab038d45a476c0800000000000000
+      internalID: -4146507604571740015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_7
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d74af852278ab59f0800000000000000
+      internalID: -478603727174916995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_8
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 046f7a55677171e70800000000000000
+      internalID: 9085756570253915712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_9
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 946844c20bdcd9d20800000000000000
+      internalID: 3287009459590956617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_10
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80d8bb7fcc739d7e0800000000000000
+      internalID: -1740298427532866296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_11
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24df8f26dcc5fb8e0800000000000000
+      internalID: -1675518499159999166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_12
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f32b5922b081993d0800000000000000
+      internalID: -3199499624166084033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_13
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17cf65b70cefff540800000000000000
+      internalID: 5044030210334719089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_14
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fe0f8fc8630c9710800000000000000
+      internalID: 1701238507932946162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_15
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d50184e9afda63320800000000000000
+      internalID: 2537406731978805341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_16
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a46d5963641935ae0800000000000000
+      internalID: -1561744915017902518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_17
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21fbbc0d326f2e8b0800000000000000
+      internalID: -5124262792306901230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_18
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0b0e10216364ebf0800000000000000
+      internalID: -296002406697792758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_19
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da2eb8651d3728900800000000000000
+      internalID: 685237436251103917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_20
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3aeafeef147dfe00800000000000000
+      internalID: 1080147166141016636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_21
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9440c15b8dfb94b70800000000000000
+      internalID: 8883842677437367369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_22
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8765a21e78f499190800000000000000
+      internalID: -7955239821756443016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_23
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fdd216fc110748d0800000000000000
+      internalID: -2862317814271517196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_24
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cf0b92bc0fa4fc60800000000000000
+      internalID: 7851092519484592067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_25
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1983c4b809653f00800000000000000
+      internalID: 1095897570447952159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_26
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9be8043cfdc1ab60800000000000000
+      internalID: 7755706516397157277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_27
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 632e0dd8b36e91670800000000000000
+      internalID: 8510086114349998646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_28
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 137
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f02ababbc5385e780800000000000000
+      internalID: -8654366674613722609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_29
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75920ecbdbaf50610800000000000000
+      internalID: 1586950136542538071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_30
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4f54200d4c835ad0800000000000000
+      internalID: -2714671888031522994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_31
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e8e018c861ea0ee0800000000000000
+      internalID: -1293974102766196504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_32
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d4ec231f40b0cb00800000000000000
+      internalID: 846870583616267476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_33
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2616021eb2fbfec10800000000000000
+      internalID: 2085095347677323618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_34
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 69
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96dbb691d72c8bba0800000000000000
+      internalID: -6072890254955922071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_35
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9561f9eafefc465c0800000000000000
+      internalID: -4223021922232887719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_36
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea51a9a18b39068e0800000000000000
+      internalID: -1702198240216476242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_37
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 35
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1ac297080e87c7e0800000000000000
+      internalID: -1745270165444834788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_38
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82cd93b964e8621f0800000000000000
+      internalID: -1070011427550798808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_39
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f4881e3a70bdf740800000000000000
+      internalID: 5187496384874972406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_40
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fddde75ddbc8c0f0800000000000000
+      internalID: -1096402357741298184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_41
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d2010d5adbaafa00800000000000000
+      internalID: 791133638908510933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_42
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6019876db48720d60800000000000000
+      internalID: 7854972967203672326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_43
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d9414b9cd7ccfc40800000000000000
+      internalID: 5547528591325088216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_44
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 822e59c3db672a320800000000000000
+      internalID: 2567745292691956264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_45
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6bd755fbc1ba1ab0800000000000000
+      internalID: -5036517743707825301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_46
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e692bff88c3c9740800000000000000
+      internalID: 5160065832162858723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_47
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76eec2dfc9179aa10800000000000000
+      internalID: 1921191635126644327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_48
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29413f531c04c5170800000000000000
+      internalID: 8168475022721225874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_49
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4a87c6ccf3219f00800000000000000
+      internalID: 1121717350765660746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_50
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 449d008252bbc2990800000000000000
+      internalID: -7409341518671980220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_51
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95bd881758413d1d0800000000000000
+      internalID: -3327293136328664231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_52
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f32a989efe3415580800000000000000
+      internalID: -8840209895857216961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_53
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9c7a957052ab53c0800000000000000
+      internalID: -4369720546978792294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_54
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2601a1dd383198cc0800000000000000
+      internalID: -3708411361091776414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_55
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 553cfa240005ae950800000000000000
+      internalID: 6479078975974916949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_56
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76486576fb58c8f30800000000000000
+      internalID: 4579181978247922791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_57
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b9895440ca025d80800000000000000
+      internalID: -8263530545374721610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_58
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 69
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d488a673ef7d2810800000000000000
+      internalID: 1742189245787309272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_59
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 35
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69409c0c080e7d080800000000000000
+      internalID: -9162608073267149674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_60
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b65dfee3f0b43600800000000000000
+      internalID: 447176824749643444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_61
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 1
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 205702f01ef595f00800000000000000
+      internalID: 1106020603722233090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_62
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 1
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81f90a43bec81a640800000000000000
+      internalID: 5089503995733516056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Planet_63
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 1
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05b0d6642df964900800000000000000
+      internalID: 668397320184597328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Green Planet_0: 5725997863364011365
+      Green Planet_1: -2156672542701141917
+      Green Planet_10: -1740298427532866296
+      Green Planet_11: -1675518499159999166
+      Green Planet_12: -3199499624166084033
+      Green Planet_13: 5044030210334719089
+      Green Planet_14: 1701238507932946162
+      Green Planet_15: 2537406731978805341
+      Green Planet_16: -1561744915017902518
+      Green Planet_17: -5124262792306901230
+      Green Planet_18: -296002406697792758
+      Green Planet_19: 685237436251103917
+      Green Planet_2: 3143372391992213536
+      Green Planet_20: 1080147166141016636
+      Green Planet_21: 8883842677437367369
+      Green Planet_22: -7955239821756443016
+      Green Planet_23: -2862317814271517196
+      Green Planet_24: 7851092519484592067
+      Green Planet_25: 1095897570447952159
+      Green Planet_26: 7755706516397157277
+      Green Planet_27: 8510086114349998646
+      Green Planet_28: -8654366674613722609
+      Green Planet_29: 1586950136542538071
+      Green Planet_3: -4953265344740757175
+      Green Planet_30: -2714671888031522994
+      Green Planet_31: -1293974102766196504
+      Green Planet_32: 846870583616267476
+      Green Planet_33: 2085095347677323618
+      Green Planet_34: -6072890254955922071
+      Green Planet_35: -4223021922232887719
+      Green Planet_36: -1702198240216476242
+      Green Planet_37: -1745270165444834788
+      Green Planet_38: -1070011427550798808
+      Green Planet_39: 5187496384874972406
+      Green Planet_4: 8412114052438576611
+      Green Planet_40: -1096402357741298184
+      Green Planet_41: 791133638908510933
+      Green Planet_42: 7854972967203672326
+      Green Planet_43: 5547528591325088216
+      Green Planet_44: 2567745292691956264
+      Green Planet_45: -5036517743707825301
+      Green Planet_46: 5160065832162858723
+      Green Planet_47: 1921191635126644327
+      Green Planet_48: 8168475022721225874
+      Green Planet_49: 1121717350765660746
+      Green Planet_5: -7361177574946130193
+      Green Planet_50: -7409341518671980220
+      Green Planet_51: -3327293136328664231
+      Green Planet_52: -8840209895857216961
+      Green Planet_53: -4369720546978792294
+      Green Planet_54: -3708411361091776414
+      Green Planet_55: 6479078975974916949
+      Green Planet_56: 4579181978247922791
+      Green Planet_57: -8263530545374721610
+      Green Planet_58: 1742189245787309272
+      Green Planet_59: -9162608073267149674
+      Green Planet_6: -4146507604571740015
+      Green Planet_60: 447176824749643444
+      Green Planet_61: 1106020603722233090
+      Green Planet_62: 5089503995733516056
+      Green Planet_63: 668397320184597328
+      Green Planet_7: -478603727174916995
+      Green Planet_8: 9085756570253915712
+      Green Planet_9: 3287009459590956617
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
