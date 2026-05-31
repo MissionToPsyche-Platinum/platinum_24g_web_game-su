@@ -2645,15 +2645,15 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1253776423}
   - {fileID: 654463712}
   - {fileID: 684023726}
   - {fileID: 1896049053}
   - {fileID: 433830746}
   - {fileID: 127188056}
   - {fileID: 1074276202}
-  - {fileID: 1480451036}
   - {fileID: 313458266}
+  - {fileID: 1253776423}
+  - {fileID: 1480451036}
   m_Father: {fileID: 1261993487}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3076,6 +3076,7 @@ MonoBehaviour:
   timeSensitiveAlertSound: {fileID: 8300000, guid: 4ac3dd2f437974f02b1fee6a5064aaac, type: 3}
   optionsButton: {fileID: 1074276201}
   factCardButton: {fileID: 313458262}
+  progressBar: {fileID: 1253776422}
 --- !u!114 &1261993485
 MonoBehaviour:
   m_ObjectHideFlags: 0

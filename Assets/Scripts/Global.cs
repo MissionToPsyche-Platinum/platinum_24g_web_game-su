@@ -55,6 +55,7 @@ public class Global : MonoBehaviour
 
     public GameObject optionsButton;
     public GameObject factCardButton;
+    public GameObject progressBar;
 
     void Start()
     {
@@ -77,11 +78,13 @@ public class Global : MonoBehaviour
         {
             optionsButton.SetActive(false);
             factCardButton.SetActive(false);
+            progressBar.SetActive(false);
         }
         else
         {
             optionsButton.SetActive(true);
             factCardButton.SetActive(true);
+            progressBar.SetActive(true);
         }
     }
     
@@ -279,7 +282,7 @@ public class Global : MonoBehaviour
 
         minigameRoundOrder.Clear();
 
-        foreach(string item in shuffledRooms)
+        foreach (string item in shuffledRooms)
         {
             minigameRoundOrder.Enqueue(item);
         }
