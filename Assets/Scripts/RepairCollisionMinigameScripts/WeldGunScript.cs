@@ -3,6 +3,7 @@ using UnityEngine;
 public class WeldGunScript : MonoBehaviour
 {
     public GameObject weldSpark;
+    public GameObject helpPanel;
 
     // Update is called once per frame
     void Update()
@@ -25,5 +26,6 @@ public class WeldGunScript : MonoBehaviour
     public void TriggerSpark()
     {
         weldSpark.SetActive(!weldSpark.activeSelf);
+        helpPanel.SetActive(false);
     }
 }
