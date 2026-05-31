@@ -22,6 +22,9 @@ public class BroomPickup : MonoBehaviour
     private PlayerMovement2D playerMovement;
     private Rigidbody2D playerRb;
     private RectTransform hintRect;
+    // broom pickup audio
+    public AudioSource pickupAudioSource;
+    public AudioClip pickupSound;
 
     private void Start()
     {
@@ -144,6 +147,16 @@ if (other.CompareTag(playerTag))
     private void PickUpBroom()
     {
         pickedUp = true;
+
+        if (pickupAudioSource != null && pickupSound != null)
+        {
+            pickupAudioSource.clip = pickupSound;
+            pickupAudioSource.Play();
+
+            Invoke(nameof(StopPickupSound), 2f);
+        }
+
+
         isHoldingBroom = true;
         playerInRange = false;
 
@@ -246,6 +259,12 @@ if (other.CompareTag(playerTag))
 
         if (broomFoundPopup != null) broomFoundPopup.SetActive(false);
     }
+
+    private void StopPickupSound()
+    {
+        if (pickupAudioSource != null)
+            pickupAudioSource.Stop();
+    }   
 
     
 }
