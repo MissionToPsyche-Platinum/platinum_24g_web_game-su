@@ -3,10 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class RepairCollisionController : MonoBehaviour
 {
+    
+    // minigame completion sound
+    public AudioSource popupAudioSource;
+    public AudioClip completionSound;
     public GameObject crack;
     private GameObject player;
 
-    [SerializeField] public GameObject completedPanel;
+    public GameObject completedPanel;
 
     private readonly int totalColliders = 34;
     private int reachedColliders = 0;
@@ -29,6 +33,10 @@ public class RepairCollisionController : MonoBehaviour
 
     private void EndMinigame()
     {
+        //completion sound
+        if (popupAudioSource != null && completionSound != null)
+            popupAudioSource.PlayOneShot(completionSound);
+
         completedPanel.SetActive(true);
 
         Global.repairCollisionMinigamePlayed = true;

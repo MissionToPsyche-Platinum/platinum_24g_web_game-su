@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class FireMinigameController : MonoBehaviour
 {
+    // minigame completion sound
+    public AudioSource popupAudioSource;
+    public AudioClip completionSound;
     public GameObject heldExtinguisher;
     public GameObject completedPanel;
     private GameObject player;
@@ -57,6 +60,11 @@ public class FireMinigameController : MonoBehaviour
         else
         {
             Debug.Log("Completed panel assigned, showing now.");
+            
+            //completion sound
+            if (popupAudioSource != null && completionSound != null)
+                popupAudioSource.PlayOneShot(completionSound);
+
             completedPanel.SetActive(true);
         }
     }

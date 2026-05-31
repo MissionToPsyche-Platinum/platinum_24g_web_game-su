@@ -14,6 +14,9 @@ public class PowerGameManager : MonoBehaviour
 
     public TMP_Text factText;  
     bool done;      
+    //minigame completion sound
+    public AudioSource popupAudioSource;
+    public AudioClip completionSound;
     void Start()
     {
         done = false;
@@ -54,6 +57,12 @@ public class PowerGameManager : MonoBehaviour
 
             if (factText != null)
                 factText.text = "FACT UNLOCKED:\n\n" + Global.lastAwardedFactText;
+
+            //play completion sound
+            if (popupAudioSource != null && completionSound != null)
+            {
+                popupAudioSource.PlayOneShot(completionSound);
+            }
 
             if (gameOverPanel != null)
                 gameOverPanel.SetActive(true);

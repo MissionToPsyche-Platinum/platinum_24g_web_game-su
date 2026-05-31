@@ -4,6 +4,10 @@ using UnityEngine.UI;
 
 public class ControlsMinigameController : MonoBehaviour
 {
+    //minigame completion sound
+    public AudioSource popupAudioSource;
+    public AudioClip completionSound;
+
     private struct ScoreResult
     {
         public int distance;
@@ -523,7 +527,11 @@ public class ControlsMinigameController : MonoBehaviour
         Global.currentRoomCompleted = true;
 
         if (factCardPopup != null)
-        {
+        {   
+            //completion sound
+            if (popupAudioSource != null && completionSound != null)
+                popupAudioSource.PlayOneShot(completionSound);
+
             factCardPopup.ShowResults(result.distance, result.score, result.stars, allowReplay, allowFact);
         }
     }

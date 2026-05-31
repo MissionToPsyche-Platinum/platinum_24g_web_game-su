@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 public class CargoMinigameController : MonoBehaviour
 {
 
+    //minigame completion sound
+    public AudioSource popupAudioSource;
+    public AudioClip completionSound;
     private GameObject[] targets;
     private bool gameComplete;
     private GameObject player;
@@ -66,6 +69,12 @@ public class CargoMinigameController : MonoBehaviour
         Global.MinigameWin();
         updateScoreText();
         Global.currentRoomCompleted = true;
+
+        //play completion sound
+        if (popupAudioSource != null && completionSound != null)
+        {
+            popupAudioSource.PlayOneShot(completionSound);
+        }
 
         //ensures the panel is active before showing it
         transform.gameObject.SetActive(true);

@@ -5,7 +5,9 @@ using TMPro;
 
 public class SpillManager : MonoBehaviour
 {
-    
+    //minigame completion sound
+    public AudioSource popupAudioSource;
+    public AudioClip completionSound;
     public static SpillManager Instance;
     public GameObject gameOverPanel;
     public TMP_Text scoreText;
@@ -13,6 +15,7 @@ public class SpillManager : MonoBehaviour
     public string labRoomSceneName = "LabRoom";
     private int spillsRemaining;
     private bool awarded;
+    
 
     private void Awake()
     {
@@ -57,7 +60,10 @@ public class SpillManager : MonoBehaviour
             if (scoreText != null)
                 scoreText.text = "Total score: " + Global.totalScore;
 
-            
+            //play completion sound
+            if (popupAudioSource != null && completionSound != null)
+                popupAudioSource.PlayOneShot(completionSound);
+
             if (gameOverPanel != null)
                 gameOverPanel.SetActive(true);
 
