@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class FireExtinguisherMainHallTrigger : MonoBehaviour
 {
+    // pickup audio
+    public AudioSource pickupAudioSource;
+    public AudioClip pickupSound;
     public GameObject interactSignal;
     public GameObject promptText;
     private bool playerNearby = false;
@@ -20,10 +23,15 @@ public class FireExtinguisherMainHallTrigger : MonoBehaviour
     {
         if (playerNearby && Input.GetKeyDown(KeyCode.E))
         {
-
             Global.hasExtinguisher = true;
+
+            if (pickupAudioSource != null && pickupSound != null)
+            {
+                pickupAudioSource.PlayOneShot(pickupSound);
+            }
+
             SceneManager.LoadScene("FireMinigame");
-        }
+        }   
     }
 
     void OnTriggerEnter2D(Collider2D other)
