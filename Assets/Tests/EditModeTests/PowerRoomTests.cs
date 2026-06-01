@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.TestTools;
 
 public class PowerRoomTests
 {
@@ -11,12 +12,11 @@ public class PowerRoomTests
     public void SetUp()
     {
         testContainer = new GameObject("TestContainer");
+        testContainer.SetActive(true);
+        
         powerCell = testContainer.AddComponent<PowerCell>();
 
-        // Create indicator with RectTransform
         GameObject mockIndicator = new GameObject("Indicator", typeof(RectTransform));
-        
-        // Create targetZone with RectTransform AND Image component to prevent line 45 crash
         GameObject mockTargetZone = new GameObject("TargetZone", typeof(RectTransform), typeof(Image));
 
         mockIndicator.transform.SetParent(testContainer.transform);
@@ -32,100 +32,162 @@ public class PowerRoomTests
         Object.DestroyImmediate(testContainer);
     }
 
-    // --- TEST 1: INDICATOR HIT SUCCESS ---
+    // --- TEST 1: SPEED CALCULATION ---
+    [Test]
+    public void Test_PowerCell_Start_SetsSpeedBasedOnRound()
+    {
+        Global.round = 2;
+        
+        // Use Reflection to execute private Start() cleanly without using SendMessage
+        var method = typeof(PowerCell).GetMethod("Start", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        method.Invoke(powerCell, null);
+
+        Assert.AreEqual(800f, powerCell.speed, "Speed should scale dynamically with Global.round.");
+    }
+
+    // --- TEST 2: PLAYER NOT FOUND EXCEPTION ---
+    [Test]
+    public void Test_EnterAndExitPowerMinigame_PlayerNotFound()
+    {
+        GameObject testObj = new GameObject("TestObj");
+        var script = testObj.AddComponent<EnterAndExitPowerMinigame>();
+        
+        // Tells Unity to intercept the expected Error log safely
+        LogAssert.Expect(LogType.Error, "EnterAndExitPowerMinigame: Player GameObject with tag 'Player' not found in the scene.");
+        
+        // Invoke via reflection to completely bypass the 'ShouldRunBehaviour' error
+        var method = typeof(EnterAndExitPowerMinigame).GetMethod("Start", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        method.Invoke(script, null);
+
+        Object.DestroyImmediate(testObj);
+    }
+
+    // --- TEST 3: SUCCESS ZONE BOUNDS ---
     [Test]
     public void Test_Indicator_Hit_Success()
     {
-        // Set position within success range [365, 435]
+        powerCell.indicator.anchoredPosition = new Vector2(400f, 0f);
+        powerCell.AttemptCalibration();
+        Assert.IsTrue(powerCell.isCalibrated);
+    }
+
+    // --- TEST 4: MIN RANGE MISS ---
+    [Test]
+    public void Test_Indicator_Miss_Failure_Low()
+    {
+        powerCell.indicator.anchoredPosition = new Vector2(360f, 0f);
+        powerCell.AttemptCalibration();
+        Assert.IsFalse(powerCell.isCalibrated);
+    }
+
+    // --- TEST 5: MAX RANGE MISS ---
+    [Test]
+    public void Test_Indicator_Miss_Failure_High()
+    {
+        powerCell.indicator.anchoredPosition = new Vector2(440f, 0f);
+        powerCell.AttemptCalibration();
+        Assert.IsFalse(powerCell.isCalibrated);
+    }
+
+    // --- TEST 6: SPEED AT ROUND 1 ---
+    [Test]
+    public void Test_PowerCell_Start_SetsSpeedAtRoundOne()
+    {
+        Global.round = 1;
+        var method = typeof(PowerCell).GetMethod("Start", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        method.Invoke(powerCell, null);
+        Assert.AreEqual(400f, powerCell.speed, "Speed should be 400 at round 1.");
+    }
+
+    // --- TEST 7: EXACT LOW BOUNDARY HIT ---
+    [Test]
+    public void Test_Indicator_ExactLowBoundary_Success()
+    {
+        powerCell.indicator.anchoredPosition = new Vector2(365f, 0f);
+        powerCell.AttemptCalibration();
+        Assert.IsTrue(powerCell.isCalibrated, "Exact low boundary (365) should count as calibrated.");
+    }
+
+    // --- TEST 8: EXACT HIGH BOUNDARY HIT ---
+    [Test]
+    public void Test_Indicator_ExactHighBoundary_Success()
+    {
+        powerCell.indicator.anchoredPosition = new Vector2(435f, 0f);
+        powerCell.AttemptCalibration();
+        Assert.IsTrue(powerCell.isCalibrated, "Exact high boundary (435) should count as calibrated.");
+    }
+
+    // --- TEST 9: NORMAL MOVEMENT RIGHT (no bounce) ---
+    [Test]
+    public void Test_PowerCell_Update_MovesRightBetweenBounds()
+    {
+        powerCell.speed = 500f;
         powerCell.indicator.anchoredPosition = new Vector2(400f, 0f);
 
-        // Act
-        powerCell.AttemptCalibration();
+        // movingRight defaults to true
+        var update = typeof(PowerCell).GetMethod("Update", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        update.Invoke(powerCell, null);
 
-        // Assert
-        Assert.IsTrue(powerCell.isCalibrated, "PowerCell should be calibrated when indicator is within [365, 435].");
+        Assert.Greater(powerCell.indicator.anchoredPosition.x, 400f, "Indicator should have moved right.");
     }
 
-    // --- TEST 2: INDICATOR MISS FAILURE ---
+    // --- TEST 10: NORMAL MOVEMENT LEFT (no bounce) ---
     [Test]
-    public void Test_Indicator_Miss_Failure()
+    public void Test_PowerCell_Update_MovesLeftBetweenBounds()
     {
-        // Set position outside success range
-        powerCell.indicator.anchoredPosition = new Vector2(200f, 0f);
+        powerCell.speed = 500f;
+        powerCell.indicator.anchoredPosition = new Vector2(400f, 0f);
 
-        // Act
-        powerCell.AttemptCalibration();
+        typeof(PowerCell).GetField("movingRight", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+            .SetValue(powerCell, false);
 
-        // Assert
-        Assert.IsFalse(powerCell.isCalibrated, "PowerCell should NOT be calibrated when indicator is outside bounds.");
+        var update = typeof(PowerCell).GetMethod("Update", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        update.Invoke(powerCell, null);
+
+        Assert.Less(powerCell.indicator.anchoredPosition.x, 400f, "Indicator should have moved left.");
     }
 
-    // --- TEST 3: MINIGAME WIN CONDITION ---
+    // --- TEST 11: START FOUND PLAYER + ENTERGAME/EXIT TOGGLE MOVEMENT ---
+    // In EditMode, SceneManager.LoadScene throws InvalidOperationException immediately.
+    // enabled is assigned BEFORE that throw in both methods, so we catch the exception
+    // and the movement state is still valid for assertion. The finally block guarantees
+    // playerObj is always destroyed so it cannot leak into Test_PlayerNotFound.
     [Test]
-    public void Test_Minigame_Win_Condition()
+    public void Test_EnterAndExitPowerMinigame_EnterExit_TogglesPlayerMovement()
     {
-        GameObject managerObject = new GameObject("GameManager");
-        PowerGameManager gameManager = managerObject.AddComponent<PowerGameManager>();
+        GameObject playerObj = new GameObject("TempPlayer");
+        playerObj.tag = "Player";
+        playerObj.AddComponent<Rigidbody2D>();
+        playerObj.AddComponent<Animator>();
+        playerObj.AddComponent<PlayerMovement2D>();
 
-        // Setup two cells for the manager
-        GameObject cellObj1 = new GameObject("Cell1");
-        GameObject cellObj2 = new GameObject("Cell2");
-        
-        PowerCell mockCell1 = cellObj1.AddComponent<PowerCell>();
-        PowerCell mockCell2 = cellObj2.AddComponent<PowerCell>();
+        GameObject scriptObj = new GameObject("MinigameScript");
+        var script = scriptObj.AddComponent<EnterAndExitPowerMinigame>();
 
-        // Add required components to both cells to survive calibration checks
-        mockCell1.indicator = new GameObject("Ind1", typeof(RectTransform)).GetComponent<RectTransform>();
-        mockCell1.targetZone = new GameObject("Tar1", typeof(RectTransform), typeof(Image)).GetComponent<RectTransform>();
-        
-        mockCell2.indicator = new GameObject("Ind2", typeof(RectTransform)).GetComponent<RectTransform>();
-        mockCell2.targetZone = new GameObject("Tar2", typeof(RectTransform), typeof(Image)).GetComponent<RectTransform>();
+        try
+        {
+            // Invoke Start() via reflection to exercise the "player found" branch
+            typeof(EnterAndExitPowerMinigame)
+                .GetMethod("Start", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+                .Invoke(script, null);
 
-        gameManager.allCells = new PowerCell[] { mockCell1, mockCell2 };
+            // Blank sceneName so Exit() attempts "" rather than "PowerRoom"
+            typeof(EnterAndExitPowerMinigame)
+                .GetField("sceneName", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+                ?.SetValue(script, "");
 
-        // Force positions to valid targets
-        mockCell1.indicator.anchoredPosition = new Vector2(400f, 0f);
-        mockCell2.indicator.anchoredPosition = new Vector2(400f, 0f);
+            // SceneManager.LoadScene throws in EditMode; catch it so the test continues.
+            // enabled = false/true is set before the throw, so assertions are still valid.
+            try { script.EnterMinigame(); } catch (System.Exception) { }
+            Assert.IsFalse(playerObj.GetComponent<PlayerMovement2D>().enabled, "Player movement should be disabled when entering the minigame.");
 
-        // Calibrate both cells
-        mockCell1.AttemptCalibration();
-        mockCell2.AttemptCalibration();
-
-        // Assert both are calibrated
-        Assert.IsTrue(mockCell1.isCalibrated && mockCell2.isCalibrated, "Both cells should be calibrated successfully.");
-        
-        Object.DestroyImmediate(managerObject);
-        Object.DestroyImmediate(cellObj1);
-        Object.DestroyImmediate(cellObj2);
-    }
-
-    // --- TEST 4: EXIT BUTTON SCENE LOADING ---
-    [Test]
-    public void Test_ExitPowerMinigame_MethodExecutes()
-    {
-        // Arrange
-        GameObject exitButtonObj = new GameObject("ExitButton");
-        string targetScene = "PowerRoom";
-        bool validationPass = false;
-
-        // Act & Assert
-        // We evaluate that the scene manager validation target paths are structurally sounds 
-        // without allowing standard runtime mode to trigger a physical asset load error.
-        Assert.DoesNotThrow(() => {
-            if (!Application.isPlaying)
-            {
-                Debug.Log($"[EditMode Test] Verified exit logic mapping targeting scene: {targetScene}");
-                validationPass = true;
-            }
-            else
-            {
-                UnityEngine.SceneManagement.SceneManager.LoadScene(targetScene);
-            }
-        }, "Scene transition routing processing encountered a problem.");
-
-        Assert.IsTrue(validationPass, "Exit verification handling routine failed to register.");
-
-        // Clean up
-        Object.DestroyImmediate(exitButtonObj);
+            try { script.Exit(); } catch (System.Exception) { }
+            Assert.IsTrue(playerObj.GetComponent<PlayerMovement2D>().enabled, "Player movement should be re-enabled when exiting.");
+        }
+        finally
+        {
+            Object.DestroyImmediate(scriptObj);
+            Object.DestroyImmediate(playerObj);
+        }
     }
 }
