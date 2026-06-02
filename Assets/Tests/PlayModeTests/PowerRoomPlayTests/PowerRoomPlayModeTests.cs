@@ -13,20 +13,35 @@ public class PowerRoomPlayModeTests
     [UnitySetUp]
     public IEnumerator UnitySetUp()
     {
+        // Reset score-related statics so CheckWin() never loads WinScene during tests.
+        // Global.totalScore accumulates across runs in the same Unity session; once it
+        // reaches 150 the real WinScene loads, its Global holds UI refs that become stale
+        // when the scene unloads, causing MissingReferenceException in every subsequent yield.
+        Global.totalScore = 0;
+        Global.hasWon = false;
         Global.currentRoom = "PowerRoom";
         Global.currentRoomCompleted = false;
         Global.round = 1;
 
-        // Create the player object and mark it persistent to survive scene changes
+        // Disable any live Global MonoBehaviour so its Update() cannot throw during
+        // test yields. Setting enabled = false is synchronous — it takes effect before
+        // the first yield and stays in effect for all test body and TearDown yields too,
+        // since nothing re-enables it between tests.
+        var globalInstance = Object.FindFirstObjectByType<Global>();
+        if (globalInstance != null)
+        {
+            globalInstance.enabled = false;
+        }
+
         playerObj = new GameObject("Player");
         playerObj.tag = "Player";
         Object.DontDestroyOnLoad(playerObj);
-        
+
         playerObj.AddComponent<Rigidbody2D>();
         playerObj.AddComponent<Animator>();
         playerObj.AddComponent<PlayerMovement2D>();
         playerCollider = playerObj.AddComponent<BoxCollider2D>();
-        
+
         yield return null;
     }
 
@@ -64,6 +79,11 @@ public class PowerRoomPlayModeTests
         cell.indicator.anchoredPosition = new Vector2(5f, 0f);
         cell.SendMessage("Update");
 
+        // Null the singleton so AttemptCalibration skips the audio call; the
+        // SoundFXManager audio path is covered by Test_PowerCell_Calibration_WithSoundFXManager.
+        // The game scene may have a SoundFXManager with soundFXObject unset (Inspector-only),
+        // which would crash Instantiate() if the instance check passed.
+        SoundFXManager.instance = null;
         cell.indicator.anchoredPosition = new Vector2(400f, 0f);
         cell.AttemptCalibration();
 
