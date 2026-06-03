@@ -107,6 +107,7 @@ Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/*.asset
 
 # Unity Code Coverage output
 CodeCoverage/
+ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json
 
 # Test result XML output
 TestResults*.xml

@@ -76,15 +76,15 @@ public class Global : MonoBehaviour
 
         if(CheckIfInMinigame())
         {
-            optionsButton.SetActive(false);
-            factCardButton.SetActive(false);
-            progressBar.SetActive(false);
+            if (optionsButton != null) optionsButton.SetActive(false);
+            if (factCardButton != null) factCardButton.SetActive(false);
+            if (progressBar != null) progressBar.SetActive(false);
         }
         else
         {
-            optionsButton.SetActive(true);
-            factCardButton.SetActive(true);
-            progressBar.SetActive(true);
+            if (optionsButton != null) optionsButton.SetActive(true);
+            if (factCardButton != null) factCardButton.SetActive(true);
+            if (progressBar != null) progressBar.SetActive(true);
         }
     }
     
@@ -407,7 +407,8 @@ public class Global : MonoBehaviour
     {
         timerStarted = false;
         targetTime = 20.0f;
-        timerText.GetComponent<TextMeshProUGUI>().text = "";
+        if (timerText != null)
+            timerText.GetComponent<TextMeshProUGUI>().text = "";
     }
 
     public static bool CheckIfInMinigame()
