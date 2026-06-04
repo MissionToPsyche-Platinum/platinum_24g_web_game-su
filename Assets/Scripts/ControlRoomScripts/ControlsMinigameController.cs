@@ -7,6 +7,9 @@ public class ControlsMinigameController : MonoBehaviour
     //minigame completion sound
     public AudioSource popupAudioSource;
     public AudioClip completionSound;
+    public AudioClip headingLockedSound;
+    public AudioClip thrustLockedSound;
+    public AudioClip burnWindowHoldSound;
 
     private struct ScoreResult
     {
@@ -295,6 +298,8 @@ public class ControlsMinigameController : MonoBehaviour
             mode = ControlMode.Thrust;
             UpdateModeText();
             waitingForRelease = true;
+            if (popupAudioSource != null && headingLockedSound != null)
+                popupAudioSource.PlayOneShot(headingLockedSound);
         }
     }
 
@@ -325,6 +330,8 @@ public class ControlsMinigameController : MonoBehaviour
             mode = ControlMode.CorrectionWindow;
             UpdateModeText();
             waitingForRelease = true;
+            if (popupAudioSource != null && thrustLockedSound != null)
+                popupAudioSource.PlayOneShot(thrustLockedSound);
         }
     }
 
@@ -342,6 +349,12 @@ public class ControlsMinigameController : MonoBehaviour
         {
             correctionWindowTiming = true;
             correctionWindowTimer = 0f;
+            if (popupAudioSource != null && burnWindowHoldSound != null)
+            {
+                popupAudioSource.clip = burnWindowHoldSound;
+                popupAudioSource.time = 1f;
+                popupAudioSource.Play();
+            }
         }
 
         if (correctionWindowTiming)
@@ -351,6 +364,8 @@ public class ControlsMinigameController : MonoBehaviour
             {
                 correctionWindowTiming = false;
                 currentCorrectionWindow = correctionWindowTimer;
+                if (popupAudioSource != null && popupAudioSource.clip == burnWindowHoldSound)
+                    popupAudioSource.Stop();
                 StartCoroutine(CourseCorrectionSequence());
                 waitingForRelease = true;
             }

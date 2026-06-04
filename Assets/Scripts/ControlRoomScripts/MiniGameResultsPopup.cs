@@ -13,7 +13,8 @@ public class MiniGameResultsPopup : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private GameObject popupRoot;
-    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text accuracyText;
+    [SerializeField] private TMP_Text totalScoreText;
     [SerializeField] private TMP_Text titleText;
     [SerializeField] private TMP_Text bodyText;
     [SerializeField] private Button returnButton;
@@ -47,11 +48,13 @@ public class MiniGameResultsPopup : MonoBehaviour
         allowReplayCurrentResult = allowReplay;
         currentResultScore = score;
 
-        if (scoreText != null)
-        {
-            int courseAccuracy = Mathf.Clamp(distance, 0, 100);
-            scoreText.text = $"Course Accuracy: {courseAccuracy}% | Score: {score}";
-        }
+        int courseAccuracy = Mathf.Clamp(distance, 0, 100);
+
+        if (accuracyText != null)
+            accuracyText.text = $"ACCURACY: {courseAccuracy}%";
+
+        if (totalScoreText != null)
+            totalScoreText.text = $"+{score} | TOTAL: {Global.totalScore}";
 
         UpdateStarImages(stars);
 
@@ -126,9 +129,9 @@ public class MiniGameResultsPopup : MonoBehaviour
 
     private void ValidateReferences()
     {
-        if (popupRoot == null || scoreText == null || titleText == null || bodyText == null || returnButton == null || replayButton == null || starImage1 == null || starImage2 == null || starImage3 == null)
+        if (popupRoot == null || titleText == null || bodyText == null || returnButton == null || replayButton == null || starImage1 == null || starImage2 == null || starImage3 == null)
         {
-            Debug.LogWarning("MiniGameResultsPopup: Assign popupRoot, scoreText, titleText, bodyText, returnButton, replayButton, and the three star images in the scene.");
+            Debug.LogWarning("MiniGameResultsPopup: Assign popupRoot, titleText, bodyText, returnButton, replayButton, and the three star images in the scene.");
         }
     }
 
