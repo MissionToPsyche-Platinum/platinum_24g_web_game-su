@@ -14,6 +14,7 @@ public class RepairCollisionController : MonoBehaviour
 
     private readonly int totalColliders = 34;
     private int reachedColliders = 0;
+    private bool minigameEnded = false;
 
     private void Start()
     {
@@ -33,6 +34,17 @@ public class RepairCollisionController : MonoBehaviour
 
     private void EndMinigame()
     {
+        if (minigameEnded) return;
+        minigameEnded = true;
+
+        WeldGunScript weldGun = FindFirstObjectByType<WeldGunScript>();
+        if (weldGun != null)
+        {
+            if (weldGun.weldSpark != null) weldGun.weldSpark.SetActive(false);
+            if (weldGun.torchAudioSource != null) weldGun.torchAudioSource.Stop();
+            weldGun.enabled = false;
+        }
+
         //completion sound
         if (popupAudioSource != null && completionSound != null)
             popupAudioSource.PlayOneShot(completionSound);
@@ -42,10 +54,16 @@ public class RepairCollisionController : MonoBehaviour
         Global.repairCollisionMinigamePlayed = true;
         Global.inTimeSensitiveMinigame = false;
 
+        PlayerMovement2D movement = player.GetComponent<PlayerMovement2D>();
+        Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+        if (movement != null) movement.enabled = false;
+        if (rb != null) rb.linearVelocity = Vector2.zero;
     }
 
     public void GoToMainHall()
     {
+        PlayerMovement2D movement = player.GetComponent<PlayerMovement2D>();
+        if (movement != null) movement.enabled = true;
         player.SetActive(true);
         //reenable footsteps audio once player is taken back to main hall
         AudioSource footstepSource = player.GetComponent<AudioSource>();

@@ -23,13 +23,9 @@ public class PlayerMovement2D : MonoBehaviour
         {
             footstepSource.enabled = true;
             footstepSource.volume = 0.3f;
-
-            if (footstepSource.clip != null)
-            {
-                footstepSource.Play();
-                footstepSource.Pause();
-            }
         }
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void Update()
@@ -98,6 +94,21 @@ public class PlayerMovement2D : MonoBehaviour
                sceneName == "WinScene" ||
                sceneName == "BeginningCutscene" ||
                sceneName == "Options";
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (footstepSource == null || footstepSource.clip == null) return;
+        if (!IsNonGameplayScene())
+        {
+            footstepSource.Play();
+            footstepSource.Pause();
+        }
     }
 
     private static Vector2 GetRawMovementInput()

@@ -3724,10 +3724,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popupAudioSource: {fileID: 1067271511}
-  openSound: {fileID: 8300000, guid: 548c21ce5bed4459ba17dc7f435aab7c, type: 3}
+  openSound: {fileID: 0}
   closeSound: {fileID: 8300000, guid: b527b7b745a97499c9253dfbd3262900, type: 3}
   popupRoot: {fileID: 1005922670}
-  scoreText: {fileID: 0}
   accuracyText: {fileID: 135828078}
   totalScoreText: {fileID: 644734090}
   titleText: {fileID: 2005508434}
@@ -4192,8 +4191,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: GameScripts::ControlsMinigameController
   popupAudioSource: {fileID: 1067271511}
   completionSound: {fileID: 8300000, guid: 4310feb76280142fbba23eacf92f25b2, type: 3}
-  headingLockedSound: {fileID: 8300000, guid: 5d72db8cb79814dcd8c2f5358c8dce49, type: 3}
-  thrustLockedSound: {fileID: 8300000, guid: 5d72db8cb79814dcd8c2f5358c8dce49, type: 3}
+  headingLockedSound: {fileID: 8300000, guid: a26d75f849bcd4c4d9702e1878f5c8b1, type: 3}
+  thrustLockedSound: {fileID: 8300000, guid: a26d75f849bcd4c4d9702e1878f5c8b1, type: 3}
   burnWindowHoldSound: {fileID: 8300000, guid: 06d6bb4ae750a4be6a8ad3bc598f3260, type: 3}
   targetGenerator: {fileID: 1067271508}
   headingVisual: {fileID: 1067271506}

@@ -1793,7 +1793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: GameScripts::IntroPopup
   popupUI: {fileID: 300645998}
   popupAudioSource: {fileID: 336504205}
-  openSound: {fileID: 8300000, guid: 548c21ce5bed4459ba17dc7f435aab7c, type: 3}
+  openSound: {fileID: 0}
   closeSound: {fileID: 8300000, guid: b527b7b745a97499c9253dfbd3262900, type: 3}
   dismissButton: {fileID: 1983539563}
 --- !u!1 &134098207
