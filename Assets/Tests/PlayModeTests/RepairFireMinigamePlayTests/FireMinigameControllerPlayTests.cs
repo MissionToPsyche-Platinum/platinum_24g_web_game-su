@@ -1,7 +1,6 @@
 using NUnit.Framework;
 using System.Collections;
 using System.Reflection;
-using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -30,11 +29,6 @@ public class FireMinigameControllerPlayTests
     [UnityTest]
     public IEnumerator EndMinigame_ActivatesPanelAndSetsGlobals()
     {
-        LogAssert.Expect(
-            LogType.Exception,
-            new Regex("MissingReferenceException")
-        );
-
         GameObject controllerObject = new GameObject("FireMinigameController");
 
         FireMinigameController controller =
@@ -56,18 +50,13 @@ public class FireMinigameControllerPlayTests
         Assert.IsTrue(Global.fireMinigamePlayed);
         Assert.IsFalse(Global.inTimeSensitiveMinigame);
 
-        Object.Destroy(controllerObject);
-        Object.Destroy(completedPanel);
+        Object.DestroyImmediate(controllerObject);
+        Object.DestroyImmediate(completedPanel);
     }
 
     [UnityTest]
     public IEnumerator FirePutOut_DecrementsFireCount()
     {
-        LogAssert.Expect(
-            LogType.Exception,
-            new Regex("MissingReferenceException")
-        );
-
         GameObject controllerObject = new GameObject("FireMinigameController");
 
         FireMinigameController controller =
@@ -83,17 +72,12 @@ public class FireMinigameControllerPlayTests
 
         Assert.AreEqual(2, firesLeft);
 
-        Object.Destroy(controllerObject);
+        Object.DestroyImmediate(controllerObject);
     }
 
     [UnityTest]
     public IEnumerator FirePutOut_LastFire_EndsMinigame()
     {
-        LogAssert.Expect(
-            LogType.Exception,
-            new Regex("MissingReferenceException")
-        );
-
         GameObject controllerObject = new GameObject("FireMinigameController");
 
         FireMinigameController controller =
@@ -112,18 +96,13 @@ public class FireMinigameControllerPlayTests
 
         Assert.IsTrue(completedPanel.activeSelf);
 
-        Object.Destroy(controllerObject);
-        Object.Destroy(completedPanel);
+        Object.DestroyImmediate(controllerObject);
+        Object.DestroyImmediate(completedPanel);
     }
 
     [UnityTest]
     public IEnumerator EndMinigame_WithNoPanel_StillSetsGlobals()
     {
-        LogAssert.Expect(
-            LogType.Exception,
-            new Regex("MissingReferenceException")
-        );
-
         GameObject controllerObject = new GameObject("FireMinigameController");
 
         FireMinigameController controller =
@@ -141,18 +120,14 @@ public class FireMinigameControllerPlayTests
         Assert.IsTrue(Global.fireMinigamePlayed);
         Assert.IsFalse(Global.inTimeSensitiveMinigame);
 
-        Object.Destroy(controllerObject);
+        Object.DestroyImmediate(controllerObject);
     }
-    [UnityTest]
 
+    [UnityTest]
     public IEnumerator FirePutOut_LastFire_SetsGlobals()
     {
-        LogAssert.Expect(
-            LogType.Exception,
-            new Regex("MissingReferenceException")
-    );
-
         GameObject controllerObject = new GameObject("FireMinigameController");
+
         FireMinigameController controller =
             controllerObject.AddComponent<FireMinigameController>();
 
@@ -171,7 +146,7 @@ public class FireMinigameControllerPlayTests
         Assert.IsTrue(Global.fireMinigamePlayed);
         Assert.IsFalse(Global.inTimeSensitiveMinigame);
 
-        Object.Destroy(controllerObject);
-        Object.Destroy(completedPanel);
+        Object.DestroyImmediate(controllerObject);
+        Object.DestroyImmediate(completedPanel);
     }
 }
