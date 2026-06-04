@@ -21,6 +21,7 @@ public class RevealFactCard : MonoBehaviour
         if (shown) return;
 
         shown = true;
+        Global.anyPanelOpen = true;
 
         if (completedPanel != null)
             completedPanel.SetActive(true);
@@ -36,6 +37,8 @@ public class RevealFactCard : MonoBehaviour
 
     public void Hide()
     {
+        Global.anyPanelOpen = false;
+
         if (completedPanel != null)
             completedPanel.SetActive(false);
 

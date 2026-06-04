@@ -61,7 +61,7 @@ public class PlayerMovement2D : MonoBehaviour
 
         if (footstepSource != null)
         {
-            if (isMoving)
+            if (isMoving && !Global.anyPanelOpen)
             {
                 if (!footstepSource.isPlaying)
                     footstepSource.UnPause();
@@ -94,6 +94,12 @@ public class PlayerMovement2D : MonoBehaviour
                sceneName == "WinScene" ||
                sceneName == "BeginningCutscene" ||
                sceneName == "Options";
+    }
+
+    private void OnDisable()
+    {
+        if (footstepSource != null && footstepSource.isPlaying)
+            footstepSource.Pause();
     }
 
     private void OnDestroy()

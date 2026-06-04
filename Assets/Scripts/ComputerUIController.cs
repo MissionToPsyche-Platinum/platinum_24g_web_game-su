@@ -7,10 +7,12 @@ public class ComputerUIController : MonoBehaviour
     public void OpenComputerScreen()
     {
         computerScreenPanel.SetActive(true);
+        Global.anyPanelOpen = true;
     }
 
     public void CloseComputerScreen()
     {
         computerScreenPanel.SetActive(false);
+        Global.anyPanelOpen = false;
     }
 }

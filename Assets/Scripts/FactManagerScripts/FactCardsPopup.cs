@@ -15,6 +15,7 @@ public class FactCardsPopup : MonoBehaviour
         {
             popupPanel.SetActive(true);
             isOpen = true;
+            Global.anyPanelOpen = true;
         }
     }
 
@@ -34,6 +35,7 @@ public class FactCardsPopup : MonoBehaviour
         }
 
         isOpen = false;
+        Global.anyPanelOpen = false;
     }
 
     private void EnsurePopup()

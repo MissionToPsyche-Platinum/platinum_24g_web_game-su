@@ -23,6 +23,7 @@ public class RoomContextPopup : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 myPopupUI.SetActive(false);
+                Global.anyPanelOpen = false;
                 popupAudioSource.PlayOneShot(closeSound);
             }
         }
@@ -34,6 +35,7 @@ public class RoomContextPopup : MonoBehaviour
         {
             isPlayerInZone = true;
             myPopupUI.SetActive(true);
+            Global.anyPanelOpen = true;
             popupAudioSource.PlayOneShot(openSound);
         }
     }
@@ -44,6 +46,7 @@ public class RoomContextPopup : MonoBehaviour
         {
             isPlayerInZone = false;
             myPopupUI.SetActive(false);
+            Global.anyPanelOpen = false;
             popupAudioSource.PlayOneShot(closeSound);
         }
     }

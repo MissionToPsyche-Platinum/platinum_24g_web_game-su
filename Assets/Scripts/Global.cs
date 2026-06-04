@@ -53,6 +53,7 @@ public class Global : MonoBehaviour
 
     public static bool tutorialShown = false;
     public static bool introPopupShown = false;
+    public static bool anyPanelOpen = false;
 
     public GameObject optionsButton;
     public GameObject factCardButton;
@@ -296,6 +297,8 @@ public class Global : MonoBehaviour
 
         showRepairPopup = true;
         showFirePopup = true;
+
+        anyPanelOpen = false;
 
         if (FactSystem.Instance != null)
             FactSystem.Instance.ResetFacts();
