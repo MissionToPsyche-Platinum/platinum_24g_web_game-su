@@ -43,9 +43,9 @@ public class SpillCleanPlayTests
             Object.Destroy(_broomObject);
     }
 
-    T GetPrivateField<T>(object instance, string fieldName)
+    private T GetPrivateField<T>(object instance, string fieldName)
     {
-        var fi = instance.GetType().GetField(
+        FieldInfo fi = instance.GetType().GetField(
             fieldName,
             BindingFlags.Instance | BindingFlags.NonPublic
         );
@@ -53,44 +53,156 @@ public class SpillCleanPlayTests
         return (T)fi.GetValue(instance);
     }
 
+    private void SetPrivateField(object instance, string fieldName, object value)
+    {
+        FieldInfo fi = instance.GetType().GetField(
+            fieldName,
+            BindingFlags.Instance | BindingFlags.NonPublic
+        );
+
+        fi.SetValue(instance, value);
+    }
+
+    private void CallPrivateMethod(object instance, string methodName, object[] parameters)
+    {
+        MethodInfo method = instance.GetType().GetMethod(
+            methodName,
+            BindingFlags.Instance | BindingFlags.NonPublic
+        );
+
+        method.Invoke(instance, parameters);
+    }
+
     [UnityTest]
     public IEnumerator Spill_IsNotCleaned_WithoutBroomHeld()
     {
-        //Arrange
         _broomPickup.isHoldingBroom = false;
 
         _spillObject.transform.position = Vector2.zero;
         _broomObject.transform.position = Vector2.zero;
 
-        //Act
         yield return new WaitForFixedUpdate();
 
-        //Assert
         bool cleaned = GetPrivateField<bool>(_spillComponent, "cleaned");
 
-        Assert.IsFalse(cleaned,
-            "Spill should not be cleaned if broom is not being held");
+        Assert.IsFalse(
+            cleaned,
+            "Spill should not be cleaned if broom is not being held"
+        );
     }
 
     [UnityTest]
     public IEnumerator Spill_IsCleaned_WhenBroomTouchesIt()
-    {   
-    // Arrange
-    _broomPickup.isHoldingBroom = true;
+    {
+        _broomPickup.isHoldingBroom = true;
 
-    _spillObject.transform.position = Vector2.zero;
-    _broomObject.transform.position = new Vector2(5f, 0f);
+        _spillObject.transform.position = Vector2.zero;
+        _broomObject.transform.position = new Vector2(5f, 0f);
 
-    yield return new WaitForFixedUpdate();
+        yield return new WaitForFixedUpdate();
 
-    // Act
-    _broomObject.transform.position = Vector2.zero;
+        _broomObject.transform.position = Vector2.zero;
 
-    yield return new WaitForFixedUpdate();
-    yield return null; //allow Destroy() to complete
+        yield return new WaitForFixedUpdate();
+        yield return null;
 
-    // Assert
-    Assert.IsTrue(_spillObject == null || !_spillObject,
-        "Spill object should be destroyed after cleaning");
+        Assert.IsTrue(
+            _spillObject == null || !_spillObject,
+            "Spill object should be destroyed after cleaning"
+        );
+    }
+
+    [Test]
+    public void OnTriggerEnter_WithWrongTag_DoesNotClean()
+    {
+        GameObject otherObj = new GameObject("NotBroom");
+        otherObj.tag = "Untagged";
+
+        BoxCollider2D collider = otherObj.AddComponent<BoxCollider2D>();
+
+        CallPrivateMethod(
+            _spillComponent,
+            "OnTriggerEnter2D",
+            new object[] { collider }
+        );
+
+        Assert.IsFalse(GetPrivateField<bool>(_spillComponent, "cleaned"));
+
+        Object.DestroyImmediate(otherObj);
+    }
+
+    [Test]
+    public void OnTriggerEnter_WithBroomTagButNoBroomPickup_DoesNotClean()
+    {
+        GameObject fakeBroom = new GameObject("FakeBroom");
+        fakeBroom.tag = "Broom";
+
+        BoxCollider2D collider = fakeBroom.AddComponent<BoxCollider2D>();
+
+        CallPrivateMethod(
+            _spillComponent,
+            "OnTriggerEnter2D",
+            new object[] { collider }
+        );
+
+        Assert.IsFalse(GetPrivateField<bool>(_spillComponent, "cleaned"));
+
+        Object.DestroyImmediate(fakeBroom);
+    }
+
+    [Test]
+    public void OnTriggerEnter_WhenAlreadyCleaned_DoesNothing()
+    {
+        SetPrivateField(_spillComponent, "cleaned", true);
+
+        _broomPickup.isHoldingBroom = true;
+
+        BoxCollider2D collider = _broomObject.GetComponent<BoxCollider2D>();
+
+        Assert.DoesNotThrow(() =>
+            CallPrivateMethod(
+                _spillComponent,
+                "OnTriggerEnter2D",
+                new object[] { collider }
+            )
+        );
+
+        Assert.IsTrue(GetPrivateField<bool>(_spillComponent, "cleaned"));
+    }
+
+    [UnityTest]
+    public IEnumerator OnTriggerEnter_WithHeldBroom_SetsCleanedTrue()
+    {
+        _broomPickup.isHoldingBroom = true;
+
+        BoxCollider2D collider = _broomObject.GetComponent<BoxCollider2D>();
+
+        CallPrivateMethod(
+            _spillComponent,
+            "OnTriggerEnter2D",
+            new object[] { collider }
+        );
+
+        yield return null;
+
+        Assert.IsTrue(
+            GetPrivateField<bool>(_spillComponent, "cleaned")
+        );
+    }
+
+    [Test]
+    public void OnTriggerEnter_WithNullSpillManager_DoesNotThrow()
+    {
+        _broomPickup.isHoldingBroom = true;
+
+        BoxCollider2D collider = _broomObject.GetComponent<BoxCollider2D>();
+
+        Assert.DoesNotThrow(() =>
+            CallPrivateMethod(
+                _spillComponent,
+                "OnTriggerEnter2D",
+                new object[] { collider }
+            )
+        );
     }
 }
