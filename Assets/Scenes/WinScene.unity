@@ -1340,7 +1340,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1327659279}
         m_TargetAssemblyTypeName: ChangeScene, GameScripts
-        m_MethodName: goToStartScene
+        m_MethodName: goToCreditScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
