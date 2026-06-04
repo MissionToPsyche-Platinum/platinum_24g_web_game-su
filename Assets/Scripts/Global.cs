@@ -52,6 +52,7 @@ public class Global : MonoBehaviour
     public static string playerRoomTracker = "StartMenu";
 
     public static bool tutorialShown = false;
+    public static bool introPopupShown = false;
 
     public GameObject optionsButton;
     public GameObject factCardButton;
@@ -74,7 +75,7 @@ public class Global : MonoBehaviour
         RepairCollisionController();
         FireEmergencyController();
 
-        if(CheckIfInMinigame())
+        if(CheckIfInMinigame() || IntroPopup.isPopupOpen)
         {
             if (optionsButton != null) optionsButton.SetActive(false);
             if (factCardButton != null) factCardButton.SetActive(false);

@@ -1003,7 +1003,7 @@ GameObject:
   - component: {fileID: 215252604}
   - component: {fileID: 215252603}
   m_Layer: 0
-  m_Name: Screenshot_2026-05-28_at_4.33.54_PM-removebg-preview_0
+  m_Name: GrayBarrel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1121,12 +1121,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215252602}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.42, y: 2.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 463870238}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &228700258
 GameObject:
@@ -2011,6 +2011,14 @@ Transform:
   - {fileID: 542561446}
   - {fileID: 1810804999}
   - {fileID: 1079476691}
+  - {fileID: 215252605}
+  - {fileID: 1292905083}
+  - {fileID: 1573513044}
+  - {fileID: 927016699}
+  - {fileID: 612321379}
+  - {fileID: 923704063}
+  - {fileID: 2001822906}
+  - {fileID: 1172892045}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &542561445
@@ -2557,7 +2565,7 @@ GameObject:
   - component: {fileID: 612321379}
   - component: {fileID: 612321378}
   m_Layer: 0
-  m_Name: tileset_sf_116
+  m_Name: Light1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2629,12 +2637,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 612321377}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.54, y: -0.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 463870238}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &651342423
 GameObject:
@@ -2917,7 +2925,7 @@ GameObject:
   - component: {fileID: 923704063}
   - component: {fileID: 923704062}
   m_Layer: 0
-  m_Name: tileset_sf_115
+  m_Name: Light2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2989,12 +2997,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 923704061}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.54, y: 0.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 463870238}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &923951541
 GameObject:
@@ -3224,7 +3232,7 @@ GameObject:
   - component: {fileID: 927016698}
   - component: {fileID: 927016700}
   m_Layer: 0
-  m_Name: Screenshot_2026-05-28_at_4.33.58_PM-removebg-preview_0
+  m_Name: BlueBarrel2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3296,12 +3304,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 927016697}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.42, y: -1.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 463870238}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &927016700
 BoxCollider2D:
@@ -4819,7 +4827,7 @@ GameObject:
   - component: {fileID: 1172892044}
   - component: {fileID: 1172892043}
   m_Layer: 0
-  m_Name: Screenshot_2026-05-28_at_4.22.49_PM-removebg-preview_0
+  m_Name: ComputerStand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4937,12 +4945,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1172892042}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.59, y: -2.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 463870238}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1202091862
 GameObject:
@@ -5136,7 +5144,7 @@ GameObject:
   - component: {fileID: 1292905082}
   - component: {fileID: 1292905081}
   m_Layer: 0
-  m_Name: Screenshot_2026-05-28_at_4.33.54_PM-removebg-preview_0 (1)
+  m_Name: GrayBarrel2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5254,12 +5262,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1292905080}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.42, y: -2.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 463870238}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1382885201
 GameObject:
@@ -6911,7 +6919,7 @@ GameObject:
   - component: {fileID: 1573513043}
   - component: {fileID: 1573513045}
   m_Layer: 0
-  m_Name: Screenshot_2026-05-28_at_4.33.58_PM-removebg-preview_0 (1)
+  m_Name: BlueBarrel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6983,12 +6991,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573513042}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.42, y: 1.86, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.42, y: 1.8600001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 463870238}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1573513045
 BoxCollider2D:
@@ -8293,7 +8301,7 @@ GameObject:
   - component: {fileID: 2001822905}
   - component: {fileID: 2001822904}
   m_Layer: 0
-  m_Name: tile005_0
+  m_Name: ControlPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8416,7 +8424,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 463870238}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2011003560
 GameObject:
@@ -9716,11 +9724,3 @@ SceneRoots:
   - {fileID: 1100181367}
   - {fileID: 2066499878}
   - {fileID: 575950675}
-  - {fileID: 2001822906}
-  - {fileID: 1172892045}
-  - {fileID: 215252605}
-  - {fileID: 1292905083}
-  - {fileID: 927016699}
-  - {fileID: 1573513044}
-  - {fileID: 612321379}
-  - {fileID: 923704063}

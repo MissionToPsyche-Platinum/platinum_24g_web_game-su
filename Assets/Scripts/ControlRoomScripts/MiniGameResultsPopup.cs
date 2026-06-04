@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -5,6 +6,11 @@ using TMPro;
 
 public class MiniGameResultsPopup : MonoBehaviour
 {
+    [Header("Audio")]
+    [SerializeField] private AudioSource popupAudioSource;
+    [SerializeField] private AudioClip openSound;
+    [SerializeField] private AudioClip closeSound;
+
     [Header("UI")]
     [SerializeField] private GameObject popupRoot;
     [SerializeField] private TMP_Text scoreText;
@@ -65,6 +71,8 @@ public class MiniGameResultsPopup : MonoBehaviour
         if (popupRoot != null)
         {
             popupRoot.SetActive(true);
+            if (popupAudioSource != null && openSound != null)
+                popupAudioSource.PlayOneShot(openSound);
         }
     }
 
@@ -73,6 +81,8 @@ public class MiniGameResultsPopup : MonoBehaviour
         if (popupRoot != null)
         {
             popupRoot.SetActive(false);
+            if (popupAudioSource != null && closeSound != null)
+                popupAudioSource.PlayOneShot(closeSound);
         }
     }
 
@@ -133,7 +143,7 @@ public class MiniGameResultsPopup : MonoBehaviour
         {
             returnButton.onClick.AddListener(() =>
             {
-                SceneManager.LoadScene("ControlRoom", LoadSceneMode.Single);
+                StartCoroutine(LoadSceneAfterSound("ControlRoom"));
             });
         }
 
@@ -143,6 +153,16 @@ public class MiniGameResultsPopup : MonoBehaviour
         }
 
         listenersBound = true;
+    }
+
+    private IEnumerator LoadSceneAfterSound(string sceneName)
+    {
+        if (popupAudioSource != null && closeSound != null)
+        {
+            popupAudioSource.PlayOneShot(closeSound);
+            yield return new WaitForSeconds(0.15f);
+        }
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 
     private void ReplayCurrentScene()

@@ -3606,6 +3606,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4a72262c9044d2bedebb41f795d25e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  popupAudioSource: {fileID: 1067271511}
+  openSound: {fileID: 8300000, guid: 548c21ce5bed4459ba17dc7f435aab7c, type: 3}
+  closeSound: {fileID: 8300000, guid: b527b7b745a97499c9253dfbd3262900, type: 3}
   popupRoot: {fileID: 1005922670}
   scoreText: {fileID: 1969198956}
   titleText: {fileID: 2005508434}
