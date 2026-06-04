@@ -10,7 +10,25 @@ public class ChangeScene : MonoBehaviour
 
     public void goToStartScene()
     {
-        Global.ResetGameState();
+        Debug.Log("GOING TO START MENU / RESETTING GAME");
+    
+
+        Global global = FindFirstObjectByType<Global>();
+
+        if (global != null)
+        {
+            Global.ResetGameState();
+            Destroy(global.gameObject);
+        }   
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+            Destroy(player);
+
+        FactSystem factSystem = FindFirstObjectByType<FactSystem>();
+        if (factSystem != null)
+            Destroy(factSystem.gameObject);
+
         SceneManager.LoadScene("StartMenu");
     }
 
@@ -21,6 +39,11 @@ public class ChangeScene : MonoBehaviour
 
     public void goToMainHallScene()
     {
+        Debug.Log("STARTING NEW GAME FROM goToMainHallScene()");
+        Debug.Log("Round entering MainHall = " + Global.round);
+        
+       
+
         BroomPickup[] brooms = FindObjectsByType<BroomPickup>(
             FindObjectsSortMode.None
         );
@@ -30,7 +53,7 @@ public class ChangeScene : MonoBehaviour
             Destroy(broom.gameObject);
         }
 
-    Transform player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        Transform player = GameObject.FindGameObjectWithTag("Player")?.transform;
 
         if (player != null)
         {
@@ -53,8 +76,14 @@ public class ChangeScene : MonoBehaviour
         SceneManager.LoadScene("BeginningCutscene");
     }
 
-    public void goToCutsceneOrMainHall() 
-    {         
+   public void goToCutsceneOrMainHall() 
+    {
+        Debug.Log("STARTING NEW GAME FROM goToCutsceneOrMainHall()");
+
+        Global.ResetGameState();
+
+        Debug.Log("Round AFTER reset = " + Global.round);
+
         if (Global.tutorialShown)
         {
             goToMainHallScene();
