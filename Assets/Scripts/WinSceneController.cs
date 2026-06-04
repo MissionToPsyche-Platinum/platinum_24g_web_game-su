@@ -8,6 +8,6 @@ public class WinSceneController : MonoBehaviour
     private void Start()
     {
         if (audioSource != null && openSound != null)
-            audioSource.PlayOneShot(openSound, 0.5f);
+            audioSource.PlayOneShot(openSound, 0.3f);
     }
 }
