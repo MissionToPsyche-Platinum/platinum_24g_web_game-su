@@ -275,12 +275,30 @@ public class Global : MonoBehaviour
         }
     }
 
+    //resets gameplay state between playthroughs
+    //only resets values that should start fresh each new game
     public static void ResetGameState()
     {
         totalScore = 0;
         hasWon = false;
+
+        round = 1;
+
         lastAwardedFactText = "";
         hasExtinguisher = false;
+
+        targetTime = 15f;
+        timerStarted = false;
+        inTimeSensitiveMinigame = false;
+
+        repairCollisionMinigamePlayed = false;
+        fireMinigamePlayed = false;
+
+        showRepairPopup = true;
+        showFirePopup = true;
+
+        if (FactSystem.Instance != null)
+            FactSystem.Instance.ResetFacts();
     }
 
     public static void MinigameWin()
