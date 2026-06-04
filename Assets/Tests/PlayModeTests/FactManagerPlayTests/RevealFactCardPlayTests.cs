@@ -196,6 +196,41 @@ public class RevealFactCardPlayTests
     }
 
     [UnityTest]
+    public IEnumerator ShowLastAwardedFact_SetsAnyPanelOpen()
+    {
+        Global.anyPanelOpen = false;
+        Global.lastAwardedFactText = "Test fact";
+
+        GameObject obj = new GameObject("RevealFactCard");
+        RevealFactCard reveal = obj.AddComponent<RevealFactCard>();
+        reveal.completedPanel = new GameObject("Panel");
+
+        reveal.ShowLastAwardedFact();
+        yield return null;
+
+        Assert.IsTrue(Global.anyPanelOpen);
+
+        Object.Destroy(obj);
+        Object.Destroy(reveal.completedPanel);
+    }
+
+    [UnityTest]
+    public IEnumerator Hide_ClearsAnyPanelOpen()
+    {
+        Global.anyPanelOpen = true;
+
+        GameObject obj = new GameObject("RevealFactCard");
+        RevealFactCard reveal = obj.AddComponent<RevealFactCard>();
+
+        reveal.Hide();
+        yield return null;
+
+        Assert.IsFalse(Global.anyPanelOpen);
+
+        Object.Destroy(obj);
+    }
+
+    [UnityTest]
     public IEnumerator Hide_ClearsSelectedUI()
     {
         GameObject eventObj = new GameObject("EventSystem");

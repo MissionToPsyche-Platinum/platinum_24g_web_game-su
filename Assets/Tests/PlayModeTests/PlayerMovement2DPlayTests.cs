@@ -8,6 +8,57 @@ using UnityEngine.TestTools;
 public class PlayerMovement2DPlayTests
 {
     [UnityTest]
+    public IEnumerator PlayerMovement2D_OnDisable_PausesPlayingFootsteps()
+    {
+        GameObject playerObj = new GameObject("Player");
+        playerObj.tag = "Player";
+        playerObj.SetActive(false);
+        playerObj.AddComponent<Animator>();
+        playerObj.AddComponent<Rigidbody2D>();
+        AudioSource audioSource = playerObj.AddComponent<AudioSource>();
+        AudioClip clip = AudioClip.Create("Footstep", 44100, 1, 44100, false);
+        audioSource.clip = clip;
+        PlayerMovement2D movement = playerObj.AddComponent<PlayerMovement2D>();
+        playerObj.SetActive(true);
+
+        yield return null;
+
+        audioSource.Play();
+        Assert.That(audioSource.isPlaying, Is.True, "AudioSource should be playing before disable");
+
+        movement.enabled = false;
+        yield return null;
+
+        Assert.That(audioSource.isPlaying, Is.False, "Footstep should be paused after OnDisable");
+
+        Object.Destroy(playerObj);
+        Object.Destroy(clip);
+    }
+
+    [UnityTest]
+    public IEnumerator PlayerMovement2D_OnDisable_WhenNotPlaying_DoesNotThrow()
+    {
+        GameObject playerObj = new GameObject("Player");
+        playerObj.tag = "Player";
+        playerObj.SetActive(false);
+        playerObj.AddComponent<Animator>();
+        playerObj.AddComponent<Rigidbody2D>();
+        playerObj.AddComponent<AudioSource>();
+        PlayerMovement2D movement = playerObj.AddComponent<PlayerMovement2D>();
+        playerObj.SetActive(true);
+
+        yield return null;
+
+        movement.enabled = false;
+        yield return null;
+
+        Assert.Pass("No exception thrown when disabling with non-playing footstep source");
+
+        Object.Destroy(playerObj);
+    }
+
+
+    [UnityTest]
     public IEnumerator PlayerMovement2D_FootstepSource_InitializesWithCorrectVolume()
     {
         GameObject playerObj = new GameObject("Player");

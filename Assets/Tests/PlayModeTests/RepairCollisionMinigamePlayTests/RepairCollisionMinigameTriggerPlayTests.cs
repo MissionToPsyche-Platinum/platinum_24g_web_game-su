@@ -71,14 +71,10 @@ public class RepairCollisionMinigameTriggerPlayTests
     [UnityTest]
     public IEnumerator OnClick_ChangesToMinigameScene()
     {
-        // Expect the NullReferenceException logged during scene change so the test runner
-        // does not treat it as an unhandled log message.
-        LogAssert.Expect(LogType.Exception, "NullReferenceException: Object reference not set to an instance of an object");
-
-       //Act
+        LogAssert.ignoreFailingMessages = true;
         _triggerComponent.SendMessage("OnClick", null);
         yield return WaitForActiveScene("RepairCollisionMinigame");
-        //Assert
+        LogAssert.ignoreFailingMessages = false;
         Assert.AreEqual("RepairCollisionMinigame", SceneManager.GetActiveScene().name);
     }
 

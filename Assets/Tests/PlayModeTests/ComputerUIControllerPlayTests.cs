@@ -65,6 +65,42 @@ public class ComputerUIControllerPlayTests
         Object.Destroy(panel);
     }
 
+    [UnityTest]
+    public IEnumerator OpenComputerScreen_SetsAnyPanelOpen()
+    {
+        Global.anyPanelOpen = false;
+        GameObject obj = new GameObject("ComputerUIController");
+        ComputerUIController controller = obj.AddComponent<ComputerUIController>();
+        GameObject panel = new GameObject("ComputerScreenPanel");
+        SetPrivateField(controller, "computerScreenPanel", panel);
+
+        controller.OpenComputerScreen();
+        yield return null;
+
+        Assert.IsTrue(Global.anyPanelOpen);
+
+        Object.Destroy(obj);
+        Object.Destroy(panel);
+    }
+
+    [UnityTest]
+    public IEnumerator CloseComputerScreen_ClearsAnyPanelOpen()
+    {
+        Global.anyPanelOpen = true;
+        GameObject obj = new GameObject("ComputerUIController");
+        ComputerUIController controller = obj.AddComponent<ComputerUIController>();
+        GameObject panel = new GameObject("ComputerScreenPanel");
+        SetPrivateField(controller, "computerScreenPanel", panel);
+
+        controller.CloseComputerScreen();
+        yield return null;
+
+        Assert.IsFalse(Global.anyPanelOpen);
+
+        Object.Destroy(obj);
+        Object.Destroy(panel);
+    }
+
     private static void SetPrivateField(object instance, string fieldName, object value)
     {
         System.Reflection.FieldInfo field = instance.GetType().GetField(

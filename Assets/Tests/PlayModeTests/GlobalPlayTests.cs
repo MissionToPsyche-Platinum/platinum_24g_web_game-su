@@ -244,4 +244,37 @@ public class GlobalPlayTests
         // After TimerEnded, targetTime should be reset to 15 by StopTimer
         Assert.AreEqual(15.0f, Global.targetTime);
     }
+
+    [Test]
+    public void ResetGameState_ClearsAnyPanelOpen()
+    {
+        Global.anyPanelOpen = true;
+        Global.ResetGameState();
+        Assert.IsFalse(Global.anyPanelOpen);
+    }
+
+    [Test]
+    public void ResetGameState_CallsFactSystemReset_WhenInstanceExists()
+    {
+        var factObj = CreateGameObject("FactSystem");
+        FactSystem factSystem = factObj.AddComponent<FactSystem>();
+
+        var instanceProp = typeof(FactSystem).GetProperty("Instance",
+            BindingFlags.Public | BindingFlags.Static);
+        instanceProp.SetValue(null, factSystem);
+
+        // directly populate collectedFactIds since Start doesn't run in edit mode
+        var collectedField = typeof(FactSystem).GetField("collectedFactIds",
+            BindingFlags.Instance | BindingFlags.NonPublic);
+        var set = (System.Collections.Generic.HashSet<int>)collectedField.GetValue(factSystem);
+        set.Add(0);
+        set.Add(1);
+        Assert.AreEqual(2, factSystem.CollectedCount);
+
+        Global.ResetGameState();
+
+        Assert.AreEqual(0, factSystem.CollectedCount, "ResetGameState should clear fact bank");
+
+        instanceProp.SetValue(null, null);
+    }
 }

@@ -117,6 +117,44 @@ public class FactCardsPopupPlayTests
     }
 
     [UnityTest]
+    public IEnumerator ShowFactCards_SetsAnyPanelOpen()
+    {
+        Global.anyPanelOpen = false;
+        GameObject canvasObject = new GameObject("Canvas");
+        canvasObject.AddComponent<Canvas>();
+        GameObject popupObject = new GameObject("FactCardsPopup");
+        FactCardsPopup popup = popupObject.AddComponent<FactCardsPopup>();
+
+        popup.ShowFactCards();
+        yield return null;
+
+        Assert.IsTrue(Global.anyPanelOpen);
+
+        Object.Destroy(popupObject);
+        Object.Destroy(canvasObject);
+    }
+
+    [UnityTest]
+    public IEnumerator ClosePopup_ClearsAnyPanelOpen()
+    {
+        Global.anyPanelOpen = true;
+        GameObject canvasObject = new GameObject("Canvas");
+        canvasObject.AddComponent<Canvas>();
+        GameObject popupObject = new GameObject("FactCardsPopup");
+        FactCardsPopup popup = popupObject.AddComponent<FactCardsPopup>();
+
+        popup.ShowFactCards();
+        yield return null;
+        CallPrivateMethod(popup, "ClosePopup");
+        yield return null;
+
+        Assert.IsFalse(Global.anyPanelOpen);
+
+        Object.Destroy(popupObject);
+        Object.Destroy(canvasObject);
+    }
+
+    [UnityTest]
     public IEnumerator ShowFactCards_WhenPopupAlreadyExists_ReusesSamePopup()
     {
         GameObject canvasObject = new GameObject("Canvas");
