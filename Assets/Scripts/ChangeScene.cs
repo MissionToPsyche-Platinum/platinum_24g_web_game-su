@@ -21,6 +21,30 @@ public class ChangeScene : MonoBehaviour
 
     public void goToMainHallScene()
     {
+        BroomPickup[] brooms = FindObjectsByType<BroomPickup>(
+            FindObjectsSortMode.None
+        );
+
+        foreach (BroomPickup broom in brooms)
+        {
+            Destroy(broom.gameObject);
+        }
+
+    Transform player = GameObject.FindGameObjectWithTag("Player")?.transform;
+
+        if (player != null)
+        {
+            Transform broomHoldPoint = player.Find("BroomHoldPoint");
+
+            if (broomHoldPoint != null)
+            {
+                foreach (Transform child in broomHoldPoint)
+                {
+                    Destroy(child.gameObject);
+                }
+            }
+        }
+
         SceneManager.LoadScene("MainHall");
     }
 
