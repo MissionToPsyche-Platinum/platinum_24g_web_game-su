@@ -20,6 +20,7 @@ public class FactCardsPopupUI : MonoBehaviour
     public AudioSource popupAudioSource;
     public AudioClip openSound;
     public AudioClip closeSound;
+    private static float ignoreInputUntil = 0f;
 
     public bool IsOpen { get; private set; }
 
@@ -52,6 +53,9 @@ public class FactCardsPopupUI : MonoBehaviour
 
     public void Open()
     {
+        if (Time.time < ignoreInputUntil)
+            return;
+
         if (popupPanel == null)
         {
             Debug.LogWarning("popupPanel is NULL (assign it on UIManager)");
@@ -75,6 +79,8 @@ public class FactCardsPopupUI : MonoBehaviour
 
     public void Close()
     {
+        ignoreInputUntil = Time.time + 0.25f;
+
         if (popupAudioSource != null && closeSound != null)
         {
             popupAudioSource.PlayOneShot(closeSound);

@@ -4302,8 +4302,8 @@ MonoBehaviour:
   closeKey1: 27
   closeKey2: 101
   freezePlayerWhileOpen: 1
-  playerMovement: {fileID: 0}
-  playerRigidbody: {fileID: 0}
+  playerMovement: {fileID: 1941606480}
+  playerRigidbody: {fileID: 1941606479}
   contentRectTransform: {fileID: 1088938332}
   scrollRect: {fileID: 188626415}
   popupAudioSource: {fileID: 1480451037}
@@ -5709,6 +5709,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7707962121498541723, guid: cddd84281912e1d47b04d59e59a8fa68, type: 3}
   m_PrefabInstance: {fileID: 1941606477}
   m_PrefabAsset: {fileID: 0}
+--- !u!50 &1941606479 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 3328838983355693264, guid: cddd84281912e1d47b04d59e59a8fa68, type: 3}
+  m_PrefabInstance: {fileID: 1941606477}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1941606480 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2344978111904894994, guid: cddd84281912e1d47b04d59e59a8fa68, type: 3}
+  m_PrefabInstance: {fileID: 1941606477}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ab86d4d7c3e4f18bd12e06a63d2624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement2D
 --- !u!1 &1946168604
 GameObject:
   m_ObjectHideFlags: 0
