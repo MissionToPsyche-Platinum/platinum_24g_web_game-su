@@ -9,6 +9,11 @@ public class ControlRoomControllerPlayTests
     [UnityTest]
     public IEnumerator Start_EnablesPlayerMovement()
     {
+        // destroy any DDOL player from previous tests
+        foreach (var p in Object.FindObjectsByType<PlayerMovement2D>(FindObjectsSortMode.None))
+            Object.Destroy(p.gameObject);
+        yield return null;
+
         GameObject playerObj = new GameObject("Player");
         playerObj.tag = "Player";
         playerObj.SetActive(false);
@@ -33,6 +38,10 @@ public class ControlRoomControllerPlayTests
     [UnityTest]
     public IEnumerator Start_ZerosPlayerVelocity()
     {
+        foreach (var p in Object.FindObjectsByType<PlayerMovement2D>(FindObjectsSortMode.None))
+            Object.Destroy(p.gameObject);
+        yield return null;
+
         GameObject playerObj = new GameObject("Player");
         playerObj.tag = "Player";
         playerObj.SetActive(false);
