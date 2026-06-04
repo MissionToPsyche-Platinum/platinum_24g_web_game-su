@@ -4039,9 +4039,9 @@ MonoBehaviour:
   bodyText: {fileID: 1912038982}
   returnButton: {fileID: 1364346794}
   replayButton: {fileID: 1095487588}
-  starImage1: {fileID: 0}
-  starImage2: {fileID: 0}
-  starImage3: {fileID: 0}
+  starImage1: {fileID: 652513201}
+  starImage2: {fileID: 216885888}
+  starImage3: {fileID: 382038098}
 --- !u!114 &1005922673
 MonoBehaviour:
   m_ObjectHideFlags: 0
