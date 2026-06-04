@@ -1,70 +1,75 @@
 using NUnit.Framework;
 using System.Collections;
+using System.Reflection;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.TestTools;
 using UnityEngine.UI;
 
 public class FactCardsPopupUIPlayTests
 {
+    private static void ResetCooldown()
+    {
+        FieldInfo field = typeof(FactCardsPopupUI).GetField(
+            "ignoreInputUntil",
+            BindingFlags.NonPublic | BindingFlags.Static
+        );
+
+        field.SetValue(null, 0f);
+    }
+
     [UnityTest]
     public IEnumerator Open_WithNoFactSystem_ShowsNotFoundMessage()
     {
-        GameObject obj = new GameObject("FactCardsPopupUI");
-        FactCardsPopupUI ui = obj.AddComponent<FactCardsPopupUI>();
+        ResetCooldown();
 
-        GameObject panel = new GameObject("PopupPanel");
-        panel.SetActive(false);
-        ui.popupPanel = panel;
-
-        GameObject textObj = new GameObject("BodyText");
-        ui.bodyText = textObj.AddComponent<TextMeshProUGUI>();
-
-        ui.freezePlayerWhileOpen = false;
+        FactCardsPopupUI ui = MakeUIWithText();
 
         ui.Open();
 
         yield return null;
 
-        Assert.IsTrue(panel.activeSelf);
+        Assert.IsTrue(ui.popupPanel.activeSelf);
         Assert.AreEqual("FactSystem not found.", ui.bodyText.text);
 
-        Object.Destroy(obj);
-        Object.Destroy(panel);
-        Object.Destroy(textObj);
+        CleanupUI(ui);
     }
 
     [UnityTest]
     public IEnumerator Close_HidesPanel()
     {
-        GameObject obj = new GameObject("FactCardsPopupUI");
-        FactCardsPopupUI ui = obj.AddComponent<FactCardsPopupUI>();
+        ResetCooldown();
 
-        GameObject panel = new GameObject("PopupPanel");
-        panel.SetActive(true);
-        ui.popupPanel = panel;
+        FactCardsPopupUI ui = MakeUI();
 
-        ui.freezePlayerWhileOpen = false;
+        ui.popupPanel.SetActive(true);
 
         ui.Close();
 
         yield return null;
 
-        Assert.IsFalse(panel.activeSelf);
+        Assert.IsFalse(ui.popupPanel.activeSelf);
 
-        Object.Destroy(obj);
-        Object.Destroy(panel);
+        CleanupUI(ui);
     }
 
     [UnityTest]
     public IEnumerator Open_WithNullPanel_LogsWarning()
     {
+        ResetCooldown();
+
         GameObject obj = new GameObject("FactCardsPopupUI");
         FactCardsPopupUI ui = obj.AddComponent<FactCardsPopupUI>();
         ui.freezePlayerWhileOpen = false;
 
-        LogAssert.Expect(LogType.Warning, "popupPanel is NULL (assign it on UIManager)");
+        LogAssert.Expect(
+            LogType.Warning,
+            "popupPanel is NULL (assign it on UIManager)"
+        );
+
         ui.Open();
+
         yield return null;
 
         Assert.IsFalse(ui.IsOpen);
@@ -75,9 +80,12 @@ public class FactCardsPopupUIPlayTests
     [UnityTest]
     public IEnumerator Open_SetsIsOpenTrue()
     {
+        ResetCooldown();
+
         FactCardsPopupUI ui = MakeUI();
 
         ui.Open();
+
         yield return null;
 
         Assert.IsTrue(ui.IsOpen);
@@ -88,12 +96,16 @@ public class FactCardsPopupUIPlayTests
     [UnityTest]
     public IEnumerator Close_SetsIsOpenFalse()
     {
+        ResetCooldown();
+
         FactCardsPopupUI ui = MakeUI();
 
         ui.Open();
+
         yield return null;
 
         ui.Close();
+
         yield return null;
 
         Assert.IsFalse(ui.IsOpen);
@@ -104,12 +116,18 @@ public class FactCardsPopupUIPlayTests
     [UnityTest]
     public IEnumerator Open_FreezesPlayer()
     {
+        ResetCooldown();
+
         FactCardsPopupUI ui = MakeUI();
         GameObject playerObj = MakePlayer();
-        PlayerMovement2D movement = playerObj.GetComponent<PlayerMovement2D>();
+
+        PlayerMovement2D movement =
+            playerObj.GetComponent<PlayerMovement2D>();
 
         ui.freezePlayerWhileOpen = true;
+
         ui.Open();
+
         yield return null;
 
         Assert.IsFalse(movement.enabled);
@@ -121,15 +139,22 @@ public class FactCardsPopupUIPlayTests
     [UnityTest]
     public IEnumerator Close_RestoresPlayer()
     {
+        ResetCooldown();
+
         FactCardsPopupUI ui = MakeUI();
         GameObject playerObj = MakePlayer();
-        PlayerMovement2D movement = playerObj.GetComponent<PlayerMovement2D>();
+
+        PlayerMovement2D movement =
+            playerObj.GetComponent<PlayerMovement2D>();
 
         ui.freezePlayerWhileOpen = true;
+
         ui.Open();
+
         yield return null;
 
         ui.Close();
+
         yield return null;
 
         Assert.IsTrue(movement.enabled);
@@ -141,15 +166,22 @@ public class FactCardsPopupUIPlayTests
     [UnityTest]
     public IEnumerator OnDisable_WhileOpen_RestoresPlayer()
     {
+        ResetCooldown();
+
         FactCardsPopupUI ui = MakeUI();
         GameObject playerObj = MakePlayer();
-        PlayerMovement2D movement = playerObj.GetComponent<PlayerMovement2D>();
+
+        PlayerMovement2D movement =
+            playerObj.GetComponent<PlayerMovement2D>();
 
         ui.freezePlayerWhileOpen = true;
+
         ui.Open();
+
         yield return null;
 
         ui.gameObject.SetActive(false);
+
         yield return null;
 
         Assert.IsTrue(movement.enabled);
@@ -161,35 +193,42 @@ public class FactCardsPopupUIPlayTests
     [UnityTest]
     public IEnumerator Open_WithNoBodyText_LogsWarning()
     {
-        GameObject obj = new GameObject("FactCardsPopupUI");
-        FactCardsPopupUI ui = obj.AddComponent<FactCardsPopupUI>();
+        ResetCooldown();
 
-        GameObject panel = new GameObject("PopupPanel");
-        ui.popupPanel = panel;
-        ui.freezePlayerWhileOpen = false;
+        FactCardsPopupUI ui = MakeUI();
 
-        LogAssert.Expect(LogType.Warning, "FactCardsPopupUI: bodyText not assigned.");
+        LogAssert.Expect(
+            LogType.Warning,
+            "FactCardsPopupUI: bodyText not assigned."
+        );
+
         ui.Open();
+
         yield return null;
 
-        Object.Destroy(obj);
-        Object.Destroy(panel);
+        CleanupUI(ui);
     }
 
     [UnityTest]
     public IEnumerator Open_WithNoFacts_ShowsExploreMessage()
     {
+        ResetCooldown();
+
         FactCardsPopupUI ui = MakeUIWithText();
 
-        // ensure FactSystem exists with no collected facts
         GameObject fsObj = new GameObject("FactSystem");
-        FactSystem fs = fsObj.AddComponent<FactSystem>();
+        fsObj.AddComponent<FactSystem>();
+
         yield return null;
 
         ui.Open();
+
         yield return null;
 
-        Assert.AreEqual("No cards yet... explore the ship!", ui.bodyText.text);
+        Assert.AreEqual(
+            "No cards yet... explore the ship!",
+            ui.bodyText.text
+        );
 
         Object.Destroy(fsObj);
         CleanupUI(ui);
@@ -198,17 +237,43 @@ public class FactCardsPopupUIPlayTests
     [UnityTest]
     public IEnumerator Close_WithNullPanel_DoesNotThrow()
     {
+        ResetCooldown();
+
         GameObject obj = new GameObject("FactCardsPopupUI");
         FactCardsPopupUI ui = obj.AddComponent<FactCardsPopupUI>();
         ui.freezePlayerWhileOpen = false;
 
         Assert.DoesNotThrow(() => ui.Close());
+
         yield return null;
 
         Object.Destroy(obj);
     }
 
-    // ── helpers ────────────────────────────────────────────────────────────
+    [UnityTest]
+    public IEnumerator Close_ClearsSelectedUI()
+    {
+        ResetCooldown();
+
+        GameObject eventObj = new GameObject("EventSystem");
+        eventObj.AddComponent<EventSystem>();
+        eventObj.AddComponent<StandaloneInputModule>();
+
+        GameObject selectedObj = new GameObject("SelectedObject");
+        EventSystem.current.SetSelectedGameObject(selectedObj);
+
+        FactCardsPopupUI ui = MakeUI();
+
+        ui.Close();
+
+        yield return null;
+
+        Assert.IsNull(EventSystem.current.currentSelectedGameObject);
+
+        Object.Destroy(eventObj);
+        Object.Destroy(selectedObj);
+        CleanupUI(ui);
+    }
 
     private static FactCardsPopupUI MakeUI()
     {
@@ -217,6 +282,8 @@ public class FactCardsPopupUIPlayTests
 
         GameObject panel = new GameObject("PopupPanel");
         panel.transform.SetParent(obj.transform);
+        panel.SetActive(false);
+
         ui.popupPanel = panel;
         ui.freezePlayerWhileOpen = false;
 
@@ -231,23 +298,37 @@ public class FactCardsPopupUIPlayTests
         textObj.transform.SetParent(ui.transform);
         ui.bodyText = textObj.AddComponent<TextMeshProUGUI>();
 
-        return ui;
-    }
+        GameObject contentObj = new GameObject("Content");
+        contentObj.transform.SetParent(ui.transform);
+        ui.contentRectTransform = contentObj.AddComponent<RectTransform>();
 
-    private static void CleanupUI(FactCardsPopupUI ui)
-    {
-        if (ui != null) Object.Destroy(ui.gameObject);
+        GameObject scrollObj = new GameObject("Scroll View");
+        scrollObj.transform.SetParent(ui.transform);
+        ui.scrollRect = scrollObj.AddComponent<ScrollRect>();
+
+        return ui;
     }
 
     private static GameObject MakePlayer()
     {
         GameObject go = new GameObject("Player");
+        go.tag = "Player";
+
         go.SetActive(false);
+
         go.AddComponent<Rigidbody2D>();
         go.AddComponent<Animator>();
         go.AddComponent<PlayerMovement2D>();
         go.AddComponent<BoxCollider2D>();
+
         go.SetActive(true);
+
         return go;
+    }
+
+    private static void CleanupUI(FactCardsPopupUI ui)
+    {
+        if (ui != null)
+            Object.Destroy(ui.gameObject);
     }
 }
