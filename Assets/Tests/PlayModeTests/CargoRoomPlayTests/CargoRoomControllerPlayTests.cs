@@ -94,8 +94,7 @@ public class CargoRoomControllerPlayTests
             controller.player = player;
             yield return null;
 
-            LogAssert.Expect(LogType.Error, new Regex(@"(CargoMinigameController|RestarterScript): Player GameObject with tag 'Player' not found in the scene."));
-            LogAssert.Expect(LogType.Error, new Regex(@"(CargoMinigameController|RestarterScript): Player GameObject with tag 'Player' not found in the scene."));
+            LogAssert.Expect(LogType.Error, "RestarterScript: Player GameObject with tag 'Player' not found in the scene.");
 
             Global.round = roundNumber;
 
@@ -132,8 +131,7 @@ public class CargoRoomControllerPlayTests
             controller.player = player;
             yield return null;
 
-            LogAssert.Expect(LogType.Error, new Regex(@"(CargoMinigameController|RestarterScript): Player GameObject with tag 'Player' not found in the scene."));
-            LogAssert.Expect(LogType.Error, new Regex(@"(CargoMinigameController|RestarterScript): Player GameObject with tag 'Player' not found in the scene."));
+            LogAssert.Expect(LogType.Error, "RestarterScript: Player GameObject with tag 'Player' not found in the scene.");
             Global.round = roundNumber;
 
             // Act
