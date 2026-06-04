@@ -86,12 +86,4 @@ public class SpillManager : MonoBehaviour
         SceneManager.LoadScene(labRoomSceneName);
     }
 }
-public static class MySimpleTestClass
-    {
-        public static int GetTestData()
-        {
-            return 5;
-        }
-        
-    }
     

@@ -16,7 +16,7 @@ public class Global : MonoBehaviour
     public static int maxScore = 150;
     public static bool hasWon = false;
 
-    public static float targetTime = 20f;
+    public static float targetTime = 15f;
     public static bool timerStarted = false;
     public static GameObject timerText;
 
@@ -134,7 +134,6 @@ public class Global : MonoBehaviour
                 }
 
                 SetPlayerMovementLocked(true);
-                SetPlayerMovementLocked(true);
 
                 Transform returnButton = repairMinigamePanel.Find("ReturnButton");
                 if (returnButton != null && !repairPopupButtonBound)
@@ -152,17 +151,8 @@ public class Global : MonoBehaviour
                             SetPlayerMovementLocked(false);
                         });
                     }
-                    else
-                    {
-                        Debug.Log("Component not found");
-                    }
-                }
-                else
-                {
-                    Debug.Log("Button not found");
                 }
             }
-
 
             GameObject repairCollisionMinigame = GameObject.FindWithTag("RepairCollisionMinigame");
             if (repairCollisionMinigame != null)
@@ -172,10 +162,6 @@ public class Global : MonoBehaviour
                     child.gameObject.SetActive(true);
                 }
             }
-        }
-        else if (!showRepairPopup)
-        {
-            SetPlayerMovementLocked(false);
         }
     }
 
@@ -393,12 +379,39 @@ public class Global : MonoBehaviour
     {
         StopTimer();
 
+        //reset time sensitive minigames so they can be triggered again if the player fails to complete them in time
         if (!repairCollisionMinigamePlayed)
         {
+            showRepairPopup = true;
+            repairPopupButtonBound = false;
+            inTimeSensitiveMinigame = false;
+
+            GameObject repairCollisionMinigame = GameObject.FindWithTag("RepairCollisionMinigame");
+            if (repairCollisionMinigame != null)
+            {
+                foreach (Transform child in repairCollisionMinigame.transform)
+                {
+                    child.gameObject.SetActive(false);
+                }
+            }
             SubtractScore(20);
         }
         if (!fireMinigamePlayed)
         {
+            showFirePopup = true;
+            firePopupButtonBound = false;
+            inTimeSensitiveMinigame = false;
+
+            GameObject fireEmergencyObjects = GameObject.FindWithTag("FireEmergencyObjects");
+
+            if (fireEmergencyObjects != null)
+            {
+                foreach (Transform child in fireEmergencyObjects.transform)
+                {
+                    child.gameObject.SetActive(false);
+                }
+            }
+
             SubtractScore(20);
         }
     }
@@ -406,7 +419,7 @@ public class Global : MonoBehaviour
     public static void StopTimer()
     {
         timerStarted = false;
-        targetTime = 20.0f;
+        targetTime = 15.0f;
         if (timerText != null)
             timerText.GetComponent<TextMeshProUGUI>().text = "";
     }
