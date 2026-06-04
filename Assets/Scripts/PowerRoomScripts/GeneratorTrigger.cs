@@ -17,6 +17,14 @@ public class GeneratorTrigger : MonoBehaviour
     private PlayerMovement2D playerMovement;
     private Rigidbody2D playerRigidbody;
 
+     private void Start()
+    {
+
+        if (hint != null)
+            hint.SetActive(false);
+
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -44,7 +52,7 @@ public class GeneratorTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<PlayerMovement2D>() == null || Global.currentRoom != "PowerRoom")
+        if (other.GetComponent<PlayerMovement2D>() == null || Global.currentRoom != "PowerRoom" )
         {
             return;
         }
