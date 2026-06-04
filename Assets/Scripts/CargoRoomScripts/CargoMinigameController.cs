@@ -20,7 +20,6 @@ public class CargoMinigameController : MonoBehaviour
     //helps make sure the correct panel is found
     [SerializeField] private RectTransform completedPanelTransform;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         targets = GameObject.FindGameObjectsWithTag("CargoroomTarget");
@@ -32,25 +31,17 @@ public class CargoMinigameController : MonoBehaviour
         }
 
         player = GameObject.FindGameObjectWithTag("Player");
-        if(player == null)
+        if(player != null)
         {
-            Debug.LogError("CargoMinigameController: Player GameObject with tag 'Player' not found in the scene.");
-            return;
+            player.GetComponent<PlayerMovement2D>().enabled = true;
         }
-
-        player.GetComponent<PlayerMovement2D>().enabled = true;
-
+        
         transform = completedPanelTransform;
-        if (transform == null)
-        {   
-            Debug.LogError("CargoMinigameController: completedPanelTransform is NOT assigned in Inspector.");
-            return;
-        }
         transform.anchoredPosition = new Vector2(1000f, 1000f);
+        
         gameComplete = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         gameComplete = targets.All(target => target.GetComponent<Target>().occupied);
@@ -60,12 +51,10 @@ public class CargoMinigameController : MonoBehaviour
             finished = true;
             Invoke(nameof(EndMinigame), 1.0f);
         }
-
     }
 
     private void EndMinigame()
     {
-        
         Global.MinigameWin();
         updateScoreText();
         Global.currentRoomCompleted = true;
@@ -89,7 +78,6 @@ public class CargoMinigameController : MonoBehaviour
 
         player.GetComponent<PlayerMovement2D>().enabled = false;
         player.GetComponent<Animator>().SetBool("IsMoving", false);
-
     }
 
     private void updateScoreText()
