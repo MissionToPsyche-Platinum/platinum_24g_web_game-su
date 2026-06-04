@@ -425,7 +425,7 @@ public class ControlRoomEditTests
         SetPrivateField(popup, "starImage1", star1);
         SetPrivateField(popup, "starImage2", star2);
         SetPrivateField(popup, "starImage3", star3);
-        LogAssert.Expect(LogType.Warning, "MiniGameResultsPopup: Assign popupRoot, scoreText, titleText, bodyText, returnButton, replayButton, and the three star images in the scene.");
+        LogAssert.Expect(LogType.Warning, "MiniGameResultsPopup: Assign popupRoot, titleText, bodyText, returnButton, replayButton, and the three star images in the scene.");
         InvokePrivate(popup, "Awake");
 
         popup.ShowResults(10, 5, 0, true, false);

@@ -50,6 +50,7 @@ public class GlobalPlayTests
         Global.lastRoomFromPreviousRound = "";
         Global.playerRoomTracker = "StartMenu";
         Global.tutorialShown = false;
+        Global.introPopupShown = false;
     }
 
     [TearDown]

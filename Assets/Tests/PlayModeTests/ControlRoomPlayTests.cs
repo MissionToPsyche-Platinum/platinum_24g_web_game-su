@@ -130,7 +130,8 @@ public class ControlRoomPlayTests
         popupRoot.SetActive(false);
 
         MiniGameResultsPopup popup = popupRoot.AddComponent<MiniGameResultsPopup>();
-        TMP_Text scoreText = CreateTextElement("ScoreText", popupRoot.transform);
+        TMP_Text accuracyText = CreateTextElement("AccuracyText", popupRoot.transform);
+        TMP_Text totalScoreText = CreateTextElement("TotalScoreText", popupRoot.transform);
         TMP_Text titleText = CreateTextElement("TitleText", popupRoot.transform);
         TMP_Text bodyText = CreateTextElement("BodyText", popupRoot.transform);
         Button returnButton = CreateButton("ReturnButton", popupRoot.transform);
@@ -140,7 +141,8 @@ public class ControlRoomPlayTests
         Image star3 = CreateImage("Star3", popupRoot.transform);
 
         SetPrivateField(popup, "popupRoot", popupRoot);
-        SetPrivateField(popup, "scoreText", scoreText);
+        SetPrivateField(popup, "accuracyText", accuracyText);
+        SetPrivateField(popup, "totalScoreText", totalScoreText);
         SetPrivateField(popup, "titleText", titleText);
         SetPrivateField(popup, "bodyText", bodyText);
         SetPrivateField(popup, "returnButton", returnButton);
@@ -153,10 +155,12 @@ public class ControlRoomPlayTests
         popupRoot.SetActive(true);
         yield return null;
 
+        Global.totalScore = 150;
         popup.ShowResults(87, 123, 2, false, true);
 
         Assert.That(popupRoot.activeSelf, Is.True);
-        Assert.That(scoreText.text, Is.EqualTo("Course Accuracy: 87% | Score: 123"));
+        Assert.That(accuracyText.text, Is.EqualTo("ACCURACY: 87%"));
+        Assert.That(totalScoreText.text, Is.EqualTo("+123 | TOTAL: 150"));
         Assert.That(titleText.text, Is.EqualTo("Psyche Fact"));
         Assert.That(bodyText.text, Is.EqualTo("Psyche has a metallic core."));
         Assert.That(star1.color, Is.EqualTo(new Color(1f, 0.84f, 0.2f, 1f)));
@@ -216,7 +220,8 @@ public class ControlRoomPlayTests
 
         GameObject popupRoot = CreatePopupRoot();
         MiniGameResultsPopup popup = popupRoot.AddComponent<MiniGameResultsPopup>();
-        TMP_Text scoreText = CreateTextElement("ScoreText", popupRoot.transform);
+        TMP_Text accuracyText2 = CreateTextElement("AccuracyText", popupRoot.transform);
+        TMP_Text totalScoreText2 = CreateTextElement("TotalScoreText", popupRoot.transform);
         TMP_Text titleText = CreateTextElement("TitleText", popupRoot.transform);
         TMP_Text bodyText = CreateTextElement("BodyText", popupRoot.transform);
         Button returnButton = CreateButton("ReturnButton", popupRoot.transform);
@@ -225,7 +230,8 @@ public class ControlRoomPlayTests
         Image star2 = CreateImage("Star2", popupRoot.transform);
         Image star3 = CreateImage("Star3", popupRoot.transform);
         SetPrivateField(popup, "popupRoot", popupRoot);
-        SetPrivateField(popup, "scoreText", scoreText);
+        SetPrivateField(popup, "accuracyText", accuracyText2);
+        SetPrivateField(popup, "totalScoreText", totalScoreText2);
         SetPrivateField(popup, "titleText", titleText);
         SetPrivateField(popup, "bodyText", bodyText);
         SetPrivateField(popup, "returnButton", returnButton);
@@ -256,7 +262,8 @@ public class ControlRoomPlayTests
         Assert.That(Global.currentRoomCompleted, Is.True);
         Assert.That(popupRoot.activeSelf, Is.True);
         Assert.That(titleText.text, Is.EqualTo("Course Debrief"));
-        Assert.That(scoreText.text, Does.Contain("Course Accuracy:"));
+        Assert.That(accuracyText2.text, Does.Contain("ACCURACY:"));
+        Assert.That(totalScoreText2.text, Does.Contain("TOTAL:"));
         Assert.That(pathDotsRoot.childCount, Is.GreaterThan(0));
 
         UnityEngine.Object.Destroy(controllerObject);
@@ -859,7 +866,7 @@ public class ControlRoomPlayTests
         ControlsMinigameBootstrap bootstrap = bootstrapRoot.AddComponent<ControlsMinigameBootstrap>();
 
         GameObject popupRoot = CreatePopupRoot();
-        LogAssert.Expect(LogType.Warning, "MiniGameResultsPopup: Assign popupRoot, scoreText, titleText, bodyText, returnButton, replayButton, and the three star images in the scene.");
+        LogAssert.Expect(LogType.Warning, "MiniGameResultsPopup: Assign popupRoot, titleText, bodyText, returnButton, replayButton, and the three star images in the scene.");
         MiniGameResultsPopup popup = popupRoot.AddComponent<MiniGameResultsPopup>();
         SetPrivateField(popup, "popupRoot", popupRoot);
 

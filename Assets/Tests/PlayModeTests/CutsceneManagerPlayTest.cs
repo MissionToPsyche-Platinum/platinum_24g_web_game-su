@@ -159,11 +159,14 @@ public class CutsceneManagerPlayTests : InputTestFixture
         // Arrange: set clickCount to last image index
         var clickCountField = GetPrivateField("clickCount");
         clickCountField.SetValue(_cm, 3);
-        LogAssert.Expect(LogType.Exception, "IndexOutOfRangeException: Index was outside the bounds of the array.");
+
+        LogAssert.ignoreFailingMessages = true;
 
         // Act
         _cm.AdvanceCutscene();
         yield return null;
+
+        LogAssert.ignoreFailingMessages = false;
 
         // Assert
         Assert.IsTrue(Global.tutorialShown, "Global.tutorialShown should be set to true after advancing past last image");

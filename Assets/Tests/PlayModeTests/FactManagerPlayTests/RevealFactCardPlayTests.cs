@@ -136,6 +136,7 @@ public class RevealFactCardPlayTests
 
         playerObj.SetActive(false);
         playerObj.AddComponent<Animator>();
+        playerObj.AddComponent<Rigidbody2D>();
 
         PlayerMovement2D movement =
             playerObj.AddComponent<PlayerMovement2D>();
