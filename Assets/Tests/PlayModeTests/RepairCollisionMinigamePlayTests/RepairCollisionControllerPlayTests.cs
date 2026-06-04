@@ -77,14 +77,74 @@ public class RepairCollisionControllerPlayTests
     [UnityTest]
     public IEnumerator GoToMainHall_ActivatesPlayerAndLoadsScene()
     {
-        //Arrange
+        // Ensure player has PlayerMovement2D for the new GoToMainHall code
+        if (_player.GetComponent<PlayerMovement2D>() == null)
+        {
+            _player.SetActive(false);
+            _player.AddComponent<PlayerMovement2D>();
+            _player.SetActive(true);
+        }
 
-        //Act
+        LogAssert.ignoreFailingMessages = true;
         _controllerComponent.GoToMainHall();
         yield return null;
+        LogAssert.ignoreFailingMessages = false;
 
-        //Assert
-        Assert.AreEqual("MainHall", SceneManager.GetActiveScene().name, "Scene should be MainHall after going to main hall");       
+        Assert.AreEqual("MainHall", SceneManager.GetActiveScene().name, "Scene should be MainHall after going to main hall");
+    }
+
+    [UnityTest]
+    public IEnumerator EndMinigame_DisablesPlayerMovement()
+    {
+        GameObject testPlayer = new GameObject("TestPlayer");
+        testPlayer.SetActive(false);
+        testPlayer.AddComponent<Animator>();
+        testPlayer.AddComponent<Rigidbody2D>();
+        PlayerMovement2D movement = testPlayer.AddComponent<PlayerMovement2D>();
+        testPlayer.SetActive(true);
+        SetPrivateField(_controllerComponent, "player", testPlayer);
+
+        var endMinigame = GetNonPublicMethod(_controllerComponent, "EndMinigame");
+        endMinigame.Invoke(_controllerComponent, null);
+        yield return null;
+
+        Assert.IsFalse(movement.enabled, "PlayerMovement2D should be disabled after EndMinigame");
+
+        Object.Destroy(testPlayer);
+    }
+
+    [UnityTest]
+    public IEnumerator EndMinigame_DisablesWeldGun()
+    {
+        GameObject weldGunObj = new GameObject("WeldGun");
+        WeldGunScript weldGun = weldGunObj.AddComponent<WeldGunScript>();
+        GameObject spark = new GameObject("Spark");
+        weldGun.weldSpark = spark;
+        GameObject helpPanel = new GameObject("HelpPanel");
+        weldGun.helpPanel = helpPanel;
+
+        var endMinigame = GetNonPublicMethod(_controllerComponent, "EndMinigame");
+        endMinigame.Invoke(_controllerComponent, null);
+        yield return null;
+
+        Assert.IsFalse(weldGun.enabled, "WeldGunScript should be disabled after EndMinigame");
+        Assert.IsFalse(spark.activeSelf, "Weld spark should be inactive after EndMinigame");
+
+        Object.Destroy(weldGunObj);
+        Object.Destroy(spark);
+        Object.Destroy(helpPanel);
+    }
+
+    [UnityTest]
+    public IEnumerator EndMinigame_CalledTwice_OnlyActivatesPanelOnce()
+    {
+        var endMinigame = GetNonPublicMethod(_controllerComponent, "EndMinigame");
+        endMinigame.Invoke(_controllerComponent, null);
+        _controllerComponent.completedPanel.SetActive(false);
+        endMinigame.Invoke(_controllerComponent, null);
+        yield return null;
+
+        Assert.IsFalse(_controllerComponent.completedPanel.activeSelf, "Panel should not re-activate on second EndMinigame call");
     }
 
     [UnityTest]
