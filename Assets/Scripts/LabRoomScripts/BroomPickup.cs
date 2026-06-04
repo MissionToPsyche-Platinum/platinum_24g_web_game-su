@@ -120,13 +120,11 @@ public class BroomPickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("BroomPickup TRIGGER ENTER by: " + other.name);
         Debug.Log("Entered broom range: showing hint");
         if (pickedUp || isHoldingBroom) return;
 
      if (other.CompareTag(playerTag))
     {
-        Debug.Log("ENTER at frame " + Time.frameCount);
         playerInRange = true;
         if (hintText != null) hintText.SetActive(true);
     }
@@ -138,7 +136,6 @@ public class BroomPickup : MonoBehaviour
 
 if (other.CompareTag(playerTag))
     {
-        Debug.Log("EXIT at frame " + Time.frameCount);
         playerInRange = false;
         if (hintText != null) hintText.SetActive(false);
     }
