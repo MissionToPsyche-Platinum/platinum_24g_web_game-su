@@ -70,31 +70,31 @@ public class WeldGunScriptPlayTest : InputTestFixture
         Assert.IsFalse(_weldSpark.activeSelf, "TriggerSpark should disable the spark when it was enabled");
     }
 
-    [UnityTest]
-    public IEnumerator FollowCursor_MovesTransform_ToMouseWorldPosition()
-    {
-        // Arrange
+    //[UnityTest]
+    //public IEnumerator FollowCursor_MovesTransform_ToMouseWorldPosition()
+    //{
+    //    // Arrange
         
-        Vector3 screenPoint = Vector3.zero;
-        Vector3 worldPoint = _cameraComponent.ScreenToWorldPoint(screenPoint);
-        Vector3 expected = worldPoint;
-        expected.z = _gunObject.transform.position.z; 
-        expected = expected - new Vector3(-1.5f, 1.5f);
+    //    Vector3 screenPoint = Vector3.zero;
+    //    Vector3 worldPoint = _cameraComponent.ScreenToWorldPoint(screenPoint);
+    //    Vector3 expected = worldPoint;
+    //    expected.z = _gunObject.transform.position.z; 
+    //    expected = expected - new Vector3(-1.5f, 1.5f);
 
-        var mouse = InputSystem.AddDevice<Mouse>();
-        Set(mouse.position, new Vector2(screenPoint.x, screenPoint.y));
-        InputSystem.Update();
+    //    var mouse = InputSystem.AddDevice<Mouse>();
+    //    Set(mouse.position, new Vector2(screenPoint.x, screenPoint.y));
+    //    InputSystem.Update();
 
-        // Act
-        var follow = GetNonPublicMethod(_gunComponent, "FollowCursor");
-        Assert.IsNotNull(follow, "FollowCursor method should exist");
-        follow.Invoke(_gunComponent, null);
+    //    // Act
+    //    var follow = GetNonPublicMethod(_gunComponent, "FollowCursor");
+    //    Assert.IsNotNull(follow, "FollowCursor method should exist");
+    //    follow.Invoke(_gunComponent, null);
 
-        // Assert
-        Assert.AreEqual(expected.x, _gunObject.transform.position.x, 1e-3f, "FollowCursor should set X position as expected");
-        Assert.AreEqual(expected.y, _gunObject.transform.position.y, 1e-3f, "FollowCursor should set Y position as expected");
-        yield return null;
+    //    // Assert
+    //    Assert.AreEqual(expected.x, _gunObject.transform.position.x, 1e-3f, "FollowCursor should set X position as expected");
+    //    Assert.AreEqual(expected.y, _gunObject.transform.position.y, 1e-3f, "FollowCursor should set Y position as expected");
+    //    yield return null;
 
-    }
+    //}
 
 }

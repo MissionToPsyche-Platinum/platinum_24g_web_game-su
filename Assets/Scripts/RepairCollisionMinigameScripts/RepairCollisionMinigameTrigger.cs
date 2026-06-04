@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class RepairCollisionMinigame : MonoBehaviour
+public class RepairCollisionMinigameTrigger : MonoBehaviour
 {
 
     public GameObject popupPanel;
@@ -39,11 +39,6 @@ public class RepairCollisionMinigame : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
-    {
-        ShowPopup();
-    }
-
     public void OnClick()
     {
         SceneManager.LoadScene("RepairCollisionMinigame");
@@ -53,6 +48,8 @@ public class RepairCollisionMinigame : MonoBehaviour
     {
         if (other.GetComponent<PlayerMovement2D>() == null)
         {
+            Debug.LogError("RepairCollisionMinigameTrigger: PlayerMovement2D component not found on the colliding object");
+
             return;
         }
 
@@ -73,6 +70,7 @@ public class RepairCollisionMinigame : MonoBehaviour
     {
         if (other.GetComponent<PlayerMovement2D>() == null)
         {
+            Debug.LogError("RepairCollisionMinigameTrigger: PlayerMovement2D component not found on the colliding object");
             return;
         }
 
