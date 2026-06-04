@@ -4,8 +4,11 @@
     "references": [
         "GameScripts",
         "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
         "UnityEngine.UI",
-        "Unity.TextMeshPro"
+        "Unity.TextMeshPro",
+        "Unity.InputSystem",
+        "Unity.InputSystem.TestFramework"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CutsceneManager : MonoBehaviour
 {
@@ -28,24 +28,33 @@ public class CutsceneManager : MonoBehaviour
         cutsceneText.text = script[clickCount];
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            if (clickCount < images.Count - 1)
-            {
-                images[clickCount].CrossFadeAlpha(0f, 0.7f, false);
-                clickCount++;
-                cutsceneText.text = script[clickCount];
-            }
-            else if (clickCount == images.Count - 1)
-            {
-                images[clickCount].CrossFadeAlpha(0f, 0.7f, false);
-                Global.tutorialShown = true;
-                Global.playerRoomTracker = "MainHall";
-                SceneManager.LoadScene("MainHall");
-            }
+            AdvanceCutscene();
+        }
+    }
+
+    public void AdvanceCutscene()
+    {
+        if (images == null)
+        {
+            images = new List<Image> { image1, image2, image3, image4 };
+        }
+
+        if (clickCount < images.Count - 1)
+        {
+            images[clickCount].CrossFadeAlpha(0f, 0.7f, false);
+            clickCount++;
+            cutsceneText.text = script[clickCount];
+        }
+        else if (clickCount == images.Count - 1)
+        {
+            images[clickCount].CrossFadeAlpha(0f, 0.7f, false);
+            Global.tutorialShown = true;
+            Global.playerRoomTracker = "MainHall";
+            SceneManager.LoadScene("MainHall");
         }
     }
 }
