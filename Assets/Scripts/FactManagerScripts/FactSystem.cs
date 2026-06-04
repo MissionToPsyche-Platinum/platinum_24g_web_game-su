@@ -147,6 +147,6 @@ public int AwardFactForMinigameWin()
         LoadFacts();
     }
 
-    Debug.Log("FactSystem: Reset collected facts.");
+    Debug.Log("FactSystem: Resetted collected cards");
 }
 }
