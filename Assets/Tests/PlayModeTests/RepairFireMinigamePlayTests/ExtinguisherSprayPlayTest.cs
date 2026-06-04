@@ -25,7 +25,20 @@ public class ExtinguisherSprayTests
         return (T)field.GetValue(obj);
     }
 
-    private GameObject CreateSprayObject(out ExtinguisherSpray spray, out PlayerMovement2D movement)
+    private void SetPrivateField(object obj, string fieldName, object value)
+    {
+        FieldInfo field = obj.GetType().GetField(
+            fieldName,
+            BindingFlags.NonPublic | BindingFlags.Instance
+        );
+
+        field.SetValue(obj, value);
+    }
+
+    private GameObject CreateSprayObject(
+        out ExtinguisherSpray spray,
+        out PlayerMovement2D movement
+    )
     {
         GameObject playerObj = new GameObject("Player");
         playerObj.SetActive(false);
@@ -44,6 +57,23 @@ public class ExtinguisherSprayTests
         CallPrivateMethod(spray, "Start");
 
         return playerObj;
+    }
+
+    private int CountSmokeObjects()
+    {
+        int count = 0;
+
+        GameObject[] objects = Object.FindObjectsByType<GameObject>(
+            FindObjectsSortMode.None
+        );
+
+        foreach (GameObject obj in objects)
+        {
+            if (obj.name.StartsWith("SmokePrefab"))
+                count++;
+        }
+
+        return count;
     }
 
     [Test]
@@ -83,6 +113,24 @@ public class ExtinguisherSprayTests
     }
 
     [Test]
+    public void TrySpray_WithNoPlayerMovement_DoesNothing()
+    {
+        GameObject playerObj = CreateSprayObject(
+            out ExtinguisherSpray spray,
+            out PlayerMovement2D movement
+        );
+
+        spray.smokePrefab = new GameObject("SmokePrefab");
+
+        SetPrivateField(spray, "playerMovement", null);
+
+        Assert.DoesNotThrow(() => spray.TrySpray());
+
+        Object.DestroyImmediate(spray.smokePrefab);
+        Object.DestroyImmediate(playerObj);
+    }
+
+    [Test]
     public void TrySpray_WithMissingAudioSource_LogsMessage()
     {
         GameObject playerObj = CreateSprayObject(
@@ -113,17 +161,128 @@ public class ExtinguisherSprayTests
         spray.smokePrefab = new GameObject("SmokePrefab");
         movement.lastMoveDir = Vector2.up;
 
-        int beforeCount = Object.FindObjectsByType<GameObject>(
-            FindObjectsSortMode.None
-        ).Length;
+        int beforeCount = CountSmokeObjects();
 
         spray.TrySpray();
 
-        int afterCount = Object.FindObjectsByType<GameObject>(
-            FindObjectsSortMode.None
-        ).Length;
+        int afterCount = CountSmokeObjects();
 
         Assert.Greater(afterCount, beforeCount);
+
+        Object.DestroyImmediate(spray.smokePrefab);
+        Object.DestroyImmediate(playerObj);
+    }
+
+    [Test]
+    public void TrySpray_WhenFacingDown_SpawnsSmoke()
+    {
+        GameObject playerObj = CreateSprayObject(
+            out ExtinguisherSpray spray,
+            out PlayerMovement2D movement
+        );
+
+        spray.smokePrefab = new GameObject("SmokePrefab");
+        movement.lastMoveDir = Vector2.down;
+
+        int beforeCount = CountSmokeObjects();
+
+        spray.TrySpray();
+
+        int afterCount = CountSmokeObjects();
+
+        Assert.Greater(afterCount, beforeCount);
+
+        Object.DestroyImmediate(spray.smokePrefab);
+        Object.DestroyImmediate(playerObj);
+    }
+
+    [Test]
+    public void TrySpray_WhenFacingRight_SpawnsSmoke()
+    {
+        GameObject playerObj = CreateSprayObject(
+            out ExtinguisherSpray spray,
+            out PlayerMovement2D movement
+        );
+
+        spray.smokePrefab = new GameObject("SmokePrefab");
+        movement.lastMoveDir = Vector2.right;
+
+        int beforeCount = CountSmokeObjects();
+
+        spray.TrySpray();
+
+        int afterCount = CountSmokeObjects();
+
+        Assert.Greater(afterCount, beforeCount);
+
+        Object.DestroyImmediate(spray.smokePrefab);
+        Object.DestroyImmediate(playerObj);
+    }
+
+    [Test]
+    public void TrySpray_WhenFacingLeft_SpawnsSmoke()
+    {
+        GameObject playerObj = CreateSprayObject(
+            out ExtinguisherSpray spray,
+            out PlayerMovement2D movement
+        );
+
+        spray.smokePrefab = new GameObject("SmokePrefab");
+        movement.lastMoveDir = Vector2.left;
+
+        int beforeCount = CountSmokeObjects();
+
+        spray.TrySpray();
+
+        int afterCount = CountSmokeObjects();
+
+        Assert.Greater(afterCount, beforeCount);
+
+        Object.DestroyImmediate(spray.smokePrefab);
+        Object.DestroyImmediate(playerObj);
+    }
+
+    [Test]
+    public void TrySpray_WithMissingSprayPoint_LogsMessage()
+    {
+        GameObject playerObj = CreateSprayObject(
+            out ExtinguisherSpray spray,
+            out PlayerMovement2D movement
+        );
+
+        spray.smokePrefab = new GameObject("SmokePrefab");
+        movement.lastMoveDir = Vector2.up;
+
+        SetPrivateField(spray, "sprayUp", null);
+
+        LogAssert.Expect(LogType.Log, "Missing spray point");
+
+        spray.TrySpray();
+
+        Object.DestroyImmediate(spray.smokePrefab);
+        Object.DestroyImmediate(playerObj);
+    }
+
+    [Test]
+    public void TrySpray_BeforeCooldownEnds_DoesNotSpawnSecondSmoke()
+    {
+        GameObject playerObj = CreateSprayObject(
+            out ExtinguisherSpray spray,
+            out PlayerMovement2D movement
+        );
+
+        spray.smokePrefab = new GameObject("SmokePrefab");
+        movement.lastMoveDir = Vector2.up;
+
+        spray.TrySpray();
+
+        int afterFirstSpray = CountSmokeObjects();
+
+        spray.TrySpray();
+
+        int afterSecondSpray = CountSmokeObjects();
+
+        Assert.AreEqual(afterFirstSpray, afterSecondSpray);
 
         Object.DestroyImmediate(spray.smokePrefab);
         Object.DestroyImmediate(playerObj);
