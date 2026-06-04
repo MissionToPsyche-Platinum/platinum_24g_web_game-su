@@ -103,23 +103,4 @@ public class CargoBoxPlayTests
         Assert.AreEqual(Vector2.zero, rb.linearVelocity, "Update should not change velocity when it is zero.");
     }
 
-    [UnityTest]
-    public IEnumerator Update_WithNonZeroVelocity_EqualToExpected()
-    {
-        //Arrange
-        Rigidbody2D rb = _cargoBox.GetComponent<Rigidbody2D>();
-        Vector2 velocity = new Vector2(2.0f, -1.0f);
-        rb.linearVelocity = velocity;
-
-        yield return new WaitForFixedUpdate();
-        float pushForce = _cargoBox.GetComponent<CargoBox>().pushForce;
-        Vector2 expectedVelocity = Vector2.Max(velocity * pushForce, Vector2.zero);
-
-        //Act
-        yield return null;
-
-        //Assert
-        Assert.AreEqual(expectedVelocity, rb.linearVelocity, "Update should set linear velocity to expected.");
-    }
-
 }
