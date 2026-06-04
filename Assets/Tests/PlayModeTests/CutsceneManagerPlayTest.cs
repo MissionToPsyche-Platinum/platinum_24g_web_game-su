@@ -55,7 +55,7 @@ public class CutsceneManagerPlayTests : InputTestFixture
     {
         if (_go != null) Object.DestroyImmediate(_go);
         // Clean up created UI objects
-        var objs = GameObject.FindObjectsOfType<GameObject>();
+        var objs = Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
         foreach (var o in objs)
         {
             if (o.name.StartsWith("Image") || o.name == "CutsceneText")

@@ -68,7 +68,7 @@ public class SpawnPointFinderSceneLoadedTests
     public IEnumerator TearDown()
     {
         // Destroy all GameObjects
-        foreach (var root in Object.FindObjectsOfType<GameObject>())
+        foreach (var root in Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None))
         {
             Object.Destroy(root);
         }
