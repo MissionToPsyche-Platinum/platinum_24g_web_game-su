@@ -138,4 +138,15 @@ public int AwardFactForMinigameWin()
         ids.Sort();
         return ids;
     }
+    public void ResetFacts()
+{
+    collectedFactIds.Clear();
+
+    if (allFacts.Count == 0)
+    {
+        LoadFacts();
+    }
+
+    Debug.Log("FactSystem: Reset collected facts.");
+}
 }
