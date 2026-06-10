@@ -38,38 +38,37 @@ public class ChangeScene : MonoBehaviour
     }
 
     public void goToMainHallScene()
+{
+    Debug.Log("STARTING NEW GAME FROM goToMainHallScene()");
+
+    Global.ResetGameState();
+
+    BroomPickup[] brooms = FindObjectsByType<BroomPickup>(
+        FindObjectsSortMode.None
+    );
+
+    foreach (BroomPickup broom in brooms)
     {
-        Debug.Log("STARTING NEW GAME FROM goToMainHallScene()");
-        Debug.Log("Round entering MainHall = " + Global.round);
-        
-       
+        Destroy(broom.gameObject);
+    }
 
-        BroomPickup[] brooms = FindObjectsByType<BroomPickup>(
-            FindObjectsSortMode.None
-        );
+    Transform player = GameObject.FindGameObjectWithTag("Player")?.transform;
 
-        foreach (BroomPickup broom in brooms)
+    if (player != null)
+    {
+        Transform broomHoldPoint = player.Find("BroomHoldPoint");
+
+        if (broomHoldPoint != null)
         {
-            Destroy(broom.gameObject);
-        }
-
-        Transform player = GameObject.FindGameObjectWithTag("Player")?.transform;
-
-        if (player != null)
-        {
-            Transform broomHoldPoint = player.Find("BroomHoldPoint");
-
-            if (broomHoldPoint != null)
+            foreach (Transform child in broomHoldPoint)
             {
-                foreach (Transform child in broomHoldPoint)
-                {
-                    Destroy(child.gameObject);
-                }
+                Destroy(child.gameObject);
             }
         }
-
-        SceneManager.LoadScene("MainHall");
     }
+
+    SceneManager.LoadScene("MainHall");
+}
 
     public void goToBeginningCutscene()
     {

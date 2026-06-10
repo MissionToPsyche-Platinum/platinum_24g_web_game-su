@@ -134,7 +134,6 @@ public class LabBoxTrigger : MonoBehaviour
         if (popupAudioSource != null && closeSound != null)
         {
             popupAudioSource.PlayOneShot(closeSound);
-            Debug.Log("played close audio");
         }
 
         if (popupPanel != null)

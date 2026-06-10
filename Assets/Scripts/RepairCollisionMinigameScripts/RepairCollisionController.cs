@@ -82,7 +82,7 @@ public class RepairCollisionController : MonoBehaviour
     public void ColliderReached()
     {
         reachedColliders++;
-        Debug.Log("reachedColliders: " + reachedColliders);
+        //Debug.Log("reachedColliders: " + reachedColliders);
     }
 
     private void CheckProgress()

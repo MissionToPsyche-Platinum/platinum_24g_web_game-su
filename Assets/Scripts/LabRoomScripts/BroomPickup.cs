@@ -194,7 +194,6 @@ if (other.CompareTag(playerTag))
 
     private void OpenBroomFoundPopup()
     {
-        Debug.Log("OPEN POPUP called. popup ref is null? " + (broomFoundPopup == null));
         if (broomFoundPopup == null) return;
 
         broomFoundPopup.SetActive(true);

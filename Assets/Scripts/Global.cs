@@ -297,8 +297,13 @@ public class Global : MonoBehaviour
 
         showRepairPopup = true;
         showFirePopup = true;
-
         anyPanelOpen = false;
+
+        currentRoomCompleted = false;
+        controlRoomSelectedScene = null;
+
+        lastRoomFromPreviousRound = "";
+        playerRoomTracker = "StartMenu";
 
         if (FactSystem.Instance != null)
             FactSystem.Instance.ResetFacts();
