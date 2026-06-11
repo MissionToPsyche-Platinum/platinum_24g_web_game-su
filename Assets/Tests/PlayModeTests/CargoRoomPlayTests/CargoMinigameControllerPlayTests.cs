@@ -24,7 +24,7 @@ public class CargoMinigameControllerPlayTests
         Global.currentRoomCompleted = false;
 
         // Destroy any remaining root objects to avoid cross-test contamination
-        foreach (var root in Object.FindObjectsOfType<GameObject>())
+        foreach (var root in Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None))
         {
             // Skip persistent editor objects
             if (root.scene.isLoaded)
