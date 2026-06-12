@@ -11,7 +11,7 @@ public class PlayerMovement2D : MonoBehaviour
     private Vector2 movement;
     public Vector2 lastMoveDir = Vector2.down;
 
-    public AudioSource footstepSource; //footsteps sound 
+    public AudioSource footstepSource; //footsteps sound
 
     void Awake()
     {
@@ -19,29 +19,27 @@ public class PlayerMovement2D : MonoBehaviour
         anim = GetComponent<Animator>();
         footstepSource = GetComponent<AudioSource>();
 
-        if (footstepSource != null)
-        {
-            footstepSource.enabled = true;
-            footstepSource.volume = 0.3f;
-        }
+        ResetFootstepAudio();
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void Update()
     {
+        //make sure the footsteps audio doesn't play when in the following scenes
         if (IsNonGameplayScene())
         {
             movement = Vector2.zero;
 
             if (footstepSource != null && footstepSource.isPlaying)
-                footstepSource.Pause();
+                footstepSource.Stop();
 
             return;
         }
 
         Vector2 raw = GetRawMovementInput();
 
+        // Prevent diagonal movement
         if (Mathf.Abs(raw.x) > Mathf.Abs(raw.y))
             raw.y = 0;
         else
@@ -59,19 +57,7 @@ public class PlayerMovement2D : MonoBehaviour
             movement = Vector2.zero;
         }
 
-        if (footstepSource != null)
-        {
-            if (isMoving && !Global.anyPanelOpen)
-            {
-                if (!footstepSource.isPlaying)
-                    footstepSource.UnPause();
-            }
-            else
-            {
-                if (footstepSource.isPlaying)
-                    footstepSource.Pause();
-            }
-        }
+        HandleFootstepAudio(isMoving);
 
         Vector2 animDir = lastMoveDir;
 
@@ -85,7 +71,49 @@ public class PlayerMovement2D : MonoBehaviour
         anim.SetFloat("LastMoveY", lastMoveDir.y);
     }
 
-    //make sure the footsteps audio doesn't play when in the following scenes:
+    private void HandleFootstepAudio(bool isMoving)
+    {
+        if (footstepSource == null)
+            return;
+
+        //reset in case another script muted/disabled the audio source
+        footstepSource.mute = false;
+        footstepSource.enabled = true;
+        footstepSource.volume = 0.3f;
+        footstepSource.loop = true;
+
+        if (isMoving && !Global.anyPanelOpen)
+        {
+            if (!footstepSource.isPlaying)
+            {
+                AudioListener.volume = 1f;
+                footstepSource.Play();
+            }
+        }
+        else
+        {
+            if (footstepSource.isPlaying)
+                footstepSource.Stop();
+        }
+    }
+
+    private void ResetFootstepAudio()
+    {
+        if (footstepSource == null)
+            return;
+
+        footstepSource.enabled = true;
+        footstepSource.mute = false;
+        footstepSource.volume = 0.3f;
+        footstepSource.loop = true;
+
+        if (footstepSource.isPlaying)
+            footstepSource.Stop();
+
+        footstepSource.time = 0f;
+    }
+
+    //make sure footsteps audio doesn't play in these scenes
     private bool IsNonGameplayScene()
     {
         string sceneName = SceneManager.GetActiveScene().name;
@@ -99,7 +127,7 @@ public class PlayerMovement2D : MonoBehaviour
     private void OnDisable()
     {
         if (footstepSource != null && footstepSource.isPlaying)
-            footstepSource.Pause();
+            footstepSource.Stop();
     }
 
     private void OnDestroy()
@@ -109,12 +137,8 @@ public class PlayerMovement2D : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (footstepSource == null || footstepSource.clip == null) return;
-        if (!IsNonGameplayScene())
-        {
-            footstepSource.Play();
-            footstepSource.Pause();
-        }
+        Global.anyPanelOpen = false;
+        ResetFootstepAudio();
     }
 
     private static Vector2 GetRawMovementInput()

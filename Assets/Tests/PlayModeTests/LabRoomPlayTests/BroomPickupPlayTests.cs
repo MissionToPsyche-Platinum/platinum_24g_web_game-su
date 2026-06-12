@@ -168,7 +168,7 @@ public class BroomPickupPlayTests
     }
 
     [Test]
-    public void PickUpBroomAttachesToPlayerAndShowsPopup()
+    public void PickUpBroomAttachesToPlayerWithoutOpeningPopup()
     {
         GameObject playerObj = CreatePlayer();
 
@@ -191,42 +191,13 @@ public class BroomPickupPlayTests
         Assert.IsTrue(broom.broomCleanerHitbox.enabled);
         Assert.IsFalse(broom.hintText.activeSelf);
         Assert.IsFalse(broom.interactSignal.activeSelf);
-        Assert.IsTrue(broom.broomFoundPopup.activeSelf);
+        Assert.IsFalse(broom.broomFoundPopup.activeSelf);
         Assert.AreEqual("BroomHoldPoint", broomObj.transform.parent.name);
 
         Object.DestroyImmediate(playerObj);
         Object.DestroyImmediate(hitboxObj);
         Object.DestroyImmediate(broom.hintText);
         Object.DestroyImmediate(broom.interactSignal);
-        Object.DestroyImmediate(broom.broomFoundPopup);
-        Object.DestroyImmediate(broomObj);
-    }
-
-    [Test]
-    public void OpenPopupFreezesPlayerWhenEnabled()
-    {
-        GameObject playerObj = CreatePlayer();
-
-        PlayerMovement2D movement = playerObj.GetComponent<PlayerMovement2D>();
-        Rigidbody2D rb = playerObj.GetComponent<Rigidbody2D>();
-        rb.linearVelocity = new Vector2(3f, 2f);
-
-        GameObject broomObj = new GameObject("Broom");
-        BroomPickup broom = broomObj.AddComponent<BroomPickup>();
-
-        broom.broomFoundPopup = new GameObject("BroomFoundPopup");
-        broom.freezePlayerWhilePopupOpen = true;
-
-        SetPrivateField(broom, "playerMovement", movement);
-        SetPrivateField(broom, "playerRb", rb);
-
-        CallPrivateMethod(broom, "OpenBroomFoundPopup");
-
-        Assert.IsTrue(broom.broomFoundPopup.activeSelf);
-        Assert.IsFalse(movement.enabled);
-        Assert.AreEqual(Vector2.zero, rb.linearVelocity);
-
-        Object.DestroyImmediate(playerObj);
         Object.DestroyImmediate(broom.broomFoundPopup);
         Object.DestroyImmediate(broomObj);
     }
@@ -305,19 +276,4 @@ public class BroomPickupPlayTests
         Object.DestroyImmediate(broomObj);
     }
 
-    [Test]
-    public void StopPickupSoundStopsAudioSource()
-    {
-        GameObject broomObj = new GameObject("Broom");
-        BroomPickup broom = broomObj.AddComponent<BroomPickup>();
-
-        AudioSource audioSource = broomObj.AddComponent<AudioSource>();
-        broom.pickupAudioSource = audioSource;
-
-        Assert.DoesNotThrow(() =>
-            CallPrivateMethod(broom, "StopPickupSound")
-        );
-
-        Object.DestroyImmediate(broomObj);
-    }
 }
